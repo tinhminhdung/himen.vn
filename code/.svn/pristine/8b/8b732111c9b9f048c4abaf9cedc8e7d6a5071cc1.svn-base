@@ -1,0 +1,75 @@
+﻿@model onsoft.Models.Baogia
+
+<script type="text/javascript" src="~/Content/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="~/Content/ckfinder/ckfinder.js"></script>
+
+@using (Html.BeginForm("ThemMoi", "Baogia", FormMethod.Post, new { enctype = "multipart/form-data", @class = "validate-form" }))
+{
+  
+                            <table class="toolbar">
+                                @Html.DropDownList("LinkModule", " === Chọn liên kết === ")
+                            <tr>
+                                <td class="key">
+                                    Name
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(model => model.Name, new { @class = "text" })
+                                   
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="key">
+                                    Phone
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(model => model.Phone, new { @class = "text" })
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="key">
+                                    Email <span class="Required">*</span>
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(model => model.Email, new { @class = "text" })
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td class="key">
+                                        Detail
+                                    </td>
+                                    <td>
+                                        @Html.TextArea("Detail")
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="key">
+                                        Active
+                                    </td>
+                                    <td>
+                                        @Html.CheckBox("Active", new { id = "Active", onclick = "Javascript:chkSelect_OnClick(this,0)", @class = "chk" })
+                                    </td>
+                                </tr>
+
+                        </table>
+      <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+
+}
+
+
+<script type="text/javascript">
+    var editor;
+    function createEditor(languageCode, id) {
+        var editor = CKEDITOR.replace(id, {
+            language: languageCode
+        });
+    }
+    $(function () {
+        createEditor('vi', 'Detail');
+    });
+</script>

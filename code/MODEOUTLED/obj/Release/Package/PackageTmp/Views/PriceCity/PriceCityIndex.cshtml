@@ -1,0 +1,142 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model PagedList.IPagedList<onsoft.Models.sp_PriceCity_GetByAll_Result>
+
+@{
+    ViewBag.Title = "Quản lý tỉnh thành";
+    Layout = "~/Views/Shared/_LayoutAdmins.cshtml";
+}
+
+@section Styles
+{
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+
+    <!--Sử dụng cho Confirm delete-->
+    <link href="~/Content/Styles/jquery-ui.css" rel="stylesheet" />
+
+}
+
+
+@section Scripts
+{
+    <!--Sử dụng cho Confirm delete-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".yesno").easyconfirm({
+                locale: { title: 'Xóa tỉnh thành', button: ['Hủy', 'Xóa'] }
+            });
+        })
+    </script>
+
+    <!--Sử dụng cho Confirm delete-->
+    <script src="~/Scripts/jquery-1.9.1.js"></script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <script src="~/Scripts/jquery.easy-confirm-dialog.js"></script>
+
+    <!--Tùy biến số sản phẩm hiển thị trên trang-->
+    <script type="text/javascript">
+        $(function () {
+            $('#ddlProductAmount').change(function () {
+                this.form.submit();
+            });
+        });
+    </script>
+
+    <!--Sắp xếp hiển thị-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var currentSortOrder = '@ViewBag.CurrentSortOrder';
+            if (currentSortOrder == "ord asc") {
+                $('#ord').removeClass('NumberOrdDown').addClass("NumberOrdUp");
+            }
+            else {
+                $('#ord').removeClass('NumberOrdUp').addClass("NumberOrdDown");
+            }
+
+            var currentSortName = '@ViewBag.CurrentSortName';
+            if (currentSortName == "name asc") {
+                $('#name').removeClass('NumberOrdDown').addClass("NumberOrdUp");
+            }
+            else {
+                $('#name').removeClass('NumberOrdUp').addClass("NumberOrdDown");
+            }
+
+            var curentSortLevel = '@ViewBag.CurrentSortLevel';
+            if (curentSortLevel == "level asc") {
+                $('#level').removeClass('NumberOrdDown').addClass("NumberOrdUp");
+            }
+            else {
+                $('#level').removeClass('NumberOrdUp').addClass("NumberOrdDown");
+            }
+
+        })
+    </script>
+}
+
+<div class="container-fluid">
+    <div style="width: 100%; margin: 0 auto;">
+        <div id="Breadcrumb" class="Block Breadcrumb ui-widget-content ui-corner-top ui-corner-bottom">
+            <ul>
+                <li class='SecondLast'><a href='~/'><i class="icon-home" style="font-size: 14px;"></i>Trang chủ</a></li>
+                <li class='Last'><span>Danh sách tỉnh thành</span></li>
+            </ul>
+        </div>
+        <div style="clear: both;"></div>
+        <div id="cph_Main_ContentPane">
+            <div class="widget">
+                <div class="widget-title">
+                    <h4><i class="icon-list-alt"></i>&nbsp;Danh sách tỉnh thành</h4>
+
+                    @Html.Partial("_PartialMenuRight")
+
+                    <div id="hiddenToolBarScroll" class="scrollBox hidden">
+                        <h4>
+                            <i class="icon-list-alt"></i>&nbsp;Danh sách tỉnh thành
+                        </h4>
+                        <div class="FloatMenuBar">
+                            @Html.Partial("_PartialMenuRight")
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-body">
+
+                    <div class="row-fluid">
+
+                        <div class="span3">
+                            <div id="sample_1_length" class="dataTables_length">
+                                @Html.DropDownList("ddlPriceAmount", null, new { style = "width:180px;" })
+                            </div>
+                        </div>
+
+                        <div class="span9 form-search pull-right text-right">
+                            <input name="ctl00$cph_Main$ctl00$ctl00$txtSearch" type="text" maxlength="100" id="cph_Main_ctl00_ctl00_txtSearch" placeholder="Tên tỉnh thành" style="width: 200px;" />
+                            <input type="submit" name="btnSearch" value="Tìm kiếm" id="btnSearch" class="btn" />
+
+                        </div>
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span3">
+                            <div style="margin-top: 18px;">
+                                Tổng số tỉnh thành: <span style='color: #A52A2A;'>@ViewBag.TotalPrice</span>
+                            </div>
+                        </div>
+                        <div class="span9">
+                            <!--Paging-->
+                            @Html.PagedListPager(Model, page => Url.Action("PriceCityIndex", new { page = page, sortOrder = ViewBag.CurrentSortOrder, sortName = ViewBag.CurrentSortName, sortLevel = ViewBag.CurrentSortLevel }), (PagedListRenderOptions)ViewBag.ship)
+                        </div>
+                    </div>
+
+                    <!--table-->
+                    @{Html.RenderPartial("_PartialPriceCityIndex", Model);}
+                    <!--table-->
+
+                    <!--Paging-->
+                    @Html.PagedListPager(Model, page => Url.Action("PriceCityIndex", new { page = page, sortOrder = ViewBag.CurrentSortOrder, sortName = ViewBag.CurrentSortName, sortLevel = ViewBag.CurrentSortLevel }), (PagedListRenderOptions)ViewBag.ship)
+                    <div style="clear: both;"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

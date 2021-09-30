@@ -1,0 +1,87 @@
+﻿@using os;
+@model IList<onsoft.Models.v_Product_DescTotalNumber>
+<ul class="da-thumbs">
+    @for (int i = 0; i < Model.Count; i++)
+     {
+        if(i%4 != 0)
+        {
+             <li>
+               <div class="imagespro"><a href="/thong-tin/@Model[i].Tag" title="@Model[i].Name"><img src="@Model[i].Image" alt="@Model[i].Name"  title="@Model[i].Name"/></a></div>
+                @if ((Model[i].PricePromotion / Model[i].PriceRetail) * 100 < 100)
+                {
+                 <div>
+                    @if(@Model[i].Code != null && @Model[i].Code != "")
+                    {
+                        <p class="sp_code">Mã SP: @Model[i].Code</p>
+                    }
+                    else
+                    {
+                        <p class="sp_code">No size</p>    
+                    }
+                        @if (Model[i].PricePromotion == 0)
+                        {
+                            <p class="gia_sp">Giá: Vui lòng liên hệ</p>
+                        }
+                        else
+                        {
+                            <p class="gia_cu">Giá cũ:  @os.Format_Price(Model[i].PriceRetail.ToString()) đ</p>    
+                            <p class="gia_sp">Giá bán: @os.Format_Price(Model[i].PricePromotion.ToString()) đ</p>
+                        }
+                    </div>
+                 <p class="sp_name"><a href="/thong-tin/@Model[i].Tag">@Model[i].Name</a></p>
+                   <div class="giamgia">
+                    <span class="discount-label">Giảm</span>
+                    <span class="discount-value">@onsoft.Models.StringClass.Round(double.Parse((100 - (Model[i].PricePromotion / Model[i].PriceRetail) * 100).ToString()), 2) %</span>
+                    </div>
+                }
+                else
+                {
+                    <div>
+                         @if(@Model[i].Code != null && @Model[i].Code != "")
+                    {
+                        <p class="sp_code">Mã SP: @Model[i].Code</p>
+                    }
+                    else
+                    {
+                        <p class="sp_code">No size</p>    
+                    }
+                     @if (Model[i].PricePromotion == 0)
+                        {
+                            <p class="gia_sp">Giá: Vui lòng liên hệ</p>
+                        }
+                        else
+                        {
+                            <p class="gia_sp">Giá bán: @os.Format_Price(Model[i].PricePromotion.ToString()) đ</p>
+                        }
+                    </div>
+                 <p class="sp_name"><a href="/thong-tin/@Model[i].Tag">@Model[i].Name</a></p>
+                }
+                </li>
+        }
+        else
+        {
+            <li class="right">
+               <div class="imagespro"><a href="/thong-tin/@Model[i].Tag" title="@Model[i].Name"><img src="@Model[i].Image" alt="@Model[i].Name"  title="@Model[i].Name"/></a></div>
+                 <div>
+                    @if(@Model[i].Code != null && @Model[i].Code != "")
+                    {
+                        <p class="sp_code">Mã SP: @Model[i].Code</p>
+                    }
+                    else
+                    {
+                        <p class="sp_code">No size</p>    
+                    }
+                        @if (Model[i].PricePromotion == 0)
+                        {
+                            <p class="gia_sp">Giá: Vui lòng liên hệ</p>
+                        }
+                        else
+                        {
+                            <p class="gia_sp">Giá bán: @os.Format_Price(Model[i].PricePromotion.ToString()) đ</p>
+                        }
+                    </div>                
+                <p class="sp_name"><a href="/thong-tin/@Model[i].Tag">@Model[i].Name</a></p>
+                </li>
+        }
+            }
+</ul>

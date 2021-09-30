@@ -1,0 +1,17 @@
+﻿@model MODEOUTLED.ViewModels.CustomerForm.Dangnhap
+@{
+    ViewBag.Title = "Lấy lại mật khẩu";
+    Layout = "~/Views/Shared/_LayoutDefault.cshtml";
+}
+    @using (Html.BeginForm("forget_pass", "Pages", FormMethod.Post))
+    {
+        <div class="dangki">
+            <h2>Trợ giúp khôi phục mật khẩu</h2>
+            <p style="color:red; margin:10px 0;">@Html.Raw(ViewBag.Err)</p>
+            <p>Email</p>
+            @Html.TextBox("Email", "", new { @placeholder="Tài khoản Email"})
+            @Html.ValidationMessageFor(m=>m.Email)
+            <i>Nhập email mà bạn đã đăng ký tài khoản vào ô bên trên</i><br />
+            <input type="submit" value="Gửi" class="btnSubmit" />
+        </div>
+    }

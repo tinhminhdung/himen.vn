@@ -1,0 +1,228 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model PagedList.IPagedList<onsoft.Models.sp_Product_GetByAll_NameGroup_Result>
+@{
+    ViewBag.Title = "Quản lí sản phẩm";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+
+<!--Sử dụng cho tooltip sort-->
+<script src="~/Scripts/dw_tooltip_c.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        var currentSortOrder = '@ViewBag.CurrentSortOrder';
+        if (currentSortOrder == "ord asc") {
+            $('#ord').removeClass('NumberOrdDown').addClass("NumberOrdUp");
+        }
+        else {
+            $('#ord').removeClass('NumberOrdUp').addClass("NumberOrdDown");
+        }
+
+        var currentSortName = '@ViewBag.CurrentSortName';
+        if (currentSortName == "name asc") {
+            $('#name').removeClass('NumberNameDown').addClass("NumberNameUp");
+        }
+        else {
+            $('#name').removeClass('NumberNameUp').addClass("NumberNameDown");
+        }
+
+        var currentSortGroup = '@ViewBag.CurrentSortGroup';
+        if (currentSortGroup == "group asc") {
+            $('#group').removeClass('NumberGroupDown').addClass("NumberGroupUp");
+        }
+        else {
+            $('#group').removeClass('NumberGroupUp').addClass("NumberGroupDown");
+        }
+
+        var currentSortDate = '@ViewBag.CurrentSortDate';
+        if (currentSortDate == "date asc") {
+            $('#date').removeClass('NumberDateDown').addClass("NumberDateUp");
+        }
+        else {
+            $('#date').removeClass('NumberDateUp').addClass("NumberDateDown");
+        }
+
+        var currentSortSPTon = '@ViewBag.CurrentSortSPTon';
+            if (currentSortSPTon == "spton asc") {
+                $('#spton').removeClass('NumberSpTonDown').addClass("NumberSpTonUp");
+            }
+            else {
+                $('#spton').removeClass('NumberSPTonUp').addClass("NumberSPTonDown");
+            }
+    })
+</script>
+
+<h2>@ViewBag.Title</h2>
+
+@{Html.RenderAction("Search", "Product");}
+@using (Html.BeginForm("MultiCommand", "Product", FormMethod.Post))
+{
+    
+    <div class="clearfix"></div>
+    <div class="Control">
+        <ul>
+            <li>@Html.ActionLink("Thêm mới", "ProductCreate", "", new { @class = "vadd" })</li>
+            <li>@Html.ActionLink("Thêm nhiều", "ProductAddMultiple", "", new { @class = "vadd" })</li>
+            <li>
+                <button id="MultiDelete" type="submit" name="command" value="MultiDelete" class="mulDel">Xóa</button></li>
+            <li>@Html.ActionLink("Làm mới", "ProductIndex", "", new { @class = "vrefresh" })</li>
+            @*<li><input type="submit" value="Thêm sản phẩm vào phiếu nhập" class="vadd" />
+                <button id="AddImport" type="submit" name="command" value="AddImport" class="vadd">Thêm sản phẩm vào phiếu nhập</button>
+            </li>*@
+            @*<li><button id="AddExport" type="submit" name="command" value="AddExport" class="vadd">Thêm sản phẩm vào phiếu xuất</button></li>*@
+            <li>
+                <a class="vback" href="javascript:void(0);" onclick="window.history.go(-1);">Trở lại</a>
+            </li>
+        </ul>
+    </div>
+    @Html.Raw(ViewBag.DelErr)
+    <table class="TableView" border="1" id="myTable">
+        <tr class="trHeader">
+            <th class="CheckBoxsmall">
+                <input type="checkbox" onclick="Javascript: chkSelectAll_OnClick1(this)" id="chkSelectAll" /></th>
+            <th class="Number">Mã sản phẩm</th>
+            <th id="name" class="Text NumberNameUp">
+                @Html.ActionLink("Tên sản phẩm", "ProductIndex", new { sortName = ViewBag.SortNameParm }, new { style = "color:White; text-decoration:none;" })
+            </th>
+            <th id="group" class="Text NumberGroupUp">
+                @Html.ActionLink("Tên nhóm", "ProductIndex", new { sortGroup = ViewBag.SortGroupParm }, new { style = "color:White; text-decoration:none;" })
+            </th>
+            <th class="Image">Ảnh sản phẩm</th>
+            <th id="date" class="DateTimesmal NumberDateUp">
+                @Html.ActionLink("Ngày đăng", "ProductIndex", new { sortDate = ViewBag.SortDateParm }, new { style = "color:White; text-decoration:none;" })
+            </th>
+            <th id="spton" class="Number NumberSPTonUp">
+                @Html.ActionLink("Lượng tồn", "ProductIndex", new { sortSPTon = ViewBag.SortSPTonParm }, new { style = "color:White; text-decoration:none;" })
+            </th>
+            <th class="Number">Khuyến mãi</th>
+            <th class="Number">Sản phẩm mới</th>
+            <th id="ord" class="Number NumberOrdUp">
+                @Html.ActionLink("Thứ tự", "ProductIndex", new { sortOrder = ViewBag.SortOrderParm }, new { style = "color:White; text-decoration:none;" })
+            </th>
+            <th class="Function">Chức năng</th>
+        </tr>
+
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            if (i % 2 == 0)
+            {
+            <tr id="trOdd_@i" class="trOdd" onmousemove="Javascript:chkSelect_OnMouseMove(this)" onmouseout="Javascript:chkSelect_OnMouseOut(this,@i)">
+                <td class="CheckBoxsmall">@Html.CheckBox("chk" + Model[i].Id, new { id = "chkSelect", onclick = "Javascript:chkSelect_OnClick(this,0)", @class = "chk" })</td>
+                <td class="Text">@Model[i].Id</td>
+                <td class="Text">@Model[i].Name</td>
+                <td class="Text">@Model[i].Expr1</td>
+                <td class="Image">
+                    @if (Model[i].Image != null && Model[i].Image != "")
+                    {<img src="@Model[i].Image" style="width:90px; height:90px; margin-top:5px;" />}
+                    else
+                    {<img src="/Images/no-image.png" style="width: 90px; height: 90px; margin-top: 5px;" />}
+                </td>
+                <td class="DateTimesmal">@{@onsoft.Models.DateTimeClass.ConvertDateTimeddMMyyyy(@Model[i].Date.ToString())}</td>
+                <td class="Number">@Model[i].SpTon</td>
+                <td class="Number">
+                    @if (Model[i].Priority == true)
+                    {
+                        <div class="checkImg">ưu tiên</div>   
+                    }
+                    else
+                    {
+                        <div class="uncheckImg">k ưu tiên</div>
+                    }
+                </td>
+                <td class="Number">
+                    @if (Model[i].Index == true)
+                    {<div class="checkImg">ưu tiên</div>}
+                    else
+                    {<div class="uncheckImg">k ưu tiên</div>}
+                </td>
+                <td class="Number">@Model[i].Ord</td>
+                <td class="Function">
+                    @Html.ActionLink("Xem", "ProductPriceView", new { id = Model[i].Id }, new { @class = "views", title = "Xem chi tiết sản phẩm" })
+                    @Html.ActionLink("Xem Ảnh", "ProductViewImg", new { id = Model[i].Id }, new { @class = "vaddimg", title = "Xem ảnh sản phẩm" })
+                    @Html.ActionLink("Sửa", "ProductEdit", new { id = Model[i].Id }, new { @class = "vedit", title = "Sửa" })
+                    @Html.ActionLink("Xóa", "ProductDelete", new { id = Model[i].Id }, new { @onclick = "return DeleteConfirm()", @class = "vdelete", title = "Xóa" })
+                    @if (Model[i].Active == true)
+                    {@Html.ActionLink("Active", "ProductActive", new { id = Model[i].Id }, new { @class = "vactive", title = "Ẩn" })}
+                    else
+                    {@Html.ActionLink("Active", "ProductActive", new { id = Model[i].Id }, new { @class = "vnotactive", title = "Hiện" })}
+                </td>
+            </tr>
+            }
+            else
+            {
+            <tr id="trEven_@i" class="trEven" onmousemove="Javascript:chkSelect_OnMouseMove(this)" onmouseout="Javascript:chkSelect_OnMouseOut(this,@i)">
+                <td class="CheckBoxsmall">@Html.CheckBox("chk" + Model[i].Id, new { id = "chkSelect", onclick = "Javascript:chkSelect_OnClick(this,0)", @class = "chk" })</td>
+                <td class="Text">@Model[i].Id</td>
+                <td class="Text">@Model[i].Name</td>
+                <td class="Text">@Model[i].Expr1</td>
+                <td class="Image">
+                    @if (Model[i].Image != null && Model[i].Image != "")
+                    {<img src="@Model[i].Image" style="width:90px; height:90px; margin-top:5px;" />}
+                    else
+                    {<img src="/Images/no-image.png" style="width: 90px; height: 90px; margin-top: 5px;" />}
+                </td>
+                <td class="DateTimesmal">@{@onsoft.Models.DateTimeClass.ConvertDateTimeddMMyyyy(@Model[i].Date.ToString())}</td>
+                <td class="Number">@Model[i].SpTon</td>
+                <td class="Number">
+                    @if (Model[i].Priority == true)
+                    {
+                        <div class="checkImg">ưu tiên</div>   
+                    }
+                    else
+                    {
+                        <div class="uncheckImg">k ưu tiên</div>
+                    }
+                </td>
+                <td class="Number">
+                    @if (Model[i].Index == true)
+                    {<div class="checkImg">ưu tiên</div>}
+                    else
+                    {<div class="uncheckImg">k ưu tiên</div>}
+                </td>
+                <td class="Number">@Model[i].Ord</td>
+                <td class="Function">
+                    @Html.ActionLink("Xem", "ProductPriceView", new { id = Model[i].Id }, new { @class = "views", title = "Xem chi tiết sản phẩm" })
+                    @Html.ActionLink("Xem Ảnh", "ProductViewImg", new { id = Model[i].Id }, new { @class = "vaddimg", title = "Xem ảnh sản phẩm" })
+                    @Html.ActionLink("Sửa", "ProductEdit", new { id = Model[i].Id }, new { @class = "vedit", title = "Sửa" })
+                    @Html.ActionLink("Xóa", "ProductDelete", new { id = Model[i].Id }, new { @onclick = "return DeleteConfirm()", @class = "vdelete", title = "Xóa" })
+                    @if (Model[i].Active == true)
+                    {@Html.ActionLink("Active", "ProductActive", new { id = Model[i].Id }, new { @class = "vactive", title = "Ẩn" })}
+                    else
+                    {@Html.ActionLink("Active", "ProductActive", new { id = Model[i].Id }, new { @class = "vnotactive", title = "Hiện" })}
+                </td>
+            </tr>
+            }
+
+        }
+    </table>
+    <!--Paging-->
+    @Html.PagedListPager(Model, page => Url.Action("ProductIndex", new { page = page, sortOrder = ViewBag.CurrentSortOrder, sortName = ViewBag.CurrentSortName, sortGroup = ViewBag.CurrentSortGroup, sortDate = ViewBag.CurrentSortDate,  sortSPTon = ViewBag.CurrentSortSPTon }), (PagedListRenderOptions)ViewBag.Pro)
+
+
+    <div class="Control">
+        <ul>
+            <li>@Html.ActionLink("Thêm mới", "ProductCreate", "", new { @class = "vadd" })</li>
+            <li>@Html.ActionLink("Thêm nhiều", "ProductAddMultiple", "", new { @class = "vadd" })</li>
+            @if (Request.Cookies["Username"] != null)
+            {
+                <li>
+                    <button id="MultiDelete" type="submit" name="command" value="MultiDelete" class="mulDel">Xóa</button></li>
+            }
+            else
+            {
+                <li>
+                    <p class="mulDel" onclick="AlertErr()">Xóa</p>
+                </li>   
+            }
+            <li>@Html.ActionLink("Làm mới", "ProductIndex", "", new { @class = "vrefresh" })</li>
+            @*<li><button id="AddImport1" type="submit" name="command" value="AddImport" class="vadd">Thêm sản phẩm vào phiếu nhập</button></li>
+            <li><button id="AddExport1" type="submit" name="command" value="AddExport" class="vadd">Thêm sản phẩm vào phiếu xuất</button></li>*@
+            <li>
+                <a class="vback" href="javascript:void(0);" onclick="window.history.go(-1);">Trở lại</a>
+            </li>
+        </ul>
+    </div>
+}

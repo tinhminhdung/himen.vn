@@ -1,0 +1,62 @@
+﻿@model onsoft.Models.ProPrice
+@{
+    ViewBag.Title = "ProductPriceEdit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Chỉnh sửa thông tin giá sản phẩm</h2>
+@using (Html.BeginForm())
+{
+    <table class="TableUpdate" border="1">
+        <tr>
+            <td class="Control" colspan="2">
+                <ul>
+                    <li><input type="submit" value="Ghi lại "class="uupdate" /></li>
+                    <li>@Html.ActionLink("Trở về", "ProductIndex", "", new { @class = "uback" })</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <th>Giá nhập vào mới nhất</th>
+            <td>@Html.TextBoxFor(m=>m.PriceImport) VNĐ @Html.ValidationMessageFor(m=>m.PriceImport) VNĐ</td>
+        </tr>
+        <tr>
+            <th>Giá bán sỉ</th>
+            <td>@Html.TextBoxFor(m=>m.PriceExport_S) VNĐ @Html.ValidationMessageFor(m=>m.PriceExport_S)</td>
+        </tr>
+        <tr>
+            <th>Giá bán lẻ</th>
+            <td>@Html.TextBoxFor(m=>m.PriceExport_L) VNĐ @Html.ValidationMessageFor(m=>m.PriceExport_L)</td>
+        </tr>
+        <tr>
+            <th>Giá khuyến mãi</th>
+            <td>@Html.TextBoxFor(m=>m.PricePromotion) VNĐ @Html.ValidationMessageFor(m=>m.PricePromotion)</td>
+        </tr>
+        <tr>
+            <th>Ngày bắt đầu áp dụng khung giá trên</th>
+            <td>@Html.TextBoxFor(m=>m.SDate) @Html.ValidationMessageFor(m=>m.SDate)</td>
+        </tr>
+        <tr>
+            <th>Ngày kết thúc áp dụng khung giá trên</th>
+            <td>@Html.TextBoxFor(m=>m.EDate) @Html.ValidationMessageFor(m=>m.EDate)</td>
+        </tr>
+        <tr>
+            <th>Thứ tự</th>
+            <td>@Html.TextBoxFor(m=>m.Ord)</td>
+        </tr>
+        <tr>
+            <td class="Control" colspan="2">
+                <ul>
+                    <li><input type="submit" value="Ghi lại "class="uupdate" /></li>
+                    <li>@Html.ActionLink("Trở về", "ProductIndex", "", new { @class = "uback" })</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+}
+<script type="text/javascript">
+    $(function () {
+        $("#SDate").datepicker();
+        $("#EDate").datepicker();
+    });
+</script>

@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <script src="~/Scripts/jquery-1.7.1.min.js"></script>
+    <link href="~/Content/new-promotion.css" rel="stylesheet" />
+    <link href="~/Content/shipping_modal.css" rel="stylesheet" />
+    @*<script src="~/Scripts/jquery.skitter.js"></script>*@
+    @Html.Raw(ViewBag.metas)
+</head>
+<body class="checkout-onepage-index">
+  <!--BEGIN: header--> 
+    <div id="hiddenToolBarScroll-head" class="scrollBox-head">
+        @*<div class="tel-add">@{ Html.RenderAction("_TopHead", "My_Partialview"); }</div>*@
+        <div class="box-top-head">
+            <!-- BEGIN: row -->
+                <!--BEGIN: logo-->
+                @{Html.RenderAction("_Logo", "My_Partialview");}
+                <!--END: logo-->
+
+                <!--BEGIN: search&phone content-->
+                @*@{Html.RenderAction("_Search", "My_Partialview");}*@
+                <!--END: search&phone -->
+
+                </div>
+            <!-- END: row -->
+        @*@{Html.RenderAction("_MenuTop", "My_Partialview");}*@
+        </div>
+    <!--END: header-->
+
+    <div class="container-cart">
+        @RenderBody()
+    </div>
+        <div class="container-footer">
+                @{ Html.RenderAction("_CopyRight", "My_Partialview"); }
+        </div>
+</body>
+</html>

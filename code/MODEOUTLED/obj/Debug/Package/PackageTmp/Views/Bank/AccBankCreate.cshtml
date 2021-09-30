@@ -1,0 +1,113 @@
+﻿@model onsoft.Models.AccBank
+@{
+    ViewBag.Title = "Thêm mới tài khoản";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    var username = User.Identity.IsAuthenticated ? User.Identity.Name : string.Empty;
+}
+
+<!-- Validate Data -->
+
+
+<script src="~/Scripts/jquery.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script type="text/javascript">$j = jQuery.noConflict();</script>
+
+<script type="text/javascript">
+
+    (function ($j, W, D) {
+
+        var JQUERY4U = {};
+
+        JQUERY4U.UTIL =
+        {
+            setupFormValidation: function () {
+                //validation rules
+                $j("#categorycreate-form").validate({
+                    rules: {
+                        Account: "required",
+                        Number: "required",
+                        Ord: "required"
+                    },
+                    messages: {
+                        Account: "Nhập tên chủ tài khoản",
+                        Number: "Nhập mã tài khoản",
+                        Ord: "Phải nhập thứ tự"
+                    },
+                    submitHandler: function (form) {
+                        form.submit();
+                    }
+                });
+            }
+        }
+
+        //when the dom has loaded setup form validation rules
+        $j(D).ready(function ($) {
+            JQUERY4U.UTIL.setupFormValidation();
+        });
+
+    })(jQuery, window, document);
+</script>
+<!-- End Validate Data -->
+
+<h2>@ViewBag.Title</h2>
+@using (Html.BeginForm("AccBankCreate", "Bank", FormMethod.Post, new { @id = "categorycreate-form", @class = "validate-form" }))
+{
+    <table class="TableUpdate" border="1">
+        <tr>
+            <td class="Control" colspan="2">
+                <ul>
+                        <li><input type="submit" value="Ghi lại "class="uupdate" /></li>
+                    <li><a href="/Bank/BankView/"+ @Session["IdBank"].ToString() +"" class="uback">Trở về</a> </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <th>Tên tài khoản<span style="color:red">(*)</span></th>
+            <td>
+                 @Html.TextBoxFor(model => model.Account, new {@class="text" })
+            </td>
+        </tr>
+        <tr>
+            <th>Mã tài khoản<span style="color:red">(*)</span></th>
+            <td>@Html.TextBoxFor(model => model.Number, new { @class="text"})</td>
+        </tr>
+     <tr>
+            <th>Mô tả</th>
+            <td>
+                 @Html.TextArea("Description")
+            </td>
+        </tr>
+        <tr>
+            <th>Thứ tự<span style="color:red">(*)</span></th>
+            <td>
+                 @Html.TextBoxFor(model => model.Ord, new { @onkeypress = "OnlyInputNumber(0)" })
+            </td>
+        </tr>
+        <tr>
+            <th>Kích hoạt</th>
+            <td>
+                 @Html.CheckBox("Active",true)
+            </td>
+        </tr>
+         <tr>
+            <td class="Control" colspan="2">
+                <ul>
+                        <li><input type="submit" value="Ghi lại "class="uupdate" /></li>
+                    <li><a href="/Bank/BankView/"+ @Session["IdBank"].ToString() +"" class="uback">Trở về</a> </li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+}
+<script type="text/javascript">
+    var editor;
+    function createEditor(languageCode, id) {
+        var editor = CKEDITOR.replace(id, {
+            language: languageCode
+        });
+    }
+
+    $(function () {
+        createEditor('vi', 'Description');
+    });
+</script>

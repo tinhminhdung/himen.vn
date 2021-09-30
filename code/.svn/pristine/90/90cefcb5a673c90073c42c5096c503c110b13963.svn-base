@@ -1,0 +1,79 @@
+﻿@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_Layouttest.cshtml";
+}
+<link href="~/Content/jquery-ui.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.7.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+    <!-- Validate Data -->
+    <script type="text/javascript">
+
+        (function ($, W, D) {
+
+            var JQUERY4U = {};
+
+            JQUERY4U.UTIL =
+            {
+                setupFormValidation: function () {
+                    //Đây là id của form, gọi ra ở đây
+                    $("#Pro-form").validate({
+                        rules: {
+                            Name: "required",
+                            Prices: {
+                                required: true,
+                                number: true
+                            },
+                            Date: {
+                                required: true,
+                                date: true
+                            }
+                        },
+                        messages: {
+
+                            Name: "Phải nhập tên",
+                            Prices: {
+                                required: "Phải nhập giá",
+                                number: "Phải nhập kiểu số",
+                            },
+                            Date: {
+                                required: "Phải nhập ngày",
+                                number: "Ngày phải nhập kiểu ngày tháng năm",
+                            },
+                        },
+                        submitHandler: function (form) {
+                            form.submit();
+                        }
+                    });
+                }
+            }
+
+            //when the dom has loaded setup form validation rules
+            $(D).ready(function ($) {
+                JQUERY4U.UTIL.setupFormValidation();
+            });
+
+        })(jQuery, window, document);
+    </script>
+    <!-- End Validate Data -->
+<h2>Add</h2>
+@using (Html.BeginForm("Create", "Test", FormMethod.Post, new { enctype = "multipart/form-data", @id = "Pro-form", @class = "validate-form" }))
+{
+    <table>
+        <tr>
+            <td>Tên:</td>
+            <td>@Html.TextBox("Name")</td>
+        </tr>
+        <tr>
+            <td>@Html.TextBox("Prices")</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>@Html.TextBox("Date")</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Update" /></td>
+            <td></td>
+        </tr>
+    </table>
+}

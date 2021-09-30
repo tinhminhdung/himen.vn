@@ -1,0 +1,187 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lt IE 9]>
+    <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script><![endif]-->
+    <title>@ViewBag.Title</title>
+    <meta name="description" content="@ViewBag.des" />
+    <meta name="keywords" content="@ViewBag.key" />
+    <meta name="google-site-verification" content="a2H67xm3-RPMHGA6-5LesIz9orF5xKF2ud0a6ncFOTY" />
+    <meta name="geo.placename" content="76 Hoàng Mai, Hai Bà Trưng, Hà Nội, Việt Nam" />
+    <meta name="geo.position" content="21.0000000;105.9000000" />
+    <meta name="geo.region" content="VN-Hà Nội" />
+    <meta name="ICBM" content="21.0000000, 105.9000000" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- END: basic page needs -->
+    <!-- BEGIN: css -->
+    <link href="~/Content/Default/default.css" rel="stylesheet" />
+    <link href="~/Content/style.css" type="text/css" rel="stylesheet" />
+    <link href="~/Content/jquery-ui.css" rel="stylesheet" />
+    <link href="~/Content/osviews.css" rel="stylesheet" />
+    <link href="~/Content/news.css" rel="stylesheet" />
+    <link href="~/Content/PagedListHome.css" rel="stylesheet" />
+    <link href="~/Content/Styles/mobile.css" rel="stylesheet" />
+    @* <link href="~/Content/Styles/font-awesome.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap.css" type="text/css" rel="stylesheet" />
+        <link rel="stylesheet" href="~/Content/compact.css" type="text/css" media="screen" />*@
+
+    @*<link href="~/Content/top-member.css" rel="stylesheet" />
+    *@
+    <!-- BEGIN: js -->
+    <!--[if lt IE 9]>
+    <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script><![endif]-->
+    <script src="~/Scripts/jquery-1.7.1.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/google-code-prettify/prettify.js"></script>
+    <script type="text/javascript" src="~/Scripts/bootstrap.js"></script>
+    <script type="text/javascript" src="~/Scripts/superfish.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.hoverdir.js"></script>
+    <script type="text/javascript" src="~/Scripts/jflickrfeed.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.prettyPhoto.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <script src="~/Scripts/library.js"></script>
+    <script src="~/Scripts/common.js"></script>
+    <script src="~/Scripts/jquery.totemticker.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('body').append('<div id="backtotop"></div>');
+            $('body').append('<div id="big-daddy"></div>');
+            $(window).scroll(function () {
+                var $toa_do = $(window).scrollTop();
+                if ($toa_do == 0) { $('#backtotop').fadeOut(); }
+                else { $('#backtotop').fadeIn() };
+                if ($toa_do == 0) { $('#big-daddy').fadeOut(); }
+                else { $('#big-daddy').fadeIn() };
+            });
+            $('#backtotop').click(function () {
+                $('html,body').animate({ scrollTop: 0 }, 500);
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            var sticky_navigation_offset_top = $('#top').offset().top;
+            var sticky_navigation = function () {
+                var scroll_top = $(window).scrollTop();
+                if (scroll_top > sticky_navigation_offset_top) {
+                    $('#top').addClass('fixedtop');
+                } else {
+                    $('#top').removeClass('fixedtop');
+                }
+            };
+            // run our function on load
+            sticky_navigation();
+            // and run it again every time you scroll
+            $(window).scroll(function () {
+                sticky_navigation();
+            });
+        });
+    </script>
+    <!--End of Zopim Live Chat Script-->
+    <!--Subiz chats-->
+    <!--End Subiz-->
+    <!--Start of Zopim Live Chat Script-->
+    @*<script type="text/javascript">
+            window.$zopim || (function (d, s) {
+                var z = $zopim = function (c) { z._.push(c) }, $ = z.s =
+                d.createElement(s), e = d.getElementsByTagName(s)[0]; z.set = function (o) {
+                    z.set.
+                    _.push(o)
+                }; z._ = []; z.set._ = []; $.async = !0; $.setAttribute('charset', 'utf-8');
+                $.src = '//v2.zopim.com/?2NbcNgKZhBjugbgYbRuKWRWJyrNmWoPd'; z.t = +new Date; $.
+                type = 'text/javascript'; e.parentNode.insertBefore($, e)
+            })(document, 'script');
+        </script>*@
+</head>
+<body>
+    <header>
+        <div class="header">
+            <div class="top" id="top">
+                <div class="lang fll">
+                    @{Html.RenderAction("_quangCao2Ben_benPhai", "My_Partialview");}
+                </div>
+
+                <div class="reg flr">
+                    <a href="https://www.facebook.com/thoitranghimen.vn?_rdr" target="_blank" style="float:left;"><img src="~/Images/ffff.png" /></a>
+                    <div class="addthis_toolbox addthis_default_style " style="float:left;">
+                        <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+                        <a class="addthis_button_tweet"></a>
+                        <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+                        <a class="addthis_counter addthis_pill_style"></a>
+                    </div>
+                    <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4f877ce85cb6cb53"></script>
+                </div>
+            </div>
+            <div class="banner-main">
+                <div class="banner">
+                    @{Html.RenderAction("_Logo", "My_Partialview");}
+                    <div class="infoh flr">
+                        <div class="form flr">
+                            @{Html.RenderAction("_Search", "My_Partialview");}
+                        </div>
+                        <div class="clear"></div>
+                        @{Html.RenderAction("_DropCategory", "My_Partialview");}
+                        @{Html.RenderAction("_MenuTop", "My_Partialview");}
+
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container-main">
+        <div class="adv-home">
+            <div class="adv-home-left">
+                @{Html.RenderAction("_MenuLeft", "My_Partialview");}
+            </div>
+            <div class="adv-home-center">
+                @{Html.RenderAction("_Slide", "My_Partialview");}
+            </div>
+            <div class="adv-home-right">
+                @{Html.RenderAction("_NewsLeft", "My_Partialview");}
+            </div>
+        </div>
+        @RenderBody()
+    </div>
+    <footer>
+        <div class="footer">
+            <div class="grid4-2 menu-ft">
+                <p class="title-f upp">Liên hệ</p>
+                @{Html.RenderAction("_Footer", "My_Partialview");}
+            </div>
+
+            <div class="grid4-3 new-ft">
+                <p class="title-f upp">Tin tức hỗ trợ</p>
+                @{Html.RenderAction("_Tintuchotro", "My_Partialview");}
+            </div>
+            <div class="grid4-4">
+
+                <div class="grid4imgage">@*<img src="~/Images/da-dang-ky-bo-cong-thuong.PNG" /><img src="~/Images/da-dang-ky-bo-tttt.jpg" />*@</div>
+            </div>
+            <div class="grid4-1 menu-ft">
+                @{Html.RenderAction("_Danhmuchangdau", "My_Partialview");}
+            </div>
+            <div class="clear"></div>
+        </div>
+
+        <div class="clear"></div>
+        <div class="banquyen">
+            <p class="upp">BẢN QUYỀN WEBSITE THUỘC VỀ WWW.HIMEN.VN</p>
+        </div>
+    </footer>
+
+    @Html.Raw(ViewBag.livechat)
+    <script type="text/javascript" src="~/Scripts/jquery.flexnav.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".flexnav").flexNav();
+        });
+    </script>
+</body>
+</html>

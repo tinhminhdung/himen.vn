@@ -1,0 +1,35 @@
+﻿@model MODEOUTLED.ViewModels.CustomerForm.ChangePass
+@{
+    ViewBag.Title = "Đổi mật khẩu - Ilovestyle.vn";
+    Layout = "~/Views/Shared/_LayoutMember.cshtml";
+}
+
+<div class="content">
+    <div class="content-big">
+        <h2>Thông tin tài khoản</h2>
+        @using (Html.BeginForm("doi_mat_khau", "Pages", FormMethod.Post))
+        {
+        <div class="InfoAcc">
+            <p style="color:red; margin:10px;">@ViewBag.Err</p>
+            <table class="tbEditInfo">
+                <tr>
+                    <th>Mật khẩu cũ</th>
+                    <td>@Html.TextBox("Pass","", new { type="password"})</td>
+                    <td>@Html.ValidationMessageFor(m=>m.Pass)</td>
+                </tr>
+                <tr>
+                    <th>Mật khẩu mới</th>
+                    <td>@Html.TextBox("NewPass","", new { type="password"})</td>
+                    <td>@Html.ValidationMessageFor(m=>m.NewPass)</td>
+                </tr>
+                <tr>
+                    <th>Nhập lại mật khẩu mới</th>
+                    <td>@Html.TextBox("ReNewPass","", new { type="password"})</td>
+                    <td>@Html.ValidationMessageFor(m=>m.ReNewPass)</td>
+                </tr>
+            </table>
+            <input type="submit" value="Cập nhật" class="btnSubmit" />
+        </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,246 @@
+﻿@model onsoft.Models.Member
+@{
+    ViewBag.Title = "ProvinceCreate";
+    Layout = "~/Views/Shared/_LayoutAdmins.cshtml";
+}
+
+@section Scripts
+{
+    <!-- Validate Data -->
+    <script type="text/javascript">
+
+        (function ($, W, D) {
+
+            var JQUERY4U = {};
+
+            JQUERY4U.UTIL =
+            {
+                setupFormValidation: function () {
+                    //validation rules
+                    $("#Member-form").validate({
+                        rules: {
+
+                            Name: "required",
+                            Username: "required",
+                            Password: "required",
+                        },
+                        messages: {
+
+                            Name: "Phải nhập tên thành viên",
+                            Username: "Phải nhập Tài khoản thành viên (UserName)",
+                            Password: "Phải nhập mật khẩu thành viên (Password)",
+                        },
+                        submitHandler: function (form) {
+                            form.submit();
+                        }
+                    });
+                }
+            }
+
+            //when the dom has loaded setup form validation rules
+            $(D).ready(function ($) {
+                JQUERY4U.UTIL.setupFormValidation();
+            });
+
+        })(jQuery, window, document);
+    </script>
+    <!-- End Validate Data -->
+}
+
+<div class="container-fluid">
+    <div style="width: 100%; margin: 0 auto;">
+        <div id="Breadcrumb" class="Block Breadcrumb ui-widget-content ui-corner-top ui-corner-bottom">
+            <ul>
+                <li><a href='../../Admins/Default'><i class="icon-home" style="font-size: 14px;"></i>Trang chủ</a></li>
+                <li class='SecondLast'><a href='../../Member/MemberIndex'>Danh sách thành viên</a></li>
+                <li class='Last'><span>Thêm thành viên</span></li>
+            </ul>
+        </div>
+
+        <div style="clear: both;"></div>
+        @using (Html.BeginForm("MemberCreate", "Member", FormMethod.Post, new { enctype = "multipart/form-data", @id = "Member-form", @class = "validate-form" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <div id="cph_Main_ContentPane">
+                <div class="widget">
+                    <!-- widget-title -->
+                    <div class="widget-title">
+                        <h4><i class="icon-reorder"></i>&nbsp;Thêm thành viên</h4>
+
+                        <!-- Button -->
+                        <div class="ui-corner-top ui-corner-bottom">
+                            <div id="toolbox">
+                                <div style="float: right;" class="toolbox-content">
+
+                                    <table class="toolbar">
+                                        <tr>
+                                            <td align="center">
+                                                <button type="submit" class="toolbar btn btn-info"><i class="icon-save"></i>&nbsp;Ghi lại</button>
+                                            </td>
+                                            <td align="center">
+                                                <a title="Quay lại" class="toolbar btn btn-info" href="../../Member/MemberIndex">
+                                                    <i class="icon-chevron-left"></i>&nbsp;
+                                                    Trở về
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Button -->
+
+                        <div id="hiddenToolBarScroll" class="scrollBox hidden">
+                            <h4>
+                                <i class="icon-reorder"></i>&nbsp;Thêm thành viên
+                            </h4>
+                            <div class="FloatMenuBar">
+
+                                <div class="ui-corner-top ui-corner-bottom">
+                                    <div id="Div1">
+
+                                        <div style="float: right;" class="toolbox-content">
+
+                                            <table class="toolbar">
+                                                <tr>
+                                                    <td align="center">
+                                                        <button type="submit" class="toolbar btn btn-info"><i class="icon-save"></i>&nbsp;Ghi lại</button>
+                                                    </td>
+                                                    <td align="center">
+                                                        <a title="Quay lại" class="toolbar btn btn-info" href="../../Member/MemberIndex">
+                                                            <i class="icon-chevron-left"></i>&nbsp;
+                                                            Trở về
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- widget-title-end -->
+                    <!-- widget-body -->
+                    <div class="widget-body">
+                        <div id="tabs">
+                            <div id="tabs-1">
+                                <table class="admintable" style="width: 100%;">
+                                    <tr>
+                                        <td class="key">Tên thành viên <span class="Required">*</span>
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.Name, "", new { @class = "text" })
+                                            <span class="tooltip-help">
+                                                <span class="tooltipContent">
+                                                    <p class="tooltiptitle">
+                                                        Tên thành viên
+                                                    </p>
+                                                    <p class="tooltipmessage">
+                                                        Tên của thành viên (Ví dụ: XL)
+                                                    </p>
+                                                </span>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                     <tr>
+                                        <td class="key">Tên đăng nhập <span class="Required">*</span>
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.Username, "", new { @class = "text" })
+                                            <span class="tooltip-help">
+                                                <span class="tooltipContent">
+                                                    <p class="tooltiptitle">
+                                                        Tên đăng nhập hệ thống quản trị
+                                                    </p>
+                                                    <p class="tooltipmessage">
+                                                        Tên đăng nhập hệ thống quản trị(Ví dụ: tuanvd)
+                                                    </p>
+                                                </span>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="key">Mật khẩu đăng nhập <span class="Required">*</span>
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.Password, "", new { @class = "text" })
+                                            <span class="tooltip-help">
+                                                <span class="tooltipContent">
+                                                    <p class="tooltiptitle">
+                                                        Mật khẩu đăng nhập hệ thống quản trị
+                                                    </p>
+                                                    <p class="tooltipmessage">
+                                                        Mật khẩu đăng nhập hệ thống quản trị(Ví dụ: 123qazA#)
+                                                    </p>
+                                                </span>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="key">Email thành viên
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.Email, "", new { @class = "text" })
+                                            <span class="tooltip-help">
+                                                <span class="tooltipContent">
+                                                    <p class="tooltiptitle">
+                                                        Email thành viên
+                                                    </p>
+                                                    <p class="tooltipmessage">
+                                                        Email thành viên(Ví dụ: tuanvd@onsoft.vn)
+                                                    </p>
+                                                </span>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="key">Điện thoại thành viên
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.Tel, "", new { @class = "text" })
+                                            <span class="tooltip-help">
+                                                <span class="tooltipContent">
+                                                    <p class="tooltiptitle">
+                                                        Điện thoại thành viên
+                                                    </p>
+                                                    <p class="tooltipmessage">
+                                                        Điện thoại thành viên(Ví dụ: 0989 85 85 85)
+                                                    </p>
+                                                </span>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="key">Địa chỉ thành viên
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.Address, "", new { @class = "text" })
+                                            <span class="tooltip-help">
+                                                <span class="tooltipContent">
+                                                    <p class="tooltiptitle">
+                                                        Địa chỉ thành viên
+                                                    </p>
+                                                    <p class="tooltipmessage">
+                                                        Địa chỉ thành viên(Ví dụ: 23 Láng Hạ, Ba Đình, Hà Nội)
+                                                    </p>
+                                                </span>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- widget-body-end -->
+                </div>
+            </div>
+        }
+    </div>
+</div>

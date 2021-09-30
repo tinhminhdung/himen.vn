@@ -1,0 +1,152 @@
+﻿@model IList<onsoft.Models.Customer>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutMember.cshtml";
+}
+<link href="~/Content/Styles/tmtStyle.css" rel="stylesheet" />
+<div class="wrapper">
+    <div class="left-slidebar">
+        <div class="header-left-slidebar">
+            <h4>Tài khoản</h4>
+            <hr />
+        </div>
+        <div class="content-left-slidebar">
+            <ul>
+                <li style="line-height: 28px">
+                    <a href="#">Tài khoản của tôi</a>
+                </li>
+                <li style="line-height: 28px">
+                    <a href="#">Thông tin tài khoản</a>
+                </li>
+                <li style="line-height: 28px">
+                    <a href="#">Sổ địa chỉ</a>
+                </li>
+                <li style="line-height: 28px">
+                    <a href="#">Đơn đặt hàng của tôi</a>
+                </li>
+                <li style="line-height: 28px">
+                    <a href="#">Danh sách mong muốn</a>
+                </li>
+                <li style="line-height: 28px">
+                    <a href="#">Mã giảm giá của tôi</a>
+                </li>
+                <li style="line-height: 28px">
+                    <a href="#">Lời mời</a>
+                </li>
+            </ul>
+        </div>
+        <div class="bottom-left-slidebar">
+        </div>
+    </div>
+    <div class="container-main">
+        @*<div class="header-container-main">
+            Đơn hàng của tôi
+            <hr />
+        </div>*@
+        <div class="center-container-main">
+            <!-- navi-table -->
+            <div class="navi-table">
+                <table style="width: 100%; margin-left: 5px">
+                    <tr>
+                        <th style="width: 50%;"></th>
+                        <th style="width: 50%;"></th>
+                    </tr>
+                </table>
+            </div>
+            <!-- navi-table -->
+            <!--Content-->
+
+            <div class="mainContent">
+                <h2>Chỉnh sửa địa chỉ khách hàng.</h2>
+                <p class="mtm strong">Xin chào <b>Tuấn Võ Duy</b></p>
+                <p class="mbm mts">
+                    Bạn hãy thực hiện việc thay đổi các thông tin dưới đây để thực hiện việc cập nhật địa chỉ giao hàng.
+                </p>
+
+                <div class="slideFull">
+                    <div class="slideHalf w70p fleft">
+                        <div class="slideContent">
+                            <p class="pTitle">Chỉnh sửa thông tin liên lạc</p>
+                            <div class="slide-edit-account">
+                                <div class="element">
+                                    <div class="col1">
+                                        <label>Địa chỉ email:  </label>
+                                    </div>
+                                    <div class="col2">
+                                            <b>  voduytuan@gmail.com</b>
+                                    </div>
+                                </div>
+
+                                <div class="element">
+                                    <div class="col1">
+                                        <label>Tên: </label>
+                                    </div>
+                                    <div class="col2">
+                                            <input type="text" placeholder="Nhập tên cần thay đổi" />
+                                    </div>
+                                </div>
+                                <div class="element">
+                                    <div class="col1"><label>Họ và tên đệm: </label></div>
+                                    <div class="col2">
+                                            <input type="text" placeholder="Họ và tên đệm cần thay đổi" />
+                                    </div>
+                                </div>                                
+                                
+                                <div class="element">
+                                    <div class="col1"><label>Điện thoại: </label></div>
+                                    <div class="col2">
+                                            <input type="text" placeholder="Nhập số điện thoại" />
+                                    </div>
+                                </div>
+
+                                <div class="element">
+                                    <div class="col1"><label>Địa chỉ: </label></div>
+                                    <div class="col2">
+                                            <textarea rows="4" cols="50"  placeholder="Nhập địa chỉ" ></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="element">
+                                    <div class="col1"><label>Tỉnh thành: </label></div>
+                                    <div class="col2">
+                                            <select>
+                                        <option>Hà Nội</option>
+                                        <option>Hà Sơn Bình</option>
+                                    </select>
+                                    </div>
+                                </div>
+
+                                <div class="element">
+                                    <div class="col1"><label>Quận huyện: </label></div>
+                                    <div class="col2">
+                                            <select>
+                                        <option>Hà Đông</option>
+                                        <option>Long Biên</option>
+                                    </select>
+                                    </div>
+                                </div>
+
+                                <div class="element">
+                                    <div class="col1"><label>@*Ngày sinh: *@</label></div>
+                                    <div class="col2">                                            
+                                        <a class="btn btn-info" href="#">CẬP NHẬT</a>
+                                    </div>
+                                </div>
+
+                                
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!--aaaaaaaaaaaaaaaaaaaa-->
+
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,78 @@
+﻿@{
+    ViewBag.Title = "ManaCart";
+    Layout = "~/Views/Shared/_LayoutDefault2.cshtml";
+}
+
+  <div class="row last">
+            <!--BEGIN: divider arrow-->
+            <div class="title-divider span12">
+                <div class="divider-arrow"></div>                                    
+                <h3>THÔNG TIN TÀI KHOẢN CỦA BẠN</h3>    
+            </div><!--END: divider arrow-->
+      </div>
+        <div id="ContentLeft">
+            <div id="dmtt">
+        <p>Quản lý tài khoản</p>
+        <ul id="navDM">
+            <li>
+                <a href="/AccInfo" title="Thông tin chung tài khoản">Tài khoản của bạn</a>
+            </li>
+            <li>
+                <a href="/AccInfo/EditInfo" title="Chỉnh sửa thông tin">Lịch sử giao dịch</a>
+            </li>
+            <li>
+                <a href="/AccInfo/ChangePassword" title="Đổi mật khẩu">Đổi mật khẩu</a>
+            </li>
+        </ul>
+    </div>
+        </div>
+        <div id="ContentRight">
+            
+          <div class="box pd20 accInfo manaCart">
+              <br />
+              <h4>Tổng cộng: 10 đơn hàng</h4><br />
+        <div id="manaCart" class="info">
+            <table id="tblDonHang">
+                <thead>
+                    <tr class="header">
+                        <td class="sttDh">STT</td>
+                        <td class="idDh">MÃ ĐƠN HÀNG</td>
+                        <td class="dateBook">NGÀY ĐẶT</td>
+                        <td class="recive">TÊN KHÁCH HÀNG</td>
+                        <td class="payment">TRỊ GIÁ ĐƠN HÀNG</td>
+                        <td class="status">TRẠNG THÁI</td>
+                        <td class="funcDh"></td>
+                    </tr>
+                </thead>
+                <tr>
+                    <td class="sttDh">1</td>
+                    <td class="idDh">22030441</td>
+                    <td class="dateBook">20/10/2012</td>
+                    <td class="recive">Nguyễn Văn Tuyền</td>
+                    <td class="payment">100.000Đ</td>
+                    <td class="status">Thành công</td>
+                    <td class="funcDh"><a href="/AccInfo/ManaCart/1">Xem</a></td>
+                </tr>
+                <tr>
+                    <td class="sttDh">1</td>
+                    <td class="idDh">22030441</td>
+                    <td class="dateBook">20/10/2012</td>
+                    <td class="recive">Nguyễn Văn Tuyền</td>
+                    <td class="payment">100.000Đ</td>
+                    <td class="status">Thành công</td>
+                    <td class="funcDh"><a href="/AccInfo/ManaCart/1">Xem</a></td>
+                </tr>
+                <tr>
+                    <td class="sttDh">1</td>
+                    <td class="idDh">22030441</td>
+                    <td class="dateBook">20/10/2012</td>
+                    <td class="recive">Nguyễn Văn Tuyền</td>
+                    <td class="payment">100.000Đ</td>
+                    <td class="status">Thành công</td>
+                    <td class="funcDh"><a href="/AccInfo/ManaCart/1">Xem</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    </div>
+        <div class="clear"></div>

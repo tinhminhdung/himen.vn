@@ -1,0 +1,33 @@
+﻿@*<script type="text/javascript">
+    jQuery(document).ready(function () {
+        jQuery('ul#nav li').hover(function () {
+            jQuery(this).find('ul:first').css({ visibility: "visible", display: "none" }).show(400);
+        }, function () {
+            jQuery(this).find('ul:first').css({ visibility: "hidden" });
+        });
+    })
+</script>*@
+<script type="text/javascript">
+						$(function() {
+						var sticky_navigation_offset_top = $('#menu').offset().top;
+						var sticky_navigation = function(){
+							var scroll_top = $(window).scrollTop();
+							if (scroll_top > sticky_navigation_offset_top) { 
+								$('#menu').addClass('fixed');
+							} else {
+								$('#menu').removeClass('fixed'); 
+							}   
+						};
+						// run our function on load
+						sticky_navigation();
+						// and run it again every time you scroll
+						$(window).scroll(function() {
+							 sticky_navigation();
+						});
+					});
+					</script>
+<nav id="menu" class="bold upp ">
+    <ul>
+        @Html.Raw(ViewBag.Cat)
+    </ul>
+</nav>

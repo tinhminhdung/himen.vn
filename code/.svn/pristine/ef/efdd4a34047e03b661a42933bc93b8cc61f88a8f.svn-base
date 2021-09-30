@@ -1,0 +1,320 @@
+﻿@model onsoft.Models.Province
+@{
+    ViewBag.Title = "ProvinceEdit";
+    Layout = "~/Views/Shared/_LayoutAdmins.cshtml";
+}
+
+@section Scripts
+{
+    <!-- Validate Data -->
+    <script type="text/javascript">
+
+        (function ($, W, D) {
+
+            var JQUERY4U = {};
+
+            JQUERY4U.UTIL =
+            {
+                setupFormValidation: function () {
+                    //validation rules
+                    $("#Province-form").validate({
+                        rules: {
+
+                            Name: "required",
+                            Time: "required",
+                            Time1: "required",
+                            Time2: "required",
+                            Ord: {
+                                required: true,
+                                number: true
+                            }
+                        },
+                        messages: {
+
+                            Name: "Phải nhập tên tỉnh thành",
+                            Time: "Phải nhập thời gian chuyển phát nhanh",
+                            Time1: "Phải nhập thời gian chuyển phát thường",
+                            Time2: "Phải nhập thời gian chuyển ô tô",
+                            Ord: {
+                                required: "Phải nhập thứ tự", number: "Phải nhập kiểu số",
+                            }
+                        },
+                        submitHandler: function (form) {
+                            form.submit();
+                        }
+                    });
+                }
+            }
+
+            //when the dom has loaded setup form validation rules
+            $(D).ready(function ($) {
+                JQUERY4U.UTIL.setupFormValidation();
+            });
+
+        })(jQuery, window, document);
+    </script>
+    <!-- End Validate Data -->
+}
+
+<div class="container-fluid">
+    <div style="width: 100%; margin: 0 auto;">
+        <div id="Breadcrumb" class="Block Breadcrumb ui-widget-content ui-corner-top ui-corner-bottom">
+            <ul>
+                <li><a href='../../Admins/Default'><i class="icon-home" style="font-size: 14px;"></i>Trang chủ</a></li>
+                <li class='SecondLast'><a href='../../Province/ProvinceIndex'>Danh sách tỉnh thành</a></li>
+                <li class='Last'><span>Chỉnh sửa thông tin tỉnh thành</span></li>
+            </ul>
+        </div>
+
+        <div style="clear: both;"></div>
+        @using (Html.BeginForm("ProvinceEdit", "Province", new { id = @Model.Id }, FormMethod.Post, new { enctype = "multipart/form-data", @id = "Province-form", @class = "validate-form" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <div id="cph_Main_ContentPane">
+                <div class="widget">
+                    <!-- widget-title -->
+                    <div class="widget-title">
+                        <h4><i class="icon-reorder"></i>&nbsp;Chỉnh sửa thông tin tỉnh thành</h4>
+
+                        <!-- Button -->
+                        <div class="ui-corner-top ui-corner-bottom">
+                            <div id="toolbox">
+                                <div style="float: right;" class="toolbox-content">
+
+                                    <table class="toolbar">
+                                        <tr>
+                                            <td align="center">
+                                                <button type="submit" class="toolbar btn btn-info"><i class="icon-save"></i>&nbsp;Ghi lại</button>
+                                            </td>
+                                            <td align="center">
+                                                <a title="Quay lại" class="toolbar btn btn-info" href="../../Province/ProvinceIndex">
+                                                    <i class="icon-chevron-left"></i>&nbsp;
+                                                    Trở về
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Button -->
+
+                        <div id="hiddenToolBarScroll" class="scrollBox hidden">
+                            <h4>
+                                <i class="icon-reorder"></i>&nbsp;Chỉnh sửa thông tin tỉnh thành
+                            </h4>
+                            <div class="FloatMenuBar">
+
+                                <div class="ui-corner-top ui-corner-bottom">
+                                    <div id="Div1">
+
+                                        <div style="float: right;" class="toolbox-content">
+
+                                            <table class="toolbar">
+                                                <tr>
+                                                    <td align="center">
+                                                        <button type="submit" class="toolbar btn btn-info"><i class="icon-save"></i>&nbsp;Ghi lại</button>
+                                                    </td>
+                                                    <td align="center">
+                                                        <a title="Quay lại" class="toolbar btn btn-info" href="../../Province/ProvinceIndex">
+                                                            <i class="icon-chevron-left"></i>&nbsp;
+                                                            Trở về
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- widget-title-end -->
+                    <!-- widget-body -->
+                    <div class="widget-body">
+                        <div id="tabs">
+                            <div id="tabs-1">
+
+                                <table class="admintable" style="width: 100%;">
+
+                                  @*  <tr id="trMenuLink">
+                                        <td class="key">Đơn vị trực thuộc <span class="Required"></span></td>
+                                        <td>
+                                            @Html.DropDownList("Province", "Đơn vị trực thuộc cấp 1")
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Đơn vị trực thuộc
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    Đơn vị trực thuộc
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>*@
+
+                                    <tr>
+                                        <td class="key">Tên tỉnh thành <span class="Required">*</span>
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.Name, "", new { @class = "text" })
+                                            <span class="tooltip-help">
+                                                <span class="tooltipContent">
+                                                    <p class="tooltiptitle">
+                                                        Tên tỉnh thành
+                                                    </p>
+                                                    <p class="tooltipmessage">
+                                                        Tên của tỉnh, thành phố (Ví dụ: Hà Nội)
+                                                    </p>
+                                                </span>
+                                            </span>
+                                        </td>
+                                    </tr>
+
+
+                                    @*<tr>
+                                        <td class="key">Cước chuyển phát nhanh <span class="Required">*</span>
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.Price, "", new { @class = "text", @style = "text-align: left", @onkeypress = "OnlyInputNumber(0)" })
+                                            <span class="tooltip-help">
+                                                <span class="tooltipContent">
+                                                    <p class="tooltiptitle">
+                                                        Cước vận chuyển
+                                                    </p>
+                                                    <p class="tooltipmessage">
+                                                        Cước chuyển phát nhanh ứng với mỗi tỉnh thành
+                                                        <br />
+                                                        (Ví dụ: 45000)
+                                                    </p>
+                                                </span>
+                                            </span>
+                                        </td>
+                                    </tr>*@
+                                    <tr>
+                                        <td class="key">Thời gian VC bình thường <span class="Required">*</span>
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.Time1, "", new { @class = "text" })
+                                            <span class="tooltip-help">
+                                                <span class="tooltipContent">
+                                                    <p class="tooltiptitle">
+                                                        Thời gian vận chuyển
+                                                    </p>
+                                                    <p class="tooltipmessage">
+                                                        Thời gian vận chuyển bình thường tương ứng với mỗi địa chỉ
+                                                        <br />
+                                                        (Ví dụ: 2 đến 4 ngày)
+                                                    </p>
+                                                </span>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    @*<tr>
+                                        <td class="key">Cước VC bình thường <span class="Required">*</span>
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.Price1, "", new { @class = "text", @style = "text-align: left", @onkeypress = "OnlyInputNumber(0)" })
+                                            <span class="tooltip-help">
+                                                <span class="tooltipContent">
+                                                    <p class="tooltiptitle">
+                                                        Cước vận chuyển bình thường
+                                                    </p>
+                                                    <p class="tooltipmessage">
+                                                        Cước vận chuyển bình thường ứng với mỗi tỉnh thành
+                                                        <br />
+                                                        (Ví dụ: 45000)
+                                                    </p>
+                                                </span>
+                                            </span>
+                                        </td>
+                                    </tr>*@
+                                    <tr>
+                                        <td class="key">Thời gian VC bình thường <span class="Required">*</span>
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.Time1, "", new { @class = "text" })
+                                            <span class="tooltip-help">
+                                                <span class="tooltipContent">
+                                                    <p class="tooltiptitle">
+                                                        Thời gian vận chuyển bình thường
+                                                    </p>
+                                                    <p class="tooltipmessage">
+                                                        Thời gian vận chuyển bình thường tương ứng với mỗi địa chỉ
+                                                        <br />
+                                                        (Ví dụ: 2 đến 4 ngày)
+                                                    </p>
+                                                </span>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    @*<tr>
+                                        <td class="key">Cước VC ô tô <span class="Required">*</span>
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.Price2, "", new { @class = "text", @style = "text-align: left", @onkeypress = "OnlyInputNumber(0)" })
+                                            <span class="tooltip-help">
+                                                <span class="tooltipContent">
+                                                    <p class="tooltiptitle">
+                                                        Cước vận chuyển ô tô
+                                                    </p>
+                                                    <p class="tooltipmessage">
+                                                        Cước vận chuyển ô tô ứng với mỗi tỉnh thành
+                                                        <br />
+                                                        (Ví dụ: 45000)
+                                                    </p>
+                                                </span>
+                                            </span>
+                                        </td>
+                                    </tr>*@
+                                    <tr>
+                                        <td class="key">Thời gian VC ô tô <span class="Required">*</span>
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.Time2, "", new { @class = "text" })
+                                            <span class="tooltip-help">
+                                                <span class="tooltipContent">
+                                                    <p class="tooltiptitle">
+                                                        Thời gian vận chuyển ô tô
+                                                    </p>
+                                                    <p class="tooltipmessage">
+                                                        Thời gian vận chuyện ô tô tương ứng với mỗi địa chỉ
+                                                        <br />
+                                                        (Ví dụ: 2 đến 4 ngày)
+                                                    </p>
+                                                </span>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="key">Thứ tự <span class="Required">*</span>
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.Ord, new { @onkeypress = "OnlyInputNumber(0)", @style = "width: 80px; text-align: left" })
+                                            <span class="tooltip-help">
+                                                <span class="tooltipContent">
+                                                    <p class="tooltiptitle">
+                                                        Thứ tự
+                                                    </p>
+                                                    <p class="tooltipmessage">
+                                                        Thứ tự hiển thị
+                                                    </p>
+                                                </span>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- widget-body-end -->
+                </div>
+            </div>
+        }
+    </div>
+</div>

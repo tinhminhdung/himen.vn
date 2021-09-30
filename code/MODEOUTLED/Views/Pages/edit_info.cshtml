@@ -1,0 +1,120 @@
+﻿@model onsoft.Models.Customer
+@{
+    ViewBag.Title = "Chỉnh sửa thông tin cá nhân - Ilovestyle.vn";
+    Layout = "~/Views/Shared/_LayoutMember.cshtml";
+}
+@*    <script type="text/javascript">
+        $(document).ready(function ()
+        {
+            $('#TinhTP').change(function () {
+                var Tinh = $(this).val();
+                $.post("/Pages/Loadhuyen", { "tinh": Tinh },
+                    function (data) {
+                        $("#Huyen").hide();
+                        $("#hye").html(data);
+                    });
+            });
+        });
+    </script>*@
+<script type="text/javascript">
+
+    (function ($, W, D) {
+
+        var JQUERY4U = {};
+
+        JQUERY4U.UTIL =
+        {
+            setupFormValidation: function () {
+                //validation rules
+                $("#editinfo-form").validate({
+                    rules: {
+                        Name: {required: true},//number: true},
+                        Phone: {required: true},
+                        Address: {required: true},
+                        TinhTP: {required: true},
+                        Hu: {required: true},
+                    },
+                    messages: {
+                        Name: { required: "Phải nhập họ tên" },//number: "Phải nhập kiểu số",},
+                        Phone: {required: "Phải nhập số điện thoại"},
+                        Address: {required: "Phải nhập địa chỉ"},
+                        TinhTP: {required: "Phải chọn tỉnh thành phố"},
+                        Hu: {required: "Phải chọn quận huyện"},
+                    },
+                    submitHandler: function (form) {
+                        form.submit();
+                    }
+                });
+            }
+        }
+
+        //when the dom has loaded setup form validation rules
+        $(D).ready(function ($) {
+            JQUERY4U.UTIL.setupFormValidation();
+        });
+
+    })(jQuery, window, document);
+    </script>
+<script type="text/javascript">
+    $(function () {
+        $("#SelectImages").click(function () {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                $("#Avarta").val(fileUrl);
+            };
+            finder.popup();
+        });
+    });
+    </script>
+<div class="content">
+    <div class="content-big">
+        <h2>Thông tin tài khoản</h2>
+        @using (Html.BeginForm("edit_info", "Pages", FormMethod.Post, new { enctype = "multipart/form-data", @id = "editinfo-form", @class = "validate-form" }))
+        {
+        <div class="InfoAcc">
+            <table class="tbEditInfo">
+                <tr>
+                    <td class="key">Họ và tên</td>
+                    <td>@Html.TextBoxFor(m=>m.Name)</td>
+                </tr>
+                <tr>
+                    <td class="key">Email</td>
+                    <td>@Model.Email</td>
+                </tr>
+                <tr>
+                    <td class="key">Số điện thoại</td>
+                    <td>@Html.TextBoxFor(m => m.Tel, new {  @onkeypress="return OnlyInputNumber(0);"})</td>
+                </tr>
+                <tr>
+                    <td class="key">Địa chỉ</td>
+                    <td>@Html.TextAreaFor(m => m.Address, new { cols="35", rows="5"})</td>
+                </tr>
+                 <tr>
+                <td class="key">Tỉnh/Thành phố <span class="Required">*</span></td>
+                <td>@Html.DropDownList("TinhTP", "Chọn tỉnh thành phố")</td>
+            </tr>
+                <tr>
+                    <td class="key">Avarta <span class="Required">*</span></td>
+                    <td>
+                         <input type="file" name="fileImg" id="fileImg" value="Chọn ảnh"  multiple />
+                <output id="result" />
+                        <img src="@Model.Avarta" width="90" height="90"/>
+                    </td>
+                </tr>   
+                 <tr>
+                        <td class="key">Vùng ngoại thành </td>
+                        <td>
+                            @Html.CheckBox("cNongthon", new { id = "cNongthon", onclick = "Javascript:chkSelect_OnClick(this,0)", @class = "chk" })
+                        </td>
+                    </tr> 
+   @*         <tr>
+                <td class="key">Quận/Huyện <span class="Required">*</span></td>
+                <td>@Html.DropDownList("Huyen", "Chọn quận huyện")<span id="hye"></span></td>
+            </tr>*@
+            </table>
+            <input type="submit" value="Cập nhật" class="btnSubmit" />
+        </div>
+        }
+    </div>
+</div>
+

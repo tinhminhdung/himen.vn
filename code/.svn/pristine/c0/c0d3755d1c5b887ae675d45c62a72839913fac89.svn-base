@@ -1,0 +1,8 @@
+﻿<script src="~/Scripts/popup.js"></script>
+<script language="javascript" type="text/javascript">
+var popup_area = "";
+popup_area += "<div id=\"popupContact\">";
+popup_area += "<a href=\"@Html.Raw(ViewBag.vlink)\", target=\"_blank\"><img src=\"@Html.Raw(ViewBag.vanh)\" /></a>";
+popup_area += "<br><div><a id=\"popupContactClose\">[x] Ðóng lại</a></div></p></div><div id=\"backgroundPopup\"></div>";
+document.write(popup_area);
+</script>

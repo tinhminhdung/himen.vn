@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Gencode";
+    Layout = "~/Views/Shared/_LayoutDefault.cshtml";
+}
+<!--Ajax tùy biến số sản phẩm hiển thị trên trang-->
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#btnUpate').click(function () {
+            var txtContent = $("#txtContent").val();
+            $.post("/Gen/Gendb", { "content": txtContent },
+                function (data) {
+                    $("#tb").html(data);
+                });
+        });
+    });
+</script>
+<div class="container">
+    @Html.TextBox("txtContent","", new { @style="width: 800px; height: 400px; vertical-align: top"})
+    <div><button type="submit" name="btnUpate" id="btnUpate" class="toolbar btn btn-info"><i class="icon-save"></i>&nbsp;Thực hiện</button></div>
+    <div id="tb" style="font-size: 12px; color: red"></div>
+</div>

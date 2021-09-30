@@ -1,0 +1,333 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@using os
+@model PagedList.IPagedList<onsoft.Models.Ord>
+
+@{
+    ViewBag.Title = "Quản lý thông tin hóa đơn";
+    Layout = "~/Views/Shared/_LayoutAdmins.cshtml";
+}
+
+@section Styles
+{
+    <!--Sử dụng cho autocomplete-->
+    <link href="../../Content/themes/base/jquery.ui.all.css" rel="stylesheet" type="text/css" />
+
+    <!--Sử dụng cho Confirm delete-->
+    <link href="~/Content/Styles/jquery-ui.css" rel="stylesheet" />
+
+    <!--Sử dụng cho Phân trang-->
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+}
+
+@section Scripts
+{
+    <!--Sử dụng cho Confirm delete-->
+    <script src="~/Scripts/jquery-1.9.1.js"></script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <script src="~/Scripts/jquery.easy-confirm-dialog.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".yesno").easyconfirm({
+                locale: { title: 'Xóa hóa đơn', button: ['Không', 'Có'] }
+            });
+        })
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".deletemultiple").easyconfirm({
+                locale: { title: 'Xóa hóa đơn', button: ['Không', 'Có'] }
+            });
+        })
+    </script>
+
+    <!--Sử dụng cho autocomplete-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('*[data-autocomplete-url]')
+        .each(function () {
+            $(this).autocomplete({
+                source: $(this).data("autocomplete-url")
+            });
+        });
+        });
+    </script>
+
+    <!--Reset ô tìm kiếm-->
+    <script type="text/javascript">
+        $(function () {
+            $('#SoDH').focus(function () {
+                $(this).val('');
+            });
+        });
+    </script>
+
+    <!--Ajax sử dụng sửa dữ liệu trực tiếp trên form-->
+    <script type="text/javascript">
+        $(function () {
+            $('#msg').hide();
+
+            // Ajax sử dụng cho change postcode
+            $(".PostCode").change(function () {
+                var ordId = $(this).attr("id");
+                ordId = ordId.replace("PostCode-", "");
+                var postcode = $(this).val();
+                clearUpdateMessage();
+                if (postcode != "") {
+                    $.post("/Order/ChangeOrder", { "id": ordId, "postcode": postcode },
+                        function (data) {
+                            // Thay đổi thành công
+                            $('#msg').show();
+                            $('#update-message').removeClass().addClass("alert alert-info").text(htmlDecode(data));
+                            $('#msg').fadeOut(5000);
+                        });
+                } else {
+                    // Báo lỗi nhập dữ liệu
+                    $('#msg').show();
+                    $('#update-message').removeClass().addClass("alert alert-error").text("Bạn phải nhập mã bưu điện.");
+                    $('#msg').fadeOut(5000);
+                }
+            });
+
+            // Ajax sử dụng cho change status
+            $(".Nhantien").click(function () {
+                var ordId = $(this).attr("data-id");
+                $.post("/Order/OrderUpdateStatus", { "id": ordId, "status": "1" },
+                    function (data) {
+                        location.reload();
+                    });
+            });
+
+            // Ajax sử dụng cho change status
+            $(".Guihang").click(function () {
+                var ordId = $(this).attr("data-id");
+                var postcode = $("#PostCode-" + ordId).val();
+                if (postcode != "") {
+                    $.post("/Order/OrderUpdateStatus", { "id": ordId, "status": "2" },
+                        function (data) {
+                            location.reload();
+                        });
+                } else {
+                    $("#PostCode-" + ordId).focus();
+                    $('#msg').show();
+                    $('#update-message').removeClass().addClass("alert alert-error").text("Bạn phải nhập mã bưu điện.");
+                    $('#msg').fadeOut(5000);
+                }
+            });
+
+        });
+
+        function clearUpdateMessage() {
+            $('#update-message').text("");
+        }
+
+        function htmlDecode(value) {
+            if (value) {
+                return $('<div />').html(value).text();
+            }
+            else {
+                return '';
+            }
+        }
+
+    </script>
+}
+
+@using (Html.BeginForm("MultiCommand", "Order", FormMethod.Post))
+{
+    <div class="container-fluid">
+        <div style="width: 100%; margin: 0 auto;">
+            <div id="Breadcrumb" class="Block Breadcrumb ui-widget-content ui-corner-top ui-corner-bottom">
+                <ul>
+                    <li class='SecondLast'><a href='#'><i class="icon-home" style="font-size: 14px;"></i>Trang chủ</a></li>
+                    <li class='Last'><span>Quản lý thông tin hóa đơn</span></li>
+                </ul>
+            </div>
+            <div style="clear: both;"></div>
+            <div id="cph_Main_ContentPane">
+                <div class="widget">
+                    <div class="widget-title">
+                        <h4><i class="icon-list-alt"></i>&nbsp;Quản lý thông tin hóa đơn</h4>
+                        <!-- begin menu -->
+                        <div class="ui-corner-top ui-corner-bottom">
+                            <div id="toolbox">
+
+                                <div style="float: right;" class="toolbox-content">
+                                    <div id="msg" class="msg">
+                                        <div class="alert alert-info" id="update-message">
+                                        </div>
+                                    </div>
+                                    <table class="toolbar">
+                                        <tr>
+                                            <td align="center">
+                                                <button type="submit" title="Bạn chắc chắn muốn xóa những hóa đơn này ?" id="btnDelete" name="btnDelete" class="deletemultiple toolbar btn btn-info"><i class="icon-trash"></i>&nbsp;Xóa nhiều</button>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end menu -->
+
+                        <div id="hiddenToolBarScroll" class="scrollBox hidden">
+                            <h4>
+                                <i class="icon-list-alt"></i>&nbsp;Quản lý thông tin hóa đơn</h4>
+                            <div class="FloatMenuBar">
+
+                                <!-- begin menu -->
+                                <div class="ui-corner-top ui-corner-bottom">
+                                    <div id="toolbox">
+
+                                        <div style="float: right;" class="toolbox-content">
+
+                                            <table class="toolbar">
+                                                <tr>
+                                                    <td align="center">
+                                                        <button type="submit" title="Bạn chắc chắn muốn xóa những hóa đơn này ?" id="btnDelete" name="btnDelete" class="deletemultiple toolbar btn btn-info"><i class="icon-trash"></i>&nbsp;Xóa nhiều</button>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end menu -->
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="widget-body">
+
+                        <div class="row-fluid">
+
+                            <!--Tìm kiếm khách hàng-->
+                            <div class="span9 form-search pull-right text-right">
+
+                                @Html.TextBox("SoDH", ViewBag.CurrentFilter as string, new { data_autocomplete_url = Url.Action("Autocomplete"), @Value = "Số đơn hàng", @Style = "color:#999999;", @id = "SoDH" })
+
+                                <button type="submit" id="btnSearch" name="btnSearch" class="btn"><i class="icon-filter"></i>Tìm kiếm</button>
+
+                            </div>
+                        </div>
+                        <div class="row-fluid">
+                            <div class="span3">
+                                <div style="margin-top: 18px; margin-left: 11px;">
+                                    <input type="checkbox" onclick="Javascript: chkSelectAll_OnClick(this)" id="chkSelectAll" name="checkAll" />
+                                    Chọn tất cả hóa đơn
+                                </div>
+                            </div>
+                            <div class="span9">
+                                <!--Paging-->
+                                @Html.PagedListPager(Model, page => Url.Action("OrderIndexot", new { page = page }), (PagedListRenderOptions)ViewBag.Pro)
+                            </div>
+                        </div>
+
+                        <div>
+                            @Html.Raw(ViewBag.or)
+                            @*@for (int i = 0; i < Model.Count; i++)
+                            {
+                                <table class="table table-striped table-bordered dataTable table-hover" cellspacing="0"  style="border-collapse: collapse;">
+                                    <tr>
+                                        <th scope="col" class="CheckBoxsmall" style="width: 10px; vertical-align: middle; padding: 1px 10px; background-color: #22c0cb;">
+                                            <input name="mPage" id="mPage" value="@ViewBag.mPage" hidden="hidden" />
+                                            <input name="PageSize" id="PageSize" value="@ViewBag.PageSize" hidden="hidden" />
+                                            @Html.CheckBox("chk" + Model[i].Id, new { id = "chkSelect", onclick = "Javascript:chkSelect_OnClick(this,0)", @class = "chk" })
+                                        </th>
+                                        <th scope="col" id="name" style="width: 250px; vertical-align: middle; padding: 1px 10px; background-color: #22c0cb; color: #fff">Số đơn hàng: @Model[i].Id</th>
+                                        <th scope="col" id="date" style="width: 150px; vertical-align: middle; padding: 1px 10px; background-color: #22c0cb; color: #fff">Ngày đặt hàng: @Model[i].SDate.Value.ToShortDateString()</th>
+                                        <th scope="col" id="date" style="width: 200px; vertical-align: middle; padding: 1px 10px; background-color: #22c0cb; color: #fff">Họ tên: @Model[i].Customer.Name</th>
+                                        <th scope="col" id="date" style="width: 200px; vertical-align: middle; padding: 1px 10px; background-color: #22c0cb; color: #fff">Điện thoại: @Model[i].Customer.Tel</th>
+                                        <th scope="col" id="status" style="width: 200px; vertical-align: middle; padding: 1px 10px; background-color: #22c0cb; color: #fff;">Tình trạng:
+                                        <label id="@Model[i].Id" style="display:inline; font-weight:bold;">@onsoft.Models.StringClass.ShowStateBill(Model[i].Status.ToString())</label></th>
+                                        <th scope="col" class="number" style="text-align: center; vertical-align: middle; padding: 1px 10px; background-color: #22c0cb;">
+                                            <a style="width:50px; float:left;color:#fff" href="../../Order/OrderEdit?id=@Model[i].Id" class="action-link-button" title="Chi tiết hóa đơn"><i class="icon-info-sign"></i></a>
+                                            <a style="width:10px; float:left; color:#fff" href="OrderDelete?id=@Model[i].Id&page=@ViewBag.mPage&pagesize=@ViewBag.PageSize" class="yesno action-link-button" title="Bạn chắc chắn muốn xóa hóa đơn này ?"><i class="icon-trash"></i></a>
+                                        </th>
+                                    </tr>
+                                </table>
+                                <!--Chi tiết hóa đơn-->
+                                var bill = (from b in (IEnumerable<onsoft.Models.v_OrderDetail_Product>)ViewBag.Bill where (b.IdOr == Model[i].Id) select b);
+                                float? totalPrice = (from o in Model where (o.Id == Model[i].Id) select o).Single().Amount;
+                                <table class="table table-striped table-bordered dataTable table-hover" cellspacing="0" id="cph_Main_ctl00_ctl00_grvProducts" style="border-collapse: collapse;">
+                                    <tr>
+                                        <th scope="col" style="width: 60px; text-align: center;">Ảnh SP</th>
+                                        <th scope="col" style="width: 170px;">Tên Sản phẩm</th>
+                                        <th scope="col" style="width: 60px;">Số lượng</th>
+                                        <th scope="col" style="width: 90px;">Giá bán(vnđ)</th>
+                                        <th scope="col" style="width: 90px;">Thành tiền(vnđ)</th>
+                                        <th scope="col" style="width: 330px;">Tiền vận chuyển(vnđ)</th>
+                                        <th scope="col" style="width: 120px; text-align: center;" rowspan="500">Tổng tiền(vnđ)<br />
+
+                                            <p style="color: red">@os.Format_Price(@totalPrice.ToString()) VNĐ</p>
+                                            Nhập mã bưu điện<br />
+
+                                            @Html.TextBox("Ord" + Model[i].Id, @Model[i].PostCode, new { @class = "PostCode", @id = "PostCode-" + @Model[i].Id, @style="width:120px;"})
+                                        </th>
+                                        <th scope="col" style="width: 120px; text-align: center;" rowspan="500">
+                                            @if (Model[i].Status == "1")
+                                            {
+                                                <label id="Nhantien" class="btn Nhantien" data-id="@Model[i].Id"><i class="icon-save"></i>&nbsp;Đã nhận tiền</label>
+                                            }
+                                            else if (Model[i].Status == "2")
+                                            {
+                                                <label id="Guihang" class="btn Guihang" data-id="@Model[i].Id"><i class="icon-save"></i>&nbsp;Đã gửi hàng</label>
+                                            }
+                                            else if (Model[i].Status == "3")
+                                            {
+                                                <label>Đơn hàng đã gửi</label>
+                                            }
+                                            else
+                                            {
+                                                <label>Đơn hàng bị hủy</label>
+                                            }
+                                        </th>
+                                    </tr>
+                                    @foreach (var item in (IEnumerable<onsoft.Models.v_OrderDetail_Product>)bill)
+                                    {
+                                        <tr style="background-color: #fff">
+                                            <td class="text-center" style="vertical-align: middle; padding: 2px 0px;">
+                                                <img width="60px" src="@item.Image" alt=""/></td>
+                                            <td style="vertical-align: middle;">@item.Name<br />
+                                                <p style="color: #22c0cb; text-align: left; padding: 0; margin: 0"> - Màu: @item.CName <br />
+                                                     - Size: @item.SName
+                                                </p>
+                                            </td>
+                                            <td class="text" style="vertical-align: middle; text-align: center">@item.Number</td>
+                                            <td class="text" style="vertical-align: middle; text-align: center">@onsoft.Models.StringClass.Format_Price(item.Price.ToString())</td>
+                                            <td class="text" style="vertical-align: middle; text-align: center">@onsoft.Models.StringClass.Format_Price(item.Total.ToString())</td>
+
+                                            <td class="text" style="vertical-align: middle;">- Tiền VC: <span style="color: red">@onsoft.Models.StringClass.Format_Price(@Model[i].PriceVC.ToString())</span><br />
+                                                - Cộng thêm 20% cước VC ngoại thành, nông thôn nếu có:<span style="color: red"> @onsoft.Models.StringClass.Format_Price(@Model[i].PriceNT.ToString())</span><br />
+                                                @if (@Model[i].TypePay == "1")
+                                                {
+                                                    <label style="font-weight: bold">- Hình thức VC: Chuyển phát nhanh</label>
+                                                }
+                                                else if (Model[i].TypePay == "2")
+                                                {
+                                                    <label style="font-weight: bold">- Hình thức VC: Chuyển phát bình thường</label>
+                                                }
+                                                else if (Model[i].TypePay == "3")
+                                                {
+                                                    <label style="font-weight: bold">- Hình thức VC: Chuyển bằng ô tô</label>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                </table>
+                               
+                            }*@
+                        </div>
+
+                        <!--Paging-->
+                        @Html.PagedListPager(Model, page => Url.Action("OrderIndexot", new { page = page }), (PagedListRenderOptions)ViewBag.Pro)
+                        <div style="clear: both;"></div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}

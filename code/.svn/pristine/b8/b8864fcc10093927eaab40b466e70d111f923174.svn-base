@@ -1,0 +1,116 @@
+﻿@model PagedList.IPagedList<onsoft.Models.GroupNew>
+@{
+    ViewBag.Title = "Quản lý nhóm tin tức";
+    Layout = "~/Views/Shared/_LayoutAdmins.cshtml";
+}
+@section Styles
+{
+    <!--Sử dụng cho Confirm delete-->
+    <link href="~/Content/Styles/jquery-ui.css" rel="stylesheet" />
+}
+
+@section Scripts
+{
+    <!-- Ajax sử dụng cho phân trang  -->
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+
+    <!--Sử dụng cho Confirm delete-->
+    <script src="~/Scripts/jquery-1.9.1.js"></script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <script src="~/Scripts/jquery.easy-confirm-dialog.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".deletemultiple").easyconfirm({
+                locale: { title: 'Xóa nhóm tin tức', button: ['Không', 'Có'] }
+            });
+        })
+    </script>
+}
+
+@using (Html.BeginForm("MultiCommand", "GroupNew", FormMethod.Post))
+{
+    <div class="container-fluid">
+        <div style="width: 100%; margin: 0 auto;">
+            <div id="Breadcrumb" class="Block Breadcrumb ui-widget-content ui-corner-top ui-corner-bottom">
+                <ul>
+                    <li class='SecondLast'><a href='#'><i class="icon-home" style="font-size: 14px;"></i>Trang chủ</a></li>
+                    <li class='Last'><span>Danh sách nhóm tin tức</span></li>
+                </ul>
+            </div>
+            <div style="clear: both;"></div>
+            <div id="cph_Main_ContentPane">
+                <div class="widget">
+                    <div class="widget-title">
+                        <h4><i class="icon-list-alt"></i>&nbsp;Danh sách nhóm tin tức</h4>
+                        <!-- begin menu -->
+                        <div class="ui-corner-top ui-corner-bottom">
+                            <div id="toolbox">
+
+                                <div style="float: right;" class="toolbox-content">
+                                    <div id="msg" class="msg">
+                                        <div class="alert alert-info" id="update-message">
+                                        </div>
+                                    </div>
+                                    <table class="toolbar">
+                                        <tr>
+
+                                            <td align="center">
+                                                <a href="../../GroupNew/GroupNewCreateot" title="Thêm mới" class="toolbar btn btn-info" href="#"><i class="icon-plus"></i>&nbsp;Thêm mới</a>
+                                            </td>
+                                            <td align="center">
+                                                <button type="submit" title="Bạn chắc chắn muốn xóa những nhóm tin tức này ?" id="btnDelete" name="btnDelete" class="deletemultiple toolbar btn btn-info"><i class="icon-trash"></i>&nbsp;Xóa nhiều</button>
+                                            </td>
+
+                                        </tr>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end menu -->
+
+                        <div id="hiddenToolBarScroll" class="scrollBox hidden">
+                            <h4>
+                                <i class="icon-list-alt"></i>&nbsp;Danh sách nhóm tin tức</h4>
+                            <div class="FloatMenuBar">
+
+                                <!-- begin menu -->
+                                <div class="ui-corner-top ui-corner-bottom">
+                                    <div id="toolbox">
+
+                                        <div style="float: right;" class="toolbox-content">
+
+                                            <table class="toolbar">
+                                                <tr>
+                                                    <td align="center">
+                                                        <a href="../../GroupNew/GroupNewCreateot" title="Thêm mới" class="toolbar btn btn-info" href="#"><i class="icon-plus"></i>&nbsp;Thêm mới</a>
+                                                    </td>
+                                                    <td align="center">
+                                                        <button type="submit" title="Bạn chắc chắn muốn xóa những nhóm tin tức này ?" id="btnDelete" name="btnDelete" class="deletemultiple toolbar btn btn-info"><i class="icon-trash"></i>&nbsp;Xóa nhiều</button>
+                                                    </td>
+
+                                                </tr>
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end menu -->
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="widget-body">
+
+                        <!--Partial View hiển thị danh sách GroupNew-->
+                        @{Html.RenderPartial("_PartialGroupNewIndex", Model);}
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}

@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "nuochoa404";
+    Layout = "~/Views/Shared/_LayoutSub.cshtml";
+}
+<div class="detail">
+<div class="titlelink">
+    <ul>
+        <li><a href='/'><i class="icon-home" style="font-size: 14px;"></i>Trang chủ</a></li>
+        <li class='Last'><span>Trang thông báo lỗi</span></li>
+    </ul>
+</div>
+<div class="checkout">
+<div class="divbtnCheckout">
+    <p style="padding: 10px 0; font-weight: bold; color: red; font-size: 14px">Trang hiện tại không có thực, vui lòng </p><a href="/" class="backToBuy">Click để về trang chủ</a>
+</div>
+</div>
+</div>

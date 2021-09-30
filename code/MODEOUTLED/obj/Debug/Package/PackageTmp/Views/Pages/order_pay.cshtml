@@ -1,0 +1,62 @@
+﻿@model onsoft.Models.Customer
+@{
+    ViewBag.Title = "order_pay";
+    Layout = "~/Views/Shared/_LayoutDefault.cshtml";
+}
+<div class="pathway">
+    <a href="/Home/Index">Trang chủ</a><a href="/Pages/order_pay">Thanh toán</a>
+</div>
+@Html.Raw(ViewBag.Err)
+<div class="content">
+    @using (Html.BeginForm("order_pay", "Pages", FormMethod.Post, new { id="frOrder",name="frOrder"}))
+    {
+    <div class="infoCus">
+        <h3>Thông tin tài khoản</h3>
+        <div class="editInfoCus">
+            <p>Họ và tên</p>
+            @Html.TextBoxFor(m => m.Name)<br />
+            @Html.ValidationMessageFor(m => m.Name)
+            <p>Email</p>
+            @Html.TextBoxFor(m => m.Email)<br />
+            @Html.ValidationMessageFor(m => m.Email)
+            <p>Số điện thoại</p> 
+            @Html.TextBoxFor(m => m.Tel)<br />
+            @Html.ValidationMessageFor(m => m.Tel)
+            <p>Địa chỉ</p>
+            @Html.TextBoxFor(m => m.Address)<br />
+            @Html.ValidationMessageFor(m => m.Address)
+        </div>
+    </div>
+    <div class="typePay">
+        <h3>Phương thức thanh toán</h3>
+        <p><input type="radio" name="rdbPay" value="1" checked="checked"/>
+        Thanh toán tại nhà</p>
+        <p><input type="radio" name="rdbPay" value="2" />
+        Thanh toán tại cửa hàng</p>
+      @*  <p><input type="radio" name="rdbPay" value="3" />
+        Thanh toán trực tuyến qua Ngân lượng</p>*@
+    </div>
+    <div class="infoCart">
+        @Html.Raw(ViewBag.ViewPro)
+        @Html.TextArea("Note", new { rows = "5", cols = "25", placeholder = "Ghi chú" })
+        @Html.Raw(ViewBag.ViewTotal)
+    </div>
+    
+    }
+</div>
+<script type="text/javascript">
+
+    $('#frOrder').submit(function () {
+        debugger;
+        var name = $("Name").val();
+        var email = $("Email").val();
+        var phone = $("Tel").val();
+        var address = $("Address").val();
+        if (name == undefined || email == undefined || phone == undefined || address == undefined) {
+            $("content").prepend("<div class=\"err\">Bạn phải điền đầy đủ thông tin</div>");
+        }
+        else {
+            $.removeCookie('onetop_str_item_id', { path: '/' });
+        }
+    });
+</script>

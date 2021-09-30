@@ -1,0 +1,206 @@
+﻿@{
+    ViewBag.Title = "Thanh toán đơn hàng - Ilovestyle.vn";
+    Layout = "~/Views/Shared/_LayoutCart.cshtml";
+    ViewBag.metas = Html.Raw(ViewBag.meta);
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        // Ajax sử dụng vc1
+        $("#vc1").click(function () {
+            $('#opc-review').hide();
+            var vc1 = $(this).val();
+            $.post("/Pages/BuyCart", { "vc1": vc1 },
+                    function (data) {
+                        $("#pro").html(data);
+                    });
+        });
+
+        // Ajax sử dụng vc2
+        $("#vc2").click(function ()
+        {
+            $('#opc-review').hide();
+            var vc2 = $(this).val();
+            $.post("/Pages/BuyCart", { "vc2": vc2 },
+                    function (data) {
+                        $("#pro").html(data);
+                    });
+        });
+
+        // Ajax sử dụng vc3
+        $("#vc3").click(function () {
+            $('#opc-review').hide();
+            var vc3 = $(this).val();
+            $.post("/Pages/BuyCart", { "vc3": vc3 },
+                    function (data) {
+                        $("#pro").html(data);
+                    });
+        });
+
+        // Ajax sử dụng TinhTP
+        $("#TinhTP").click(function () {
+            $('#opc-review').hide();
+            var TinhTP = $(this).val();
+            var nongthon;
+            if ($('#Ngoaithanh').is(':checked')) {
+                nongthon = "1";
+            }
+            else {
+                nongthon = "0";
+            }
+            $.post("/Pages/BuyCart_Tinh", { "Tinh": TinhTP, "nongthon": nongthon },
+                    function (data) {
+                        $("#pro").html(data);
+                    });
+        });
+        $("#btn_save_order").click(function () {
+            debugger;
+            var vc1 = $('#vc1').val();
+            var vc2 = $('#vc2').val();
+            var vc3 = $('#vc3').val();
+            var Name = $('#Name').val();
+            var Add = $('#Add').val();
+            var TinhTP = $('#TinhTP').val();
+            var Tel = $('#Tel').val();
+            var ck;
+            var nongthon;
+            if ($('#Nhanhang').is(':checked')) {
+                ck = "on";
+            }
+            else {
+                ck = "off";
+            }
+            if ($('#Ngoaithanh').is(':checked')) {
+                nongthon = "1";
+            }
+            else {
+                nongthon = "0";
+            }
+            $.post("/Pages/BuyAdd", { "vc1": vc1, "vc2": vc2, "vc3": vc3, "checks": ck, "Name": Name, "Add": Add, "TinhTP": TinhTP, "Tel": Tel, "nongthon": nongthon },
+                   function (data) {
+                       $("#Add_nhan_hang").html(data);
+                   });
+        });
+        
+        $("#Nhanhang").click(function () {
+            var Name = $('#Name').val();
+            var Add = $('#Add').val();
+            var TinhTP = $('#TinhTP').val();
+            var Tel = $('#Tel').val();
+            var checks = $(this).val();
+            var ck;
+            if ($(this).is(':checked'))
+            {
+                ck = "on";
+            }
+            else
+            {
+                ck = "off";
+            }
+            $.post("/Pages/CheckCustomer", { "checks": ck, "Name": Name, "Add": Add, "TinhTP": TinhTP, "Tel": Tel },
+                    function (data) {
+                        $("#Add_nhan_hang").html(data);
+                    });
+        });
+
+    });
+    </script>
+ @using (Html.BeginForm())
+    {
+<div class="container-page col1-layout content_checkout_page">
+<div class="opc" id="checkoutSteps">
+        <div id="opc-shipping" class="box-info  section" >
+        <span class="ic-minus done-minus"  onclick="toggleXPMenu('Content-inf');">&nbsp;</span>
+             <div class="title step-title ttl-box"> <span></span><h2>Thông tin người nhận - Hình thức vận chuyển</h2></div>
+            <div class="cls"></div>
+    <div id ="Content-inf">  
+        <div id="checkout-step-shipping" class="step a-item" >
+    <div class="cols-info">
+        <label>@Html.Raw(ViewBag.mems)</label>
+    </div>
+     <div class="cols-info">
+         <div class="box_add_newaddress">
+            <h2>
+                Phương thức vận chuyển
+            </h2>
+		<div class="box_modal_address" >
+          <fieldset>
+            @*@Html.Raw(ViewBag.vcr)*@
+                <div class="box-vc-op"><label><input checked="checked" type="radio" id="vc1" value="vc1" class="address-select" title="" name="vc1"><span>Chuyển phát nhanh</span></label></div>
+                <div class="box-vc-op"><label><input type="radio" id="vc2" value="vc2" class="address-select" title="" name="vc1"><span>Chuyển phát thường</span></label></div>
+                <div class="box-vc-op"><label><input type="radio" id="vc3" value="vc3" class="address-select" title="" name="vc1"><span>Chuyển phát ô tô</span></label></div>
+            </fieldset>
+            </div>
+             </div>
+     </div>
+      <div class="insertnewadd bt-add">
+            <button class="button btn-bill-new" onclick="toggleXPMenu('Content-Add');"
+        		title="Thêm địa chỉ mới" type="button"><span></span>Thêm địa chỉ khác</button>
+      </div>
+  <div class="cls"></div>
+    <div class="add-new-address" id ="Content-Add" style="display:none;">
+        <div class="box_add_newaddress">
+            <h2>
+                Thêm địa chỉ khác
+            </h2>
+		<div class="box_modal_address" >
+			<div class="box">
+				<div class="title">Họ và tên <span class="red_star" >*</span></div>
+				<div class="text">
+                    <input  type="text" title=" Họ và tên" name="Name" id="Name" 
+                            class="input-text  w90  required-entry" onBlur="recalulator(this.value);" placeholder='Họ và tên' />
+                    </div>
+			</div>
+			<div class="box"><div class="title">Địa chỉ <span class="red_star" >*</span></div>
+				<div class="text">
+                    <input  type="text" title=" Địa chỉ" name="Add" id="Add" 
+                            class="input-text w90  required-entry" onBlur="recalulator(this.value);" placeholder='Địa chỉ' />
+				</div>
+			</div>
+            <div class="box">
+                <div class="title"></div>
+				<div class="text">
+                    <input type="checkbox" name="Ngoaithanh" id="Ngoaithanh" class="checkbox" />
+                        <label for="shipping:save_in_address_book">Vùng ngoài thành, nông thôn</label>
+				</div></div>
+			<div class="box">
+				<div class="title">Tỉnh thành <span class="red_star" >*</span></div>
+				<div class="text">
+                    <div class="col1">
+                        @Html.DropDownList("TinhTP", "Chọn tỉnh thành phố")
+                    </div>
+				</div>
+			</div>
+			<div class="box">
+				<div class="title">
+					Số đt di động <span class="red_star" >*</span>
+				</div>
+				<div class="text">
+                    <input type="text" name="Tel" title=" Điện thoại" id="Tel"/>
+				</div>
+			</div>
+            <div class="box">
+				<div class="save">
+                <input type="checkbox" name="Nhanhang" id="Nhanhang" class="checkbox" />
+                    <label for="shipping:save_in_address_book">Nhận hàng theo địa chỉ này</label>
+				</div>
+			</div>
+            <div class="box">
+                  <p id="Add_nhan_hang" style="text-align: left; font-size: 11px; color: red"></p>
+            </div>
+		</div>           
+         </div>   
+    </div>
+ 
+        </div>
+        </div>     
+    </div>
+    <span id="pro"></span>
+    </div>
+</div>
+ }
+<script type="text/javascript">
+
+    $('#frOrder').submit(function () {
+        debugger;
+        $.removeCookie('onetop_str_item_id', { path: '/' });
+    })

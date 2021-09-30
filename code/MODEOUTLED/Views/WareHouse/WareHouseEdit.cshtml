@@ -1,0 +1,149 @@
+﻿@model onsoft.Models.WareHouse
+@{
+    ViewBag.Title = "Chỉnh sửa thông tin kho";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!-- Validate Data -->
+
+
+<script src="~/Scripts/jquery.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script type="text/javascript">$j = jQuery.noConflict();</script>
+
+<script type="text/javascript">
+
+    (function ($j, W, D) {
+
+        var JQUERY4U = {};
+
+        JQUERY4U.UTIL =
+        {
+            setupFormValidation: function () {
+                //validation rules
+                $j("#categorycreate-form").validate({
+                    rules: {
+                        GroupMember: "required",
+                        MemId: "required",
+                        Name: "required",
+                        Address: "required",
+                        Tel: "required",
+                        SDate: "required",
+                    },
+                    messages: {
+                        GroupMember: "Chọn nhóm nhân viên",
+                        MemId: "Chọn nhân viên quản kho ",
+                        Name: "Nhập tên kho hàng",
+                        Address: "Nhập địa chỉ kho hàng",
+                        Tel: "Nhập số điện thoại",
+                        SDate: "Nhập ngày bắt đầu hoạt động",
+                    },
+                    submitHandler: function (form) {
+                        form.submit();
+                    }
+                });
+            }
+        }
+
+        //when the dom has loaded setup form validation rules
+        $j(D).ready(function ($) {
+            JQUERY4U.UTIL.setupFormValidation();
+        });
+
+    })(jQuery, window, document);
+</script>
+<!-- End Validate Data -->
+
+<h2>@ViewBag.Title</h2>
+@using (Html.BeginForm("WareHouseEdit", "WareHouse", FormMethod.Post, new { @id="categorycreate-form", @class="validate-form"}))
+{
+    <table class="TableUpdate" border="1">
+        <tr>
+            <td class="Control" colspan="2">
+                <ul>
+                    <li><input type="submit" value="Ghi lại "class="uupdate" /></li>
+                    <li>@Html.ActionLink("Trở lại", "WareHouseIndex", "", new { @class = "uback" })</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <th>Nhóm nhân viên<span style="color:red">(*)</span></th>
+            <td>@Html.DropDownList("GroupMember", " === Chọn nhóm nhân viên === ")</td>
+        </tr>
+        <tr>
+            <th>Nhân viên quản kho<span style="color:red">(*)</span></th>
+            <td>@Html.DropDownList("MemId", "Chọn nhân viên quản kho")</td>
+        </tr>
+        <tr>
+            <th>Tên kho hàng<span style="color:red">(*)</span></th>
+            <td>@Html.TextBoxFor(m => m.Name, "", new { @class = "text" })</td>
+        </tr>
+        <tr>
+            <th>Địa chỉ kho hàng<span style="color:red">(*)</span></th>
+            <td>@Html.TextBoxFor(m => m.Address, "", new { @class = "text" })</td>
+        </tr>
+        <tr>
+            <th>Số điện thoại<span style="color:red">(*)</span></th>
+            <td>@Html.TextBoxFor(m => m.Tel)</td>
+        </tr>
+        <tr>
+            <th>Ghi chú</th>
+            <td>@Html.TextArea("Description")</td>
+        </tr>
+        <tr>
+            <th>Ngày hoạt động<span style="color:red">(*)</span></th>
+            <td>@Html.TextBoxFor(m => m.SDate)</td>
+        </tr>
+        <tr>
+            <th>Ngày kết thúc hoạt động</th>
+            <td>@Html.TextBoxFor(m => m.EDate)</td>
+        </tr>
+        <tr>
+            <td class="Control" colspan="2">
+                <ul>
+                    <li><input type="submit" value="Ghi lại "class="uupdate" /></li>
+                    <li>@Html.ActionLink("Trở lại", "WareHouseIndex", "", new { @class = "uback" })</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+}
+<script type="text/javascript">
+    $('#SDate').datepicker();
+    $('#EDate').datepicker();
+
+    var editor;
+    function createEditor(languageCode, id) {
+        var editor = CKEDITOR.replace(id, {
+            language: languageCode
+        });
+    }
+
+    $(function () {
+        createEditor('vi', 'Description');
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+        $("select#GroupMember").change(function (evt) {
+
+            if ($("select#GroupMember").val() != "") {
+
+                $.ajax({
+                    url: "/WareHouse/_GetMember",
+                    type: 'POST',
+                    data: { id: $("select#GroupMember").val() },
+                    success: function (response) {
+                        $("select#MemId").replaceWith(response)
+                    },
+                    error: function (xhr) {
+                        $("select#MemId").replaceWith("<select id='MemId' name='MemId' disabled='disabled'></select>");
+                    }
+                });
+            }
+            else {
+                $("select#MemId").replaceWith("<select id='MemId'  name='MemId' disabled='disabled'></select>");
+            }
+        });
+    });
+</script>

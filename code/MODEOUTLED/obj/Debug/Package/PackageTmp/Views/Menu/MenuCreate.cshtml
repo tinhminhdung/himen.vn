@@ -1,0 +1,442 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model PagedList<onsoft.Models.Menu>
+@{
+    ViewBag.Title = "MenuCreate";
+    Layout = "~/Views/Shared/_LayoutAdmins.cshtml";
+}
+
+@section Scripts
+{
+    <!-- Validate Data -->
+    <script type="text/javascript">
+
+        (function ($, W, D) {
+
+            var JQUERY4U = {};
+
+            JQUERY4U.UTIL =
+            {
+                setupFormValidation: function () {
+                    //validation rules
+                    $("#menu-form").validate({
+                        rules: {
+                            Link: {
+                                required: true,
+                                //number: true
+                            },
+                            Order: {
+                                required: true,
+                                number: true
+                            },
+                        },
+                        messages: {
+                            Link: {
+                                required: "Phải nhập link liên kết",
+                                //number: "Phải nhập kiểu số",
+                            },
+                            Order: {
+                                required: "Phải nhập thứ tự",
+                                number: "Phải nhập kiểu số",
+                            }
+                        },
+                        submitHandler: function (form) {
+                            form.submit();
+                        }
+                    });
+                }
+            }
+
+            //when the dom has loaded setup form validation rules
+            $(D).ready(function ($) {
+                JQUERY4U.UTIL.setupFormValidation();
+            });
+
+        })(jQuery, window, document);
+    </script>
+    <!-- End Validate Data -->
+
+    <!-- Customer Display form Create -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            ///Load default
+            $("#LinkModule").hide();
+            $("#trMenuDetails").hide();
+            $("#trMenuContent").hide();
+            
+            $("#PageTypeDDL").change(function () {
+                var pageType = $("#PageTypeDDL").val();
+                //alert("pageType: "+pageType);
+                if (pageType == 0) {
+                    //alert("Khoa CKEditor");
+                    $("#trMenuDetails").hide();
+                    $("#trMenuContent").hide();
+                    $("#trLinkModule").show();
+                }
+                else {
+                    //alert("Mo CKEditor");
+                    $("#trMenuDetails").show();
+                    $("#trMenuContent").show();
+                    $("#trLinkModule").hide();
+                }
+            });
+
+
+
+            $("#LinkDDL").change(function ()
+            {
+                var i = $(this).val();
+                //alert("LinkDDL: "+ i);
+                $(".error").hide();
+
+                if (i == 0) {
+                    $("#Link").show();
+                    $("#LinkModule").hide();
+                }
+                else if (i == 1) {
+                    $("#LinkModule").show();
+                    $("#Link").hide();
+                }
+                else {
+                    //alert("LinkModule show");
+                    $("#LinkModule").hide();
+                    $("#Link").hide();
+                }
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        var editor;
+        function createEditor(languageCode, id) {
+            var editor = CKEDITOR.replace(id, {
+                language: languageCode
+            });
+        }
+
+        $(function () {
+            createEditor('vi', 'Content');
+        });
+        $(function () {
+            createEditor('vi', 'Detail');
+        });
+</script>
+    <script type="text/javascript">
+        $(function () {
+            $("#SelectImages").click(function () {
+                var finder = new CKFinder();
+                finder.selectActionFunction = function (fileUrl) {
+                    $("#Images").val(fileUrl);
+                };
+                finder.popup();
+            });
+        });
+    </script>
+}
+
+<div class="container-fluid">
+    <div style="width: 100%; margin: 0 auto;">
+
+        <div id="Breadcrumb" class="Block Breadcrumb ui-widget-content ui-corner-top ui-corner-bottom">
+            <ul>
+                <li><a href='../../Admins/Default'><i class="icon-home" style="font-size: 14px;"></i>Trang quản trị</a></li>
+                <li class='SecondLast'><a href='../../Menu/MenuIndex'>Danh sách menu</a></li>
+                <li class='Last'><span>Thêm menu mới</span></li>
+            </ul>
+        </div>
+
+        <div style="clear: both;"></div>
+
+        @using (Html.BeginForm("MenuCreate", "Menu", FormMethod.Post, new { enctype = "multipart/form-data", @id = "menu-form", @class = "validate-form" }))
+        {
+            <div id="cph_Main_ContentPane">
+                <div class="widget">
+                    <!-- widget-title -->
+                    <div class="widget-title">
+                        <h4><i class="icon-reorder"></i>&nbsp;Thêm Menu</h4>
+
+                        <!-- Button -->
+                        <div class="ui-corner-top ui-corner-bottom">
+                            <div id="toolbox">
+
+                                <div style="float: right;" class="toolbox-content">
+
+                                    <table class="toolbar">
+                                        <tr>
+                                            <td align="center">
+                                                <button type="submit" class="toolbar btn btn-info"><i class="icon-save"></i>&nbsp;Ghi lại</button>
+                                            </td>
+                                            <td align="center">
+                                                <a title="Quay lại" class="toolbar btn btn-info" href="javascript:history.go(-1)"><i class="icon-chevron-left"></i>&nbsp;Trở về</a>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Button -->
+
+                        <div id="hiddenToolBarScroll" class="scrollBox hidden">
+                            <h4><i class="icon-reorder"></i>&nbsp;Thêm mới Menu</h4>
+                            <div class="FloatMenuBar">
+                                @*@Html.Partial("_PartialMenuRight")*@
+
+
+                                <div class="ui-corner-top ui-corner-bottom">
+                                    <div id="toolbox">
+
+                                        <div style="float: right;" class="toolbox-content">
+
+                                            <table class="toolbar">
+                                                <tr>
+                                                    <td align="center">
+                                                        <button type="submit" class="toolbar btn btn-info"><i class="icon-save"></i>&nbsp;Ghi lại</button>
+                                                    </td>
+                                                    <td align="center">
+                                                        <a title="Quay lại" class="toolbar btn btn-info" href="javascript:history.go(-1)"><i class="icon-chevron-left"></i>&nbsp;Trở về</a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- widget-title -->
+
+                    <!-- widget-body -->
+                    <div class="widget-body">
+                        <div id="tabs">
+                            <div id="tabs-1">
+
+                                <table class="admintable" style="width: 100%;">
+                                    <tr id="trMenuLink">
+                                        <td class="key">Cấp cha <span class="Required"></span></td>
+                                        <td>
+                                            @Html.DropDownList("lstMenu", "Cấp 1")
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Chọn cấp cha cho Menu.
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    Click vào hộp thoại chọn cấp cha của Menu.
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="key">Tên Menu <span class="Required">*</span></td>
+                                        <td>
+                                            @Html.TextBox("Name", "", new { @class = "text" })
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Tên Menu
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    Tên của Menu (Ví dụ: khuyến mãi giáng sinh)
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="key">Icon đại diện <span class="Required">*</span></td>
+                                        <td>
+                                            @Html.TextBox("Images", "", new { @class = "text" }) &nbsp;
+                                            <input id="SelectImages" type="button" value="Chọn ảnh" />
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Icon đại diện
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    Icon đại diện. Chọn upload ảnh từ client hoặc chọn ảnh có sẵn trên server.
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>
+                                    <tr id="trPageTypeDDL">
+                                        <td class="key">Kiểu trang <span class="Required"></span></td>
+                                        <td>
+                                            @Html.DropDownList("PageTypeDDL")
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Kiểu trang của menu.
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    Click vào hộp thoại chọn kiểu trang cho menu.
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>
+                                    <tr id="trLinkModule">
+                                        <td class="key">Liên kết <span class="Required"></span></td>
+                                        <td>
+                                            @Html.DropDownList("LinkDDL")
+                                            @Html.TextBox("Link", "", new { @class = "text" })
+                                            @Html.DropDownList("LinkModule", " === Chọn liên kết === ")
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Chọn liên kết cho Menu.
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    Chọn liên kết cho Menu, Menu có thể là 1 link liên kết hoặc là 1 danh mục sản phẩm hay tin tức.
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="key">Kiểu hiển thị <span class="Required"></span></td>
+                                        <td>
+                                            @Html.DropDownList("Target")
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Kiểu hiển thị của link Menu.
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    Kiểu hiển thị của link menu có thể là target(mở tab mới trên trình duyệt) hoặc self(trực tiếp trên tab hiện hành).
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="key">Vị trí hiển thị <span class="Required"></span></td>
+                                        <td>
+                                            @Html.DropDownList("Position")
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Vị trí hiển thị của Menu.
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    Lựa chọn vị trí hiển thị cho Menu.
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="key">Title meta <span class="Required">*</span></td>
+                                        <td>
+                                            @Html.TextBox("Title", "", new { @class = "text" })
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Title meta.
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    Title meta.
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="key">Description meta <span class="Required">*</span></td>
+                                        <td>
+                                            @*@Html.TextBox("Title","", new { @class = "text" })*@
+                                            @Html.TextBox("Description", "", new { @class = "text multiline" })
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Description meta
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    Description meta
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="key">Keyword meta <span class="Required">*</span></td>
+                                        <td>
+                                            @*@Html.TextBox("Keyword", "", new { @class = "text" })*@
+                                            @Html.TextBox("Keyword", "", new { @class = "text multiline" })
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Keyword meta
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    Keyword meta
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="key">Thứ tự <span class="Required">*</span></td>
+                                        <td>
+                                            @Html.TextBox("Order", "", new { @onkeypress = "OnlyInputNumber(0)" })
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Thứ tự Menu.
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    Thứ tự Menu.
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="key">Trạng thái <span class="Required"></span></td>
+                                        <td>
+                                            @*<input type="checkbox" name="Active" id="active" />*@
+                                            @Html.CheckBox("Active", new { id = "Active", onclick = "Javascript:chkSelect_OnClick(this,0)", @class = "chk" })
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Trạng thái hiển thị của Menu.
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    Menu đang được kích hoạt hay không.
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>
+
+                                    <tr id="trMenuDetails">
+                                        <td class="key">Mô tả chi tiết<span class="Required"></span></td>
+                                        <td>
+                                            @Html.TextArea("Content")
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Mô tả chi tiết cho Menu.
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    Mô tả Menu.
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>
+
+                                    <tr id="trMenuContent">
+                                        <td class="key">Nội dung chi tiết<span class="Required"></span></td>
+                                        <td>
+                                            @Html.TextArea("Detail")
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Nội dung chi tiết.
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    Mô tả nội dung chi tiết cho Menu.
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- widget-body -->
+
+                </div>
+            </div>
+        }
+    </div>
+</div>

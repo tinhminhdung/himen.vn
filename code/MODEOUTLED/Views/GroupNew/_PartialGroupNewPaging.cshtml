@@ -1,0 +1,35 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model PagedList.IPagedList<onsoft.Models.GroupNew>
+
+<!--Sử dụng cho Phân trang-->
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+
+<!--Phân trang-->
+@Html.PagedListPager(Model, page => Url.Action("GroupNewIndexot", new { page = page }),
+    PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new PagedListRenderOptions
+    {
+        DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+        DisplayLinkToLastPage = PagedListDisplayMode.Always,
+        DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+        DisplayLinkToNextPage = PagedListDisplayMode.Always,
+        DisplayLinkToIndividualPages = true,
+        DisplayPageCountAndCurrentLocation = false,
+        MaximumPageNumbersToDisplay = 5,
+        DisplayEllipsesWhenNotShowingAllPageNumbers = true,
+        EllipsesFormat = "&#8230;",
+        LinkToFirstPageFormat = "Trang đầu",
+        LinkToPreviousPageFormat = "«",
+        LinkToIndividualPageFormat = "{0}",
+        LinkToNextPageFormat = "»",
+        LinkToLastPageFormat = "Trang cuối",
+        PageCountAndCurrentLocationFormat = "Page {0} of {1}.",
+        ItemSliceAndTotalFormat = "Showing items {0} through {1} of {2}.",
+        FunctionToDisplayEachPageNumber = null,
+        ClassToApplyToFirstListItemInPager = null,
+        ClassToApplyToLastListItemInPager = null,
+        ContainerDivClasses = new[] { "pagination-container" },
+        UlElementClasses = new[] { "pagination" },
+        LiElementClasses = Enumerable.Empty<string>()
+    }, new AjaxOptions { UpdateTargetId = "ajaxGroupNew" }))
+

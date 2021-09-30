@@ -1,0 +1,123 @@
+﻿@model onsoft.Models.Country
+@{
+    ViewBag.Title = "Sửa thông tin quốc gia";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    var username = User.Identity.IsAuthenticated ? User.Identity.Name : string.Empty;
+}
+
+<!-- Validate Data -->
+
+
+<script src="~/Scripts/jquery.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script type="text/javascript">$j = jQuery.noConflict();</script>
+
+<script type="text/javascript">
+
+    (function ($j, W, D) {
+
+        var JQUERY4U = {};
+
+        JQUERY4U.UTIL =
+        {
+            setupFormValidation: function () {
+                //validation rules
+                $j("#categorycreate-form").validate({
+                    rules: {
+                        Name: "required",
+                        Ord: "required"
+                    },
+                    messages: {
+                        Name: "Nhập tên quốc gia",
+                        Ord: "Phải nhập thứ tự"
+                    },
+                    submitHandler: function (form) {
+                        form.submit();
+                    }
+                });
+            }
+        }
+
+        //when the dom has loaded setup form validation rules
+        $j(D).ready(function ($) {
+            JQUERY4U.UTIL.setupFormValidation();
+        });
+
+    })(jQuery, window, document);
+</script>
+<!-- End Validate Data -->
+
+<h2>@ViewBag.Title</h2>
+@using (Html.BeginForm("CountryEdit", "Country", FormMethod.Post, new { @id = "categorycreate-form", @class = "validate-form" }))
+{
+    <table class="TableUpdate" border="1">
+        <tr>
+            <td class="Control" colspan="2">
+                <ul>
+                        <li><input type="submit" value="Ghi lại "class="uupdate" /></li>
+                    <li>@Html.ActionLink("Trở về", "CountryIndex","", new {@class="uback" })</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <th>Tên quốc gia<span style="color:red">(*)</span></th>
+            <td>
+                 @Html.TextBoxFor(model => model.Name, new {@class="text" })
+            </td>
+        </tr>
+        <tr>
+            <th>Logo</th>
+            <td>@Html.TextBoxFor(model => model.Logo, new { @class="text"})@Html.ValidationMessageFor(m=>m.Logo)<input id="SelectImages" type="button" value="Chọn ảnh" class="bottom" /></td>
+        </tr>
+     <tr>
+            <th>Mô tả</th>
+            <td>
+                 @Html.TextArea("Description")
+            </td>
+        </tr>
+        <tr>
+            <th>Thứ tự<span style="color:red">(*)</span></th>
+            <td>
+                 @Html.TextBoxFor(model => model.Ord, new { @onkeypress = "OnlyInputNumber(0)" })
+            </td>
+        </tr>
+        <tr>
+            <th>Kích hoạt</th>
+            <td>
+                 @Html.CheckBoxFor(m => m.Active)
+            </td>
+        </tr>
+         <tr>
+            <td class="Control" colspan="2">
+                <ul>
+                        <li><input type="submit" value="Ghi lại "class="uupdate" /></li>
+                    <li>@Html.ActionLink("Trở về", "CountryIndex","", new {@class="uback" })</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+}
+<script>
+    $(function () {
+        $("#SelectImages").click(function () {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                $("#Logo").val(fileUrl);
+            };
+            finder.popup();
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    var editor;
+    function createEditor(languageCode, id) {
+        var editor = CKEDITOR.replace(id, {
+            language: languageCode
+        });
+    }
+
+    $(function () {
+        createEditor('vi', 'Description');
+    });
+</script>

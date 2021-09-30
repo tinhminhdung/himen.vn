@@ -1,0 +1,114 @@
+﻿@model onsoft.Models.GroupProduct
+@{
+    ViewBag.Title = "CategoryAddSub";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!-- Validate Data -->
+<script src="~/Scripts/jquery.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+
+<script type="text/javascript">
+
+    (function ($, W, D) {
+
+        var JQUERY4U = {};
+
+        JQUERY4U.UTIL =
+        {
+            setupFormValidation: function () {
+                //validation rules
+                $("#groupproductedit-form").validate({
+                    rules: {
+                        Name: "required",
+                        Title: "required",
+                        Description: "required",
+                        Keyword: "required",
+                        Ord: {
+                            required: true,
+                            number: true
+                        }
+                    },
+                    messages: {
+                        Name: "Phải nhập tên nhóm sản phẩm",
+                        Title: "Phải nhập tiêu đề",
+                        Description: "Phải nhập miêu tả",
+                        Keyword: "Phải nhập từ khóa",
+                        Ord: {
+                            required: "Phải nhập thứ tự",
+                            number: "Phải nhập kiểu số"
+                        }
+                    },
+                    submitHandler: function (form) {
+                        form.submit();
+                    }
+                });
+            }
+        }
+
+        //when the dom has loaded setup form validation rules
+        $(D).ready(function ($) {
+            JQUERY4U.UTIL.setupFormValidation();
+        });
+
+    })(jQuery, window, document);
+</script>
+<!-- End Validate Data -->
+
+<h2>Chỉnh sửa thông tin nhóm sản phẩm</h2>
+@using (Html.BeginForm("GroupProductEdit", "GroupProduct", FormMethod.Post, new { @id = "groupproductedit-form", @class = "validate-form" }))
+{  
+    @Html.ValidationSummary(true)
+    <table class="TableUpdate" border="1">
+        <tr>
+            <td class="Control" colspan="2">
+                <ul>
+                    <li>
+                        <input type="submit" value="Ghi lại " class="uupdate" /></li>
+                    <li>@Html.ActionLink("Trở về", "GroupProductIndex", "", new { @class = "uback" })</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <th>Tên nhóm sản phẩm<span class="validlabel"> (*)</span></th>
+            <td>@Html.TextBoxFor(model => model.Name, new { @class = "text" })</td>
+        </tr>
+        <tr>
+            <th>Tiêu đề<span class="validlabel"> (*)</span></th>
+            <td>@Html.TextBoxFor(model => model.Title, new { @class = "text" })</td>
+        </tr>
+        <tr>
+            <th>Miêu tả<span class="validlabel"> (*)</span></th>
+            <td>@Html.TextBoxFor(model => model.Description, new { @class = "text" })</td>
+        </tr>
+        <tr>
+            <th>Từ khóa<span class="validlabel"> (*)</span></th>
+            <td>@Html.TextBoxFor(model => model.Keyword, new { @class = "text" })</td>
+        </tr>
+        <tr>
+            <th>Thứ tự<span class="validlabel"> (*)</span></th>
+            <td>@Html.TextBoxFor(model => model.Ord, new { @onkeypress = "OnlyInputNumber(0)" })</td>
+        </tr>
+        <tr>
+            <th>Ưu tiên</th>
+            <td>@Html.CheckBoxFor(m => m.Priority)</td>
+        </tr>
+        <tr>
+            <th>Nhóm trang chủ</th>
+            <td>@Html.CheckBoxFor(m => m.Index)</td>
+        </tr>
+        <tr>
+            <th>Active</th>
+            <td>@Html.CheckBoxFor(m => m.Active)</td>
+        </tr>
+        <tr>
+            <td class="Control" colspan="2">
+                <ul>
+                    <li>
+                        <input type="submit" value="Ghi lại " class="uupdate" /></li>
+                    <li>@Html.ActionLink("Trở về", "GroupProductIndex", "", new { @class = "uback" })</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+}

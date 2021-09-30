@@ -1,0 +1,43 @@
+﻿*{padding:0;margin:0;list-style:none;font-size:12px;font-family:Arial,sans-serif,Tahoma; text-decoration:none;}
+.clr {clear:both;}
+.box {
+    width: 580px;
+}
+.box #proHead {margin: 0;}
+.box #proHead #imgPro {   position:relative;  width: 580px; height: 480px; overflow: hidden }
+.box #proHead #imgPro img {float:left; width: auto; border:2px solid #fff;z-index:88888; }
+.box #proHead #iconZoom {position:absolute; left: 100px; top:405px; height:20px; width:20px;background:url(images/iconZoom.png) no-repeat;}
+.box #proHead #lstImg {float:left; margin: 0 10px; position:relative; z-index:22}
+.box #proHead #lstImg li {line-height:2.7em; float: left}
+.box #proHead #lstImg li img{ width:63px; height: auto; border:2px solid #cb970d; cursor:pointer; margin: 0 3px}
+
+.box #proHead #infoPro {float: left;width: 580px;}
+.box #proHead #infoPro p#titPro {color:#bd2050; font-size:18px; margin-bottom:10px}
+.box #proHead #infoPro p {font-weight:bold;margin-bottom:9px;}
+.box #proHead #infoPro p#des span{}
+.box #proHead #infoPro a#viewMore {color:#cc970d;font-weight:normal;margin-left:10px; cursor:pointer;}
+.box #proHead #infoPro p span.value {font-weight:normal   }
+.box #proHead #infoPro p span#valBanle {font-weight:bold;font-size:13px;}
+.box #proHead #infoPro p span#priBuon {font-weight:bold;font-size:13px; color:#bd2050; font-size:15px;}
+.box #proHead #infoPro ul.color li {display:inline-block;border:3px solid #d7d7d7;margin-right:10px; cursor:pointer;}
+.box #proHead #infoPro ul.color li a{ width:16px; height:16px;display:block;border:2px solid #fff;}
+
+.box #proHead #infoPro ul.color li.black a{background:#000;}
+.box #proHead #infoPro ul.color li.red a{background:#e00000;}
+.box #proHead #infoPro ul.color li.blue a{background:#055ccd;}
+.box #proHead #infoPro ul.color li.green a{background:#00c10e;}
+.box #proHead #infoPro ul.color li.gray a{background:#755f25;}
+.box #proHead #infoPro p.size {display:inline-block;}
+.box #proHead #infoPro a#bangquydoi,#forgetPass {text-decoration:underline; color:#cb970d;margin-left:10px;font-size:13px;}
+.box #proHead #infoPro ul.size {margin-bottom:10px;}
+.box #proHead #infoPro ul.size li {display:inline-block; padding:5px 10px;border:2px solid #d7d7d7;color:#2a2a2a; cursor:pointer;}
+.box #proHead #infoPro p.sQuant {position:relative; }
+.box #proHead #infoPro p.sQuant .txtQuantity {width:42px; height:23px; padding-left:10px;color:#292929;border:2px solid #d1d1d1}
+.box #proHead #infoPro p.sQuant a.btnAdd { background:url(images/btnAddQuant.png)no-repeat; width:9px; height:5px; display:block; position:absolute;right:200px;top:6px; cursor:pointer}
+.box #proHead #infoPro p.sQuant a.btnDivi { background:url(images/btnDiviQuant.png)no-repeat; width:9px; height:5px; display:block; position:absolute;right:200px;top:16px;cursor:pointer}
+
+.box #proHead #infoPro p#Cart {display:inline-block;    }
+.box #proHead #infoPro a#btnAddCart {background:url(images/bgAddCart.png) repeat-x; height:42px;display:inline-block;line-height:46px; padding:0 10px; -moz-border-radius:6px;-webkit-border-radius:6px;border-radius:6px;}
+.box #proHead #infoPro a#btnAddCart:hover {background:url(images/bgAddCartHover.png)}
+.box #proHead #infoPro span#txt {background:url(images/iconAddCart.png) no-repeat left center; padding-left:35px;height:24px;display:inline-block; line-height:24px;font-size:16px; text-transform:uppercase;color:#fff; }
+.box #proHead #infoPro a#CheckCart {color:#515151;font-size:15px;font-weight:bold;margin-left:15px;}

@@ -1,0 +1,159 @@
+﻿@model MODEOUTLED.ViewModels.ShoppingCartViewModel
+@{
+    ViewBag.Title = "Xác nhận mua đơn hàng";
+    Layout = "~/Views/Shared/_LayoutSub.cshtml";
+}
+<script type="text/javascript">
+
+    (function ($, W, D) {
+
+        var JQUERY4U = {};
+
+        JQUERY4U.UTIL =
+        {
+            setupFormValidation: function () {
+                //validation rules
+                $("#buynow-form").validate({
+                    rules: {
+                        Name: {required: true},//number: true},
+                        Email: { required: true },
+                        Phone: { required: true },
+                        Address: {required: true}
+                    },
+                    messages: {
+                        Name: { required: "Nhập thông tin họ tên" },//number: "Phải nhập kiểu số",},
+                        Email: {required: "Nhập thông tin Email"},
+                        Phone: {required: "Nhập số điện thoại"},
+                        Address: {required: "Nhập địa chỉ"}
+                    },
+                    submitHandler: function (form) {
+                        form.submit();
+                    }
+                });
+            }
+        }
+
+        //when the dom has loaded setup form validation rules
+        $(D).ready(function ($) {
+            JQUERY4U.UTIL.setupFormValidation();
+        });
+
+    })(jQuery, window, document);
+    </script>
+@*<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btn_save_order").click(function () {
+            var Name = $('#Name').val();
+            var Email = $('#Email').val();
+            var Phone = $('#Phone').val();
+            var Address = $('#Address').val();
+            $.post("/Home/BuyNow", { "Name": Name, "Email": Email, "Phone": Phone, "Address": Address },
+                   function (data) {
+                       //$("#Add_nhan_hang").html(data);
+                       window.location.href = "/Pages/order_success";
+                   });
+        });
+
+    });
+    </script>*@
+@using (Html.BeginForm("BuyNow", "Home", FormMethod.Post, new { enctype = "multipart/form-data", @id = "buynow-form", @class = "validate-form" }))
+    {
+<div class="detail">
+<div class="titlelink">
+    <ul>
+        <li><a href='/'><i class="icon-home" style="font-size: 14px;"></i>Trang chủ</a></li>
+        <li class='Last'><span>Xác nhận mua đơn hàng</span></li>
+    </ul>
+</div>
+    <div class="divbtnCheckout">
+    <a class="backToBuy">Thông tin người nhận hàng</a>
+</div>
+<div class="dangki">
+        <table>
+            <tr>
+                <td class="key">Họ và tên <span class="Required">*</span></td>
+                <td>@Html.TextBox("Name","", new { @placeholder="Họ tên đầy đủ"})</td>
+                <td class="key">Email <span class="Required">*</span></td>
+                <td>@Html.TextBox("Email", "", new { @placeholder="Tài khoản Email"})<label class="error" id="ermail"></label></td>
+            </tr>
+            <tr>
+                <td class="key">Số điện thoại <span class="Required">*</span></td>
+                <td>@Html.TextBox("Phone","", new { @placeholder="Số điện thoại liên hệ"})</td>
+                <td class="key">Địa chỉ <span class="Required">*</span></td>
+                <td>@Html.TextArea("Address", new { cols="16", rows="3", @placeholder="Địa chỉ liên hệ"})</td>     
+            </tr>
+        </table>
+        </div>
+    <div class="checkout">
+<div class="divbtnCheckout">
+    <a class="backToBuy">Thông tin đơn hàng</a>
+</div>
+@using (Html.BeginForm())
+{ 
+<div>
+    @if(Model!=null)
+    {
+        for (int i = 0; i < Model.CartItems.Count; i++)
+        {
+            <p style="color:red;">
+                @Html.ValidationMessageFor(model => model.CartItems[i].count)
+            </p>
+        }
+    }
+</div>
+<table class="order-table" cellpadding="0" cellspacing="0">
+    <tr class="order-table-trheader">
+        <th>
+        </th>
+        <th>
+            Sản Phẩm
+        </th>
+        <th>
+            Giá
+        </th>  
+        <th>
+            Số Lượng
+        </th>  
+        <th>
+            Thành Tiền
+        </th> 
+    </tr>
+    @if(Model!=null)
+    {
+        foreach (var item in Model.CartItems)
+        {
+            <tr id="row-@item.productId"> 
+                <td class="order-table-td" style="border-right: 1px solid #d0d0d0; width: 70px">
+                    <a href="/@item.productTag"><img src="@item.productImage" style="width:70px; height:70px; border:none; margin: 3px;" /></a>
+                </td>
+                <td class="order-table-td" style="border-right: 1px solid #d0d0d0; width: 150px">
+                    <a href="/@item.productTag">@item.productName</a>
+                </td>
+                <td class="order-table-td" style="border-right: 1px solid #d0d0d0">
+                    @{@onsoft.Models.StringClass.Format_Price(item.price.ToString())} VNĐ
+                </td>
+                <td class="order-table-td" style="border-right: 1px solid #d0d0d0">
+                   @item.count
+                </td>
+                <td class="order-table-td" style="border-right: 1px solid #d0d0d0">
+                    @{@onsoft.Models.StringClass.Format_Price(item.total.ToString())} VNĐ
+                </td>
+            </tr>      
+        }  
+    <tr> 
+        <td style="text-align:right; padding-right:10px; font-weight:bold;" colspan="4"> 
+            Tổng Tiền:
+        </td>                    
+        <td id="cart-total" style="text-align:center; color: red; font-weight: bold" colspan="2"> 
+            @{@onsoft.Models.StringClass.Format_Price(Model.CartTotal.ToString())} VNĐ
+        </td> 
+    </tr>   
+    }
+</table>
+}
+<div class="divbtnCheckout">
+    <input type="submit" name="btn_save_order" title="Thanh toán" class="thanhtoan-ship" style="padding: 5px 15px; background: red; color: #fff; float: right; border: 0; font-weight: bold; -moz-border-radius: 2px;-webkit-border-radius: 2px; border-radius: 2px; margin-top: 10px; margin-bottom: 50px" value="Thanh toán" id="btn_save_order"/>
+</div>
+</div>
+    </div>
+}

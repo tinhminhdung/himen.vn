@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = @Html.Raw(ViewBag.tit);
+    ViewBag.des = @Html.Raw(ViewBag.des);
+    ViewBag.key = @Html.Raw(ViewBag.key);
+    Layout = "~/Views/Shared/_LayoutSub.cshtml";
+}
+<div class="detail">
+<div class="titlelink">
+    <ul>
+        <li><a href='/'><i class="icon-home" style="font-size: 14px;"></i>Trang chủ</a></li>
+        <li class="SecondLast"><a href='/tin-tuc'>Tin tức</a></li>
+        @Html.Raw(ViewBag.link)
+    </ul>
+</div>
+<div class="box-detail">
+    <div class="news-detail">
+        @Html.Raw(ViewBag.newsdetail)
+    </div>
+</div>
+</div>

@@ -1,0 +1,75 @@
+﻿@{
+    Layout = "~/Views/Shared/_Login.cshtml";
+}
+<!-- Validate Data -->
+<script type="text/javascript">
+    (function ($, W, D) {
+        var JQUERY4U = {};
+        JQUERY4U.UTIL =
+        {
+            setupFormValidation: function () {
+                //validation rules
+                $("#f-admin-login").validate({
+                    rules: {
+                        UserName: "required",
+                        pass: "required"
+                    },
+                    messages: {
+                        UserName: "Nhập tên truy cập.",
+                        pass: "Nhập mật khẩu."
+                    },
+                    submitHandler: function (form) {
+                        form.submit();
+                    }
+                });
+            }
+        }
+
+        //when the dom has loaded setup form validation rules
+        $(D).ready(function ($) {
+            JQUERY4U.UTIL.setupFormValidation();
+        });
+
+    })(jQuery, window, document);
+</script>
+<!-- End Validate Data -->
+<form id="f-admin-login" method="post">
+    <div id="mainlogin">
+            <div id="logo">Vui lòng điền tên đăng nhập và mật khẩu</div>
+            <div id="lg">
+                <div id="login">
+                    <div class="userpass">
+                        <div class="up1">
+                            <i class="icon-user"></i>
+                        </div>
+                        <div class="up2">
+                            <input id="UserName" name="UserName" type="text" maxlength="50" placeholder="Tên đăng nhập" />
+                        </div>
+                    </div>
+                    <div class="userpass">
+                        <div class="up1">
+                            <span><i class="icon-key"></i></span>
+                        </div>
+                        <div class="up2">
+                            <input id="pass" name="pass" type="password" maxlength="50" placeholder="Mật khẩu" />
+                        </div>
+                    </div>
+                </div>
+                   @if (@ViewBag.Err != "")
+                   {
+                       <div id="err-messange" style="color:red;font-size:0.875em;margin-top: -7px;">
+                           @ViewBag.Err 
+                       </div>
+                   }
+                <div id="dangnhap">
+                    <input id="dn" type="submit" value="Đăng nhập" />
+                </div>
+            </div>
+    </div>
+</form>
+
+
+
+
+
+

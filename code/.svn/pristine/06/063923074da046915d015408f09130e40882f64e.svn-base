@@ -1,0 +1,28 @@
+﻿<div class="ui-corner-top ui-corner-bottom">
+    <div id="toolbox">
+
+        <div style="float: right;" class="toolbox-content">
+
+            <table class="toolbar">
+                <tr>
+                    <td align="center">
+                        <a title="Thêm mới" class="toolbar btn btn-info" href="/PriceCity/PriceCityCreate">
+                            <i class="icon-plus"></i>&nbsp;
+                            Thêm mới
+                        </a>
+                    </td>
+                    @using (Html.BeginForm("MultiDelete", "PricaCity", FormMethod.Post))
+                    {
+                        <td align="center">
+                            <a title="Xóa" class="toolbar btn btn-info" href="#">
+                                <i class="icon-trash"></i>&nbsp;
+                                Xóa nhiều
+                            </a>
+                        </td>
+                    }
+                </tr>
+            </table>
+
+        </div>
+    </div>
+</div>

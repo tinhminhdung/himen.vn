@@ -1,0 +1,121 @@
+﻿@{
+    ViewBag.Title = "DetailManaCart";
+    Layout = "~/Views/Shared/_LayoutDefault2.cshtml";
+}
+
+<div class="row last">
+            <!--BEGIN: divider arrow-->
+            <div class="title-divider span12">
+                <div class="divider-arrow"></div>                                    
+                <h3>THÔNG TIN TÀI KHOẢN CỦA BẠN</h3>    
+            </div><!--END: divider arrow-->
+      </div>
+        <div id="ContentLeft">
+            <div id="dmtt">
+        <p>Quản lý tài khoản</p>
+        <ul id="navDM">
+            <li>
+                <a href="/AccInfo" title="Thông tin chung tài khoản">Tài khoản của bạn</a>
+            </li>
+            <li>
+                <a href="/AccInfo/EditInfo" title="Chỉnh sửa thông tin">Lịch sử giao dịch</a>
+            </li>
+            <li>
+                <a href="/AccInfo/ChangePassword" title="Đổi mật khẩu">Đổi mật khẩu</a>
+            </li>
+        </ul>
+    </div>
+        </div>
+        <div id="ContentRight">
+            
+          
+
+        <div id="bookCart" class="info pd20">
+            
+            <table id="infomation1">
+                <tr>
+                    <th>Mã đơn hàng:</th><td>#428167	</td>
+                </tr>
+                 <tr>
+                    <th>Ngày đặt hàng: 	</th><td>09/10/2013 lúc 10:36	</td>
+                </tr>
+                 <tr>
+                    <th>Trạng thái: 	</th><td><span style="Color:red"> Hủy	</span></td>
+                </tr>
+                 <tr>
+                    <th>Thời gian giao hàng dự kiến: 	</th><td>Thứ Hai, 14/10/2013	</td>
+                </tr>
+                 <tr>
+                    <th><img src="/images/icon-print.png" /></th><td>In đơn hàng</td>
+                </tr>
+            </table>
+            <div class="clr"></div>
+            <table id="infomation2">
+                <tr>
+                    <td><b>ĐỊA CHỈ NGƯỜI MUA</b></td><td><b>ĐỊA CHỈ NGƯỜI NHẬN</b></td>
+                </tr>
+                <tr>
+                    <td>Anh Nguyen Van Manh</td><td>Anh Nguyễn Đức Hùng</td>
+                </tr>
+                <tr>
+                    <td>132 Cộng Hòa</td><td>18 Tam Trinh</td>
+                </tr>
+                <tr>
+                    <td>Quận Tân Bình, Hồ Chí Minh</td><td>Quận Hai Bà Trưng, Hà Nội</td>
+                </tr>
+                <tr>
+                    <td colspan="2"><b>Phương thức thanh toán:</b> Thanh toán trực tuyến bằng OnePay (thẻ VISA/Master Card)</td>
+                </tr>
+            </table>
+            <div class="clr"></div>
+
+            <table id="tblDonHang">
+                <thead>
+                    <tr class="header">
+                        <td class="sttDh">STT</td>
+                        <td class="nameProd">TÊN SẢN PHẨM</td>      
+                        <td class="quanProd">SL</td>
+                        <td class="priceProd">ĐƠN GIÁ</td>
+                        <td class="totalProd">THÀNH TIỀN</td>
+                    </tr>
+                </thead>
+                <tr>
+                    <td class="sttDh">1</td>
+                    <td class="nameProd">Váy nữ thời trang đỏ</td>              
+                    <td class="quanProd">01</td>
+                    <td class="priceProd">300,000Đ</td>
+                    <td class="totalProd">300,000Đ</td>
+                </tr>
+                <tr>
+                    <td class="sttDh">2</td>
+                    <td class="nameProd">Váy nữ thời trang đỏ</td>
+                    <td class="quanProd">01</td>
+                    <td class="priceProd">300,000Đ</td>
+                    <td class="totalProd">300,000Đ</td>
+                </tr>
+                <tr>
+                    <td class="sttDh">3</td>
+                    <td class="nameProd">Váy nữ thời trang đỏ</td>
+                    <td class="quanProd">01</td>
+                    <td class="priceProd">300,000Đ</td>
+                    <td class="totalProd">300,000Đ</td>
+                </tr>
+
+                <tr class="footer">
+                    <td colspan="2"></td>
+                    <td class="left" colspan="2">Tổng tiền: </td>
+                    <td class="totalProd"><span style="Color: #ed0001">37,300,000 Đ</span></td>
+                </tr>
+                <tr class="footer">
+                    <td colspan="2"></td>
+                    <td class="left" colspan="2">Phí vận chuyển: </td>
+                    <td class="totalProd"><span style="Color: #ed0001">30,00,000 Đ</span></td>
+                </tr>
+                
+            </table><br />
+            <h4>Để được hỗ trợ trực tiếp xin liên hệ Modeoutlet qua số điện thoại 19001530 hoặc email: info@modeoutlet.vn</h4>
+            <h3>Một lần nữa ModeOulet xin cảm ơn bạn</h3>
+        </div>
+    </div>
+        
+        <div class="clear"></div>

@@ -1,0 +1,11 @@
+﻿@model IList<onsoft.Models.Product>
+@{
+    ViewBag.Title = "Quản lí sản phẩm";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+@foreach (var item in Model)
+{
+    <h2>@item.Name</h2>
+}

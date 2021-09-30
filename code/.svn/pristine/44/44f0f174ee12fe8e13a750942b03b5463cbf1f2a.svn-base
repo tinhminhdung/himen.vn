@@ -1,0 +1,26 @@
+﻿<div class="ui-widget-content ui-corner-top ui-corner-bottom">
+    <div id="toolbox">
+
+        <div style="float: right;" class="toolbox-content">
+
+            <table class="toolbar">
+                <tr>
+                   <td align="center">
+                        <a title="Thêm mới" class="toolbar btn btn-info" href="#"><i class="icon-plus"></i>&nbsp;
+                            Thêm mới</a>
+                    </td>
+
+                    <td align="center">                      
+                       @* <a class="toolbar btn btn-info" href="@Url.Action("DeleteAll", "News") "><i class="icon-trash"></i>&nbsp;Xóa </a>*@
+
+                        <input type="submit" value="&#xf014;" class="toolbar btn btn-info"
+                            data-title="Xóa" onclick="return confirm('Bạn có chắc chắn muốn xóa?');" /><i class="icon-trash"></i>&nbsp;Xóa 
+
+
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+</div>

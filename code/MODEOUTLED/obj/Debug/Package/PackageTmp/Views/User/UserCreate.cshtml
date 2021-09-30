@@ -1,0 +1,252 @@
+﻿@model onsoft.Models.User
+@{
+    ViewBag.Title = "Thêm mới người dùng";
+    Layout = "~/Views/Shared/_LayoutAdmins.cshtml";
+}
+
+@section Scripts
+{
+    <!-- Validate Data -->
+    <script type="text/javascript">
+
+        (function ($, W, D) {
+
+            var JQUERY4U = {};
+
+            JQUERY4U.UTIL =
+            {
+                setupFormValidation: function () {
+                    //validation rules
+                    $("#usercreate-form").validate({
+                        rules: {
+                            FullName: "required",
+                            UserName: "required",
+                            Password: "required",
+                            Permission: "required",
+                            Email: {
+                                required: true,
+                                email: true
+                            }
+                        },
+                        messages: {
+                            FullName: "Phải nhập tên đầy đủ",
+                            UserName: "Phải nhập username",
+                            Password: "Phải nhập password",
+                            Permission: "Phải nhập quyền",
+                            Email: {
+                                required: "Phải nhập email",
+                                email: "Email phải đúng định dạng"
+                            }
+                        },
+                        submitHandler: function (form) {
+                            form.submit();
+                        }
+                    });
+                }
+            }
+
+            //when the dom has loaded setup form validation rules
+            $(D).ready(function ($) {
+                JQUERY4U.UTIL.setupFormValidation();
+            });
+
+        })(jQuery, window, document);
+    </script>
+    <!-- End Validate Data -->
+}
+
+<div class="container-fluid">
+    <div style="width: 100%; margin: 0 auto;">
+
+        <div id="Breadcrumb" class="Block Breadcrumb ui-widget-content ui-corner-top ui-corner-bottom">
+            <ul>
+                <li><a href='../../User/UserIndex'><i class="icon-home" style="font-size: 14px;"></i>Trang chủ</a></li>
+                <li class='SecondLast'><a href='../../User/UserIndex'>Danh sách người dùng</a></li>
+                <li class='Last'><span>Thêm mới người dùng</span></li>
+            </ul>
+        </div>
+
+        <div style="clear: both;"></div>
+
+        @using (Html.BeginForm("UserCreate", "User", FormMethod.Post, new { enctype = "multipart/form-data", @id = "usercreate-form", @class = "validate-form" }))
+        {
+            <div id="cph_Main_ContentPane">
+                <div class="widget">
+                    <!-- widget-title -->
+                    <div class="widget-title">
+                        <h4><i class="icon-reorder"></i>&nbsp;Thêm mới người dùng</h4>
+
+                        <!-- Button -->
+                        <div class="ui-widget-content ui-corner-top ui-corner-bottom">
+                            <div id="toolbox">
+                                <div style="float: right;" class="toolbox-content">
+
+                                    <table class="toolbar">
+                                        <tr>
+                                            <td align="center">
+
+                                                <button type="submit" class="toolbar btn btn-info"><i class="icon-save"></i>&nbsp;Ghi lại</button>
+
+                                            </td>
+                                            <td align="center">
+
+                                                <a title="Quay lại" class="toolbar btn btn-info" href="../../User/UserIndex"><i class="icon-chevron-left"></i>&nbsp;Trở về</a>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Button -->
+
+                        <div id="hiddenToolBarScroll" class="scrollBox hidden">
+                            <h4>
+                                <i class="icon-reorder"></i>&nbsp;Thêm mới người dùng</h4>
+
+                            <div class="FloatMenuBar">
+
+                                <div class="ui-widget-content ui-corner-top ui-corner-bottom">
+                                    <div id="Div1">
+
+                                        <div style="float: right;" class="toolbox-content">
+
+                                            <table class="toolbar">
+                                                <tr>
+                                                    <td align="center">
+                                                        <button type="submit" class="toolbar btn btn-info"><i class="icon-save"></i>&nbsp;Ghi lại</button>
+                                                    </td>
+                                                    <td align="center">
+                                                        <a title="Quay lại" class="toolbar btn btn-info" href="../../User/UserIndex"><i class="icon-chevron-left"></i>&nbsp;Trở về</a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- widget-title -->
+
+                    <!-- widget-body -->
+                    <div class="widget-body">
+
+
+                        <div id="tabs">
+                            <div id="tabs-1">
+
+                                <table class="admintable" style="width: 100%;">
+
+                                    <tr>
+                                        <td class="key">Tên đầy đủ <span class="Required">*</span>
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(model => model.FullName, new { @class = "text" })
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Tên đầy đủ
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    Tên đầy đủ 
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="key">UserName <span class="Required">*</span>
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(model => model.UserName, new { @class = "text" })
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    UserName
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    UserName
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="key">Password <span class="Required">*</span>
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(model => model.Password, new { @class = "text" })
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Password
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    Password
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="key">Email <span class="Required">*</span>
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(model => model.Email, new { @class = "text" })
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Email
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    Email
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="key">Quyền <span class="Required">*</span>
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(model => model.Permission,new { @class = "text" })
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Quyền
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    Quyền
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="key">Kích hoạt
+                                        </td>
+                                        <td>
+                                            @Html.CheckBox("Active", true)
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Kích hoạt
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    Kích hoạt
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>
+
+                                </table>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- widget-body -->
+
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

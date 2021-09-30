@@ -1,0 +1,104 @@
+﻿@model IList<onsoft.Models.Customer>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutMember.cshtml";
+}
+<div class="wrapper">
+    <div class="left-slidebar">
+        <div class="header-left-slidebar">
+            <h4>Tài khoản</h4>
+            <hr />
+        </div>
+        <div class="content-left-slidebar">
+            <ul>
+                <li style="line-height: 28px">
+                    <a href="#">Tài khoản của tôi</a>
+                </li>
+                <li style="line-height: 28px">
+                    <a href="#">Thông tin tài khoản</a>
+                </li>
+                <li style="line-height: 28px">
+                    <a href="#">Sổ địa chỉ</a>
+                </li>
+                <li style="line-height: 28px">
+                    <a href="#">Đơn đặt hàng của tôi</a>
+                </li>
+                <li style="line-height: 28px">
+                    <a href="#">Danh sách mong muốn</a>
+                </li>
+                <li style="line-height: 28px">
+                    <a href="#">Mã giảm giá của tôi</a>
+                </li>
+                <li style="line-height: 28px">
+                    <a href="#">Lời mời</a>
+                </li>
+            </ul>
+        </div>
+        <div class="bottom-left-slidebar">
+        </div>
+    </div>
+    <div class="container-main">
+        @*<div class="header-container-main">
+            Đơn hàng của tôi
+            <hr />
+        </div>*@
+        <div class="center-container-main">
+            <!-- navi-table -->
+            <div class="navi-table">
+                <table style="width: 100%; margin-left: 5px">
+                    <tr>
+                        <th style="width: 50%;"></th>
+                        <th style="width: 50%;"></th>
+                    </tr>
+                </table>
+            </div>
+            <!-- navi-table -->
+
+            <div class="mainContent">
+                <h2 >Sổ địa chỉ.</h2>
+
+
+                <div class="slideFull ">
+                    <div class="slideHalf w49p fleft">
+                        <div class="slideContent">
+                            <p class="pTitle">Địa chỉ khách hàng.</p>
+                            <span>Tên: Tuấn Võ Duy</span>
+                            <span>Địa chỉ (Số nhà, đường):</span>
+                            Phòng 400, tầng 4 tòa nhà Thí nghiệm ĐH Xây Dựng HN, 55 Giải Phóng, Hà Nội<br>
+                            <span flag="postcode" class="postcode"></span>
+                            <span class="cityName">Hai Bà Trưng - Hà Nội</span>
+                            <span>Điện thoại:</span>0989858285
+                            <div class="btn-pos">
+                                <a class="fright btn btn-info" href="#">THAY ĐỔI</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="slideHalf w49p fright">
+                        <div class="slideContent">
+                            <p class="pTitle">Địa chỉ giao hàng.</p>
+                            <span>Tên: Tuấn Võ Duy</span>
+                            <span>Địa chỉ (Số nhà, đường):</span>
+                            Phòng 400, tầng 4 tòa nhà Thí nghiệm ĐH Xây Dựng HN, 55 Giải Phóng, Hà Nội<br>
+                            <span flag="postcode" class="postcode"></span>
+                            <span >Hai Bà Trưng - Hà Nội</span>
+                            <span>Điện thoại:</span>0989858285
+                            <div class="btn-pos">
+                                <a class="fright btn btn-info" href="#">THAY ĐỔI</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+            <!--aaaaaaaaaaaaaaaaaaaa-->
+
+        </div>
+    </div>
+</div>
+

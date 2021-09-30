@@ -1,0 +1,114 @@
+﻿@model MODEOUTLED.ViewModels.ShoppingCartViewModel
+@{
+    ViewBag.Title = "Thông tin đơn hàng - Ilovestyle.vn";
+    Layout = "~/Views/Shared/_LayoutSub.cshtml";
+}
+<div class="detail">
+<div class="titlelink">
+    <ul>
+        <li><a href='/'><i class="icon-home" style="font-size: 14px;"></i>Trang chủ</a></li>
+        <li class='Last'><span>Thông tin đơn hàng</span></li>
+    </ul>
+</div>
+<div class="checkout">
+<div class="divbtnCheckout">
+    <a href="/Home/Index" class="backToBuy">Tiếp tục mua hàng</a>
+    @if(Session["Email"]==null)
+    {
+        <a href="/Home/BuyNow" class="thanhtoan">Thanh toán</a>
+    }
+    else
+    {
+        <a href="/Home/BuyNow" class="thanhtoan">Thanh toán</a>
+    }
+</div>
+@using (Html.BeginForm())
+{ 
+<div>
+    @if(Model!=null)
+    {
+        for (int i = 0; i < Model.CartItems.Count; i++)
+        {
+            <p style="color:red;">
+                @Html.ValidationMessageFor(model => model.CartItems[i].count)
+            </p>
+        }
+    }
+</div>
+<div id="update-message" style="padding-bottom: 10px;"> 
+</div> 
+<table class="order-table" cellpadding="0" cellspacing="0">
+    <tr class="order-table-trheader">
+        <th>
+        </th>
+        <th>
+            Sản Phẩm
+        </th>
+        <th>
+            Giá
+        </th>  
+        <th>
+            Số Lượng
+        </th>  
+        <th>
+            Thành Tiền
+        </th> 
+        <th></th>  
+    </tr>
+        @{int ix = 0;} 
+    @if(Model!=null)
+    {
+        foreach (var item in Model.CartItems)
+        {
+            <tr id="row-@item.productId"> 
+                <td class="order-table-td" style="border-right: 1px solid #d0d0d0; width: 70px">
+                    <a href="/@item.productTag"><img src="@item.productImage" style="width:70px; height:70px; border:none; margin: 3px;" /></a>
+                </td>
+                <td class="order-table-td" style="border-right: 1px solid #d0d0d0; width: 150px">
+                    <a href="/@item.productTag">@item.productName</a>
+                </td>
+                <td class="order-table-td" style="border-right: 1px solid #d0d0d0">
+                    @{@onsoft.Models.StringClass.Format_Price(item.price.ToString())} VNĐ
+                </td>
+                <td class="order-table-td" style="border-right: 1px solid #d0d0d0">
+                   @Html.TextBoxFor(model => model.CartItems[ix].count, 
+                    new { style = "width:50px; text-align:center; border: 1px solid #c9c9c9;",
+                        onkeyup = "clearUpdateMessage();",
+                        onchange = "clearUpdateMessage();", min="1",max="100", @class="count"
+                    }) 
+                <a href="javascript:;" title="Cập nhật số lượng" class="RefreshQuantity" data-id="@item.productId" txt-id="CartItems_@(ix)__count">Cập Nhật</a>               
+                </td>
+                <td class="order-table-td" style="border-right: 1px solid #d0d0d0">
+                    @{@onsoft.Models.StringClass.Format_Price(item.total.ToString())} VNĐ
+                </td>
+                <td class="order-table-trOdd"  style="text-align:center; width: 30px;">
+                    @*<a href="javascript:;" title="Cập nhật số lượng" class="RefreshQuantity" data-id="@item.productId" txt-id="CartItems_@(ix)__count">Cập Nhật</a>*@         
+                    <a href="javascript:;" title="Xóa khỏi giỏ hàng" class="RemoveLink" data-id="@item.productId">Xóa</a>
+                </td>
+            </tr>    
+            ix++;        
+        }  
+    <tr> 
+        <td style="text-align:right; padding-right:10px; font-weight:bold;" colspan="4"> 
+            Tổng Tiền:
+        </td>                    
+        <td id="cart-total" style="text-align:center; color: red; font-weight: bold" colspan="2"> 
+            @{@onsoft.Models.StringClass.Format_Price(Model.CartTotal.ToString())} VNĐ
+        </td> 
+    </tr>   
+    }
+</table>
+}
+<div class="divbtnCheckout">
+    <a href="/Home/Index" class="backToBuy">Tiếp tục mua hàng</a>
+    @if(Session["Email"]==null)
+    {
+        <a href="/Home/BuyNow" class="thanhtoan">Thanh toán</a>
+    }
+    else
+    {
+        <a href="/Home/BuyNow" class="thanhtoan">Thanh toán</a>
+    }
+</div>
+</div>
+    </div>

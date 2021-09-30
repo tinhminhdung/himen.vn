@@ -1,0 +1,70 @@
+﻿<!--Sử dụng cho autocomplete-->
+<link href="~/Content/themes/base/jquery.ui.all.css" rel="stylesheet" type="text/css" />
+@*<script type="text/javascript">
+    $(function () {
+        $('#sologan').totemticker({
+            row_height: '100px',
+            next: '#ticker-next',
+            previous: '#ticker-previous',
+            stop: '#stop',
+            start: '#start',
+            mousestop: true,
+        });
+    });
+	</script>*@
+
+<!--Sử dụng cho autocomplete-->
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('*[data-autocomplete-url]')
+    .each(function () {
+        $(this).autocomplete({
+            source: $(this).data("autocomplete-url")
+        });
+    });
+    });
+</script>
+
+<!--Reset ô tìm kiếm-->
+<script type="text/javascript">
+    $(function () {
+        $('#ProName').focus(function () {
+            $(this).val('');
+        });
+    });
+</script>
+@*@if (Session["Email"] == null)
+{
+    <div class="logintop">
+        <a href="/Pages/dangnhap"><span>Đăng nhập</span></a><p>|</p>
+        <a href="/Pages/dangki"><span>Đăng ký</span></a>
+    </div>
+}
+else
+{
+    Html.RenderAction("information", "VCustomer");
+}*@
+<div class="sologan">
+        @*<ul id="sologan">
+            <li>Đam Mê Sự Hoàn Hảo</li>
+            <li>A Passion to Perfection</li>
+        </ul>*@
+<object height="30" width="200" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,32,18" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000">
+<param name="src" value="/Bannerflash01.swf">
+<param name="wmode" value="transparent">
+<param name="base" value="/bvdk/">
+<param name="name" value="/Bannerflash01.swf"><embed height="30" width="200" name="/Bannerflash01.swf" base="/bvdk/" wmode="transparent" src="/Bannerflash01.swf" type="application/x-shockwave-flash">
+</object>
+    </div>
+<div class="box-search">
+    @using (Html.BeginForm("Search", "Default", FormMethod.Post, new { @id = "search" }))
+    {
+        <p>
+            @Html.TextBox("ProName", ViewBag.CurrentProName as string, new { data_autocomplete_url = Url.Action("Autocomplete"), @Value = "Nhập tên sản phẩm", @Style = "color:#999999;", @id = "ProName" })
+        </p>
+        <p>
+            <input type="submit" name="submit" value="Tìm kiếm" id="searchsubmit" />
+        </p>
+    }
+</div>
+<div class="box-cart">@{Html.RenderAction("CartIcon", "Cart");}</div>

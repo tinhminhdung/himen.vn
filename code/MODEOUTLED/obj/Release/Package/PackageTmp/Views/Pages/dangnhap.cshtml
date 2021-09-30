@@ -1,0 +1,38 @@
+﻿@model MODEOUTLED.ViewModels.CustomerForm.Dangnhap
+@{
+    ViewBag.Title = "Đăng nhập thành viên - Ilovestyle.vn";
+    Layout = "~/Views/Shared/_LayoutDefault.cshtml";
+}
+<div class="detail">
+<div class="titlelink">
+    <ul>
+        <li><a href='/'><i class="icon-home" style="font-size: 14px;"></i>Trang chủ</a></li>
+        <li class='Last'><span>Đăng nhập thành viên</span></li>
+    </ul>
+</div>
+    <div class="dangki">
+    @using(Html.BeginForm("dangnhap","Pages",FormMethod.Post))
+    {
+       <div class="logonNow">
+        <table>
+            <tr>
+                <th>Email</th>
+                <td>@Html.TextBox("Email", "", new { @placeholder="Tài khoản Email"})@Html.ValidationMessageFor(m=>m.Email)</td>
+            </tr>
+            <tr>
+                <th>Mật khẩu</th>
+                <td>@Html.TextBox("Pass","", new { type="password", @placeholder="Mật khẩu đăng nhập"})@Html.ValidationMessageFor(m=>m.Pass)</td>
+            </tr>
+        </table>
+        <input type="submit" value="Đăng nhập" class="btnSubmit" /><br />
+        <div class="divBtn"><a href="/Pages/dangki">Bạn chưa có tài khoản?</a> | <a href="/Pages/forget_pass">Bạn quên mật khẩu</a></div>
+    </div>
+        <div class="buyNowNotLogon">
+        <h3>Khách hàng mới</h3>
+        <p>Mua sắm nhanh gọn, tiện lợi, không cần đăng ký</p>
+        <p>Tiến hành thanh toán ngay</p>
+        <a href="/Home/BuyNow">Thanh toán không cần đăng kí</a>
+    </div>
+    }
+    </div>
+    </div>

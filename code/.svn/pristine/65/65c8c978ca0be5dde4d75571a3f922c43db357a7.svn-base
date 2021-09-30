@@ -1,0 +1,18 @@
+﻿<div class="title-box upp"><span>Nhiều người mua</span></div>
+<script type="text/javascript">
+		$(function(){
+			$('#vertical-ticker').totemticker({
+				row_height	:	'100px',
+				next		:	'#ticker-next',
+				previous	:	'#ticker-previous',
+				stop		:	'#stop',
+				start		:	'#start',
+				mousestop	:	true,
+			});
+		});
+	</script>
+<div class="news-left">
+    <ul id="vertical-ticker">
+        @Html.Raw(ViewBag.View)
+    </ul>
+</div>

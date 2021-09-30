@@ -1,0 +1,389 @@
+﻿@model onsoft.Models.Config
+@{
+    ViewBag.Title = "ConfigEditot";
+    Layout = "~/Views/Shared/_LayoutAdmins.cshtml";
+}
+
+@section Scripts
+{
+    <!-- Validate Data -->
+    <script type="text/javascript">
+
+        (function ($, W, D) {
+
+            var JQUERY4U = {};
+
+            JQUERY4U.UTIL =
+            {
+                setupFormValidation: function () {
+                    //validation rules
+                    $("#config-form").validate({
+                        rules: {
+                            Mail_Smtp: "required",
+                            Mail_Port: "required",
+                            Mail_Info:{
+                                required: true,
+                                email: true
+                            },
+                            Mail_Noreply: {
+                                required: true,
+                                email: true
+                            },
+                            Mail_Password: {
+                                required: true,
+                                minlength: 6
+                            }
+
+                            
+                        },
+                        messages: {
+                            Mail_Smtp: "Nhập máy chủ gửi mail",
+                            Mail_Port: "Nhập cổng máy chủ gửi mail",
+                            Mail_Info: {
+                                required: "Nhập mail nhận liên hệ",
+                                email: "Nhập đúng định dạng email"
+                            },
+                            Mail_Noreply: {
+                                required: "Nhập mail nhận liên hệ",
+                                email: "Nhập đúng định dạng email"
+                            },
+                            Mail_Password: {
+                                required: "Nhập mật khẩu",
+                                minlength: "Nhập tối thiểu {0} kí tự"
+                            }
+
+                        },
+                        submitHandler: function (form) {
+                            form.submit();
+                        }
+                    });
+                }
+            }
+
+            //when the dom has loaded setup form validation rules
+            $(D).ready(function ($) {
+                JQUERY4U.UTIL.setupFormValidation();
+            });
+
+        })(jQuery, window, document);
+    </script>
+    <!-- End Validate Data -->
+}
+
+<div class="container-fluid">
+    <div style="width: 100%; margin: 0 auto;">
+
+        <div id="Breadcrumb" class="Block Breadcrumb ui-widget-content ui-corner-top ui-corner-bottom">
+            <ul>
+                <li><a href='../../Admins/Default'><i class="icon-home" style="font-size: 14px;"></i>Trang chủ</a></li>
+                <li class='SecondLast'><a href='../../Admins/ConfigEditot'>Cập nhật cấu hình</a></li>
+            </ul>
+        </div>
+
+        <div style="clear: both;"></div>
+
+        @using (Html.BeginForm("ConfigEditot", "Admins", FormMethod.Post, new { enctype = "multipart/form-data", @id = "config-form", @class = "validate-form" }))
+        {
+            <div id="cph_Main_ContentPane">
+                <div class="widget">
+                    <!-- widget-title -->
+                    <div class="widget-title">
+                        <h4><i class="icon-reorder"></i>&nbsp;Cấu hình</h4>
+
+                        <!-- Button -->
+                        <div class="ui-widget-content ui-corner-top ui-corner-bottom">
+                            <div id="toolbox">
+                                <div style="float: right;" class="toolbox-content">
+
+                                    <table class="toolbar">
+                                        <tr>
+                                            <td align="center">
+
+                                                <button type="submit" class="toolbar btn btn-info"><i class="icon-save"></i>&nbsp;Ghi lại</button>
+
+                                            </td>
+                                            <td align="center">
+
+                                                <a title="Quay lại" class="toolbar btn btn-info" href="../../Admins/Default"><i class="icon-chevron-left"></i>&nbsp;Trở về</a>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Button -->
+
+                        <div id="hiddenToolBarScroll" class="scrollBox hidden">
+                            <h4>
+                                <i class="icon-reorder"></i>&nbsp;Cấu hình</h4>
+                            <div class="FloatMenuBar">
+
+                                <div class="ui-widget-content ui-corner-top ui-corner-bottom">
+                                    <div id="Div1">
+
+                                        <div style="float: right;" class="toolbox-content">
+
+                                            <table class="toolbar">
+                                                <tr>
+                                                    <td align="center">
+                                                        <button type="submit" class="toolbar btn btn-info"><i class="icon-save"></i>&nbsp;Ghi lại</button>
+                                                    </td>
+                                                    <td align="center">
+                                                        <a title="Quay lại" class="toolbar btn btn-info" href="../../Admins/Default"><i class="icon-chevron-left"></i>&nbsp;Trở về</a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- widget-title -->
+
+                    <!-- widget-body -->
+                    <div class="widget-body">
+                        <div id="tabs">
+                            <div id="tabs-1">
+
+                                <table class="admintable" style="width: 100%;">
+
+                                    @*<tr>
+                                         <td class="key"> Máy chủ gửi mail <span class="Required">*</span></td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.Mail_Smtp, new { @class = "text" })
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Title
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    content (Example: xxx)
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                         <td class="key"> Cổng gửi mail <span class="Required">*</span></td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.Mail_Port, new { @class = "text", @onkeypress = "OnlyInputNumber(0)"})
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Title
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    content (Example: xxx)
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>*@
+                                    @*<tr>
+                                         <td class="key"> Mail nhận liên hệ <span class="Required">*</span></td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.Mail_Info, new { @class = "text" })
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Title
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    content (Example: xxx)
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                         <td class="key"> Mail gửi thông tin <span class="Required">*</span></td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.Mail_Noreply, new { @class = "text" })
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Title
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    content (Example: xxx)
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                         <td class="key"> Mật khẩu gửi mail <span class="Required">*</span></td>
+                                        <td>
+                                            @Html.PasswordFor(m=>m.Mail_Password, new { @class="text"})
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Title
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    content (Example: xxx)
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>*@
+                                    <tr>
+                                         <td class="key"> Thông tin địa chỉ, điện thoại
+                                         </td>
+                                        <td>
+                                            @Html.TextArea("Contact", new { @style="width: 505px"})
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Thông tin địa chỉ, điện thoại hiển thị phía trên ô tìm kiếm ở trang chủ
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    content (Example: ĐT: 0989 89 89 89 - ĐC: 23 Láng Hạ, Ba Đình, Hà Nội)
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                         <td class="key"> Thông tin copyright</td>
+                                        <td>
+                                            @Html.TextArea("Copyright")
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Title
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    content (Example: xxx)
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                         <td class="key"> Thông tin thanh toán</td>
+                                        <td>
+                                            @Html.TextArea("Thanhtoan")
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Thông tin thanh toán
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    Thông tin thanh toán
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                         <td class="key"> Thông tin cảnh báo</td>
+                                        <td>
+                                            @Html.TextArea("Canhbao")
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Thông tin cảnh bảo với khách hang
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    Thông tin cảnh bảo với khách hang
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>
+                                   @* <tr>
+                                         <td class="key"> Google Map </td>
+                                        <td>
+                                            @Html.TextArea("GoogleMap")
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Title
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    content (Example: xxx)
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                         <td class="key"> Video
+                                         </td>
+                                        <td>
+                                            @Html.TextArea("Video")
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Title
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    content (Example: xxx)
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>*@
+                                    
+                                    <tr>
+                                         <td class="key"> Tiêu đề trang chủ
+                                         </td>
+                                        <td>
+                                            @Html.TextArea("Title", new { @style="width: 505px"})
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Title
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    content (Example: xxx)
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                         <td class="key"> Keyword meta
+                                         </td>
+                                        <td>
+                                            @Html.TextArea("Keyword", new { @style="width: 505px"})
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Keyword
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    content (Example: quần áo nữ)
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                         <td class="key"> Description meta
+                                         </td>
+                                        <td>
+                                            @Html.TextArea("Description", new { @style="width: 505px"})
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Title
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    content (Example: Ilovestyle bán quần áo nữ đẹp rẻ)
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>
+
+                                </table>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- widget-body -->
+
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<script type="text/javascript">
+    var editor;
+    function createEditor(languageCode, id) {
+        var editor = CKEDITOR.replace(id, {
+            language: languageCode
+        });
+    }
+
+    $(function () {
+        createEditor('vi', 'Copyright');
+        createEditor('vi', 'Thanhtoan');
+        createEditor('vi', 'Canhbao');
+    });
+</script>

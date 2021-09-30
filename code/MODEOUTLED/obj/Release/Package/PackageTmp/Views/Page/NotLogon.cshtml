@@ -1,0 +1,153 @@
+﻿@{
+    ViewBag.Title = "NotLogon";
+    Layout = "~/Views/Shared/_LayoutDefault2.cshtml";
+}
+
+ <!--BEGIN: welcome-->
+         <div class="row last">
+            <!--BEGIN: divider arrow-->
+            <div class="title-divider span12">
+                <div class="divider-arrow"></div>                                    
+                <h3>ĐĂNG NHẬP</h3>    
+            </div><!--END: divider arrow-->
+             </div>
+        <h2>Bạn đã có tài khoản tại Modeoulet			</h2>
+        <p>Vui lòng đăng nhập để mua hàng nhanh chóng. Click vào đây nếu bạn quên mật khẩu						</p>
+          <div class="logonNow">
+        <h3>Đăng nhập</h3>
+        <table>
+            <tr>
+                <th>Email</th><td><input type="text" /></td>
+            </tr>
+            <tr>
+                <th>Mật khẩu</th><td><input type="password" /></td>
+            </tr>
+        </table>
+            <a href="/Pages/dangnhap">Đăng nhập</a>
+    </div>
+    <div class="buyNowNotLogon">
+        <h3>Lần đầu tiên bạn mua hàng tại Modeoutlet?</h3>
+        <p>Bạn hãy click vào nút "Tiếp tục mua hàng" mà không cần đăng nhập				</p>
+        <a href="/Pages/order_pay?estore=1">Tiếp tục mua hàng	</a>
+    </div>
+       <p style="float:right">Bạn nên đăng ký tài khoản để nhận được nhiều các ưu đãi từ chúng tôi:<a href="#"> Đăng ký</a></p>
+<!--   <table id="table-thanhtoan" style="float:left">
+    <tr>
+        <th style="width:330px; float:left;">1. Thông tin giao hàng  <img src="/images/mnhon.png" /></th>
+        <th style="width:470px; float:left;">2. Vận chuyển & Thanh toán</th>
+        <th style="width:350px; float:left;"> <img src="/images/mnhon.png" style="right:350px;" />3. Giỏ hàng</th>
+    </tr>
+       </table>-->
+         <div class="clear"></div>
+<div class="row" style="margin-bottom: 0">
+        
+            <div class="span12">
+                <!--BEGIN: divider arrow-->
+                <div class="title-divider">
+                    <div class="divider-arrow"></div>                                
+                    <h3>sản phẩm bạn vừa xem</h3>       
+                </div><!--END: divider arrow-->
+            </div>
+         </div>
+<div class="spquantam">
+         <div class="row">   
+            <div class="span12">
+                <div id="latest-work" class="carousel btleft">
+                    <div class="carousel-wrapper">
+                        <ul class="da-thumbs">
+
+                        	<li>
+                                <img src="/example/latest1.jpg" />
+                                <div>
+                                    <a href="example/view.jpg" class="p-view" data-rel="prettyPhoto"></a>
+                                    <a href="portfolio-single.html" class="p-link"></a>
+                                </div>
+                                
+                                <a href="#" class="sp_name">Đầm công sở Korea 2013</a>
+                                <span class="gia_sp">GÍA BÁN: <strong>10.500.000VNĐ</strong></span><span class="gia_cu"><del>11.700.000VNĐ</del></strong></span>
+                                <a href="#" class="tt_sp">Thanh toán</a>
+                                <a href="#" class="gh_sp">Giỏ hàng</a>
+                            </li>
+							
+                            <li>
+                                <img src="/example/latest6.jpg" />
+                                <div>
+                                    <a href="example/view.jpg" class="p-view" data-rel="prettyPhoto"></a>
+                                    <a href="portfolio-single.html" class="p-link"></a>
+                                </div>
+                                
+                                <a href="#" class="sp_name">Đầm công sở Korea 2013</a>
+                                <span class="gia_sp">GÍA BÁN: <strong>10.500.000VNĐ</strong></span><span class="gia_cu"><del>11.700.000VNĐ</del></strong></span>
+                                <a href="#" class="tt_sp">Thanh toán</a>
+                                <a href="#" class="gh_sp">Giỏ hàng</a>
+                            </li>
+                            
+                            <li>
+                                <img src="/example/latest3.jpg" />
+                                <div>
+                                    <a href="example/view.jpg" class="p-view" data-rel="prettyPhoto"></a>
+                                    <a href="portfolio-single.html" class="p-link"></a>
+                                </div>
+                                
+                                <a href="#" class="sp_name">Đầm công sở Korea 2013</a>
+                                <span class="gia_sp">GÍA BÁN: <strong>10.500.000VNĐ</strong></span><span class="gia_cu"><del>11.700.000VNĐ</del></strong></span>
+                                <a href="#" class="tt_sp">Thanh toán</a>
+                                <a href="#" class="gh_sp">Giỏ hàng</a>
+                            </li>
+                            
+                            <li>
+                                <img src="/example/latest4.jpg" />
+                                <div>
+                                    <a href="example/view.jpg" class="p-view" data-rel="prettyPhoto"></a>
+                                    <a href="portfolio-single.html" class="p-link"></a>
+                                </div>
+                                
+                                <a href="#" class="sp_name">Đầm công sở Korea 2013</a>
+                                <span class="gia_sp">GÍA BÁN: <strong>10.500.000VNĐ</strong></span><span class="gia_cu"><del>11.700.000VNĐ</del></strong></span>
+                                <a href="#" class="tt_sp">Thanh toán</a>
+                                <a href="#" class="gh_sp">Giỏ hàng</a>
+                            </li>
+                            
+                            <li>
+                                <img src="/example/latest5.jpg" />
+                                <div>
+                                    <a href="example/view.jpg" class="p-view" data-rel="prettyPhoto"></a>
+                                    <a href="portfolio-single.html" class="p-link"></a>
+                                </div>
+                                
+                                <a href="#" class="sp_name">Đầm công sở Korea 2013</a>
+                                <span class="gia_sp">GÍA BÁN: <strong>10.500.000VNĐ</strong></span><span class="gia_cu"><del>11.700.000VNĐ</del></strong></span>
+                                <a href="#" class="tt_sp">Thanh toán</a>
+                                <a href="#" class="gh_sp">Giỏ hàng</a>
+                            </li>
+                            
+                            <li>
+                                <img src="/example/latest2.jpg" />
+                                <div>
+                                    <a href="example/view.jpg" class="p-view" data-rel="prettyPhoto"></a>
+                                    <a href="portfolio-single.html" class="p-link"></a>
+                                </div>
+                                
+                                <a href="#" class="sp_name">Đầm công sở Korea 2013</a>
+                                <span class="gia_sp">GÍA BÁN: <strong>10.500.000VNĐ</strong></span><span class="gia_cu"><del>11.700.000VNĐ</del></strong></span>
+                                <a href="#" class="tt_sp">Thanh toán</a>
+                                <a href="#" class="gh_sp">Giỏ hàng</a>
+                            </li>
+
+                        </ul>
+                    </div><!--END carousel-wrapper-->
+                </div><!--END latest-work-->  
+
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        $('#latest-work').elastislide({
+                            imageW: 240,
+                            margin: 70
+                        });
+                    });
+                </script>
+            </div><!--END span12-->
+
+       </div><!--BEGIN: latest work-->
+       </div>
+ 

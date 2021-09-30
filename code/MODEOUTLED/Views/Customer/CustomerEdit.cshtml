@@ -1,0 +1,106 @@
+﻿@model onsoft.Models.Customer
+@{
+    ViewBag.Title = "Chỉnh sửa thông tin khách hàng";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!-- Validate Data -->
+<script src="~/Scripts/jquery.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+
+<script type="text/javascript">
+
+    (function ($, W, D) {
+
+        var JQUERY4U = {};
+
+        JQUERY4U.UTIL =
+        {
+            setupFormValidation: function () {
+                //validation rules
+                $("#customeredit-form").validate({
+                    rules: {
+                        Name: "required",
+                        Address: "required",
+                        Tel: "required",
+                        Password: "required",
+                        Email: {
+                            required: true,
+                            email: true
+                        }
+                    },
+                    messages: {
+                        Name: "Phải nhập họ tên",
+                        Address: "Phải nhập địa chỉ",
+                        Tel: "Phải nhập số điện thoại",
+                        Password: "Phải nhập mật khẩu",
+                        Email: {
+                            required: "Phải nhập email",
+                            email: "Email phải hợp lệ"
+                        }
+                    },
+                    submitHandler: function (form) {
+                        form.submit();
+                    }
+                });
+            }
+        }
+
+        //when the dom has loaded setup form validation rules
+        $(D).ready(function ($) {
+            JQUERY4U.UTIL.setupFormValidation();
+        });
+
+    })(jQuery, window, document);
+</script>
+<!-- End Validate Data -->
+
+<h2>@ViewBag.Title</h2>
+@using (Html.BeginForm("CustomerEdit", "Customer", FormMethod.Post, new { @id = "customeredit-form", @class = "validate-form" }))
+{
+    @Html.ValidationSummary(true)
+    <table class="TableUpdate" border="1">
+        <tr>
+            <td class="Control" colspan="2">
+                <ul>
+                    <li>
+                        <input type="submit" value="Ghi lại " class="uupdate" /></li>
+                    <li>@Html.ActionLink("Trở lại", "CustomerIndex", "", new { @class = "uback" })</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <th>Họ và tên<span class="validlabel"> (*)</span></th>
+            <td>@Html.TextBoxFor(n => n.Name)</td>
+        </tr>
+        <tr>
+            <th>Địa chỉ<span class="validlabel"> (*)</span></th>
+            <td>@Html.TextBoxFor(n => n.Address)</td>
+        </tr>
+        <tr>
+            <th>Số điện thoại<span class="validlabel"> (*)</span></th>
+            <td>@Html.TextBoxFor(n => n.Tel)</td>
+        </tr>
+        <tr>
+            <th>Mật khẩu<span class="validlabel"> (*)</span></th>
+            <td>@Html.TextBoxFor(n => n.Password, new { type="password"})</td>
+        </tr>
+        <tr>
+            <th>Email<span class="validlabel"> (*)</span></th>
+            <td>@Html.TextBoxFor(n => n.Email)</td>
+        </tr>
+        <tr>
+            <th>Kích hoạt</th>
+            <td>@Html.CheckBoxFor(m => m.Status)</td>
+        </tr>
+        <tr>
+            <td class="Control" colspan="2">
+                <ul>
+                    <li>
+                        <input type="submit" value="Ghi lại " class="uupdate" /></li>
+                    <li>@Html.ActionLink("Trở lại", "CustomerIndex", "", new { @class = "uback" })</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+}

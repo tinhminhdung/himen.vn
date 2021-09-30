@@ -1,0 +1,401 @@
+﻿@{
+    ViewBag.Title = "DetailProduct";
+    Layout = "~/Views/Shared/_LayoutDefault2.cshtml";
+}
+
+<!--BEGIN: Detail-->
+
+             <div class="box1">
+                <script type="text/javascript">
+                    jQuery(document).ready(function () {
+                        jQuery('#viewMore').click(function () {
+                            var text = jQuery('p#des span').attr("data");
+                            var value = jQuery('p#des span').html();
+                            var btn = jQuery('#viewMore').html();
+                            if (btn == "Thu gọn") {
+                                jQuery('p#des span').attr("data", value);
+                                jQuery('p#des span').text(text);
+                                jQuery(this).text("Xem thêm");
+                            }
+                            else {
+                                jQuery('p#des span').attr("data", value);
+
+                                jQuery('p#des span').animate({});
+
+                                jQuery('p#des span').text(text);
+                                jQuery('#viewMore').html("Thu gọn");
+                            }
+                        });
+
+                        jQuery('ul.size li').click(function () {
+                            jQuery('ul.size li').css({ border: "2px solid #D7D7D7", Color: "#2A2A2A" });
+                            jQuery(this).css({ border: "2px solid #db8da5", Color: "#bc2050" });
+                        });
+                    })
+                </script>
+                <div id="proHead">
+                    <div id="imgPro">
+                        <img id="imgLarge" src="/example/latest1.jpg" />
+                        <div id="iconZoom"></div>
+                    </div>
+                    <div id="infoPro">
+                        <p id="titPro">Đầm xòe cách điệu xẻ lưng</p>
+                        <p>Mã SP: <span class="value">TT8824</span></p>
+                        Đầm kiểu in họa tiết da báo, màu nâu trên nền gam màu xanh xám của thương hiệu Inner Circle<br/>
+                        - Chất liệu voan cát<br/>
+                        - Cổ tròn<br/>
+                        - Tay ngắn<br/>
+                        - Khoét giọt nước có cài nút phía sau<br/>
+                        - Chiết ngực<br>
+                        <p class="size">Chọn kích cỡ: </p>
+                        <a href="#" id="bangquydoi">Xem hướng dẫn</a>
+                        <ul class="size">
+                            <li>X</li>
+                            <li>S</li>
+                            <li>XS</li>
+                            <li>M</li>
+                            <li>L</li>
+                            <li>XL</li>
+                            <li>XXL</li>
+                        </ul>
+                        <p class="color">Chọn màu sắc: </p>
+                        <ul class="Color">
+                            <li><img src="~/Images/color1.png" /></li>
+                            <li><img src="~/Images/color2.png" /></li>
+                            <li><img src="~/Images/color3.png" /></li>
+                            <li><img src="~/Images/color4.png" /></li>
+                            <li><img src="~/Images/color5.png" /></li>
+                        </ul><br />
+                        <p class="sQuant">
+                            Chọn số lượng: 
+                            <input type="text" value="1" class="txtQuantity">
+                            <a class="btnAdd"></a>
+                            <a class="btnDivi"></a>
+                        </p>
+                      <div class="fb-like" data-href="http://news.zing.vn/" data-width="400" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>
+<!-- Place this tag where you want the +1 button to render. -->
+<div class="g-plusone"></div>
+
+<!-- Place this tag after the last +1 button tag. -->
+<script type="text/javascript">
+    window.___gcfg = { lang: 'vi' };
+
+    (function () {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/platform.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
+</script>
+                    </div>
+                    
+                    <div class="clear   "></div>
+                    <div id="lstImg">
+                        <ul>
+                            <li>
+                                <img data-large="/example/latest1.jpg" src="/example/latest1.jpg" />
+                            </li>
+                            <li>
+                                <img data-large="/example/latest2.jpg" src="/example/latest2.jpg" />
+                            </li>
+                            <li>
+                               <img data-large="/example/latest3.jpg" src="/example/latest3.jpg" />
+                            </li>
+                            <li>
+                               <img data-large="/example/latest4.jpg" src="/example/latest4.jpg" />
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                 <div id="ColPrice">
+                      <b class="text-price">GIÁ</b>  <p><span id="valBanle">320,000VNĐ</span></p>
+                        <p><span id="priBuon">280,000VNĐ</span></p>
+                     <p><a href="#" id="btnAddCart" style="float:right"><span id="txt">Thêm vào giỏ</span></a></p>
+                     <p><a href="#" class="bt-cart2"  >Mua Ngay</a></p>
+                    <div class="clear"></div>
+                     <p><a id="addProlike" href="#">Thêm vào mục yêu thích</a></p>
+                     <div class="clear"></div>
+                     <ul>
+                         <li class="tick">SẼ CÓ TẠI NHÀ BẠN <span>trong 3 - 5 ngày làm việc</span></li>
+                         <li class="tick">THANH TOÁN KHI NHẬN HÀNG</li>
+                         <li class="tick">TRẢ HÀNG TRONG 30 NGÀY</li>
+                         <li class="tick">HOÀN TIỀN MẶT</li>
+                         <li class="phoneHot">HOTLINE: (08) 6288 5678</li>
+                     </ul>
+                        <p> <a id="sendmail" href="#">Gửi email cho bạn </a></p>
+                    </div>
+                <div id="proDetais">
+                    <div id="tabs">
+		        <ul>
+			        <li>Chi tiết sản phẩm</li>
+			        <li>Thông tin nhãn hiệu</li>
+			        <li>Nhận xét sản phẩm</li>
+		        </ul>
+		        <div>
+			        <p class="tit">Thông tin chi tiết</p>
+            
+                        <p class="info">Thiết kế đầm xoè điệu đà với phần chân váy kết nơ bản to dịu dàng, nữ tính.</p>
+                        <p class="info">Chân váy xoè cho bạn che được khuyết điểm, tôn nét nữ tinh đầy gợi cảm.</p>
+                        <p class="info">Phần tay áo cách điệu tạo nét độc đáo cho trang phục thêm phần duyên dáng.</p>
+                        <p class="info">Phù hợp với cả người có vóc dáng thanh mảnh hay tròn trịa.</p>
+                        <p class="info">Đầm diện dự tiệc cho bạn thêm phần nổi bật cuốn hút và quý phái.</p>
+                        <p class="info">Trọng lượng: 400g.</p>
+      
+                    <p>
+                        - Số đo người mẫu: Chiều cao: 165cm, Cân nặng:45kg, Số đo 3 vòng: 89-60-90cm
+                    </p>
+                    <p>- Kích cỡ người mẫu đang mặc: M</p>
+
+                    <p class="tit">* Cách thức mua hàng:</p>
+                    <p>
+                        1. Đặt giao hàng tận nơi (có phí ship) Nhấn vào nút "Thêm vào giỏ" ở trên.             
+                    </p>
+                    <p>2. Đến trực tiếp hệ thống cửa hàng HOCCUNGDOANHNGHIEP.VN tại Hà Nội (Xem địa chỉ tại đây)</p>
+                    <p>Mọi thắc mắc vui lòng liên hệ hotline: 0989.613.898</p>
+
+		        </div><!-- end HTML tab content -->
+		        <div>
+			        <h3>THÔNG TIN NHÃN HIỆU</h3>
+                    <h4>Inner Circle</h4>
+                    <p>Bộ sưu tập thương hiệu INNER CIRCLE là những trang phục tuyệt đẹp và vô cùng sành điệu dành riêng cho những phụ nữ tự tin, hiện đại, thanh lịch và yêu thích thời trang. Dựa trên nhu cầu thiết thực của khách hàng, trang phục INNER CIRCLE luôn hướng đến phong cách đơn giản mà tinh tế, hiện đại mà sang trọng và dễ kết hợp. Với kiểu dáng thiết kế hiện đại trên nền chất liệu vải chất lượng, INNER CIRCLE mang đến cho các bạn gái ở độ tuổi từ 20 trở lên những bộ cánh thời thượng cùng mức giá cực kỳ phải chăng. Hãy trở nên thật thanh lịch khi đến công sở và quyến rũ khi dạo phố đêm khi kết hợp những món đồ trong bộ sưu tập phong phú của Inner Cirlce : đầm, áo, quần shorts, chân váy ngắn, váy dệt kim và áo khoác jackets. Hiện các sản phẩm của INNER CIRCLE đã có mặt tại trang website mua sắm thời trang ZALORA Việt Nam.</p>
+		        </div><!-- end CSS tab content -->
+		        <div>
+                    <h3>NHẬN XÉT SẢN PHẨM</h3>
+                    <h4>Chúng tôi muốn biết ý kiến của bạn</h4>
+                    <table id="star">
+                        <tr><td>
+                        <b> Chất Lượng * </b></td><td><a class="star" data-value="1"></a> <a class="star" data-value="2"></a> <a class="star" data-value="3"></a> <a class="star" data-value="4"></a> <a class="star" data-value="5"></a></td>
+                       </tr> 
+                        <tr><td>
+                        <b> Hình dạng * </b></td><td><a class="star" data-value="1"></a> <a class="star" data-value="2"></a> <a class="star" data-value="3"></a> <a class="star" data-value="4"></a> <a class="star" data-value="5"></a></td>
+                       </tr> 
+                        <tr><td>
+                        <b> Giá * </b></td><td><a class="star" data-value="1"></a> <a class="star" data-value="2"></a> <a class="star" data-value="3"></a> <a class="star" data-value="4"></a> <a class="star" data-value="5"></a></td>
+                       </tr> 
+                    </table>
+                    <table id="nhanxet">
+                            <tr>
+                                <td style="vertical-align:top">
+                                    <p>Tên *<br />
+                                        <input type="text" /></p>
+                                    <p>Tiêu đề *<br />
+                                        <input type="text" /></p>
+                                </td>
+                                <td>
+                                    <p>Bình luận *<br />
+                                    <textarea></textarea>
+                                    <br />
+                                    <input type="submit" value="Gửi nhận xét" />
+                                </td>
+                            </tr>
+                        </table>
+		        </div><!-- end JQuery tab content -->
+	        </div><!-- end tabs panel -->
+                </div>
+                 
+            </div>
+             <!--END: Detail-->
+                    
+             <!--BEGIN: latest work-->
+             <div class="row" style="margin-bottom: 0">
+        
+                <div class="span12">
+                    <!--BEGIN: divider arrow-->
+                    <div class="title-divider">
+                        <div class="divider-arrow"></div>                                
+                        <h3>NHỮNG SẢN PHẨM CÓ THỂ BẠN QUAN TÂM</h3>       
+                    </div><!--END: divider arrow-->
+                </div>
+             </div>
+             <div class="spquantam">
+             <div class="row">   
+                <div class="span12">
+                    <div id="latest-work" class="carousel btleft">
+                        <div class="carousel-wrapper">
+                            <ul class="da-thumbs">
+
+                        	    <li>
+                                    <img src="/example/latest1.jpg" />
+                                    <div>
+                                        <a href="example/view.jpg" class="p-view" data-rel="prettyPhoto"></a>
+                                        <a href="portfolio-single.html" class="p-link"></a>
+                                    </div>
+                                
+                                    <a href="#" class="sp_name">Đầm công sở Korea 2013</a>
+                                    <span class="gia_sp">GÍA BÁN: <strong>10.500.000VNĐ</strong></span><span class="gia_cu"><del>11.700.000VNĐ</del></strong></span>
+                                    <a href="#" class="tt_sp">Thanh toán</a>
+                                    <a href="#" class="gh_sp">Giỏ hàng</a>
+                                </li>
+							
+                                <li>
+                                    <img src="/example/latest6.jpg" />
+                                    <div>
+                                        <a href="example/view.jpg" class="p-view" data-rel="prettyPhoto"></a>
+                                        <a href="portfolio-single.html" class="p-link"></a>
+                                    </div>
+                                
+                                    <a href="#" class="sp_name">Đầm công sở Korea 2013</a>
+                                    <span class="gia_sp">GÍA BÁN: <strong>10.500.000VNĐ</strong></span><span class="gia_cu"><del>11.700.000VNĐ</del></strong></span>
+                                    <a href="#" class="tt_sp">Thanh toán</a>
+                                    <a href="#" class="gh_sp">Giỏ hàng</a>
+                                </li>
+                            
+                                <li>
+                                    <img src="/example/latest3.jpg" />
+                                    <div>
+                                        <a href="example/view.jpg" class="p-view" data-rel="prettyPhoto"></a>
+                                        <a href="portfolio-single.html" class="p-link"></a>
+                                    </div>
+                                
+                                    <a href="#" class="sp_name">Đầm công sở Korea 2013</a>
+                                    <span class="gia_sp">GÍA BÁN: <strong>10.500.000VNĐ</strong></span><span class="gia_cu"><del>11.700.000VNĐ</del></strong></span>
+                                    <a href="#" class="tt_sp">Thanh toán</a>
+                                    <a href="#" class="gh_sp">Giỏ hàng</a>
+                                </li>
+                            
+                                <li>
+                                    <img src="/example/latest4.jpg" />
+                                    <div>
+                                        <a href="example/view.jpg" class="p-view" data-rel="prettyPhoto"></a>
+                                        <a href="portfolio-single.html" class="p-link"></a>
+                                    </div>
+                                
+                                    <a href="#" class="sp_name">Đầm công sở Korea 2013</a>
+                                    <span class="gia_sp">GÍA BÁN: <strong>10.500.000VNĐ</strong></span><span class="gia_cu"><del>11.700.000VNĐ</del></strong></span>
+                                    <a href="#" class="tt_sp">Thanh toán</a>
+                                    <a href="#" class="gh_sp">Giỏ hàng</a>
+                                </li>
+                            
+                                <li>
+                                    <img src="/example/latest5.jpg" />
+                                    <div>
+                                        <a href="example/view.jpg" class="p-view" data-rel="prettyPhoto"></a>
+                                        <a href="portfolio-single.html" class="p-link"></a>
+                                    </div>
+                                
+                                    <a href="#" class="sp_name">Đầm công sở Korea 2013</a>
+                                    <span class="gia_sp">GÍA BÁN: <strong>10.500.000VNĐ</strong></span><span class="gia_cu"><del>11.700.000VNĐ</del></strong></span>
+                                    <a href="#" class="tt_sp">Thanh toán</a>
+                                    <a href="#" class="gh_sp">Giỏ hàng</a>
+                                </li>
+                            
+                                <li>
+                                    <img src="/example/latest2.jpg" />
+                                    <div>
+                                        <a href="example/view.jpg" class="p-view" data-rel="prettyPhoto"></a>
+                                        <a href="portfolio-single.html" class="p-link"></a>
+                                    </div>
+                                
+                                    <a href="#" class="sp_name">Đầm công sở Korea 2013</a>
+                                    <span class="gia_sp">GÍA BÁN: <strong>10.500.000VNĐ</strong></span><span class="gia_cu"><del>11.700.000VNĐ</del></strong></span>
+                                    <a href="#" class="tt_sp">Thanh toán</a>
+                                    <a href="#" class="gh_sp">Giỏ hàng</a>
+                                </li>
+
+                            </ul>
+                        </div><!--END carousel-wrapper-->
+                    </div><!--END latest-work-->  
+
+                    <script type="text/javascript">
+                        $(document).ready(function () {
+                            $('#latest-work').elastislide({
+                                imageW: 240,
+                                margin: 70
+                            });
+                        });
+                    </script>
+                </div><!--END span12-->
+
+           </div><!--BEGIN: latest work-->
+           </div>
+  <script type="text/javascript">
+      jQuery(document).ready(function () {
+          jQuery('ul.Color li').click(function () {
+              jQuery('ul.Color li').css({ border: "3px solid #D7D7D7" });
+              jQuery(this).css({ border: "3px solid #bc204f" });
+          });
+
+          jQuery('.sQuant a.btnAdd').click(function () {
+              jQuery(this).parent().find('.txtQuantity').val(parseInt(jQuery(".sQuant .txtQuantity").val()) + 1);
+          });
+
+          jQuery('.sQuant .btnDivi').click(function () {
+              if (jQuery(this).parent().find('.txtQuantity').val() < 2) {
+                  jQuery(this).parent().find('.txtQuantity').val(1);
+              }
+              else {
+                  jQuery(this).parent().find('.txtQuantity').val(parseInt(jQuery(this).parent().find('.txtQuantity').val()) - 1);
+              }
+          });
+
+          jQuery('.sQuant .txtQuantity').focusout(function () {
+              if (jQuery(this).parent().find('.txtQuantity').val() < 0) {
+                  jQuery(this).parent().find('.txtQuantity').val(1);
+              }
+          });
+
+          jQuery('#lstImg li img').click(function () {
+
+              var srcText = jQuery(this).attr("src");
+              var srcLarge = jQuery(this).attr("data-large");
+              jQuery('#imgPro img').animate({ opacity: "0.2" }, 700, function () {
+                  jQuery('#imgPro img').attr("src", srcText),
+                  jQuery(this).animate({ opacity: "1" }, 700);
+              });
+
+              jQuery('.magnifyarea img').attr("src", srcLarge);
+
+              jQuery('#lstImg li img').css({ border: "2px solid #777" });
+              jQuery(this).css({ border: "2px solid #be2051" });
+          });
+      });
+
+</script>
+    <script type="text/javascript">
+
+        jQuery(document).ready(function ($) {
+
+            $('#image1').addimagezoom({ // single image zoom
+                zoomrange: [3, 10],
+                magnifiersize: [300, 300],
+                magnifierpos: 'right',
+                cursorshade: true,
+                largeimage: 'hayden.jpg' //<-- No comma after last option!
+            })
+
+
+            $('#image2').addimagezoom() // single image zoom with default options
+
+            $('#multizoom1').addimagezoom({ // multi-zoom: options same as for previous Featured Image Zoomer's addimagezoom unless noted as '- new'
+                descArea: '#description', // description selector (optional - but required if descriptions are used) - new
+                speed: 1500, // duration of fade in for new zoomable images (in milliseconds, optional) - new
+                descpos: true, // if set to true - description position follows image position at a set distance, defaults to false (optional) - new
+                imagevertcenter: true, // zoomable image centers vertically in its container (optional) - new
+                magvertcenter: true, // magnified area centers vertically in relation to the zoomable image (optional) - new
+                zoomrange: [3, 10],
+                magnifiersize: [250, 250],
+                magnifierpos: 'right',
+                cursorshadeColor: '#fdffd5',
+                cursorshade: true //<-- No comma after last option!
+            });
+
+            $('#multizoom2').addimagezoom({ // multi-zoom: options same as for previous Featured Image Zoomer's addimagezoom unless noted as '- new'
+                descArea: '#description2', // description selector (optional - but required if descriptions are used) - new
+                disablewheel: true // even without variable zoom, mousewheel will not shift image position while mouse is over image (optional) - new
+                //^-- No comma after last option!	
+            });
+
+        })
+
+</script>
+    <script type="text/javascript">
+        $("#tabs ul li:first").addClass("active");
+        $("#tabs div:gt(0)").hide();
+        $("#tabs ul li").click(function () {
+            $("#tabs ul li").removeClass('active');
+            //var current_index = $(this).index(); // Sử dụng cho jQuery >= 1.4.x
+            var current_index = $("#tabs ul li").index(this);
+            $("#tabs ul li:eq(" + current_index + ")").addClass("active");
+            $("#tabs div").hide();
+            $("#tabs div:eq(" + current_index + ")").fadeIn(100);
+        });
+	</script>

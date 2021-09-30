@@ -1,0 +1,42 @@
+﻿@model onsoft.ViewModels.CustomerForm.Nhanmail
+<script type="text/javascript">
+    $(document).ready(function () {
+        // Ajax sử dụng vc1
+
+        $("#nam").click(function () {
+            var gt = $(this).val();
+            var mail = $('#s').val();
+            if (validateForm(mail) == false) {
+
+            }
+            else {
+                $.post("/My_Partialview/dkkm", { "gt": gt, "mail": mail },
+                        function (data) {
+                            $("#loi").html(data);
+                        });
+            }
+            });
+        $("#nu").click(function () {
+            var gt = $(this).val();
+            var mail = $('#s').val();
+            if (validateForm(mail) == false) {
+
+            }
+            else {
+                $.post("/My_Partialview/dkkm", { "gt": gt, "mail": mail },
+                        function (data) {
+                            $("#loi").html(data);
+                        });
+            }
+        });
+    });
+    </script>
+@*using (Html.BeginForm("dkkm", "My_Partialview", FormMethod.Post, new { @onsubmit = "return validateForm();", @id = "myForm" }))*@
+<p class="title-f upp">Đăng ký nhận tin khuyến mại</p>
+<div>
+    <p>Đăng ký để nhận các thông tin khuyến mãi và mẫu hàng mới từ<span class="upp"> Chợ Giá Rẻ.com.vn</span></p>
+    <div id="loi" style="color: red">@Html.ValidationMessageFor(m => m.Email)</div>
+    @Html.TextBox("Email", "", new { @placeholder = "Email của Bạn....", @id = "s" })
+    <button id="nam" name="commad" value="nam" class="submit">Nam</button>
+    <button id="nu" name="commad" value="nu" class="submit">Nữ</button>
+</div>

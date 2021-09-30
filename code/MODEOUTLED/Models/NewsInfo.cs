@@ -1,0 +1,9 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace MODEOUTLED.Models
+{
+    public class NewsInfo	{		#region[Declare variables]		private string  _Id;		private string  _Name;		private string  _Tag;		private string  _Title;		private string  _Keyword;		private string  _Description;		private string  _Image;		private string  _SDate;		private string  _Content;		private string  _Detail;		private string  _Index;		private string  _View;		private string  _IdGroup;		private string  _IdMember;		private string  _Target;		private string  _Ord;		private Boolean  _Active;		#endregion		#region[Public Properties]		public string Id{ get { return _Id; } set { _Id = value; } }		public string Name{ get { return _Name; } set { _Name = value; } }		public string Tag{ get { return _Tag; } set { _Tag = value; } }		public string Title{ get { return _Title; } set { _Title = value; } }		public string Keyword{ get { return _Keyword; } set { _Keyword = value; } }		public string Description{ get { return _Description; } set { _Description = value; } }		public string Image{ get { return _Image; } set { _Image = value; } }		public string SDate{ get { return _SDate; } set { _SDate = value; } }		public string Content{ get { return _Content; } set { _Content = value; } }		public string Detail{ get { return _Detail; } set { _Detail = value; } }		public string Index{ get { return _Index; } set { _Index = value; } }		public string View{ get { return _View; } set { _View = value; } }		public string IdGroup{ get { return _IdGroup; } set { _IdGroup = value; } }		public string IdMember{ get { return _IdMember; } set { _IdMember = value; } }		public string Target{ get { return _Target; } set { _Target = value; } }		public string Ord{ get { return _Ord; } set { _Ord = value; } }		public Boolean Active{ get { return _Active; } set { _Active = value; } }		#endregion			}}

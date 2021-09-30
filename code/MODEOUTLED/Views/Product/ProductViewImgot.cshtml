@@ -1,0 +1,145 @@
+﻿@{
+    ViewBag.Title = "ProductViewImg";
+    Layout = "~/Views/Shared/_LayoutAdmins.cshtml";
+}
+
+@section Styles
+{
+     <!--Sử dụng cho Confirm delete-->
+    <link href="~/Content/Styles/jquery-ui.css" rel="stylesheet" />
+
+    <style type="text/css">
+        .imgView {
+            width: 90px;
+            height: 115px;
+            border: 1px solid #dfdfdf;
+            float: left;
+            margin: 10px;
+        }
+
+            .imgView img {
+                width: 90px;
+                height: 90px;
+                display: block;
+                margin-bottom: 3px;
+            }
+
+            .imgView .funcImg {
+                width: 20px;
+                display: block;
+            }
+
+                .imgView .funcImg a {
+                    margin: 0px 10px;
+                }
+    </style>
+}
+
+@section Scripts
+{
+    <!--Sử dụng cho Confirm delete-->
+    <script src="~/Scripts/jquery-1.9.1.js"></script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <script src="~/Scripts/jquery.easy-confirm-dialog.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".yesno").easyconfirm({
+                locale: { title: 'Xóa ảnh sản phẩm', button: ['Không', 'Có'] }
+            });
+        })
+    </script>
+}
+
+<div class="container-fluid">
+    <div style="width: 100%; margin: 0 auto;">
+        <div id="Breadcrumb" class="Block Breadcrumb ui-widget-content ui-corner-top ui-corner-bottom">
+            <ul>
+                <li class='SecondLast'><a href='#'><i class="icon-home" style="font-size: 14px;"></i>Trang chủ</a></li>
+                <li class='Last'><span>Hiển thị ảnh sản phẩm</span></li>
+            </ul>
+        </div>
+        <div style="clear: both;"></div>
+        <div id="cph_Main_ContentPane">
+            <div class="widget">
+                <div class="widget-title">
+                    <h4><i class="icon-list-alt"></i>&nbsp;Hiển thị ảnh sản phẩm</h4>
+                    <!-- begin menu -->
+                    <div class="ui-corner-top ui-corner-bottom">
+                        <div id="toolbox">
+
+                            <div style="float: right;" class="toolbox-content">
+                                <table class="toolbar">
+                                    <tr>
+                                        <td align="center">
+                                            @Html.Raw(@ViewBag.AddImage)
+                                        </td>
+                                        <td align="center">
+                                            <a title="Quay lại" class="toolbar btn btn-info" href="../../Product/ProductIndexot"><i class="icon-chevron-left"></i>&nbsp;Trở về</a>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end menu -->
+
+                    <div id="hiddenToolBarScroll" class="scrollBox hidden">
+                        <h4>
+                            <i class="icon-list-alt"></i>&nbsp;Hiển thị ảnh sản phẩm</h4>
+                        <div class="FloatMenuBar">
+
+                            <!-- begin menu -->
+                            <div class="ui-corner-top ui-corner-bottom">
+                                <div id="toolbox">
+
+                                    <div style="float: right;" class="toolbox-content">
+
+                                        <table class="toolbar">
+                                            <tr>
+                                                <td align="center">
+                                                    @Html.Raw(@ViewBag.AddImage)
+                                                </td>
+                                                <td align="center">
+                                                    <a title="Quay lại" class="toolbar btn btn-info" href="../../Product/ProductIndexot"><i class="icon-chevron-left"></i>&nbsp;Trở về</a>
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end menu -->
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-body">
+                    <div id="tabs">
+                        <div id="tabs-1">
+                            <table border="0" style="width: 100%">
+                                @*<tr>
+                                    <td>@Html.Raw(ViewBag.ViewA)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.Raw(ViewBag.ViewB)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.Raw(ViewBag.ViewC)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.Raw(ViewBag.ViewD)</td>
+                                </tr>*@
+                                <tr>
+                                    <td>@Html.Raw(ViewBag.ViewE)</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,154 @@
+﻿@model onsoft.Models.Config
+@{
+    ViewBag.Title = "Cấu hình trang web";
+    Layout = "~/Views/Shared/_LayoutAdmins.cshtml";
+    var username = User.Identity.IsAuthenticated ? User.Identity.Name : string.Empty;
+}
+
+<!-- Validate Data -->
+
+
+<script src="~/Scripts/jquery.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script type="text/javascript">$j = jQuery.noConflict();</script>
+
+<script type="text/javascript">
+
+    (function ($j, W, D) {
+
+        var JQUERY4U = {};
+
+        JQUERY4U.UTIL =
+        {
+            setupFormValidation: function () {
+                //validation rules
+                $j("#categorycreate-form").validate({
+                    rules: {
+                        Mail_Smtp: "required",
+                        Mail_Port: "required",
+                        Mail_Info: "required",
+                        Mail_Noreply: "required",
+                        Mail_Password: "required",
+                    },
+                    messages: {
+                        Mail_Smtp: "Nhập máy chủ gửi mail",
+                        Mail_Port: "Nhập cổng gửi mail",
+                        Mail_Info: "Nhập mail nhận liên hệ",
+                        Mail_Noreply: "Nhập mail gửi thông tin",
+                        Mail_Password: "Nhập mật khẩu gửi mail",
+                    },
+                    submitHandler: function (form) {
+                        form.submit();
+                    }
+                });
+            }
+        }
+
+        //when the dom has loaded setup form validation rules
+        $j(D).ready(function ($) {
+            JQUERY4U.UTIL.setupFormValidation();
+        });
+
+    })(jQuery, window, document);
+</script>
+<!-- End Validate Data -->
+
+<h2>@ViewBag.Title</h2>
+@using (Html.BeginForm("ConfigEdit", "Admins", FormMethod.Post, new { @id="categorycreate-form", @class="validate-form"}))
+{
+<table class="TableUpdate" border="1">
+    <tr>
+        <td colspan="2" class="Control">
+            <ul>
+                @if (Request.Cookies["Username"] == null)
+                {
+                    <li><p class="uupdate" onclick="AlertErr()">Ghi lại</p></li>  
+                }
+                else
+                {
+                    <li><input type="submit" value="Ghi lại "class="uupdate" /></li>
+                }
+                <li> 
+                    <a class="vback" href="javascript:void(0);" onclick="window.history.go(-1);">Trở lại</a> 
+                </li>
+            </ul>
+        </td>
+    </tr>
+    <tr> 
+        <th>Máy chủ gửi mail: <span style="color:red">(*)</span></th>
+        <td>@Html.TextBoxFor(m => m.Mail_Smtp, new { @class = "text" })</td>
+    </tr>
+    <tr> 
+        <th>Cổng gửi mail: <span style="color:red">(*)</span></th>
+        <td>@Html.TextBoxFor(m => m.Mail_Port, new { @class = "text" })</td>
+    </tr>
+    <tr> 
+        <th>Mail nhận liên hệ: <span style="color:red">(*)</span></th>
+        <td>@Html.TextBoxFor(m => m.Mail_Info, new { @class = "text" })</td>
+    </tr>
+    <tr> 
+        <th>Mail gửi thông tin: <span style="color:red">(*)</span></th>
+        <td>@Html.TextBoxFor(m => m.Mail_Noreply, new { @class = "text" })</td>
+    </tr>
+    <tr> 
+        <th>Mật khẩu mail gửi: <span style="color:red">(*)</span></th>
+        <td>@Html.PasswordFor(m=>m.Mail_Password, new { @class="text"})</td>
+    </tr>
+    <tr> 
+        <th>Thông tin copyright: </th>
+        <td>@Html.TextArea("Copyright")</td>
+    </tr>
+    <tr> 
+        <th>Title meta: </th>
+        <td>@Html.TextAreaFor(m => m.Title, new { @class = "multiline" })</td>
+    </tr>
+    <tr> 
+        <th>Description meta: </th>
+        <td>@Html.TextAreaFor(m => m.Description, new { @class = "multiline" })</td>
+    </tr>
+    <tr> 
+        <th>Keyword meta: </th>
+        <td>@Html.TextAreaFor(m => m.Keyword, new { @class = "multiline" })</td></tr>
+    <tr>
+        <td colspan="2" class="Control">
+            <ul>
+                @if (Request.Cookies["Username"] == null)
+                {
+                    <li><p class="uupdate" onclick="AlertErr()">Ghi lại</p></li>  
+                }
+                else
+                {
+                    <li><input type="submit" value="Ghi lại "class="uupdate" /></li>
+                      
+                }
+                <li> 
+                    <a class="vback" href="javascript:void(0);" onclick="window.history.go(-1);">Trở lại</a> 
+                </li>
+            </ul>
+        </td>
+    </tr>
+</table>
+}
+<script language="javascript" type="text/javascript">
+    $(function () {
+        $("#SelectImages").click(function () {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                $("#Image").val(fileUrl);
+            };
+            finder.popup();
+        });
+    });
+</script>
+<script type="text/javascript">
+    var editor;
+    function createEditor(languageCode, id) {
+        var editor = CKEDITOR.replace(id, {
+            language: languageCode
+        });
+    }
+
+    $(function () {
+        createEditor('vi', 'Copyright');
+    });
+</script>

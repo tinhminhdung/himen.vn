@@ -1,0 +1,16 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+    <div style="background: #ffd800">
+    @{Html.RenderAction("Pa1","Test");}
+        </div>
+</body>
+</html>

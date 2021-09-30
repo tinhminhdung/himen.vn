@@ -1,0 +1,283 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model PagedList<onsoft.Models.GroupSupport>
+
+@{
+    ViewBag.Title = "Quản lý sản phẩm";
+    Layout = "~/Views/Shared/_LayoutAdmins.cshtml";
+}
+
+@section Styles
+{
+    <!--Sử dụng cho Confirm delete-->
+    <link href="~/Content/Styles/jquery-ui.css" rel="stylesheet" />
+
+    <!--Sử dụng cho Phân trang-->
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+}
+
+@section Scripts
+{
+    <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")" type="text/javascript"></script>
+    <!--Sử dụng cho Confirm delete-->
+    <script src="~/Scripts/jquery-1.9.1.js"></script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <script src="~/Scripts/jquery.easy-confirm-dialog.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $(".yesno").easyconfirm({
+                locale: { title: 'Xóa sản phẩm', button: ['Hủy', 'Xóa'] }
+            });
+        
+            $(".deletemultiple").easyconfirm({
+                locale: { title: 'Xóa sản phẩm', button: ['Hủy', 'Xóa'] }
+            });
+
+        }) //end document load
+    </script>
+
+    <!--Sử dụng cho sắp xếp-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var currentSortOrder = '@ViewBag.CurrentSortOrder';
+            if (currentSortOrder == "ord asc") {
+                $('#ord').removeClass('NumberOrdDown').addClass("NumberOrdUp");
+            }
+            else {
+                $('#ord').removeClass('NumberOrdUp').addClass("NumberOrdDown");
+            }
+
+            var currentSortName = '@ViewBag.CurrentSortName';
+            if (currentSortName == "name asc") {
+                $('#name').removeClass('NumberOrdDown').addClass("NumberOrdUp");
+            }
+            else {
+                $('#name').removeClass('NumberOrdUp').addClass("NumberOrdDown");
+            }
+
+        })
+    </script>
+
+
+
+    <!-- Check nhap vao phai la so -->
+    <script>
+        $j(document).ready(function () {
+            $j('html').ajaxStart(function () {
+                ShowLoadingIndicator();
+            });
+
+            $j('html').ajaxComplete(function () {
+                HideLoadingIndicator();
+            });
+            $j('.InitialFocus').focus();
+
+            $j(window).scroll(function () {
+                var offset = $j(".widget-title").offset();
+                var curWin = $j(window);
+                var top = offset.top - curWin.scrollTop();
+                var bottom = $j(window).height() - $j(".widget-title").height();
+                bottom = bottom - offset.top;
+
+                var compare = bottom - curWin.scrollTop();
+                if (top <= 0) {
+                    if ($j(".scrollBox").hasClass("hidden")) {
+                        $j(".scrollBox").removeClass("hidden");
+
+                    }
+                } else {
+                    if (!$j(".scrollBox").hasClass("hidden")) {
+                        $j(".scrollBox").addClass("hidden");
+                    }
+
+                }
+            });
+        });
+
+
+
+        var separator = ",";  // use comma as 000's separator
+        var decpoint = ".";  // use period as decimal point
+        var percent = "%";
+        var currency = "$";  // use dollar sign for currency
+
+        function replaceAll(str, from, to) {
+            var idx = str.indexOf(from);
+            while (idx > -1) {
+                str = str.replace(from, to);
+                idx = str.indexOf(from);
+            }
+            return str;
+        }
+
+        function remote_format(input) {
+            var output = '';
+            //output=replaceAll(input,'.','');
+            output = replaceAll(input, ",", "");
+            return output;
+        }
+
+        function strip(input, chars) {  // strip all characters in 'chars' from input
+            var output = "";  // initialise output string
+            for (var i = 0; i < input.length; i++)
+                if (chars.indexOf(input.charAt(i)) == -1)
+                    output += input.charAt(i);
+            return output;
+        }
+
+        function separate(input, separator) {  // format input using 'separator' to mark 000's
+            input = "" + input;
+            var output = "";  // initialise output string
+            for (var i = 0; i < input.length; i++) {
+                if (i != 0 && (input.length - i) % 3 == 0) output += separator;
+                output += input.charAt(i);
+            }
+            return output;
+        }
+
+        function formatNumber(number, format, print) {  // use: formatNumber(number, "format")
+            //number=remote_format(number);
+            if (print) document.write("formatNumber(" + number + ", \"" + format + "\")<br>");
+
+            if (number - 0 != number) return null;  // if number is NaN return null
+            var useSeparator = format.indexOf(separator) != -1;  // use separators in number
+            var usePercent = format.indexOf(percent) != -1;  // convert output to percentage
+            var useCurrency = format.indexOf(currency) != -1;  // use currency format
+            var isNegative = (number < 0);
+            number = Math.abs(number);
+            if (usePercent) number *= 100;
+            format = strip(format, separator + percent + currency);  // remove key characters
+            number = "" + number;  // convert number input to string
+
+            // split input value into LHS and RHS using decpoint as divider
+            var dec = number.indexOf(decpoint) != -1;
+            var nleftEnd = (dec) ? number.substring(0, number.indexOf(".")) : number;
+            var nrightEnd = (dec) ? number.substring(number.indexOf(".") + 1) : "";
+
+            // split format string into LHS and RHS using decpoint as divider
+            dec = format.indexOf(decpoint) != -1;
+            var sleftEnd = (dec) ? format.substring(0, format.indexOf(".")) : format;
+            var srightEnd = (dec) ? format.substring(format.indexOf(".") + 1) : "";
+
+            // adjust decimal places by cropping or adding zeros to LHS of number
+            if (srightEnd.length < nrightEnd.length) {
+                var nextChar = nrightEnd.charAt(srightEnd.length) - 0;
+                nrightEnd = nrightEnd.substring(0, srightEnd.length);
+                if (nextChar >= 5) nrightEnd = "" + ((nrightEnd - 0) + 1);  // round up
+
+                // patch provided by Patti Marcoux 1999/08/06
+                while (srightEnd.length > nrightEnd.length) {
+                    nrightEnd = "0" + nrightEnd;
+                }
+
+                if (srightEnd.length < nrightEnd.length) {
+                    nrightEnd = nrightEnd.substring(1);
+                    nleftEnd = (nleftEnd - 0) + 1;
+                }
+            } else {
+                for (var i = nrightEnd.length; srightEnd.length > nrightEnd.length; i++) {
+                    if (srightEnd.charAt(i) == "0") nrightEnd += "0";  // append zero to RHS of number
+                    else break;
+                }
+            }
+
+            // adjust leading zeros
+            sleftEnd = strip(sleftEnd, "#");  // remove hashes from LHS of format
+            while (sleftEnd.length > nleftEnd.length) {
+                nleftEnd = "0" + nleftEnd;  // prepend zero to LHS of number
+            }
+
+            if (useSeparator) nleftEnd = separate(nleftEnd, separator);  // add separator
+            var output = nleftEnd + ((nrightEnd != "") ? "." + nrightEnd : "");  // combine parts
+            output = ((useCurrency) ? currency : "") + output + ((usePercent) ? percent : "");
+            if (isNegative) {
+                // patch suggested by Tom Denn 25/4/2001
+                output = (useCurrency) ? "(" + output + ")" : "-" + output;
+            }
+            return output;
+        }
+
+
+    </script>
+
+}
+@using (Html.BeginForm("MultiCommand", "GroupSupport", FormMethod.Post))
+{
+    <div class="container-fluid">
+        <div style="width: 100%; margin: 0 auto;">
+            <div id="Breadcrumb" class="Block Breadcrumb ui-widget-content ui-corner-top ui-corner-bottom">
+                <ul>
+                    <li class='SecondLast'><a href='#'><i class="icon-home" style="font-size: 14px;"></i>Trang chủ</a></li>
+                    <li class='Last'><span>Danh sách nhóm hỗ trợ</span></li>
+                </ul>
+            </div>
+            <div style="clear: both;"></div>
+            <div id="cph_Main_ContentPane">
+                <div class="widget">
+                    <!-- widget-title -->
+                    <div class="widget-title">
+                        <h4><i class="icon-list-alt"></i>&nbsp;Danh sách nhóm hỗ trợ</h4>
+                        <!-- begin Navigator -->
+                        @Html.Partial("_GroupSupportNavigator")
+                        <!-- end Navigator -->
+
+                        <div id="hiddenToolBarScroll" class="scrollBox hidden">
+                            <h4>
+                                <i class="icon-list-alt"></i>&nbsp;Danh sách nhóm hỗ trợ</h4>
+                            <div class="FloatMenuBar">
+                                <!-- begin Navigator -->
+                                @Html.Partial("_GroupSupportNavigator")
+                                <!-- end Navigator -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- widget-title -->
+                    <!-- widget-body -->
+                    <div class="widget-body">
+
+                        <div class="row-fluid">
+                            <div class="span3">
+                                <div id="sample_1_length" class="dataTables_length">
+                                    <select style="width: 160px;">
+                                        <option value="10">10 Sản phẩm / trang</option>
+                                        <option selected="selected" value="20">20 Sản phẩm / trang</option>
+                                        <option value="30">30 Sản phẩm / trang</option>
+                                        <option value="50">50 Sản phẩm / trang</option>
+                                        <option value="100">100 Sản phẩm / trang</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="span9 form-search pull-right text-right">
+                                <input name="ctl00$cph_Main$ctl00$ctl00$txtSearch" type="text" maxlength="100" id="cph_Main_ctl00_ctl00_txtSearch" placeholder="Tên sản phẩm" style="width: 200px;" />
+                                <select name="ctl00$cph_Main$ctl00$ctl00$ddlCate" id="cph_Main_ctl00_ctl00_ddlCate" style="width: 200px;">
+                                    <option selected="selected" value="-1">-- Danh mục sản phẩm --</option>
+                                    <option value="832431">S&#225;ch kinh doanh</option>
+                                    <option value="832432">└-------- T&#224;i ch&#237;nh v&#224; đầu tư</option>
+                                    <option value="832433">└-------- Marketing v&#224; b&#225;n h&#224;ng</option>
+                                    <option value="832434">└-------- L&#227;nh đạo v&#224; quản l&#253;</option>
+
+
+                                </select>
+                                <input type="submit" name="btnSearch" value="Tìm kiếm" id="cph_Main_ctl00_ctl00_btnSearch" class="btn" />
+                                <a class="btn " href="/admin.aspx?module=products&act=advance-search"><i class="icon-filter"></i>Lọc sản phẩm</a>
+                            </div>
+                        </div>
+
+
+
+                        <!-- Table Data-->
+                        @{Html.RenderPartial("_GroupSupportData", Model);}
+                        <!-- Table Data-->
+
+                    </div>
+                    <!-- widget-body -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
+

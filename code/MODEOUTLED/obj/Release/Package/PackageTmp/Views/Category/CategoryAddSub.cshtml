@@ -1,0 +1,116 @@
+﻿@model onsoft.Models.Category
+@{
+    ViewBag.Title = "CategoryAddSub";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    var username = User.Identity.IsAuthenticated ? User.Identity.Name : string.Empty;
+}
+
+<!-- Validate Data -->
+<script src="~/Scripts/jquery.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+
+<script type="text/javascript">
+
+    (function ($, W, D) {
+
+        var JQUERY4U = {};
+
+        JQUERY4U.UTIL =
+        {
+            setupFormValidation: function () {
+                //validation rules
+                $("#categoryaddsub-form").validate({
+                    rules: {
+                        Name: "required",
+                        Title: "required",
+                        Keyword: "required",
+                        Description: "required",
+                        Ord: {
+                            required: true,
+                            number: true
+                        }
+                    },
+                    messages: {
+                        Name: "Phải nhập tên loại sản phẩm",
+                        Title: "Phải nhập tiêu đề",
+                        Keyword: "Phải nhập từ khóa",
+                        Description: "Phải nhập miêu tả",
+                        Ord: {
+                            required: "Phải nhập thứ tự",
+                            number: "Phải nhập kiểu số"
+                        }
+                    },
+                    submitHandler: function (form) {
+                        form.submit();
+                    }
+                });
+            }
+        }
+
+        //when the dom has loaded setup form validation rules
+        $(D).ready(function ($) {
+            JQUERY4U.UTIL.setupFormValidation();
+        });
+
+    })(jQuery, window, document);
+</script>
+<!-- End Validate Data -->
+
+<h2>Thêm loại sản phẩm con</h2>
+@using (Html.BeginForm("CategoryAddSub", "Category", new { level = @ViewBag.Level }, FormMethod.Post, new { @id = "categoryaddsub-form", @class = "validate-form" }))
+{
+    @Html.ValidationSummary(true)
+    <table class="TableUpdate" border="1">
+        <tr>
+            <td class="Control" colspan="2">
+                <ul>
+                    <li>
+                        <input type="submit" value="Ghi lại " class="uupdate" /></li>
+                    <li>@Html.ActionLink("Trở về", "CategoryIndex", "", new { @class = "uback" })</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <th>Tên loại sản phẩm<span class="validlabel"> (*)</span></th>
+            <td>@Html.TextBoxFor(model => model.Name, new { @class = "text" })</td>
+        </tr>
+        <tr>
+            <th>Tiêu đề<span class="validlabel"> (*)</span></th>
+            <td>@Html.TextBoxFor(model => model.Title, new { @class = "text" })</td>
+        </tr>
+        <tr>
+            <th>Miêu tả<span class="validlabel"> (*)</span></th>
+            <td>@Html.TextBoxFor(model => model.Description, new { @class = "text" })</td>
+        </tr>
+        <tr>
+            <th>Từ khóa<span class="validlabel"> (*)</span></th>
+            <td>@Html.TextBoxFor(model => model.Keyword, new { @class = "text" })</td>
+        </tr>
+        <tr>
+            <th>Thứ tự<span class="validlabel"> (*)</span></th>
+            <td>@Html.TextBoxFor(model => model.Ord, new { @onkeypress = "OnlyInputNumber(0)" })</td>
+
+        </tr>
+        <tr>
+            <th>Ưu tiên</th>
+            <td>@Html.CheckBox("Priority", true)</td>
+        </tr>
+        <tr>
+            <th>Nhóm trang chủ</th>
+            <td>@Html.CheckBox("Index", true)</td>
+        </tr>
+        <tr>
+            <th>Active</th>
+            <td>@Html.CheckBox("Active", true)</td>
+        </tr>
+        <tr>
+            <td class="Control" colspan="2">
+                <ul>
+                    <li>
+                        <input type="submit" value="Ghi lại " class="uupdate" /></li>
+                    <li>@Html.ActionLink("Trở về", "CategoryIndex", "", new { @class = "uback" })</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+}

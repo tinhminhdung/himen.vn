@@ -1,0 +1,532 @@
+﻿@{
+    ViewBag.Title = "Order_Pay";
+    Layout = "~/Views/Shared/_LayoutDefault2.cshtml";
+}
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.box .form .dropdown .dropdownItem').hide();
+        $('.box .form .dropdown .textbox input[type=text]').click(function () {
+            $('.box .form .dropdown .dropdownItem').hide();
+            //$(this).parent().parent().find($('.dropdownItem')).css({ display: "none", 'z-index': "9999" }).show(400);
+        });
+        $('.box .form .dropdown .dropdownItem ul li').click(function () {
+            $(this).parent().parent().parent().find($('.dropdownItem')).hide();
+            //$(this).parent().parent().parent().find($('.textbox input[type=text]')).val($(this).html());
+        });
+
+        $('.box').keypress(function (e) {
+            if (e.keyCode == 27) {
+                $('.dropdownItem').hide();
+                $('.btnDel').hide();
+            }
+        });
+        $('.iconDel').click(function () {
+            $('.btnDel').hide();
+            //$(this).parent().find('.btnDel').show(400);
+        });
+    
+    })
+</script>
+
+<div class="row" style="margin-bottom: 0">
+        
+            <div class="span12">
+                <!--BEGIN: divider arrow-->
+                <div class="title-divider">
+                    <div class="divider-arrow"></div>                                
+                    <h3>trang chủ | thanh toán</h3>       
+                </div><!--END: divider arrow-->
+            </div>
+         </div>
+        <div id="boxCart" class="box2">
+    <div class="form">
+        <table id="tblCart">
+            <thead>
+                <tr class="header">
+                    <td class="funcProd"></td>
+                    <td>STT</td>
+                    <td class="nameProd">Sản phẩm</td>
+                    <td class="idProd">Mã sản phẩm</td>
+                    <td class="priceProd">Giá</td>
+                    <td class="quanProd">Số lượng</td>
+                    <td class="totalProd">Thành tiền</td>
+                    
+                </tr>
+            </thead>
+            <tr class="item odd">
+                <td class="funcProd">
+                    <div class="btn">
+                        <a href="#" class="btnDel">Xóa</a>
+                    </div>
+                </td>
+                <td >
+                    1
+                </td>
+                <td class="nameProd">
+                    <img src="/example/latest5.jpg" />
+                    Bộ đồ nữ Windy màu xanh phối bèo cổ tím</td>
+                <td class="idProd">SMV003</td>        
+                <td class="priceProd">
+                    <ul class="priceProd">
+                        <li class="priceSale">355.000đ</li>
+                    </ul>
+                </td>
+                <td class="quanProd">
+                    <div class="dropdown">
+                        <div class="textbox">
+                            <input type="text" id="txtQuant" value="1" />
+                            <div class="iconDrop"></div>
+                        </div>
+                     
+                    </div>
+
+                </td>
+                <td class="totalProd">355.000đ</td>
+                
+            </tr>
+            <tr class="item even">
+                <td class="funcProd">
+                    <div class="btn">
+                        <a href="#" class="btnDel">Xóa</a>
+                    </div>
+                </td>
+                <td>
+                   2
+                </td>
+                <td class="nameProd">
+                    <img src="/example/latest5.jpg" />
+                    Bộ đồ nữ Windy màu xanh phối bèo cổ tím</td>
+                <td class="idProd">SMV003</td>
+                
+                
+                <td class="priceProd">
+                    <ul class="priceProd">
+                        <li class="priceSale">355.000đ</li>
+                    </ul>
+                </td>
+                <td class="quanProd">
+                    <div class="dropdown">
+                        <div class="textbox">
+                            <input type="text" id="Text3" value="1" />
+                            <div class="iconDrop"></div>
+                        </div>
+                       
+                    </div>
+
+                </td>
+                <td class="totalProd">355.000đ</td>
+                
+            </tr>
+        </table>  
+        <table id="Total">
+            <tr>
+                <td><b style=" margin-left:20px;">Tổng tiền</b></td><td> <span style="Color:#d80001;font-size:17px;margin-left:10px"><b>1.803.000đ</b></span></td>
+            </tr>
+            <tr><td></td><td><a>Với những đơn hàng giá trị từ 500,000đ bạn sẽ được miễn phí vận chuyển (Chi tiết)</a></td></tr>
+        </table>
+    </div>
+</div>
+
+
+        <br />
+        <script type="text/javascript">
+       
+            $(document).ready(function () {
+                $('#show-thongtin').hide(); $('#show-thongtin2').hide(); $('#nhap-thongtin2').hide();
+                $('#phuongthuc p a.rdo').click(function () {
+                    var a = 0;
+                    if ($('.name-kh').val() == "" || $('.name-kh').val() == null) { $('.name-kh').css("border", "1px solid red"); a++;}
+                    if ($('.mail-kh').val() == "" || $('.mail-kh').val() == null) { $('.mail-kh').css('border', '1px solid red'); a++; }
+                    if ($('.tel-kh').val() == "" || $('.tel-kh').val() == null) { $('.tel-kh').css('border', '1px solid red'); }
+                    if ($('.address-kh').val() == "" || $('.address-kh').val() == null) { $('.address-kh').css('border', '1px solid red'); a++; }
+                    if ($('#tinh-kh').val() == 0 || $('#tinh-kh').val() == null) { $('#tinh-kh').css('border', '1px solid red'); a++; }
+                    if ($('#quan-kh').val() == 0 || $('#quan-kh').val() == null) { $('#quan-kh').css('border', '1px solid red'); a++; }
+                    if (a > 0) { return false; }
+                    if ($(this).val() != "" && $('.mail-kh').val() != "" && $('.tel-kh').val() != "" && $('.address-kh').val() != "" && $(this).val() != 0 && $('#quan-kh').val() != 0) {
+                        $('#keyup-name').val($('.name-kh').val());
+                        $('#keyup-mail').val($('.mail-kh').val());
+                        $('#keyup-tel').val($('.tel-kh').val());
+                        $('#keyup-address').val($('.address-kh').val() + " - " + $('#quan-kh').val() + " - " + $('#tinh-kh').val());
+                        $('#keyup-name2').val($('.name-kh').val());
+                        $('#keyup-mail2').val($('.mail-kh').val());
+                        $('#keyup-tel2').val($('.tel-kh').val());
+                        $('#keyup-address2').val($('.address-kh').val() + " - " + $('#quan-kh').val() + " - " + $('#tinh-kh').val());
+                    }
+                    if ($('.name-kh2').val() != "" && $('.mail-kh2').val() != "" && $('.tel-kh').val() != "" && $('.address-kh').val() != "" && $(this).val() != 0 && $('#quan-kh').val() != 0) {
+                        $('#keyup-name2').val($('.name-kh2').val());
+                        $('#keyup-mail2').val($('.mail-kh2').val());
+                        $('#keyup-tel2').val($('.tel-kh2').val());
+                        $('#keyup-address2').val($('.address-kh2').val() + " - " + $('#quan-kh2').val() + " - " + $('#tinh-kh2').val());
+                    }
+                    $('#phuongthuc p  a.rdo').removeClass('rdo-icon-active').addClass('rdo-icon');
+                        $(this).addClass('rdo-icon-active');
+                });
+                $('#Dgiao').click(function () {
+                    if ($('#Dgiao').attr('checked')) {
+                        $("#table-ngnhan").hide();
+                        $("#Dcuahang-check").attr('checked', false);
+                    } else {
+                        $("#table-ngnhan").show();
+
+                    }
+                });
+                $('#PDgiao').click(function () {
+                    if ($('#Dgiao').attr('checked')) {
+                        $("#table-ngnhan").hide();
+                        $("#Dcuahang-check").attr('checked', false);
+                    } else {
+                        $("#table-ngnhan").show();
+                    }
+                });
+                $('#Dcuahang').click(function () {
+                    debugger;
+                    if ($("#Dcuahang-check").attr('checked')) {
+                        $("#Dcuahang-check").attr('checked', false);
+                        $("#Dgiao").attr('checked', 'checked');
+                        $('#table-ngnhan').hide();
+                    } else {
+                        $("#Dgiao").attr('checked', false);
+                        $("#Dcuahang-check").attr('checked', 'checked');
+                        $("#table-ngnhan").hide();
+                    }
+                });
+                $('#Dcuahang-check').click(function () {
+                    debugger;
+                    if ($(this).attr('checked')) {
+                        $(this).attr('checked', false);
+                        $("#Dgiao").attr('checked', 'checked');
+                    } else {
+                        $("#Dgiao").attr('checked', false);
+                        $(this).attr('checked', 'checked');
+                    }
+                });
+                $("#tainha").click(function () {
+                    debugger;
+                    var a = 0;
+                    if ($('.name-kh').val() == "" || $('.name-kh').val() == null) { $('.name-kh').css("border", "1px solid red"); a++; }
+                    if ($('.mail-kh').val() == "" || $('.mail-kh').val() == null) { $('.mail-kh').css('border', '1px solid red'); a++; }
+                    if ($('.tel-kh').val() == "" || $('.tel-kh').val() == null) { $('.tel-kh').css('border', '1px solid red'); }
+                    if ($('.address-kh').val() == "" || $('.address-kh').val() == null) { $('.address-kh').css('border', '1px solid red'); a++; }
+                    if ($('#tinh-kh').val() == 0 || $('#tinh-kh').val() == null) { $('#tinh-kh').css('border', '1px solid red'); a++; }
+                    if ($('#quan-kh').val() == 0 || $('#quan-kh').val() == null) { $('#quan-kh').css('border', '1px solid red'); a++; }
+                    if (a > 0) { return false; }
+                    if ($('.name-kh').val() != "" && $('.mail-kh').val() != "" && $('.tel-kh').val() != "" && $('.address-kh').val() != "" && $('#tinh-kh').val() != 0 && $('#quan-kh').val() != 0) {
+                        $('#keyup-name').val($('.name-kh').val());
+                        $('#keyup-mail').val($('.mail-kh').val());
+                        $('#keyup-tel').val($('.tel-kh').val());
+                        $('#keyup-address').val($('.address-kh').val() + " - " + $('#quan-kh').val() + " - " + $('#tinh-kh').val());
+                        $('#keyup-name2').val($('.name-kh').val());
+                        $('#keyup-mail2').val($('.mail-kh').val());
+                        $('#keyup-tel2').val($('.tel-kh').val());
+                        $('#keyup-address2').val($('.address-kh').val() + " - " + $('#quan-kh').val() + " - " + $('#tinh-kh').val());
+                    }
+                    if ($('.name-kh2').val() != "" && $('.mail-kh2').val() != "" && $('.tel-kh').val() != "" && $('.address-kh').val() != "" && $('#tinh-kh2').val() != 0 && $('#quan-kh').val() != 0) {
+                        $('#keyup-name2').val($('.name-kh2').val());
+                        $('#keyup-mail2').val($('.mail-kh2').val());
+                        $('#keyup-tel2').val($('.tel-kh2').val());
+                        $('#keyup-address2').val($('.address-kh2').val() + " - " + $('#quan-kh2').val() + " - " + $('#tinh-kh2').val());
+                    }
+                    $('#show-thongtin2').show(); $('table-ngnhan').show();
+                    $('#nhap-thongtin').hide(); $('#nhap-thongtin2').hide();
+                    $('#show-thongtin').show();
+                    $("#show-atm").hide();
+                    $("#show-visa").hide();
+                    $("#show-quay").hide();
+                });
+                $("#atm").click(function () {
+                    debugger;
+                    var a = 0;
+                    if ($('.name-kh').val() == "" || $('.name-kh').val() == null) { $('.name-kh').css("border", "1px solid red"); a++; }
+                    if ($('.mail-kh').val() == "" || $('.mail-kh').val() == null) { $('.mail-kh').css('border', '1px solid red'); a++; }
+                    if ($('.tel-kh').val() == "" || $('.tel-kh').val() == null) { $('.tel-kh').css('border', '1px solid red'); }
+                    if ($('.address-kh').val() == "" || $('.address-kh').val() == null) { $('.address-kh').css('border', '1px solid red'); a++; }
+                    if ($('#tinh-kh').val() == 0 || $('#tinh-kh').val() == null) { $('#tinh-kh').css('border', '1px solid red'); a++; }
+                    if ($('#quan-kh').val() == 0 || $('#quan-kh').val() == null) { $('#quan-kh').css('border', '1px solid red'); a++; }
+                    if (a > 0) { return false; }
+                    if ($('.name-kh').val() != "" && $('.mail-kh').val() != "" && $('.tel-kh').val() != "" && $('.address-kh').val() != "" && $('#tinh-kh').val() != 0 && $('#quan-kh').val() != 0) {
+                        $('#keyup-name').val($('.name-kh').val());
+                        $('#keyup-mail').val($('.mail-kh').val());
+                        $('#keyup-tel').val($('.tel-kh').val());
+                        $('#keyup-address').val($('.address-kh').val() + " - " + $('#quan-kh').val() + " - " + $('#tinh-kh').val());
+                        $('#keyup-name2').val($('.name-kh').val());
+                        $('#keyup-mail2').val($('.mail-kh').val());
+                        $('#keyup-tel2').val($('.tel-kh').val());
+                        $('#keyup-address2').val($('.address-kh').val() + " - " + $('#quan-kh').val() + " - " + $('#tinh-kh').val());
+                    }
+                    if ($('.name-kh2').val() != "" && $('.mail-kh2').val() != "" && $('.tel-kh').val() != "" && $('.address-kh').val() != "" && $('#tinh-kh2').val() != 0 && $('#quan-kh').val() != 0) {
+                        $('#keyup-name2').val($('.name-kh2').val());
+                        $('#keyup-mail2').val($('.mail-kh2').val());
+                        $('#keyup-tel2').val($('.tel-kh2').val());
+                        $('#keyup-address2').val($('.address-kh2').val() + " - " + $('#quan-kh2').val() + " - " + $('#tinh-kh2').val());
+                    }
+                    $('#show-thongtin2').show(); $('table-ngnhan').show();
+                    $('#nhap-thongtin').hide(); $('#nhap-thongtin2').hide();
+                    $('#show-thongtin').show();
+                    $("#show-tainha").hide();
+                    $("#show-atm").show();
+                    $("#show-visa").hide();
+                    $("#show-quay").hide();
+                });
+                $("#visa").click(function () {
+                    debugger;
+                    var a = 0;
+                    if ($('.name-kh').val() == "" || $('.name-kh').val() == null) { $('.name-kh').css("border", "1px solid red"); a++; }
+                    if ($('.mail-kh').val() == "" || $('.mail-kh').val() == null) { $('.mail-kh').css('border', '1px solid red'); a++; }
+                    if ($('.tel-kh').val() == "" || $('.tel-kh').val() == null) { $('.tel-kh').css('border', '1px solid red'); }
+                    if ($('.address-kh').val() == "" || $('.address-kh').val() == null) { $('.address-kh').css('border', '1px solid red'); a++; }
+                    if ($('#tinh-kh').val() == 0 || $('#tinh-kh').val() == null) { $('#tinh-kh').css('border', '1px solid red'); a++; }
+                    if ($('#quan-kh').val() == 0 || $('#quan-kh').val() == null) { $('#quan-kh').css('border', '1px solid red'); a++; }
+                    if (a > 0) { return false; }
+                    if ($('.name-kh').val() != "" && $('.mail-kh').val() != "" && $('.tel-kh').val() != "" && $('.address-kh').val() != "" && $('#tinh-kh').val() != 0 && $('#quan-kh').val() != 0) {
+                        $('#keyup-name').val($('.name-kh').val());
+                        $('#keyup-mail').val($('.mail-kh').val());
+                        $('#keyup-tel').val($('.tel-kh').val());
+                        $('#keyup-address').val($('.address-kh').val() + " - " + $('#quan-kh').val() + " - " + $('#tinh-kh').val());
+                        $('#keyup-name2').val($('.name-kh').val());
+                        $('#keyup-mail2').val($('.mail-kh').val());
+                        $('#keyup-tel2').val($('.tel-kh').val());
+                        $('#keyup-address2').val($('.address-kh').val() + " - " + $('#quan-kh').val() + " - " + $('#tinh-kh').val());
+                    }
+                    if ($('.name-kh2').val() != "" && $('.mail-kh2').val() != "" && $('.tel-kh').val() != "" && $('.address-kh').val() != "" && $('#tinh-kh2').val() != 0 && $('#quan-kh').val() != 0) {
+                        $('#keyup-name2').val($('.name-kh2').val());
+                        $('#keyup-mail2').val($('.mail-kh2').val());
+                        $('#keyup-tel2').val($('.tel-kh2').val());
+                        $('#keyup-address2').val($('.address-kh2').val() + " - " + $('#quan-kh2').val() + " - " + $('#tinh-kh2').val());
+                    }
+                    $('#show-thongtin2').show(); $('table-ngnhan').show();
+                    $('#nhap-thongtin').hide(); $('#nhap-thongtin2').hide();
+                    $('#show-thongtin').show();
+                    $("#show-tainha").hide();
+                    $("#show-atm").hide();
+                    $("#show-visa").show();
+                    $("#show-quay").hide();
+                });
+                $("#taiquay").click(function () {
+                    debugger;
+                    var a = 0;
+                    if ($('.name-kh').val() == "" || $('.name-kh').val() == null) { $('.name-kh').css("border", "1px solid red"); a++; }
+                    if ($('.mail-kh').val() == "" || $('.mail-kh').val() == null) { $('.mail-kh').css('border', '1px solid red'); a++; }
+                    if ($('.tel-kh').val() == "" || $('.tel-kh').val() == null) { $('.tel-kh').css('border', '1px solid red'); }
+                    if ($('.address-kh').val() == "" || $('.address-kh').val() == null) { $('.address-kh').css('border', '1px solid red'); a++; }
+                    if ($('#tinh-kh').val() == 0 || $('#tinh-kh').val() == null) { $('#tinh-kh').css('border', '1px solid red'); a++; }
+                    if ($('#quan-kh').val() == 0 || $('#quan-kh').val() == null) { $('#quan-kh').css('border', '1px solid red'); a++; }
+                    if (a > 0) { return false; }
+                    if ($('.name-kh').val() != "" && $('.mail-kh').val() != "" && $('.tel-kh').val() != "" && $('.address-kh').val() != "" && $('#tinh-kh').val() != 0 && $('#quan-kh').val() != 0) {
+                        $('#keyup-name').val($('.name-kh').val());
+                        $('#keyup-mail').val($('.mail-kh').val());
+                        $('#keyup-tel').val($('.tel-kh').val());
+                        $('#keyup-address').val($('.address-kh').val() + " - " + $('#quan-kh').val() + " - " + $('#tinh-kh').val());
+                        $('#keyup-name2').val($('.name-kh').val());
+                        $('#keyup-mail2').val($('.mail-kh').val());
+                        $('#keyup-tel2').val($('.tel-kh').val());
+                        $('#keyup-address2').val($('.address-kh').val() + " - " + $('#quan-kh').val() + " - " + $('#tinh-kh').val());
+                    }
+                    if ($('.name-kh2').val() != "" && $('.mail-kh2').val() != "" && $('.tel-kh').val() != "" && $('.address-kh').val() != "" && $('#tinh-kh2').val() != 0 && $('#quan-kh').val() != 0) {
+                        $('#keyup-name2').val($('.name-kh2').val());
+                        $('#keyup-mail2').val($('.mail-kh2').val());
+                        $('#keyup-tel2').val($('.tel-kh2').val());
+                        $('#keyup-address2').val($('.address-kh2').val() + " - " + $('#quan-kh2').val() + " - " + $('#tinh-kh2').val());
+                    }
+                    $('#show-thongtin2').show(); $('table-ngnhan').show();
+                    $('#nhap-thongtin').hide(); $('#nhap-thongtin2').hide();
+                    $('#show-thongtin').show();
+                    $("#show-tainha").hide();
+                    $("#show-atm").hide();
+                    $("#show-visa").hide();
+                    $("#show-quay").show();
+                });
+                $('.name-kh').keyup(function () {
+                    $('#keyup-name').val($(this).val());
+                    $('#keyup-mail').val($('.mail-kh').val());
+                    $('#keyup-tel').val($('.tel-kh').val());
+                    $('#keyup-address').val($('.address-kh').val() + " - " + $('#quan-kh').val() + " - " + $('#tinh-kh').val());
+
+                    $('#keyup-name2').val($(this).val());
+                    $('#keyup-mail2').val($('.mail-kh').val());
+                    $('#keyup-tel2').val($('.tel-kh').val());
+                    $('#keyup-address2').val($('.address-kh').val() + " - " + $('#quan-kh').val() + " - " + $('#tinh-kh').val());
+                });
+                $('#tinh-kh').change(function () {
+                    debugger;
+                    $('#keyup-name').val($('.name-kh').val());
+                    $('#keyup-mail').val($('.mail-kh').val());
+                    $('#keyup-tel').val($('.tel-kh').val());
+                    $('#keyup-address').val($('.address-kh').val() + " - " + $('#quan-kh').val() + " - " + $('#tinh-kh').val());
+                    $('#keyup-name2').val($('.name-kh').val());
+                    $('#keyup-mail2').val($('.mail-kh').val());
+                    $('#keyup-tel2').val($('.tel-kh').val());
+                    $('#keyup-address2').val($('.address-kh').val() + " - " + $('#quan-kh').val() + " - " + $('#tinh-kh').val());
+                    if ($(this).val() != "" && $('.mail-kh').val() != "" && $('.tel-kh').val() != "" && $('.address-kh').val() != "" && $(this).val() != 0 && $('#quan-kh').val() != 0) {
+                        $('#show-thongtin2').show(); $('table-ngnhan').show();
+                        $('#nhap-thongtin').hide(); $('#nhap-thongtin2').hide();
+                        $('#show-thongtin').show();
+                       
+                    }
+                    else { $('#show-thongtin').hide(); $('#nhap-thongtin').show(); }
+                });
+                $('#quan-kh').change(function () {
+                    debugger;
+                    $('#keyup-name').val($('.name-kh').val());
+                    $('#keyup-mail').val($('.mail-kh').val());
+                    $('#keyup-tel').val($('.tel-kh').val());
+                    $('#keyup-address').val($('.address-kh').val() + " - " + $('#quan-kh').val() + " - " + $('#tinh-kh').val());
+                    $('#keyup-name2').val($('#keyup-name').val());
+                    $('#keyup-mail2').val($('.mail-kh').val());
+                    $('#keyup-tel2').val($('.tel-kh').val());
+                    $('#keyup-address2').val($('.address-kh').val() + " - " + $('#quan-kh').val() + " - " + $('#tinh-kh').val());
+                    if ($(this).val() != "" && $('.mail-kh').val() != "" && $('.tel-kh').val() != "" && $('.address-kh').val() != "" && $(this).val() != 0 && $('#tinh-kh').val() != 0) {
+                        $('#nhap-thongtin').hide(); $('table-ngnhan').show();
+                        $('#show-thongtin').show();
+                        $('#nhap-thongtin2').hide();
+                        $('#show-thongtin2').show();
+                    }
+                    else { $('#show-thongtin').hide(); $('#nhap-thongtin').show(); }
+                });
+                $('#tinh-kh2').change(function () {
+                    debugger;
+                    $('#keyup-name2').val($('#keyup-name2').val());
+                    $('#keyup-mail2').val($('.mail-kh2').val());
+                    $('#keyup-tel2').val($('.tel-kh2').val());
+                    $('#keyup-address').val($('.address-kh').val() + " - " + $('#quan-kh').val() + " - " + $('#tinh-kh').val());
+                    if ($(this).val() != "" && $('.mail-kh2').val() != "" && $('.tel-kh2').val() != "" && $('.address-kh2').val() != "" && $(this).val() != 0 && $('#quan-kh2').val() != 0) {
+                        $('#nhap-thongtin2').hide(); $('table-ngnhan').show();
+                        $('#show-thongtin2').show();
+                    }
+                    else { $('#show-thongtin2').hide(); $('#nhap-thongtin2').show(); }
+                });
+                $('#quan-kh2').change(function () {
+                    debugger;
+                    $('#keyup-name2').val($('#keyup-name2').val());
+                    $('#keyup-mail2').val($('.mail-kh2').val());
+                    $('#keyup-tel2').val($('.tel-kh2').val());
+                    $('#keyup-address2').val($('.address-kh2').val() + " - " + $('#quan-kh2').val() + " - " + $('#tinh-kh2').val());
+                    if ($(this).val() != "" && $('.mail-kh2').val() != "" && $('.tel-kh2').val() != "" && $('.address-kh2').val() != "" && $(this).val() != 0 && $('#tinh-kh2').val() != 0) {
+                        $('#nhap-thongtin2').hide(); $('table-ngnhan').show();
+                        $('#show-thongtin2').show();
+                    }
+                    else { $('#show-thongtin2').hide(); $('#nhap-thongtin2').show(); }
+                });
+                $('#bt-chinh').click(function () {
+                    $('#show-thongtin').hide();
+                    $('#nhap-thongtin').show();
+                    $('#show-thongtin2').show();
+                    $('#nhap-thongtin2').hide();
+                });
+                $('#bt-chinh2').click(function () {
+                    $('#show-thongtin2').hide();
+                    $('#nhap-thongtin2').show();
+                    $('#show-thongtin').show();
+                    $('#nhap-thongtin').hide();
+                });
+            });
+        </script>
+    <table id="table-thanhtoan">
+    <tr>
+        <th style="width:330px;">1. Thông tin giao hàng  <img src="/images/mnhon.png" /></th>
+        <th style="width:470px;">2. Vận chuyển & Thanh toán</th>
+        <th style="width:330px;"> <img src="/images/mnhon.png" />3. Giỏ hàng</th>
+    </tr>
+    <tr>
+        <td style="vertical-align:top; width:330px;">
+            <h4>Thông tin thanh toán</h4>
+            <table id="show-thongtin">
+                <tr><td><p >Họ tên</p></td><td><p><input type="text"  class="keyup-name" value="" name="keyup-name" id="keyup-name"  disabled="disabled" style="border:none; background:none;" /> </p></td></tr>
+                <tr><td><p>Email</p></td><td> <p><input type="text"  class="keyup-mail" value="" name="keyup-mail" id="keyup-mail"  disabled="disabled" style="border:none; background:none;" /></p></td></tr>
+                <tr><td><p >Điện thoại</p></td><td><p><input type="text"  class="keyup-tel" value="" name="keyup-tel" id="keyup-tel"  disabled="disabled" style="border:none; background:none;" /></p></td></tr>
+                <tr><td><p>Địa chỉ</p></td><td> <p><input type="text"  class="keyup-address" value="" name="keyup-address" id="keyup-address"  disabled="disabled" style="border:none; background:none;" /></p></td></tr>
+                <tr><td></td><td><a  id="bt-chinh" style="Color:#d80001">Chỉnh sửa</a></td></tr>
+            </table><br />
+            <table id="nhap-thongtin">
+                <tr><td><p >Họ tên</p></td><td><p><input class="name-kh" name="name-kh"  type="text" /></p></td></tr>
+                <tr><td><p>Email</p></td><td> <p><input class="mail-kh" type="text" /></p></td></tr>
+                <tr><td><p >Điện thoại</p></td><td><p><input class="tel-kh" type="text" /></p></td></tr>
+                <tr><td><p>Địa chỉ</p></td><td> <p><input class="address-kh" type="text" /></p></td></tr>
+                <tr><td><p>Tỉnh Thành</p></td><td><select id="tinh-kh"><option value="0" selected="selected">Chọn Tỉnh</option><option value="Hà Nội" data-name="Hà Nội">Hà Nội</option><option value="Hồ chí minh" data-name="Hồ Chí Minh">Hồ chí minh</option></select></td></tr>
+                <tr><td><p>Quận Huyện</p></td><td><select id="quan-kh"><option value="0" selected="selected">Chọn Quận</option><option value="Hà Đông" data-name="Hà Đông">Hà Đông</option><option value="Chúc Sơn" data-name="Chúc Sơn">Chúc Sơn</option></select></td></tr>
+            </table><br />
+            <h4>Thông tin giao hàng</h4>
+            <p id="Dcuahang"><input type="checkbox" id="Dcuahang-check" /> Nhận hàng tại cửa hàng</p>
+            <p id="PDgiao"><input type="checkbox" name="giaohang" id="Dgiao"  checked="checked" /> Giao hàng đến địa chỉ thanh toán</p>
+            <div id="table-ngnhan">
+            <table id="show-thongtin2">
+                <tr><td colspan="2"><h4>Thông tin người nhận </h4></td></tr>
+                <tr><td><p >Họ tên</p></td><td><p><input type="text"  class="keyup-name2" value="" name="keyup-name2" id="keyup-name2"  disabled="disabled" style="border:none; background:none;" /> </p></td></tr>
+                <tr><td><p>Email</p></td><td> <p><input type="text"  class="keyup-mail2" value="" name="keyup-mail2" id="keyup-mail2"  disabled="disabled" style="border:none; background:none;" /></p></td></tr>
+                <tr><td><p >Điện thoại</p></td><td><p><input type="text"  class="keyup-tel2" value="" name="keyup-tel2" id="keyup-tel2"  disabled="disabled" style="border:none; background:none;" /></p></td></tr>
+                <tr><td><p>Địa chỉ</p></td><td> <p><input type="text"  class="keyup-address2" value="" name="keyup-address2" id="keyup-address2"  disabled="disabled" style="border:none; background:none;" /></p></td></tr>
+                <tr><td></td><td><a  id="bt-chinh2" style="Color:#d80001">Chỉnh sửa</a></td></tr>
+            </table><br />
+            <table id="nhap-thongtin2">
+                <tr><td colspan="2"><h4>Thông tin người nhận </h4></td></tr>
+                <tr><td><p >Họ tên</p></td><td><p><input class="name-kh2" name="name-kh"  type="text" /></p></td></tr>
+                <tr><td><p>Email</p></td><td> <p><input class="mail-kh2" type="text" /></p></td></tr>
+                <tr><td><p >Điện thoại</p></td><td><p><input class="tel-kh2" type="text" /></p></td></tr>
+                <tr><td><p>Địa chỉ</p></td><td> <p><input class="address-kh2" type="text" /></p></td></tr>
+               <tr><td><p>Tỉnh Thành</p></td><td><select id="Select1"><option value="0" selected="selected">Chọn Tỉnh</option><option value="Hà Nội" data-name="Hà Nội">Hà Nội</option><option value="Hồ chí minh" data-name="Hồ Chí Minh">Hồ chí minh</option></select></td></tr>
+                <tr><td><p>Quận Huyện</p></td><td><select id="Select2"><option value="0" selected="selected">Chọn Quận</option><option value="Hà Đông" data-name="Hà Đông">Hà Đông</option><option value="Chúc Sơn" data-name="Chúc Sơn">Chúc Sơn</option></select></td></tr>
+            </table><br />
+            </div>
+           
+        </td>
+        <td id="td2" style="vertical-align:top;width:470px; ">
+            <h4>Phương thức thanh toán</h4>
+            <div id="phuongthuc">
+            <p><a class="rdo-icon-active rdo" id="tainha"><b>Thu tiền tận nhà (Bạn hãy vui lòng thanh toán tiền cho nhân viên giao hàng)</b></a></p>
+            <p><a class="rdo-icon rdo" id="atm"><b>Bằng thẻ ATM (Có chức năng chuyển tiền qua internet) </b></a></p>
+                <div id='show-atm' class="pthuc" style='display:none'>
+                    <img src="/Image/logoColor.png" /><br />
+                    <span class="linkhdan">Quý khách vui lòng xem hướng dẫn<a> tại đây</a></span>
+                     <br /><span class="dke"></span><br />
+                </div>
+            <p><a class="rdo-icon rdo" id="visa"><b>Bằng thẻ Visa/Master Card</b></a></p>
+                <div id='show-visa' class="pthuc" style='display:none'>
+                    <img src="/Image/logovisa.png" /><br />
+                    <span class="linkhdan">Quý khách vui lòng xem hướng dẫn<a> tại đây</a></span><br />
+                   <b><i>Lưu ý:</i></b><br />
+            <i>- Những thẻ VISA/MasterCard được phát hành bởi các ngân hàng Việt Nam mới sử dụng được.</i><br />
+            <i>- Thẻ VISA/MasterCard được phát hành bởi các ngân hàng tại nước ngoài vui lòng liên hệ với chúng tôi (1900 6656) để được hỗ trợ.</i><br />
+                    
+                    <br /><span class="dke"></span><br />
+                </div>
+                
+            
+            <p><a class="rdo-icon rdo" id="taiquay"><b>Chuyển tiền tại quầy (Thẻ ATM không có chức năng chuyển tiền qua internet)</b></a></p>
+                <div id='show-quay' class="pthuc" style='display:none'>
+                  <p><b>Ngân hàng VietcomColor</b></p>
+                    <p><b>Tên tài khoản: </b>Trần Mạnh Hùng</p>
+                    <b>Mã tài khoản: </b>098 789 6655 8899 7766
+                </div>
+            </div>
+
+           <!-- <br /> <h4>Cách tính phí vận chuyển</h4>
+            <p>Với địa điểm nhận hàng tại cửa hàng: Miễn phí</p>
+            <p>Địa điểm giao hàng tại khu vực nội thành SG: Miễn phí</p>
+            <p>Các địa điểm ngoại thành SG: Phí 20.000đ/1 đơn hàng</p>
+            <p>Các tỉnh thành phố khác ngoài SG: 30.000đ/1 đơn hàng</p>
+            <p>Phí thu tiền tại nhà: 10.000đ</p>
+            <p>Miễn phí vận chuyển với đơn hàng giá trị: 500.000đ trở lên</p>
+            <p>Ngày giao hàng dự kiến: ngày mua hàng+1 với khu vực nội thành SG</p>
+            <p>Ngày mua hàng+ 2 với khu vực ngoại nội thành SG</p>
+            <p>Đơn hàng nhận tại cửa hàng: Ngày mua hàng</p>-->
+        </td>
+        
+        <td style="vertical-align:top; width:313px; ">
+            <table  border="0">
+                <tr><td>Tiền hàng</td><td><b>418,000 ₫</b></td> </tr>
+                <tr><td>Phí vận chuyển:</td><td><b>Miễn phí</b></td></tr>
+                <tr><td>Phí thu tiền tận nơi:</td><td><b>Miễn phí</b></td></tr>
+                <tr><td><b>Tổng cộng:</b></td><td><b>418,000 ₫</b></td></tr>
+            </table>
+            <br />
+            <table>
+                <tr><td>Lời nhắn</td><td><textarea style="width:210px; height:120px;"></textarea></td></tr>
+                <tr><td></td><td style="float:right"><input type="submit" value="THANH TOÁN" id="btnSend" /></td></tr> 
+            </table>
+            <br />
+            <p><span style="font-size:13px;font-weight:bold;">Thời gian giao hàng dự kiến</span> &nbsp;&nbsp; <span>Ngày 21/11/2013</span></p>
+        </td>
+    </tr>
+</table>
+    

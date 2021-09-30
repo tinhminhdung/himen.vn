@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <!-- END: basic page needs -->
+    <!-- BEGIN: css -->
+    <link href="~/Content/osviews.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" type="text/css" rel="stylesheet" />
+    <link href="~/Content/style.css" type="text/css" rel="stylesheet" />
+    <link href="~/Content/cloud-zoom.css" rel="stylesheet" />
+    <link href="~/Content/jquery-ui.css" rel="stylesheet" />
+    @*<link rel="stylesheet" href="~/Content/slide.css" type="text/css" media="screen" />*@
+    <link rel="stylesheet" href="~/Content/compact.css" type="text/css" media="screen" />
+
+    <!-- BEGIN: js -->
+    <script src="~/Scripts/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/google-code-prettify/prettify.js"></script>
+    <script type="text/javascript" src="~/Scripts/bootstrap.js"></script>
+    <script type="text/javascript" src="~/Scripts/superfish.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.hoverdir.js"></script>
+    <script type="text/javascript" src="~/Scripts/jflickrfeed.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.prettyPhoto.js"></script>   
+    <script type="text/javascript" src="~/Scripts/main.js"></script>
+    <script type="text/javascript" src="~/Content/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="~/Content/ckfinder/ckfinder.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery_007.js"></script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <script src="~/Scripts/library.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body> 
+       <!--BEGIN: header--> 
+    <div id="hiddenToolBarScroll-head" class="scrollBox-head">
+        <div class="tel-add">@{ Html.RenderAction("_TopHead", "My_Partialview"); }</div>
+        <div class="box-top-head">
+            <!-- BEGIN: row -->
+            <div class="row">
+                <div class="clear"></div>
+                <!--BEGIN: logo-->
+                @{Html.RenderAction("_Logo", "My_Partialview");}
+                <!--END: logo-->
+
+                <!--BEGIN: search&phone content-->
+                @{Html.RenderAction("_Search", "My_Partialview");}
+                <!--END: search&phone -->
+
+                </div>
+            </div>
+            <!-- END: row -->
+        @{Html.RenderAction("_MenuTop", "My_Partialview");}
+        </div>
+    <!--END: header-->
+    <!--BEGIN: container-->
+        <div class="box-main-mem">
+                @RenderBody()
+        </div>
+        <div class="container">
+            <div class="row" style="text-align: center;">
+                @{ Html.RenderAction("_CopyRight", "My_Partialview"); }
+            </div>
+        </div>
+</body>
+</html>

@@ -1,0 +1,164 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model PagedList<onsoft.Models.Advertise>
+
+@*@model PagedList.IPagedList<onsoft.Models.Advertise>*@
+
+@{
+    ViewBag.Title = "AdvertiseIndex";
+    Layout = "~/Views/Shared/_LayoutAdmins.cshtml";
+}
+
+@section Styles
+{
+    <!--Sử dụng cho Confirm delete-->
+    <link href="~/Content/Styles/jquery-ui.css" rel="stylesheet" />
+
+    <!--Sử dụng cho Phân trang-->
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+}
+
+@section Scripts
+{
+    <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")" type="text/javascript"></script>
+    <!--Sử dụng cho Confirm delete-->
+    <script src="~/Scripts/jquery-1.9.1.js"></script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <script src="~/Scripts/jquery.easy-confirm-dialog.js"></script>
+    <!--Confirm xóa-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".yesno").easyconfirm({
+                locale: { title: 'Xóa sản phẩm', button: ['Hủy', 'Xóa'] }
+            });
+        
+            $(".deletemultiple").easyconfirm({
+                locale: { title: 'Xóa sản phẩm', button: ['Hủy', 'Xóa'] }
+            });
+        })
+    </script>
+
+    <!--Tim kiem quang cao theo vi tri-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sllPossition').change(function () {
+                //$('#ajaxAdvertise').css('backgroundColor', 'green');
+                //alert("vao roiiiiii");
+                var posstionSearch = $('#sllPossition').val();
+                //alert(posstionSearch);
+                jQuery.ajax({
+                    url: '@Url.Action("AdvertiseIndex", "Advertise")',
+                    type: 'Post',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ posstionSearch: posstionSearch }),
+                    success: function (result) {
+                        //alert(result);
+                        //$('#ajaxAdvertise').css('backgroundColor', 'green');
+                        $('#tableData').html(result);
+                    }
+                });
+            });
+        });
+
+    </script>
+
+    <!--Search-->
+    <script type="text/javascript">    
+    $(function () {
+        $(".alert").hide();
+        ///
+        $("#btnSearchh").click(function () {
+            //your code            
+            var searchString = $("#txtAdvertise").val();
+            //alert(searchString);
+            if (searchString != "") {
+                $.post("/Advertise/Search", { "searchString": searchString },
+                    function (data) {
+                            $(".alert").replaceWith("<div class='alert alert-info'>Nhìn đi tìm thấy rồi</div>");
+                            $(".alert").fadeOut(1000);
+                            $('#tableData').html(data);
+                    });
+            }
+            else {
+                $(".alert").replaceWith("<div class='alert alert-error'>Phải nhập đầy đủ dữ liệu.</div>");
+                $(".alert").fadeOut(5000);
+            }
+            //
+        });
+        ///
+    });
+
+</script>
+
+}
+
+
+@using (Html.BeginForm("MultiCommand", "Advertise", FormMethod.Post, new { @id = "formAdvertise" }))
+{   
+    <div class="container-fluid">
+        <div style="width: 100%; margin: 0 auto;">
+            <div id="Breadcrumb" class="Block Breadcrumb ui-widget-content ui-corner-top ui-corner-bottom">
+                <ul>
+                    <li class='SecondLast'><a href='#'><i class="icon-home" style="font-size: 14px;"></i>Trang chủ</a></li>
+                    <li class='Last'><span>Danh sách Quảng Cáo</span></li>
+                </ul>
+            </div>
+            <div style="clear: both;"></div>
+            <div id="cph_Main_ContentPane">
+                <!--widget-->
+                <div class="widget">
+                    <!--widget-title-->
+                    <div class="widget-title">
+                        <h4><i class="icon-list-alt"></i>&nbsp;Danh sách Quảng Cáo</h4>
+                        <!-- begin menu -->
+                        @Html.Partial("_PartialMenuRight")
+                        <!-- end menu -->
+
+                        <div id="hiddenToolBarScroll" class="scrollBox hidden">
+                            <h4><i class="icon-list-alt"></i>&nbsp;Danh sách Quảng Cáo</h4>
+                            <div class="FloatMenuBar">
+                                <!-- begin menu -->
+                                @Html.Partial("_PartialMenuRight")
+                                <!-- end menu -->
+                            </div>
+                        </div>
+
+                    </div>
+                    <!--widget-title-->
+
+                    <!--widget-body-->
+                    <div class="widget-body">
+                        <div class="row-fluid">
+                            <!-- Loc Theo Quang Cao -->
+                            <div class="span3">
+                                <div id="sample_1_length" class="dataTables_length">
+                                    @Html.DropDownList("sllPossition", "Tất cả")
+                                </div>
+                            </div>
+                            <!-- Loc Theo Quang Cao -->
+                            <!--Paging-->
+                            <div class="span9">
+                                <div class="span9 form-search pull-right text-right">
+                                <input name="searchAdvertise" type="text" maxlength="100" id="txtAdvertise" placeholder="Nhập tên quảng cáo" style="width: 200px;" />   
+                                    <label name="btnSearchh" id="btnSearchh" class="toolbar btn btn-info" ><i class="icon-search"></i> Tìm kiếm</label>
+                            </div>
+                            </div>
+                            <!--Paging-->
+                        </div>
+                        <!-- Table Data-->
+                        @{Html.RenderPartial("_AdvertiseData", Model);}
+                        <!-- Table Data-->
+
+                    </div>
+                    <!--widget-body-->
+                </div>
+                <!--widget-->
+            </div>
+
+        </div>
+    </div>
+}
+
+
+
+

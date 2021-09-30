@@ -1,0 +1,200 @@
+﻿@{
+    ViewBag.Title = "Thêm ảnh sản phẩm";
+    Layout = "~/Views/Shared/_LayoutAdmins.cshtml";
+}
+
+@section Scripts
+{
+    <!-- Validate Data -->
+    <script type="text/javascript">
+
+        (function ($, W, D) {
+
+            var JQUERY4U = {};
+
+            JQUERY4U.UTIL =
+            {
+                setupFormValidation: function () {
+                    //validation rules
+                    $("#productaddimage-form").validate({
+                        rules: {
+                            fileImg: "required"
+                        },
+                        messages: {
+                            fileImg: "Phải nhập ảnh sản phẩm",
+                        },
+                        submitHandler: function (form) {
+                            form.submit();
+                        }
+                    });
+                }
+            }
+
+            //when the dom has loaded setup form validation rules
+            $(D).ready(function ($) {
+                JQUERY4U.UTIL.setupFormValidation();
+            });
+
+        })(jQuery, window, document);
+    </script>
+    <!-- End Validate Data -->
+}
+
+<div class="container-fluid">
+    <div style="width: 100%; margin: 0 auto;">
+
+        <div id="Breadcrumb" class="Block Breadcrumb ui-widget-content ui-corner-top ui-corner-bottom">
+            <ul>
+                <li><a href='../../Product/ProductIndexot'><i class="icon-home" style="font-size: 14px;"></i>Trang chủ</a></li>
+                <li class='SecondLast'><a href='../../Product/ProductIndexot'>Danh mục sản phẩm</a></li>
+                <li class='Last'><span>Thêm ảnh sản phẩm</span></li>
+            </ul>
+        </div>
+
+        <div style="clear: both;"></div>
+
+        @using (Html.BeginForm("ProductAddImg", "Product", new { id=@ViewBag.ProId}, FormMethod.Post, new { enctype = "multipart/form-data", @id = "productaddimage-form", @class = "validate-form" }))
+        {
+            <div id="cph_Main_ContentPane">
+                <div class="widget">
+                    <!-- widget-title -->
+                    <div class="widget-title">
+                        <h4><i class="icon-reorder"></i>&nbsp;Thêm ảnh sản phẩm</h4>
+
+                        <!-- Button -->
+                        <div class="ui-corner-top ui-corner-bottom">
+                            <div id="toolbox">
+                                <div style="float: right;" class="toolbox-content">
+
+                                    <table class="toolbar">
+                                        <tr>
+                                            <td align="center">
+
+                                                <button type="submit" class="toolbar btn btn-info"><i class="icon-save"></i>&nbsp;Ghi lại</button>
+
+                                            </td>
+                                            <td align="center">
+
+                                                <a title="Quay lại" class="toolbar btn btn-info" href="../../Product/ProductIndexot"><i class="icon-chevron-left"></i>&nbsp;Trở về</a>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Button -->
+
+                        <div id="hiddenToolBarScroll" class="scrollBox hidden">
+                            <h4>
+                                <i class="icon-reorder"></i>&nbsp;Thêm ảnh sản phẩm</h4>
+                            <div class="FloatMenuBar">
+
+                                <div class="ui-corner-top ui-corner-bottom">
+                                    <div id="Div1">
+
+                                        <div style="float: right;" class="toolbox-content">
+
+                                            <table class="toolbar">
+                                                <tr>
+                                                    <td align="center">
+                                                        <button type="submit" class="toolbar btn btn-info"><i class="icon-save"></i>&nbsp;Ghi lại</button>
+                                                    </td>
+                                                    <td align="center">
+                                                        <a title="Quay lại" class="toolbar btn btn-info" href="../../Product/ProductIndexot"><i class="icon-chevron-left"></i>&nbsp;Trở về</a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- widget-title -->
+
+                    <!-- widget-body -->
+                    <div class="widget-body">
+                        <div id="tabs">
+                            <div id="tabs-1">
+                                <table class="admintable" style="width: 100%;">
+
+                                    <tr>
+                                        <td class="key">Ảnh sản phẩm <span class="Required">*</span>
+                                        </td>
+                                        <td>
+                                            <input type="file" name="fileImg" id="fileImg" multiple />
+                                            <output id="result" />
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Ảnh sản phẩm
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    Ảnh mô tả của sản phẩm 
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>
+
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- widget-body -->
+
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        $('#addImg').click(function () {
+            debugger
+            var tr = $(this).parent(0);
+            tr.append("<br/><input type='file' name='fileImg' id='fileImg'/>");
+        });
+    });
+</script>
+<script type="text/javascript">
+    window.onload = function () {
+        //Check File API support
+        if (window.File && window.FileList && window.FileReader) {
+            var filesInput = document.getElementById("fileImg");
+
+            filesInput.addEventListener("change", function (event) {
+                var files = event.target.files; //FileList object
+                var output = document.getElementById("result");
+                var dem = 0;
+                for (var i = 0; i < files.length; i++) {
+                    var file = files[i];
+
+                    //Only pics
+                    if (!file.type.match('image'))
+                        continue;
+
+                    var picReader = new FileReader();
+                    //Read the image
+                    picReader.readAsDataURL(file);
+                    picReader.addEventListener("load", function (event) {
+                        var picFile = event.target;
+                        var div = document.createElement("div");
+
+                        div.innerHTML = "<img class='thumbnail' src='" + picFile.result + "'" +
+								"title='" + files[dem].name + "'/><span>" + files[dem].name + "</span>";
+                        dem++;
+                        output.insertBefore(div, null);
+                    });
+                }
+
+            });
+        }
+        else {
+            console.log("Your browser does not support File API");
+        }
+    }
+	</script>

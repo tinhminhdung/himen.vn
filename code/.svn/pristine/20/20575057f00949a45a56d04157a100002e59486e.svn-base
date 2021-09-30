@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Bản đồ";
+    ViewBag.des = "Bản đồ";
+    ViewBag.key = "Bản đồ";
+    Layout = "~/Views/Shared/_LayoutDefault.cshtml";
+}
+<div class="detail">
+<div class="titlelink">
+    <ul>
+        <li><a href='/'><i class="icon-home" style="font-size: 14px;"></i>Trang chủ</a></li>
+        <li class="SecondLast"><a href='#'>Bản đồ</a></li>
+    </ul>
+</div>
+<div class="box-detail">
+    <div style="text-align: left; font-weight: bold">Head office: Tòa nhà T7- KĐT Timecity- Phường Vĩnh Tuy - Quận Hai Bà Trưng- Hà Nội</div>
+    <div style="text-align: center"><img src="~/Images/time-city.JPG" /></div>
+    <div style="text-align: left; font-weight: bold">- Tại TP Hà Nội: 677- H8- Ngõ 147/35 Tân Mai- Hoàng Mai - Hà Nội</div>
+    <div style="text-align: center"><iframe width='550' height='450' frameborder='0' scrolling='no' marginheight='0' marginwidth='0' src='http://maps.vietbando.com/maps/vbdEmbed.aspx?t=1&st=0&sk=147/35+t%c3%a2n+mai,+h%c3%a0+n%e1%bb%99i&l=17&kv=20.9828533,105.850825&cl=833705&sb' style='color:#D98923;'>Xem bản đồ lớn</iframe></div>
+    <div style="clear: left; clear: both"></div>
+    <div style="text-align: left; font-weight: bold">- Tại TP Huế: 34/7 Lê Lợi - TP Huế</div>
+    <div style="text-align: center"><iframe width='551' height='451' frameborder='0' scrolling='no' marginheight='0' marginwidth='0' src='http://maps.vietbando.com/maps/vbdEmbed.aspx?t=1&st=0&sk=34/7+l%c3%aa+l%e1%bb%a3i,+tp+hu%e1%ba%bf&l=17&kv=16.4681628,107.593274&cl=833705&sb' style='color:#D98923;'>Xem bản đồ lớn</iframe></div>
+    <div style="clear: left; clear: both"></div>
+    <div style="text-align: left; font-weight: bold">- Tại TP Đà Nẵng: Số 75 đường Trần Phú - TP Đà Nẵng</div>
+    <div style="text-align: center"><iframe width='552' height='453' frameborder='0' scrolling='no' marginheight='0' marginwidth='0' src='http://maps.vietbando.com/maps/vbdEmbed.aspx?t=1&st=0&sk=75+tr%e1%ba%a7n+ph%c3%ba,+tp+%c4%91%c3%a0+n%e1%ba%b5ng&l=17&kv=16.0699754,108.225159&cl=833705&sb' style='color:#D98923;'>Xem bản đồ lớn</iframe></div>
+    <div style="clear: left; clear: both"></div>
+    <div style="text-align: left; font-weight: bold">- Tại Bình Dương: Số 247 Đại lộ Bình Dương, Phường Hiệp Thành, thành phố Thủ Dầu Một- Tỉnh Bình Dương</div>
+    <div style="text-align: center"><iframe width='553' height='453' frameborder='0' scrolling='no' marginheight='0' marginwidth='0' src='http://maps.vietbando.com/maps/vbdEmbed.aspx?t=1&st=0&sk=247+%c4%91%e1%ba%a1i+l%e1%bb%99+b%c3%acnh+d%c6%b0%c6%a1ng&l=17&kv=10.9462005,106.707898&cl=833705&sb' style='color:#D98923;'>Xem bản đồ lớn</iframe></div>
+</div>
+    
+</div>

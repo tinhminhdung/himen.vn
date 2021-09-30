@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "Quản lý đơn hàng";
+    Layout = "~/Views/Shared/_LayoutDefault.cshtml";
+}
+<link href="~/Content/order.css" rel="stylesheet" />
+    <div class="content-order">
+        <h2>Danh sách đơn hàng của bạn</h2>
+        @using (Html.BeginForm("quan_ly_don_hang", "Pages", FormMethod.Post))
+        {
+                @Html.Raw(ViewBag.View)
+        }
+    </div>

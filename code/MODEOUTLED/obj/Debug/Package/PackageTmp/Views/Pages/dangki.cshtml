@@ -1,0 +1,152 @@
+﻿@model MODEOUTLED.ViewModels.CustomerForm.Dangky
+@{
+    ViewBag.Title = "Đăng ký thành viên";
+    Layout = "~/Views/Shared/_LayoutDefault.cshtml";
+    var img = new CaptchaProvider().CreateCaptcha();
+}
+    <script type="text/javascript">
+        $(document).ready(function ()
+        {
+            // Ajax sử dụng cho kiểm tra trùng Email
+            $("#Email").change(function () {
+                var Email = $(this).val();
+                if (Email != "")
+                {
+                    $.post("/Pages/Checkmail", { "mail": Email },
+                        function (data) {
+                            $("#ermail").html(data);
+                        });
+                }
+                else
+                {
+                    $.post("/Pages/Checkmail", { "mail": Email },
+                       function (data) {
+                           $("#ermail").html(data);
+                       });
+                }
+            });
+
+            // Ajax sử dụng cho kiểm tra Capcha
+            $("#Captcha").change(function () {
+                var Captcha = $(this).val();
+                if (Captcha != "") {
+                    $.post("/Pages/Capcha", { "captcha": Captcha },
+                        function (data) {
+                            $("#capcha").html(data);
+                        });
+                }
+                else {
+                    $.post("/Pages/Capcha", { "mail": Email },
+                       function (data) {
+                           $("#capcha").html(data);
+                       });
+                }
+            });
+        });
+    </script>
+<script type="text/javascript">
+
+    (function ($, W, D) {
+
+        var JQUERY4U = {};
+
+        JQUERY4U.UTIL =
+        {
+            setupFormValidation: function () {
+                //validation rules
+                $("#menu-form").validate({
+                    rules: {
+                        Name: {required: true},//number: true},
+                        Email: {required: true},
+                        Pass: {required: true},
+                        RePass: {required: true},
+                        Phone: {required: true},
+                        Address: {required: true},
+                        TinhTP: {required: true},
+                        Hu: {required: true},
+                        Captcha: {required: true},
+                    },
+                    messages: {
+                        Name: { required: "Phải nhập họ tên" },//number: "Phải nhập kiểu số",},
+                        Email: {required: "Phải nhập Email"},
+                        Pass: {required: "Phải nhập mật khẩu"},
+                        RePass: {required: "Phải nhập lại mật khẩu"},
+                        Phone: {required: "Phải nhập số điện thoại"},
+                        Address: {required: "Phải nhập địa chỉ"},
+                        TinhTP: {required: "Phải chọn tỉnh thành phố"},
+                        Hu: {required: "Phải chọn quận huyện"},
+                        Captcha: {required: "Phải nhập mã an toàn"},
+                    },
+                    submitHandler: function (form) {
+                        form.submit();
+                    }
+                });
+            }
+        }
+
+        //when the dom has loaded setup form validation rules
+        $(D).ready(function ($) {
+            JQUERY4U.UTIL.setupFormValidation();
+        });
+
+    })(jQuery, window, document);
+    </script>
+<div class="detail">
+<div class="titlelink">
+    <ul>
+        <li><a href='/'><i class="icon-home" style="font-size: 14px;"></i>Trang chủ</a></li>
+        <li class='Last'><span>Đăng ký thành viên</span></li>
+    </ul>
+</div>
+    @using (Html.BeginForm("dangki", "Pages", FormMethod.Post, new { enctype = "multipart/form-data", @id = "menu-form", @class = "validate-form" }))
+    {
+        <div class="dangki">
+        <table>
+            <tr>
+                <td class="key">Họ và tên <span class="Required">*</span></td>
+                <td>@Html.TextBox("Name","", new { @placeholder="Họ tên đầy đủ"})</td>
+            </tr>
+            <tr>
+                <td class="key">Email <span class="Required">*</span></td>
+                <td>@Html.TextBox("Email", "", new { @placeholder="Tài khoản Email"})<label class="error" id="ermail"></label></td>
+            </tr>
+            <tr>
+                <td class="key">Mật khẩu<span class="Required">*</span></td>
+                <td>@Html.TextBox("Pass","", new { type="password", @placeholder="Mật khẩu đăng ký"})</td>
+            </tr>
+            <tr>
+                <td class="key">Số điện thoại <span class="Required">*</span></td>
+                <td>@Html.TextBox("Phone","", new { @onkeypress="return OnlyInputNumber(0);", @placeholder="Số điện thoại liên hệ"})</td>
+            </tr>
+            <tr>
+                <td class="key">Địa chỉ <span class="Required">*</span></td>
+                <td>@Html.TextArea("Address", new { cols="6", rows="2", @placeholder="Địa chỉ liên hệ"})</td>                
+            </tr>
+            <tr>
+                <td class="key">Tỉnh/Thành phố <span class="Required">*</span></td>
+                <td>@Html.DropDownList("TinhTP", "Chọn tỉnh thành phố")</td>
+            </tr>
+            <tr>
+                <td class="key">Thuộc ngoài thành, nông thôn? <span class="Required">*</span></td>
+               <td> @Html.CheckBox("cNongthon", new { id = "cNongthon", onclick = "Javascript:chkSelect_OnClick(this,0)", @class = "chk" })</td>
+            </tr>
+            <tr>
+                    <td class="key">Avarta <span class="Required">*</span></td>
+                    <td>
+                         <input type="file" name="fileImg" id="fileImg" value="Chọn ảnh"  multiple />
+                <output id="result" />
+                    </td>
+                </tr>   
+            <tr>
+                <td class="key">Mã an toàn <span class="Required">*</span></td>
+                <td><p><img src="@img" /><a href="@this.Request.Url.AbsoluteUri" class="reloadCaptcha">Reload</a></p></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>@Html.TextBox("Captcha")<label class="error" id="capcha"></label></td>
+            </tr>
+        </table>
+        <input type="submit" value="Đăng ký" class="btnSubmit" /><label class="error">@Html.Raw(ViewBag.err)</label>
+        </div>
+    }
+    </div>

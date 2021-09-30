@@ -1,0 +1,227 @@
+﻿@model onsoft.Models.Product
+@{
+    ViewBag.Title = "Thêm mới sản phẩm";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!-- Validate Data -->
+<script src="~/Scripts/jquery.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+
+<script type="text/javascript">
+
+    (function ($, W, D) {
+
+        var JQUERY4U = {};
+
+        JQUERY4U.UTIL =
+        {
+            setupFormValidation: function () {
+                //validation rules
+                $("#productcreate-form").validate({
+                    rules: {
+                        Cat: "required",
+                        Name: "required",
+                        Image: "required",
+                        Ord: {
+                            required: true,
+                            number: true
+                        }
+                    },
+                    messages: {
+                        Cat: "Phải nhập nhóm sản phẩm",
+                        Name: "Phải nhập tên sản phẩm",
+                        Image: "Phải nhập ảnh sản phẩm",
+                        Ord: {
+                            required: "Phải nhập thứ tự",
+                            number: "Phải nhập kiểu số"
+                        }
+                    },
+                    submitHandler: function (form) {
+                        form.submit();
+                    }
+                });
+            }
+        }
+
+        //when the dom has loaded setup form validation rules
+        $(D).ready(function ($) {
+            JQUERY4U.UTIL.setupFormValidation();
+        });
+
+    })(jQuery, window, document);
+</script>
+<!-- End Validate Data -->
+
+<h2>@ViewBag.Title</h2>
+@using (Html.BeginForm("ProductCreate", "Product", FormMethod.Post, new { @id = "productcreate-form", @class = "validate-form" }))
+{
+    <table class="TableUpdate" border="1">
+        <tr>
+            <td class="Control" colspan="2">
+                <ul>
+                    <li>
+                        <input type="submit" value="Ghi lại " class="uupdate" /></li>
+                    <li>@Html.ActionLink("Trở về", "ProductIndex", "", new { @class = "uback" })</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <th>Nhóm sản phẩm</th>
+            <td>@Html.DropDownList("Cat", " === Nhóm sản phẩm ===")</td>
+        </tr>
+        <tr>
+            <th>Nhóm sản phẩm cấp 2</th>
+            <td>
+                <select id="CatL2" name="CatL2" disabled="disabled"></select></td>
+        </tr>
+
+        <tr>
+            <th>Tên sản phẩm</th>
+            <td>@Html.TextBox("Name", "", new { @class = "text" })@Html.ValidationMessageFor(m => m.Name)</td>
+        </tr>
+        <tr>
+            <th>Ảnh sản phẩm</th>
+            <td><input id="SelectImages" type="button" value="Chọn ảnh"/>&nbsp;@Html.TextBox("Image", "", new { @class = "text" })</td>
+        </tr>
+        <tr>
+            <th>Miêu tả tóm tắt</th>
+            <td>@Html.TextArea("Content")</td>
+        </tr>
+        <tr>
+            <th>Nội dung chi tiết</th>
+            <td>@Html.TextArea("Detail")</td>
+        </tr>
+        <tr>
+            <th>Số lượt xem</th>
+            <td>0</td>
+        </tr>
+        @Html.Raw(ViewBag.Gia)
+        <tr>
+            <th>Màu sắc</th>
+            <td>@{Html.RenderAction("_DropDownCheckboxColor", "Product");}
+                <input type="text" id="txtColor" name="txtColor" style="display: none" /></td>
+        </tr>
+        <tr>
+            <th>Kích thước</th>
+            <td>@{Html.RenderAction("_DropDownCheckboxSize", "Product");}
+                <input type="text" id="txtSize" name="txtSize" style="display: none" /></td>
+        </tr>
+        <tr>
+            <th>Title</th>
+            <td>@Html.TextBox("Tittle", "", new { @class = "text" })</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>@Html.TextBox("Description", "", new { @class = "text" })</td>
+        </tr>
+        <tr>
+            <th>Keyword</th>
+            <td>@Html.TextBox("Keyword", "", new { @class = "text" })</td>
+        </tr>
+        <tr>
+            <th>Thứ tự</th>
+            <td>@Html.TextBox("Ord", "", new { @onkeypress = "OnlyInputNumber(0)" })</td>
+        </tr>
+        <tr>
+            <th>Xuất hiện ưu tiên</th>
+            <td>@Html.CheckBox("Priority", true)</td>
+        </tr>
+        <tr>
+            <th>Sản phẩm mới</th>
+            <td>@Html.CheckBox("Index", true)</td>
+        </tr>
+        <tr>
+            <th>Kích hoạt</th>
+            <td>@Html.CheckBox("Active", true)</td>
+        </tr>
+        <tr>
+            <td class="Control" colspan="2">
+                <ul>
+                    <li>
+                        <input type="submit" value="Ghi lại " class="uupdate" /></li>
+                    <li>@Html.ActionLink("Trở về", "ProductIndex", "", new { @class = "uback" })</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+}
+<script type="text/javascript">
+    $(function () {
+        $("#SelectImages").click(function () {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                $("#Image").val(fileUrl);
+            };
+            finder.popup();
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    var editor;
+    function createEditor(languageCode, id) {
+        var editor = CKEDITOR.replace(id, {
+            language: languageCode
+        });
+    }
+
+    $(function () {
+        createEditor('vi', 'Content');
+    });
+    $(function () {
+        createEditor('vi', 'Detail');
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+        $("#SDate").datepicker();
+        $("#EDate").datepicker();
+    });
+</script>
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        //$('#divChkColor').hide();
+        //$('#divChkSize').hide();
+        //$('.showHideChkColor').click(function () {
+        //    $('#divChkColor').slideToggle();
+        //    var chkText = $(this);
+        //    if (chkText.text() == "Hiển thị") {
+        //        chkText.text("Ẩn");
+        //    }
+        //    else {
+        //        chkText.text("Hiển thị");
+        //    }
+        //});
+        //$('.showHideChkSize').click(function () {
+        //    $('#divChkSize').slideToggle();
+        //    var chkText = $(this);
+        //    if (chkText.text() == "Hiển thị") {
+        //        chkText.text("Ẩn");
+        //    }
+        //    else {
+        //        chkText.text("Hiển thị");
+        //    }
+        //});
+        $("select#Cat").change(function (evt) {
+            debugger;
+            if ($("select#Cat").val() != "") {
+
+                $.ajax({
+                    url: "/Product/GetCatL2",
+                    type: 'POST',
+                    data: { id: $("select#Cat").val() },
+                    success: function (response) {
+                        $("select#CatL2").replaceWith(response)
+                    },
+                    error: function (xhr) {
+                        $("select#CatL2").replaceWith("<select id='CatL2'  name='CatL2' disabled='disabled'></select>");
+                    }
+                });
+            }
+            else {
+                $("select#CatL2").replaceWith("<select id='CatL2'  name='CatL2' disabled='disabled'></select>");
+            }
+        });
+    });
+</script>

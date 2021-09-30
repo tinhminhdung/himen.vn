@@ -1,0 +1,25 @@
+﻿@model onsoft.Models.Baogia
+
+@using (Html.BeginForm("EditBaogia", "Baogia", FormMethod.Post, new { enctype = "multipart/form-data", @id = "baogia-form", @class = "validate-form" }))
+{
+    @Html.HiddenFor(mm => mm.ID)
+    <div class="widget-body">
+        <div id="tabs">
+            <div id="tabs-1">
+                <table class="admintable" style="width: 100%;">
+                    <tr>
+                        <td class="key">Link quảng cáo <span class="Required">*</span></td>
+                        <td>
+                            @Html.TextBoxFor(mm => mm.Name, "", new { @class = "text" })
+                            @Html.TextBoxFor(mm => mm.Phone, "", new { @class = "text" })
+                            @Html.TextBoxFor(mm => mm.Email, "", new { @class = "text" })
+
+                        </td>
+                    </tr>
+
+                </table>
+                <button type="submit" class="toolbar btn btn-info"><i class="icon-save"></i>&nbsp;Ghi lại</button>
+            </div>
+        </div>
+    </div>
+}

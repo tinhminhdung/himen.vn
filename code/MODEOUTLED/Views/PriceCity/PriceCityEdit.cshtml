@@ -1,0 +1,179 @@
+﻿@model onsoft.Models.PriceCity
+
+@{
+    ViewBag.Title = "PriceCityEdit";
+    Layout = "~/Views/Shared/_LayoutAdmins.cshtml";
+}
+<div class="container-fluid">
+    <div style="width: 100%; margin: 0 auto;">
+        <div id="Breadcrumb" class="Block Breadcrumb ui-widget-content ui-corner-top ui-corner-bottom">
+            <ul>
+                <li><a href='../../PriceCity/PriceCityIndex'><i class="icon-home" style="font-size: 14px;"></i>Trang chủ</a></li>
+                <li class='SecondLast'><a href='../../PriceCity/PriceCityIndex'>Danh sách tỉnh thành</a></li>
+                <li class='Last'><span>Chỉnh sửa thông tin tỉnh thành</span></li>
+            </ul>
+        </div>
+
+        <div style="clear: both;"></div>
+        @using (Html.BeginForm("PriceCityEdit", "PriceCity", new { id = @Model.Id }, FormMethod.Post, new { @id = "priceCityEdit-form", @class = "validate-form" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <div id="cph_Main_ContentPane">
+                <div class="widget">
+                    <!-- widget-title -->
+                    <div class="widget-title">
+                        <h4><i class="icon-reorder"></i>&nbsp;Chỉnh sửa thông tin tỉnh thành</h4>
+
+                        <!-- Button -->
+                        <div class="ui-corner-top ui-corner-bottom">
+                            <div id="toolbox">
+                                <div style="float: right;" class="toolbox-content">
+
+                                    <table class="toolbar">
+                                        <tr>
+                                            <td align="center">
+                                                <button type="submit" class="toolbar btn btn-info"><i class="icon-save"></i>&nbsp;Ghi lại</button>
+                                            </td>
+                                            <td align="center">
+                                                <a title="Quay lại" class="toolbar btn btn-info" href="../../PriceCity/PriceCityIndex">
+                                                    <i class="icon-chevron-left"></i>&nbsp;
+                                                    Trở về
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Button -->
+
+                        <div id="hiddenToolBarScroll" class="scrollBox hidden">
+                            <h4>
+                                <i class="icon-reorder"></i>&nbsp;Chỉnh sửa thông tin tỉnh thành
+                            </h4>
+                            <div class="FloatMenuBar">
+
+                                <div class="ui-corner-top ui-corner-bottom">
+                                    <div id="Div1">
+
+                                        <div style="float: right;" class="toolbox-content">
+
+                                            <table class="toolbar">
+                                                <tr>
+                                                    <td align="center">
+                                                        <button type="submit" class="toolbar btn btn-info"><i class="icon-save"></i>&nbsp;Ghi lại</button>
+                                                    </td>
+                                                    <td align="center">
+                                                        <a title="Quay lại" class="toolbar btn btn-info" href="../../PriceCity/PriceCityIndex">
+                                                            <i class="icon-chevron-left"></i>&nbsp;
+                                                            Trở về
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- widget-title-end -->
+                    <!-- widget-body -->
+                    <div class="widget-body">
+                        <div id="tabs">
+                            <div id="tabs-1">
+
+                                <table class="admintable" style="width: 100%;">
+                                    <tr>
+                                        <td class="key">
+                                            Tên tỉnh thành <span class="Required">*</span>
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.Name, "", new { @class = "text" })
+                                            <span class="tooltip-help">
+                                                <span class="tooltipContent">
+                                                    <p class="tooltiptitle">
+                                                        Tên tỉnh thành
+                                                    </p>
+                                                    <p class="tooltipmessage">
+                                                        Tên của tỉnh, thành phố (Ví dụ: Hà Nội)
+                                                    </p>
+                                                </span>
+                                            </span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="key">
+                                            Level <span class="Required">*</span>
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.Level, "", new { @class = "text" })
+                                            <span class="tooltip-help">
+                                                <span class="tooltipContent">
+                                                    <p class="tooltiptitle">
+                                                        Level
+                                                    </p>
+                                                    <p class="tooltipmessage">
+                                                        Phân cấp tỉnh thành (Ví dụ: 1 nếu là thành phố, 2 nếu là quận huyện của thành phố)
+                                                    </p>
+                                                </span>
+                                            </span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="key">
+                                            Thứ tự <span class="Required">*</span>
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.Ord, new { @onkeypress = "OnlyInputNumber(0)", @style = "width: 50px; text-align: left", onblur = "this.value=formatNumber(this.value,'#,###','')", onfocus = "this.value=remote_format(this.value)" })
+                                            <span class="tooltip-help">
+                                                <span class="tooltipContent">
+                                                    <p class="tooltiptitle">
+                                                        Thứ tự
+                                                    </p>
+                                                    <p class="tooltipmessage">
+                                                        Thứ tự hiển thị
+                                                    </p>
+                                                </span>
+                                            </span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="key">
+                                            Ship <span class="Required">*</span>
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.Price_ship, "", new { @class = "text", @style = "text-align: left", onblur = "this.value=formatNumber(this.value,'#,###','')", onfocus = "this.value=remote_format(this.value)" })
+                                            <span class="tooltip-help">
+                                                <span class="tooltipContent">
+                                                    <p class="tooltiptitle">
+                                                        Ship
+                                                    </p>
+                                                    <p class="tooltipmessage">
+                                                        Cước vận chuyển ứng với mỗi tỉnh thành <br /> (Ví dụ: 45000)
+                                                    </p>
+                                                </span>
+                                            </span>
+                                        </td>
+                                    </tr>
+
+                                </table>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- widget-body-end -->
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

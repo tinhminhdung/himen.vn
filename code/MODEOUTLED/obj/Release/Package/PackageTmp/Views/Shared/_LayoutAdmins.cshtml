@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head id="Head1">
+    <title>Hệ thống quản trị website</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="robots" content="noindex, nofollow" />
+        <!--Style Sheet-->
+    <link href="~/Content/Styles/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/Styles/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/Styles/style.css" rel="stylesheet" />
+    <link href="~/Content/Styles/style_default.css" rel="stylesheet" />
+    @RenderSection("Styles", false)
+    <!--Java Scripts-->
+    <script type="text/javascript" src="~/Scripts/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.min.js"></script>
+    <script type="text/javascript"> var $j = jQuery.noConflict();</script>
+    <script type="text/javascript" src="~/Scripts/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/admin.js"></script>
+    <script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Content/Styles/jquery-latest.js"></script>
+    <script type="text/javascript" src="~/Content/Styles/jquery.tablesorter.js"></script>
+    <script type="text/javascript" src="~/Content/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="~/Content/ckfinder/ckfinder.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/checkall.js"></script>
+    @RenderSection("Scripts", false)
+
+    <script type="text/javascript">
+        function OnlyInputNumber(Characters) {
+            var re;
+            var ch = String.fromCharCode(event.keyCode);
+            if (event.keyCode < 32) {
+                return;
+            };
+            if ((event.keyCode <= 57) && (event.keyCode >= 48)) {
+                if (!event.shiftKey) {
+                    return;
+                }
+            }
+            if (Characters.length > 0 && ch == Characters) {
+                return;
+            }
+            event.returnValue = false;
+        }
+    </script>
+
+    <script type="text/javascript">
+        function DeleteConfirm() {
+            debugger;
+            if (confirm("Bạn có chắc chắn muốn xóa bản ghi này?"))
+                return true;
+            else
+                return false;
+        }
+        checked = false;
+    </script>
+
+</head>
+
+<body class="fixed-top">
+    <div class="PageHeader">
+
+        <!--Logo-->
+        <div class="LogoHeader">
+@*            <div class="logoimage">
+                <a class="SiteName" href="#">
+                    <img border="0" src="/Content/Images/Admins/logoonsoft.png" alt="logo"
+                        title="logo" />
+                </a>
+            </div>*@
+            <div class="linkroot">
+                <a class="SiteName" href="#">ADMIN PAGE MANAGER
+                </a>
+            </div>
+        </div>
+        <!--End Logo-->
+
+        <!--Header Menu-->
+        <div class="SystemMenu">
+            <div>
+                <ul class="sysMenu">
+                    <li class="first"><a class="link-topmenu" href="../../Admins/Default"><i class="icon-home"></i>Trang chủ</a></li>
+                    <li><a class="link-topmenu" href="../../User/UserIndex"><i class="icon-user"></i>Tài khoản quản trị</a></li>
+                    @{Html.RenderAction("_ThongKeDonHang", "My_Partialview");}
+                    <li class="last">
+                        <div class="btn-group">
+                            <a href="#" class="btn account-info btn-info"><i class="icon-user"></i>
+                                admin</a><a href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle dropdown-toggle-acount"><span class="icon-caret-down"></span></a>
+                            <ul class="dropdown-menu custome">
+                                @*<li><a href="#"><i class="icon-key"></i>Đổi mật khẩu</a></li>*@
+                                <li><a id="siteUser_Lbtn_Logout" class="NormalGray" href="javascript:__doPostBack(&#39;ctl00$siteUser$Lbtn_Logout&#39;,&#39;&#39;)"><i class="icon-signout"></i>Thoát</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        <!--End Header Menu-->
+    </div>
+
+    <!--Container-->
+    <div id="container" class="row-fluid">
+        <!--Navigation-->
+        @Html.Partial("_PartialNavigation")
+        <!--End Navigation-->
+
+        <!--Main Content-->
+        <div id="main-content">
+            @RenderBody()
+            <div style="margin-right: 25px; float: right; color: Gray;">
+                <a href="http://onsoft.vn/">Công ty cổ phần phần mềm Onsoft</a>
+            </div>
+            <div style="height: 10px; margin-top: 40px;">
+            </div>
+        </div>
+        <!--End Main Content-->
+    </div>
+    <!--End Container-->
+    <span id="additionalAttr"></span>
+</body>
+</html>

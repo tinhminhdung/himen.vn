@@ -1,0 +1,197 @@
+﻿@model PagedList.IPagedList<onsoft.Models.sp_News_GetByAll_Result>
+
+@{
+    ViewBag.Title = "Quản lý tin tức";
+    Layout = "~/Views/Shared/_LayoutAdmins.cshtml";
+}
+
+@section Styles
+{
+    <!--Sử dụng cho Confirm delete-->
+    <link href="~/Content/Styles/jquery-ui.css" rel="stylesheet" />
+}
+
+@section Scripts
+{
+    <!-- Ajax sử dụng cho phân trang  -->
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+
+    <!--Sử dụng cho Confirm delete-->
+    <script src="~/Scripts/jquery-1.9.1.js"></script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <script src="~/Scripts/jquery.easy-confirm-dialog.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".deletemultiple").easyconfirm({
+                locale: { title: 'Xóa bản ghi', button: ['Hủy', 'Xóa'] }
+            });
+        })
+    </script>
+
+    <!--Ajax tùy biến số bản ghi hiển thị trên trang-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#ddlNewsAmount').change(function () {
+                var NewsAmount = $(this).val();
+                var sortName = '@ViewBag.CurrentSortName';
+                $.post("/News/LoadNewsAmount", { "NewsAmount": NewsAmount, "sortName": sortName },
+                    function (data) {
+                        $("#ajaxNews").html(data);
+                    });
+            });
+        });
+    </script>
+
+    
+
+     <!--Ajax sử dụng tìm kiếm bản ghi-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            //Ajax sử dụng tìm kiếm bản ghi theo tên 
+            $('#NewsName').keyup(function () {
+                var Newsname = $(this).val();
+                var GroupNews = $("GroupNews").val();
+                $.post("/News/NewsIndexot", { "Newsname": Newsname, "GroupNews": GroupNews },
+                    function (data) {
+                        $("#ajaxNews").html(data);
+                    });
+            });
+
+            //Ajax sử dụng tìm kiếm bản ghi theo nhóm 
+            $('#GroupNews').change(function () {
+                var GroupNews = $(this).val();
+                var Newsname = $("#NewsName").val();
+                $.post("/News/NewsIndexot", { "GroupNews": GroupNews, "Newsname": Newsname },
+                    function (data) {
+                        $("#ajaxNews").html(data);
+                    });
+            });
+
+        });
+    </script>
+
+    <!--Reset ô tìm kiếm-->
+    <script type="text/javascript">
+        $(function () {
+            $('#NewsCode').focus(function () {
+                $(this).val('');
+            });
+            $('#NewsName').focus(function () {
+                $(this).val('');
+            });
+        });
+    </script>
+}
+
+@using (Html.BeginForm("MultiCommand", "News", FormMethod.Post))
+{
+    <div class="container-fluid">
+        <div style="width: 100%; margin: 0 auto;">
+            <div id="Breadcrumb" class="Block Breadcrumb ui-widget-content ui-corner-top ui-corner-bottom">
+                <ul>
+                    <li class='SecondLast'><a href='#'><i class="icon-home" style="font-size: 14px;"></i>Trang chủ</a></li>
+                    <li class='Last'><span>Danh sách tin</span></li>
+                </ul>
+            </div>
+            <div style="clear: both;"></div>
+            <div id="cph_Main_ContentPane">
+                <div class="widget">
+                    <div class="widget-title">
+                        <h4><i class="icon-list-alt"></i>&nbsp;Danh sách tin</h4>
+
+                        <!-- begin menu -->
+                        <div class="ui-corner-top ui-corner-bottom">
+                            <div id="toolbox">
+
+                                <div style="float: right;" class="toolbox-content">
+                                    <div id="msg" class="msg">
+                                        <div class="alert alert-info" id="update-message">
+                                        </div>
+                                    </div>
+                                    <table class="toolbar">
+                                        <tr>
+
+                                            <td align="center">
+                                                <a href="../../News/NewsCreateot" title="Thêm mới" class="toolbar btn btn-info" href="#"><i class="icon-plus"></i>&nbsp;Thêm mới</a>
+                                            </td>
+                                            <td align="center">
+                                                <button type="submit" title="Bạn chắc chắn muốn xóa những bản ghi này ?" id="btnDelete" name="btnDelete" class="deletemultiple toolbar btn btn-info"><i class="icon-trash"></i>&nbsp;Xóa nhiều</button>
+                                            </td>
+
+                                        </tr>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end menu -->
+
+                        <div id="hiddenToolBarScroll" class="scrollBox hidden">
+                            <h4>
+                                <i class="icon-list-alt"></i>&nbsp;Danh sách bản ghi</h4>
+                            <div class="FloatMenuBar">
+
+                                <!-- begin menu -->
+                                <div class="ui-corner-top ui-corner-bottom">
+                                    <div id="toolbox">
+
+                                        <div style="float: right;" class="toolbox-content">
+
+                                            <table class="toolbar">
+                                                <tr>
+
+                                                    <td align="center">
+                                                        <a title="Thêm mới" class="toolbar btn btn-info" href="#"><i class="icon-plus"></i>&nbsp;Thêm mới</a>
+                                                    </td>
+
+                                                    <td align="center">
+                                                        <a href="../../News/NewsAddMultipleot" title="Thêm nhiều" class="toolbar btn btn-info" href="#"><i class="icon-plus"></i>&nbsp;Thêm nhiều</a>
+                                                    </td>
+
+                                                    <td align="center">
+                                                        <button type="submit" title="Bạn chắc chắn muốn xóa những bản ghi này ?" id="btnDelete" name="btnDelete" class="deletemultiple toolbar btn btn-info"><i class="icon-trash"></i>&nbsp;Xóa nhiều</button>
+                                                    </td>
+
+                                                </tr>
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end menu -->
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="widget-body">
+
+                        <div class="row-fluid">
+
+                            <!--Hiển thị số bản ghi trên trang-->
+                            <div class="span3">
+                                <div id="sample_1_length" class="dataTables_length">
+                                    @Html.DropDownList("ddlNewsAmount", null, new { style = "width:180px;" })
+                                </div>
+                            </div>
+
+                            <!--Tìm kiếm bản ghi-->
+                            <div class="span9 form-search pull-right text-right">
+                                @Html.TextBox("NewsName", ViewBag.CurrentNewsNameFilter as string, new {@Value="Tiêu đề tin", @Style="color:#999999;", @id="NewsName" })
+                                @Html.DropDownList("GroupNews", null,"-- Danh mục nhóm tin --", new { @id="GroupNews"})
+                            </div>
+
+                        </div>
+
+                        <!--Partial View hiển thị danh sách bản ghi-->
+                        @{Html.RenderPartial("_PartialNewsIndex", Model);}
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
+

@@ -1,0 +1,28 @@
+﻿#detail { font-family: Arial; font-size: 13px; color: #000;}
+#detail div.head h1 { color: #fff; font-weight: bold; background: #008000; border-radius: 6px; 
+padding: 3px 10px; margin-bottom: 5px; box-shadow: 2px 2px 3px #79c450; font-size: 14px; max-width: 190px}
+#detail div.head h1:hover { background: #fe9102}
+#detail div.content { margin-bottom: 10px; margin-left: 5px}
+#detail div.content p { line-height: 20px; margin: 0; padding: 0 0 0 5px;}
+#detail div.content span { line-height: 20px; margin: 0; padding: 0 0 0 5px; font-style: italic; color: #008000}
+#detail div.title h2 { color: #fff; font-weight: bold; background: #009531; border-radius: 3px; 
+padding: 1px 10px; margin-bottom: 5px; margin-left: 30px; box-shadow: 2px 2px 3px #79c450; font-size: 12px; max-width: 580px}
+#detail div.title h2:hover { background: #fe9102;}
+#detail div.title h3 { color: #fff; font-weight: bold; background: #fe9102; border-radius: 3px;  text-align: center; clear: left;
+padding: 8px 10px; margin: 15px auto; box-shadow: 2px 2px 3px #79c450; font-size: 16px; max-width: 560px}
+#detail div.title h3:hover { background: #43b234;}
+
+#detail div.content_c1 { margin-bottom: 10px; clear: left}
+#detail div.content_c1 p { line-height: 22px; margin: 0; padding: 0 0 0 5px;}
+#detail div.content_c1 span { line-height: 20px; margin: 0; padding: 0 0 0 5px; font-style: italic; color: #008000}
+#detail div.content_c1 p a { color: #0044e6; text-decoration: none}
+#detail div.content_c1 p a:hover { color:red}
+#detail div.content_c1 p a span { color: #ff6a11; font-style: normal}
+#detail div.content_c1 p.bold{font-weight:bold; margin: 5px 0;}
+#detail div.content_c1 p.bold span{color:white;background:url('bg_circle1.png') no-repeat center;display:inline-block;width:20px;height:20px;text-align:center;padding:0px; margin-right: 5px}
+
+#detail div.content_c1 p span.bold  {font-weight:bold; margin: 0 6px 0 0}
+#detail div.content_c1 p span.bold {color:white;background:url('bg_circle1.png') no-repeat center;display:inline-block;width:20px;height:20px;text-align:center;padding:0px;}
+
+#detail div.content_c1 p span.boldv  {font-weight:bold; margin: 0 6px 0 0}
+#detail div.content_c1 p span.boldv  {color: white;background:url('bg_circle2.png') no-repeat center;display:inline-block;width:20px;height:20px;text-align:center;padding:0px;}

@@ -1,0 +1,9 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace MODEOUTLED.Models
+{
+    public class MenuInfo	{		#region[Declare variables]		private string  _Id;		private string  _Name;		private string  _Tag;		private string  _Content;		private string  _Detail;		private string  _Level;		private string  _Title;		private string  _Description;		private string  _Keyword;		private string  _Target;		private string  _Link;		private string  _Ord;		private string  _Position;		private Boolean  _Active;		#endregion		#region[Public Properties]		public string Id{ get { return _Id; } set { _Id = value; } }		public string Name{ get { return _Name; } set { _Name = value; } }		public string Tag{ get { return _Tag; } set { _Tag = value; } }		public string Content{ get { return _Content; } set { _Content = value; } }		public string Detail{ get { return _Detail; } set { _Detail = value; } }		public string Level{ get { return _Level; } set { _Level = value; } }		public string Title{ get { return _Title; } set { _Title = value; } }		public string Description{ get { return _Description; } set { _Description = value; } }		public string Keyword{ get { return _Keyword; } set { _Keyword = value; } }		public string Target{ get { return _Target; } set { _Target = value; } }		public string Link{ get { return _Link; } set { _Link = value; } }		public string Ord{ get { return _Ord; } set { _Ord = value; } }		public string Position{ get { return _Position; } set { _Position = value; } }		public Boolean Active{ get { return _Active; } set { _Active = value; } }		#endregion			}}

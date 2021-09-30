@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = @Html.Raw(ViewBag.tit);
+    ViewBag.des = @Html.Raw(ViewBag.des);
+    ViewBag.key = @Html.Raw(ViewBag.key);
+    Layout = "~/Views/Shared/_LayoutDefault.cshtml";
+}
+<div class="detail">
+<div class="titlelink">
+    <ul>
+        <li class='SecondLast'><a href='/'><i class="icon-home" style="font-size: 14px;"></i>Trang chủ</a></li>
+        @Html.Raw(ViewBag.link)
+    </ul>
+</div>
+<div class="container">
+<ul class="da-album">
+    @Html.Raw(ViewBag.pro)
+</ul>
+</div>
+    </div>

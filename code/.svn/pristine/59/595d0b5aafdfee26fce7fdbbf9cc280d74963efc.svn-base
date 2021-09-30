@@ -1,0 +1,17 @@
+﻿<p class="title-f upp">Danh mục hàng đầu</p>
+<ul id="dmhangdau">
+@*<ul>*@
+    @Html.Raw(ViewBag.View)
+</ul>
+<script type="text/javascript">
+		$(function(){
+			$('#dmhangdau').totemticker({
+				row_height	:	'100px',
+				next		:	'#ticker-next',
+				previous	:	'#ticker-previous',
+				stop		:	'#stop',
+				start		:	'#start',
+				mousestop	:	true,
+			});
+		});
+	</script>

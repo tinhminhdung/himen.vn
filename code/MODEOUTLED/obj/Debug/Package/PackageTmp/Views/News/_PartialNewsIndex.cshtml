@@ -1,0 +1,200 @@
+﻿@model PagedList.IPagedList<onsoft.Models.sp_News_GetByAll_Result>
+
+@{
+    Layout = null;
+}
+
+<!--Sử dụng cho Confirm delete-->
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".yesno").easyconfirm({
+            locale: { title: 'Xóa bản tin', button: ['Hủy', 'Xóa'] }
+        });
+    })
+</script>
+
+<!--Ajax sử dụng sửa dữ liệu trực tiếp trên form-->
+<script type="text/javascript">
+    $(function () {
+        $('#msg').hide();
+
+        // Ajax sử dụng cho change active
+        $(".Active").click(function () {
+            var Id = $(this).attr("id");
+            clearUpdateMessage();
+            $.post("/News/ChangeActive", { "id": Id },
+                function (data) {
+                    $('#msg').show();
+                    $('#update-message').removeClass().addClass("alert alert-info").text(htmlDecode(data));
+                    $('#msg').fadeOut(5000);
+                });
+        });
+
+        // Ajax sử dụng cho change index
+        $(".Index").click(function () {
+            var Id = $(this).attr("id");
+            clearUpdateMessage();
+            $.post("/News/ChangeIndex", { "id": Id },
+                function (data) {
+                    $('#msg').show();
+                    $('#update-message').removeClass().addClass("alert alert-info").text(htmlDecode(data));
+                    $('#msg').fadeOut(5000);
+                });
+        });
+
+        // Ajax sử dụng cho change Name
+        $(".Namep").change(function () {
+            var id = $(this).attr("id");
+            var name = $(this).val();
+            if (name == "") {
+                // Báo lỗi nhập dữ liệu
+                $('#msg').show();
+                $('#update-message').removeClass().addClass("alert alert-error").text("Phải nhập tên sản phẩm.");
+                $('#msg').fadeOut(5000);
+            } else {
+                clearUpdateMessage();
+                $.post("/News/ChangeNews", { "id": id, "name": name },
+                    function (data) {
+                        // Thay đổi thành công
+                        $('#msg').show();
+                        $('#update-message').removeClass().addClass("alert alert-info").text(htmlDecode(data));
+                        $('#msg').fadeOut(5000);
+                    });
+            }
+        });
+
+
+
+    });
+
+    function clearUpdateMessage() {
+        $('#update-message').text("");
+    }
+
+    function htmlDecode(value) {
+        if (value) {
+            return $('<div />').html(value).text();
+        }
+        else {
+            return '';
+        }
+    }
+</script>
+
+<!--Thay đổi chiều mũi tên khi sắp xếp-->
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        var currentSortOrder = '@ViewBag.CurrentSortOrder';
+            if (currentSortOrder == "ord asc") {
+                $('#ord').removeClass('NumberOrdDown').addClass("NumberOrdUp");
+            }
+            else {
+                $('#ord').removeClass('NumberOrdUp').addClass("NumberOrdDown");
+            }
+
+            var currentSortName = '@ViewBag.CurrentSortName';
+            if (currentSortName == "name asc") {
+                $('#name').removeClass('NumberOrdDown').addClass("NumberOrdUp");
+            }
+            else {
+                $('#name').removeClass('NumberOrdUp').addClass("NumberOrdDown");
+            }
+
+            var currentSortGroup = '@ViewBag.CurrentSortGroup';
+            if (currentSortGroup == "group asc") {
+                $('#group').removeClass('NumberOrdDown').addClass("NumberOrdUp");
+            }
+            else {
+                $('#group').removeClass('NumberOrdUp').addClass("NumberOrdDown");
+            }
+
+        })
+</script>
+
+<!--Ajax sử dụng sắp xếp dữ liệu trực tiếp trên form-->
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        // Ajax sử dụng sắp xếp sản phẩm theo tên
+        $('#name').click(function () {
+            var sortName = '@ViewBag.SortNameParm';
+            var currentNewsAmount = '@ViewBag.CurrentNewsAmount';
+            $.post("/News/SortByName", { "sortName": sortName, "currentNewsAmount": currentNewsAmount },
+                function (data) {
+                    $("#ajaxNews").html(data);
+                });
+        });
+
+    });
+</script>
+
+<div id="ajaxNews">
+    <div class="row-fluid">
+        <div class="span3">
+            <div style="margin-top: 18px;">
+                Tổng số bản ghi: <span style='color: #A52A2A;'>@ViewBag.TotalNews</span>
+            </div>
+        </div>
+        <div class="span9">
+
+            <!--Partial View phân trang-->
+            @Html.Partial("_PartialNewsPaging")
+
+            <input name="mPage" id="mPage" value="@ViewBag.mPage" hidden="hidden" />
+            <input name="PageSize" id="PageSize" value="@ViewBag.PageSize" hidden="hidden" />
+        </div>
+    </div>
+    <div>
+        <!--Hiển thị danh sách sản phẩm-->
+        <table class="table table-striped table-bordered dataTable table-hover" cellspacing="0" id="grvNewss" style="border-collapse: collapse;">
+            <tr>
+                <th scope="col" class="CheckBoxsmall" style="text-align: center; width: 20px;">
+                    <input type="checkbox" onclick="Javascript: chkSelectAll_OnClick(this)" id="chkSelectAll" name="checkAll" />
+                </th>
+                <th scope="col" class="number" style="width: 50px;">Ảnh</th>
+                <th scope="col" id="name" class="NumberOrdDown">
+                    @Html.Label("Tiêu đề tin")
+                </th>
+                <th scope="col" class="number" style="width: 60px;">Trang chủ</th>
+                <th scope="col" class="number" style="width: 60px;">Kích hoạt</th>
+                <th scope="col" class="number" style="width: 100px; text-align: center">Chức năng</th>
+            </tr>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <tr style="background-color: #fff">
+                    <td style="text-align: center">
+                        @Html.CheckBox("chk" + Model[i].Id, new { id = "chkSelect", onclick = "Javascript:chkSelect_OnClick(this,0)", @class = "chk" })
+                    </td>
+                    <td class="text-center" style="vertical-align: middle;">
+                        <img width="40px" src="@Model[i].Image" alt=""/>
+                    </td>
+                    <td class="text" style="vertical-align: middle;">
+                        @Html.TextBox("Namep" + Model[i].Id, @Model[i].Name, new { @style = "width:550px; text-align: left", @class = "Namep",  @id = @Model[i].Id})
+                    </td>
+                    <td class="text-center" style="vertical-align: middle;">
+                        @Html.CheckBox("chkIndex" + Model[i].Id, (Model[i].Index == true) ? true : false, new { @class = "chk Index", @id = @Model[i].Id })
+                    </td>
+                    <td class="text-center" style="vertical-align: middle;">
+                        @Html.CheckBox("chkActive" + Model[i].Id, (Model[i].Active == true) ? true : false, new { @class = "chk Active", @id = @Model[i].Id })
+                    </td>
+                    <td class="text-center" style="vertical-align: middle;">
+                        <a href="../../News/NewsEditot?id=@Model[i].Id" class="action-link-button"
+                                                title="Chỉnh sửa tin này"><i class="icon-edit"></i></a>
+
+                        <a href="NewsDelete?id=@Model[i].Id&page=@ViewBag.mPage&pagesize=@ViewBag.PageSize" class="yesno action-link-button"
+                                                title="Bạn chắc chắn muốn bản ghi này ?"><i class="icon-trash"></i></a>
+
+
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+
+    <!--Partial View phân trang-->
+    @Html.Partial("_PartialNewsPaging")
+
+    <div style="clear: both;"></div>
+</div>
+

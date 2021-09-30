@@ -1,0 +1,185 @@
+﻿@{
+    ViewBag.Title = "Thêm mới sản phẩm";
+    Layout = "~/Views/Shared/_LayoutAdmins.cshtml";
+}
+
+@section Scripts
+{
+    <!-- Validate Data -->
+    <script type="text/javascript">
+
+        (function ($, W, D) {
+
+            var JQUERY4U = {};
+
+            JQUERY4U.UTIL =
+            {
+                setupFormValidation: function () {
+                    //validation rules
+                    $("#productaddmultiple-form").validate({
+                        rules: {
+                            Cat: "required",
+                            fileExcel: "required",
+                            ImageUrl: "required"
+                        },
+                        messages: {
+                            Cat: "Phải chọn nhóm sản phẩm",
+                            fileExcel: "Phải chọn file excel",
+                            ImageUrl: "Phải chọn ảnh"
+                        },
+                        submitHandler: function (form) {
+                            form.submit();
+                        }
+                    });
+                }
+            }
+
+            //when the dom has loaded setup form validation rules
+            $(D).ready(function ($) {
+                JQUERY4U.UTIL.setupFormValidation();
+            });
+
+        })(jQuery, window, document);
+    </script>
+    <!-- End Validate Data -->
+}
+
+<div class="container-fluid">
+    <div style="width: 100%; margin: 0 auto;">
+
+        <div id="Breadcrumb" class="Block Breadcrumb ui-widget-content ui-corner-top ui-corner-bottom">
+            <ul>
+                <li><a href='../../Product/ProductIndexot'><i class="icon-home" style="font-size: 14px;"></i>Trang chủ</a></li>
+                <li class='SecondLast'><a href='../../Product/ProductIndexot'>Danh mục sản phẩm</a></li>
+                <li class='Last'><span>Thêm mới sản phẩm</span></li>
+            </ul>
+        </div>
+
+        <div style="clear: both;"></div>
+
+        @using (Html.BeginForm("ProductAddMultiple", "Product", FormMethod.Post, new { enctype = "multipart/form-data", @id = "productaddmultiple-form", @class = "validate-form" }))
+        {
+            <div id="cph_Main_ContentPane">
+                <div class="widget">
+                    <!-- widget-title -->
+                    <div class="widget-title">
+                        <h4><i class="icon-reorder"></i>&nbsp;Thêm mới sản phẩm</h4>
+
+                        <!-- Button -->
+                        <div class="ui-corner-top ui-corner-bottom">
+                            <div id="toolbox">
+                                <div style="float: right;" class="toolbox-content">
+
+                                    <table class="toolbar">
+                                        <tr>
+                                            <td align="center">
+                                                  <button type="submit" class="toolbar btn btn-info"><i class="icon-save"></i>&nbsp;Ghi lại</button>
+                                            </td>
+                                            <td align="center">
+                                                <a title="Quay lại" class="toolbar btn btn-info" href="../../Product/ProductIndexot"><i class="icon-chevron-left"></i>&nbsp;
+                                                Trở về</a>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Button -->
+
+                        <div id="hiddenToolBarScroll" class="scrollBox hidden">
+                            <h4>
+                                <i class="icon-reorder"></i>&nbsp;Thêm mới sản phẩm</h4>
+                            <div class="FloatMenuBar">
+
+                                <div class="ui-corner-top ui-corner-bottom">
+                                    <div id="Div1">
+
+                                        <div style="float: right;" class="toolbox-content">
+
+                                            <table class="toolbar">
+                                                <tr>
+                                                    <td align="center">
+                                                         <button type="submit" class="toolbar btn btn-info"><i class="icon-save"></i>&nbsp;Ghi lại</button>
+                                                    </td>
+                                                    <td align="center">
+                                                        <a title="Quay lại" class="toolbar btn btn-info" href="../../Product/ProductIndexot"><i class="icon-chevron-left"></i>&nbsp;
+                                                Trở về</a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- widget-title -->
+
+                    <!-- widget-body -->
+                    <div class="widget-body">
+                        <div id="tabs">
+                            <div id="tabs-1">
+
+                                <table class="admintable" style="width: 100%;">
+                                     <tr>
+                                        <td class="key">Nhóm sản phẩm <span class="Required">*</span>
+                                        </td>
+                                        <td>
+                                            @Html.DropDownList("Cat", " === Nhóm sản phẩm ===")
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Tên nhóm sản phẩm
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    Tên nhóm sản phẩm (Ví dụ: Thời trang nữ)
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="key">Chọn file excel <span class="Required">*</span>
+                                        </td>
+                                        <td>
+                                            <input type="file" id="fileExcel" name="fileExcel" />
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Chọn file excel
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    File Excel lưu danh sách sản phẩm
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="key">Chọn thư mục ảnh <span class="Required">*</span>
+                                        </td>
+                                        <td>
+                                            <input type="file" id="ImageUrl" name="ImageUrl" multiple="multiple" />
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Chọn thư mục ảnh
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    Thư mục chứa ảnh của sản phẩm
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- widget-body -->
+
+                </div>
+            </div>
+        }
+    </div>
+</div>

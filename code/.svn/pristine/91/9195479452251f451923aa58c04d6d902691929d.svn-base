@@ -1,0 +1,215 @@
+﻿@model onsoft.Models.UserModule
+@{
+    ViewBag.Title = "UserModuleEdit";
+    Layout = "~/Views/Shared/_LayoutAdmins.cshtml";
+}
+
+@section Scripts
+{
+    <!-- Validate Data -->
+    <script type="text/javascript">
+
+        (function ($, W, D) {
+
+            var JQUERY4U = {};
+
+            JQUERY4U.UTIL =
+            {
+                setupFormValidation: function () {
+                    //validation rules
+                    $("#support-form").validate({
+                        rules: {
+                            GroupSupport: "required",
+                            Name: "required",
+                            Tel: {
+                                required: true,
+                                number: true,
+                            },
+                            Type: "required",
+                            Ord: {
+                                required: true,
+                                number: true
+                            }
+                        },
+                        messages: {                            
+                            GroupSupport: "Phải chọn tên nhóm hỗ trợ.",
+                            Name: "Phải nhập tên module.",
+                            Tel: {
+                                required: "Phải nhập số điện thoại module.",
+                                number: "Kiểm tra số điện thoại.",
+                            },
+                            Type: "Chọn 1 kiểu nick chat.",
+                            Ord: {
+                                required: "Phải nhập thứ tự.",
+                                number: "Phải nhập kiểu số."
+                            }
+                        },
+                        submitHandler: function (form) {
+                            form.submit();
+                        }
+                    });
+                }
+            }
+
+            //when the dom has loaded setup form validation rules
+            $(D).ready(function ($) {
+                JQUERY4U.UTIL.setupFormValidation();
+            });
+
+        })(jQuery, window, document);
+    </script>
+    <!-- End Validate Data -->
+}
+
+<div class="container-fluid">
+    <div style="width: 100%; margin: 0 auto;">
+
+        <div id="Breadcrumb" class="Block Breadcrumb ui-widget-content ui-corner-top ui-corner-bottom">
+            <ul>
+                <li><a href='../../Support/SupportIndex'><i class="icon-home" style="font-size: 14px;"></i>Trang chủ</a></li>
+                <li class='SecondLast'><a href='../../UserModule/UserModuleIndex'>Danh sách module</a></li>
+                <li class='Last'><span>Sửa thông tin module</span></li>
+            </ul>
+        </div>
+
+        <div style="clear: both;"></div>
+
+        @using (Html.BeginForm("UserModuleEdit", "UserModule", FormMethod.Post, new { enctype = "multipart/form-data", @id = "module-form", @class = "validate-form" }))
+        {
+            @Html.HiddenFor(model => model.ID)
+            <div id="cph_Main_ContentPane">
+                <div class="widget">
+
+                    <!-- widget-title -->
+                    <div class="widget-title">
+                        <h4><i class="icon-reorder"></i>&nbsp;Sửa thông tin module</h4>
+
+                        <!-- Button -->
+                        <div class="ui-widget-content ui-corner-top ui-corner-bottom">
+                            <div id="toolbox">
+                                <div style="float: right;" class="toolbox-content">
+
+                                    <table class="toolbar">
+                                        <tr>
+                                            <td align="center">
+                                                <button type="submit" class="toolbar btn btn-info"><i class="icon-save"></i>&nbsp;Ghi lại</button>
+                                            </td>
+                                            <td align="center">
+                                                <a title="Quay lại" class="toolbar btn btn-info" href="../../Support/SupportIndex"><i class="icon-chevron-left"></i>&nbsp;Trở về</a>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Button -->
+
+                        <div id="hiddenToolBarScroll" class="scrollBox hidden">
+                            <h4><i class="icon-reorder"></i>&nbsp;Thêm mới module</h4>
+                            <div class="FloatMenuBar">
+
+                                <div class="ui-widget-content ui-corner-top ui-corner-bottom">
+                                    <div id="Div1">
+
+                                        <div style="float: right;" class="toolbox-content">
+
+                                            <table class="toolbar">
+                                                <tr>
+                                                    <td align="center">
+                                                        <button type="submit" class="toolbar btn btn-info"><i class="icon-save"></i>&nbsp;Ghi lại</button>
+                                                    </td>
+                                                    <td align="center">
+                                                        <a title="Quay lại" class="toolbar btn btn-info" href="../../Support/SupportIndex"><i class="icon-chevron-left"></i>&nbsp;Trở về</a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- widget-title -->
+
+                    <!-- widget-body -->
+                    <div class="widget-body">
+                        <div id="tabs">
+                            <div id="tabs-1">
+
+                                <table class="admintable" style="width: 100%;">
+                                    <tr>
+                                        <td class="key">Tên Module <span class="Required">*</span></td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.Name, "", new { @class = "text" })
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Tên Module
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    Tên của Module (Ví dụ: Thêm hỗ trợ viên)
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="key">Mô tả <span class="Required"></span></td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.Description, "", new { @class = "text" })
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Mô tả Module
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    Mô tả Module (Ví dụ: Thêm hỗ trợ viên: thực hiện thêm một hỗ trợ viên)
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="key">Thứ tự <span class="Required">*</span></td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.Order, "", new { @onkeypress = "OnlyInputNumber(0)" })
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Thứ tự Module
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    Thứ tự Module
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="key">Trạng thái <span class="Required"></span></td>
+                                        <td>
+                                            @Html.CheckBox("Active", new { id = "Active", onclick = "Javascript:chkSelect_OnClick(this,0)", @class = "chk" })
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Trạng thái hiển thị của module
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    Module đang được kích hoạt hay không.
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- widget-body -->
+
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+

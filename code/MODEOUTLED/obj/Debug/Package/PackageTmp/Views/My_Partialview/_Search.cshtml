@@ -1,0 +1,61 @@
+﻿<!--Sử dụng cho autocomplete-->
+<link href="~/Content/themes/base/jquery.ui.all.css" rel="stylesheet" type="text/css" />
+@*<script type="text/javascript">
+    $(function () {
+        $('#sologan').totemticker({
+            row_height: '100px',
+            next: '#ticker-next',
+            previous: '#ticker-previous',
+            stop: '#stop',
+            start: '#start',
+            mousestop: true,
+        });
+    });
+	</script>*@
+
+<!--Sử dụng cho autocomplete-->
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('*[data-autocomplete-url]')
+    .each(function () {
+        $(this).autocomplete({
+            source: $(this).data("autocomplete-url")
+        });
+    });
+    });
+</script>
+
+<!--Reset ô tìm kiếm-->
+<script type="text/javascript">
+    $(function () {
+        $('#ProName').focus(function () {
+            $(this).val('');
+        });
+    });
+</script>
+@*@if (Session["Email"] == null)
+{
+    <div class="logintop">
+        <a href="/Pages/dangnhap"><span>Đăng nhập</span></a><p>|</p>
+        <a href="/Pages/dangki"><span>Đăng ký</span></a>
+    </div>
+}
+else
+{
+    Html.RenderAction("information", "VCustomer");
+}*@
+<div class="box-search">
+    @using (Html.BeginForm("Search", "Default", FormMethod.Post, new { @id = "search" }))
+    {
+        <p>
+            @Html.TextBox("ProName", ViewBag.CurrentProName as string, new { data_autocomplete_url = Url.Action("Autocomplete"), @Value = "Nhập tên sản phẩm", @Style = "color:#999999;", @id = "ProName" })
+        </p>
+        <p>
+            <input type="submit" name="submit" value="Tìm kiếm" id="searchsubmit" />
+        </p>
+    }
+</div>
+<div class="box-newsleter">
+    @{Html.RenderAction("dk_khuyenmai", "My_Partialview");}
+</div>
+<div class="box-cart">@{Html.RenderAction("CartIcon", "Cart");}</div>

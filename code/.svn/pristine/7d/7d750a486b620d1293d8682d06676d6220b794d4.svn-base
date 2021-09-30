@@ -1,0 +1,154 @@
+﻿@{
+    ViewBag.Title = @Html.Raw(ViewBag.tit);
+    ViewBag.des = @Html.Raw(ViewBag.des);
+    ViewBag.key = @Html.Raw(ViewBag.key);
+    Layout = "~/Views/Shared/_LayoutSub.cshtml";
+    <script src="~/highslide/highslide-with-gallery.js"></script>
+    <link href="~/highslide/highslide.css" rel="stylesheet" />
+}
+@*<script src="~/Scripts/jquery.totemticker.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#vertical-ticker').totemticker({
+            row_height: '100px',
+            next: '#ticker-next',
+            previous: '#ticker-previous',
+            stop: '#stop',
+            start: '#start',
+            mousestop: true,
+        });
+    });
+	</script>*@
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        jQuery('.sQuant a.btnAdd').click(function () {
+            jQuery(this).parent().find('.txtQuantity').val(parseInt(jQuery(".sQuant .txtQuantity").val()) + 1);
+        });
+
+        jQuery('.sQuant .btnDivi').click(function () {
+            if (jQuery(this).parent().find('.txtQuantity').val() < 2) {
+                jQuery(this).parent().find('.txtQuantity').val(1);
+            }
+            else {
+                jQuery(this).parent().find('.txtQuantity').val(parseInt(jQuery(this).parent().find('.txtQuantity').val()) - 1);
+            }
+        });
+
+        jQuery('.sQuant .txtQuantity').focusout(function () {
+            if (jQuery(this).parent().find('.txtQuantity').val() < 0) {
+                jQuery(this).parent().find('.txtQuantity').val(1);
+            }
+        });
+
+    });
+
+</script>
+<script type="text/javascript">
+    hs.graphicsDir = '../highslide/graphics/';
+    hs.align = 'center';
+    hs.transitions = ['expand', 'crossfade'];
+    hs.outlineType = 'glossy-dark';
+    hs.wrapperClassName = 'dark';
+    hs.fadeInOut = true;
+    //hs.dimmingOpacity = 0.75;
+
+    // Add the controlbar
+    if (hs.addSlideshow) hs.addSlideshow({
+        //slideshowGroup: 'group1',
+        interval: 5000,
+        repeat: false,
+        useControls: true,
+        fixedControls: 'fit',
+        overlayOptions: {
+            opacity: .6,
+            position: 'bottom center',
+            hideOnMouseOut: true
+        }
+    });
+
+</script>
+<script>
+    $(function () {
+        $("#tabs").tabs({
+        });
+    });
+  </script>
+    <div id="fb-root"></div>
+<script>(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/vi_VN/all.js#xfbml=1&appId=429741320382398";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div class="detail">
+<div class="titlelink">
+    <ul>
+        <li><a href='/'><i class="icon-home"></i>Trang chủ</a></li>
+        <li class="SecondLast"><a href='/san-pham'>Sản phẩm</a></li>
+        @Html.Raw(ViewBag.link)
+    </ul>
+</div>
+<div class="box-detail">
+    <div class="left">
+        <div id="bigPic">
+            @Html.Raw(ViewBag.images)
+            @*<a href="Images/images/fashion1.jpg" class="highslide" onclick="return hs.expand(this)"> <img src="Images/images/fashion1.jpg" alt="Highslide JS" title="Click to enlarge" /></a>*@
+			</div>
+			<ul id="thumbs">
+                @Html.Raw(ViewBag.imagethumb)
+			</ul>
+    </div>
+    <div class="right">
+        <div id="infoPro">
+                @Html.Raw(ViewBag.pro)
+               @* <p class="size">Màu sắc: @Html.DropDownList("color")</p>
+                <p class="size">Kích cỡ: @Html.DropDownList("size")</p>*@
+                <p class="sQuant">Số lượng: <input type="text" value="1" class="txtQuantity" id="quantity" name="quantity"><a class="btnAdd"></a><a class="btnDivi"></a></p>
+                @*<p id="Cart"><a id="btnAddCart" href="javascript:;" class="btnBuyNow add-to-cart"><span id="txt">Thêm vào giỏ</span></a></p>
+                <p class="muangay"><a id="CheckCart" title="Mua ngay" href="javascript:;" class="btnAddCart" rel="/Home/checkout">Mua ngay</a></p>*@
+                @Html.Raw(ViewBag.cart)
+                @*<div class="fb-like" style="margin-top: 15px; padding-bottom: 3px" data-href="http://onsoft.vn" data-send="true" data-width="360" data-show-faces="true"></div>
+                <div class="fb-comments" style="margin-top: 15px" data-href="http://onsoft.vn" data-width="360" data-num-posts="20"></div>*@
+            <div class="support">
+                <h3>Liên hệ với chúng tôi</h3>
+                @Html.Raw(ViewBag.support)
+            </div>
+        </div>
+        <div id="banchay">
+            <div class="banchay">
+               <i class="icon-signin"></i>&nbsp;&nbsp;Giỏ hàng của tôi
+            </div>
+            @*<ul id="vertical-ticker">
+                @Html.Raw(ViewBag.nhieu)
+            </ul>*@
+                <div class="showCartTop">
+                        <p><img src="~/Content/Images/mat-meu.png" style="width: 60px; height: 60px" /><p>Chưa có sản phẩm nào trong giỏ hàng</p></p>
+                    </div> 
+        </div>
+</div>
+ <div class="addthis_toolbox addthis_default_style ">
+<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+<a class="addthis_button_tweet"></a>
+<a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+<a class="addthis_counter addthis_pill_style"></a>
+</div>
+    <div class="box-detail-content">
+        <div id="tabs">
+  <ul>
+     @Html.Raw(ViewBag.tabhead)
+  </ul>
+   @Html.Raw(ViewBag.tabcontent)
+</div></div>
+<div class="container-spkhac">
+<div class="cungloai">
+    <ul>
+        <li><a href='/' rel="nofollow"><i class="icon-signin"></i>&nbsp;Sản phẩm cùng loại</a></li>
+    </ul>
+</div>
+<ul class="da-thumbs">
+@Html.Raw(ViewBag.cungloai)
+</ul>
+    </div>
+</div>
+</div>

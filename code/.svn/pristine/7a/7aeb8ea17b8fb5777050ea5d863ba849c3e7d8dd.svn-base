@@ -1,0 +1,395 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model PagedList.IPagedList<onsoft.Models.v_Permission_GroupProduct>
+
+@{
+    ViewBag.Title = "Quản lý quyền nhóm sản phẩm";
+    Layout = "~/Views/Shared/_LayoutAdmins.cshtml";
+}
+
+@section Styles
+{
+    <!--Sử dụng cho Confirm delete-->
+    <link href="~/Content/Styles/jquery-ui.css" rel="stylesheet" />
+
+    <!--Sử dụng cho Phân trang-->
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+}
+
+@section Scripts
+{
+    <!--Sử dụng cho Confirm delete-->
+    <script src="~/Scripts/jquery-1.9.1.js"></script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <script src="~/Scripts/jquery.easy-confirm-dialog.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".yesno").easyconfirm({
+                locale: { title: 'Xóa', button: ['Không', 'Có'] }
+            });
+        })
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".deletemultiple").easyconfirm({
+                locale: { title: 'Xóa', button: ['Không', 'Có'] }
+            });
+        })
+    </script>
+
+    <!--Sử dụng cho sắp xếp-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var currentSortOrder = '@ViewBag.CurrentSortOrder';
+            if (currentSortOrder == "ord asc") {
+                $('#ord').removeClass('NumberOrdDown').addClass("NumberOrdUp");
+            }
+            else {
+                $('#ord').removeClass('NumberOrdUp').addClass("NumberOrdDown");
+            }
+
+        })
+    </script>
+
+    <!--Sử dụng cho validate-->
+
+    <script>
+        $j(document).ready(function () {
+            $j('html').ajaxStart(function () {
+                ShowLoadingIndicator();
+            });
+
+            $j('html').ajaxComplete(function () {
+                HideLoadingIndicator();
+            });
+            $j('.InitialFocus').focus();
+
+            $j(window).scroll(function () {
+                var offset = $j(".widget-title").offset();
+                var curWin = $j(window);
+                var top = offset.top - curWin.scrollTop();
+                var bottom = $j(window).height() - $j(".widget-title").height();
+                bottom = bottom - offset.top;
+
+                var compare = bottom - curWin.scrollTop();
+                if (top <= 0) {
+                    if ($j(".scrollBox").hasClass("hidden")) {
+                        $j(".scrollBox").removeClass("hidden");
+
+                    }
+                } else {
+                    if (!$j(".scrollBox").hasClass("hidden")) {
+                        $j(".scrollBox").addClass("hidden");
+                    }
+
+                }
+            });
+        });
+
+        var separator = ",";  // use comma as 000's separator
+        var decpoint = ".";  // use period as decimal point
+        var percent = "%";
+        var currency = "$";  // use dollar sign for currency
+
+        function replaceAll(str, from, to) {
+            var idx = str.indexOf(from);
+            while (idx > -1) {
+                str = str.replace(from, to);
+                idx = str.indexOf(from);
+            }
+            return str;
+        }
+
+        function remote_format(input) {
+            var output = '';
+            //output=replaceAll(input,'.','');
+            output = replaceAll(input, ",", "");
+            return output;
+        }
+
+        function strip(input, chars) {  // strip all characters in 'chars' from input
+            var output = "";  // initialise output string
+            for (var i = 0; i < input.length; i++)
+                if (chars.indexOf(input.charAt(i)) == -1)
+                    output += input.charAt(i);
+            return output;
+        }
+
+        function separate(input, separator) {  // format input using 'separator' to mark 000's
+            input = "" + input;
+            var output = "";  // initialise output string
+            for (var i = 0; i < input.length; i++) {
+                if (i != 0 && (input.length - i) % 3 == 0) output += separator;
+                output += input.charAt(i);
+            }
+            return output;
+        }
+
+        function formatNumber(number, format, print) {  // use: formatNumber(number, "format")
+            //number=remote_format(number);
+            if (print) document.write("formatNumber(" + number + ", \"" + format + "\")<br>");
+
+            if (number - 0 != number) return null;  // if number is NaN return null
+            var useSeparator = format.indexOf(separator) != -1;  // use separators in number
+            var usePercent = format.indexOf(percent) != -1;  // convert output to percentage
+            var useCurrency = format.indexOf(currency) != -1;  // use currency format
+            var isNegative = (number < 0);
+            number = Math.abs(number);
+            if (usePercent) number *= 100;
+            format = strip(format, separator + percent + currency);  // remove key characters
+            number = "" + number;  // convert number input to string
+
+            // split input value into LHS and RHS using decpoint as divider
+            var dec = number.indexOf(decpoint) != -1;
+            var nleftEnd = (dec) ? number.substring(0, number.indexOf(".")) : number;
+            var nrightEnd = (dec) ? number.substring(number.indexOf(".") + 1) : "";
+
+            // split format string into LHS and RHS using decpoint as divider
+            dec = format.indexOf(decpoint) != -1;
+            var sleftEnd = (dec) ? format.substring(0, format.indexOf(".")) : format;
+            var srightEnd = (dec) ? format.substring(format.indexOf(".") + 1) : "";
+
+            // adjust decimal places by cropping or adding zeros to LHS of number
+            if (srightEnd.length < nrightEnd.length) {
+                var nextChar = nrightEnd.charAt(srightEnd.length) - 0;
+                nrightEnd = nrightEnd.substring(0, srightEnd.length);
+                if (nextChar >= 5) nrightEnd = "" + ((nrightEnd - 0) + 1);  // round up
+
+                // patch provided by Patti Marcoux 1999/08/06
+                while (srightEnd.length > nrightEnd.length) {
+                    nrightEnd = "0" + nrightEnd;
+                }
+
+                if (srightEnd.length < nrightEnd.length) {
+                    nrightEnd = nrightEnd.substring(1);
+                    nleftEnd = (nleftEnd - 0) + 1;
+                }
+            } else {
+                for (var i = nrightEnd.length; srightEnd.length > nrightEnd.length; i++) {
+                    if (srightEnd.charAt(i) == "0") nrightEnd += "0";  // append zero to RHS of number
+                    else break;
+                }
+            }
+
+            // adjust leading zeros
+            sleftEnd = strip(sleftEnd, "#");  // remove hashes from LHS of format
+            while (sleftEnd.length > nleftEnd.length) {
+                nleftEnd = "0" + nleftEnd;  // prepend zero to LHS of number
+            }
+
+            if (useSeparator) nleftEnd = separate(nleftEnd, separator);  // add separator
+            var output = nleftEnd + ((nrightEnd != "") ? "." + nrightEnd : "");  // combine parts
+            output = ((useCurrency) ? currency : "") + output + ((usePercent) ? percent : "");
+            if (isNegative) {
+                // patch suggested by Tom Denn 25/4/2001
+                output = (useCurrency) ? "(" + output + ")" : "-" + output;
+            }
+            return output;
+        }
+    </script>
+
+    <!--Ajax sử dụng sửa dữ liệu-->
+    <script type="text/javascript">
+
+        $(function () {
+            $('#msg').hide();
+
+            // Ajax sử dụng cho change view
+            $(".View").click(function () {
+                var catPerId = $(this).attr("id");
+                clearUpdateMessage();
+                $.post("/CatPermission/ChangeView", { "id": catPerId },
+                    function (data) {
+                        $('#msg').show();
+                        $('#update-message').text(htmlDecode(data));
+                        $('#msg').fadeOut(2000);
+                    });
+            });
+
+
+            // Ajax sử dụng cho change full
+            $(".Full").click(function () {
+                var catPerId = $(this).attr("id");
+                clearUpdateMessage();
+                $.post("/CatPermission/ChangeFull", { "id": catPerId },
+                    function (data) {
+                        $('#msg').show();
+                        $('#update-message').text(htmlDecode(data));
+                        $('#msg').fadeOut(2000);
+                    });
+            });
+
+        });
+
+        function clearUpdateMessage() {
+            $('#update-message').text("");
+        }
+
+        function htmlDecode(value) {
+            if (value) {
+                return $('<div />').html(value).text();
+            }
+            else {
+                return '';
+            }
+        }
+
+    </script>
+
+    <!--Tìm theo User-->
+    <script type="text/javascript">
+        $(function () {
+            $('#Users').change(function () {
+                this.form.submit();
+            });
+        });
+    </script>
+}
+
+@using (Html.BeginForm("MultiCommand", "CatPermission", FormMethod.Post))
+{
+    <div class="container-fluid">
+        <div style="width: 100%; margin: 0 auto;">
+            <div id="Breadcrumb" class="Block Breadcrumb ui-widget-content ui-corner-top ui-corner-bottom">
+                <ul>
+                    <li class='SecondLast'><a href='#'><i class="icon-home" style="font-size: 14px;"></i>Trang chủ</a></li>
+                    <li class='Last'><span>Quản lý quyền nhóm sản phẩm</span></li>
+                </ul>
+            </div>
+            <div style="clear: both;"></div>
+            <div id="cph_Main_ContentPane">
+                <div class="widget">
+                    <div class="widget-title">
+                        <h4><i class="icon-list-alt"></i>&nbsp;Quản lý quyền nhóm sản phẩm</h4>
+                        <!-- begin menu -->
+                        <div class="ui-corner-top ui-corner-bottom">
+                            <div id="toolbox">
+
+                                <div style="float: right;" class="toolbox-content">
+
+                                    <table class="toolbar">
+                                        <tr>
+                                            <td align="center">
+                                                <button type="submit" id="btnChange" name="btnChange" class="toolbar btn btn-info"><i class="icon-ok"></i>&nbsp;Cập nhật</button>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end menu -->
+
+                        <div id="hiddenToolBarScroll" class="scrollBox hidden">
+                            <h4>
+                                <i class="icon-list-alt"></i>&nbsp;Quản lý quyền nhóm sản phẩm</h4>
+                            <div class="FloatMenuBar">
+
+                                <!-- begin menu -->
+                                <div class="ui-corner-top ui-corner-bottom">
+                                    <div id="toolbox">
+
+                                        <div style="float: right;" class="toolbox-content">
+
+                                            <table class="toolbar">
+                                                <tr>
+                                                    <td align="center">
+                                                        <button type="submit" id="btnChange" name="btnChange" class="toolbar btn btn-info"><i class="icon-ok"></i>&nbsp;Cập nhật</button>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end menu -->
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="widget-body">
+
+
+
+                        <div style="padding-top: 10px;" id="msg">
+                            <div class="alert" id="update-message">
+                            </div>
+                        </div>
+
+
+                        <div class="row-fluid">
+
+                            <div class="span3">
+                                <div id="sample_1_length" class="dataTables_length">
+                                    @Html.DropDownList("Users", " -- Tìm theo người dùng --")
+                                </div>
+                            </div>
+
+                            <div class="span9 form-search pull-right text-right">
+                            </div>
+                        </div>
+
+
+                        <div class="row-fluid">
+                            <!--Paging-->
+                            @Html.PagedListPager(Model, page => Url.Action("CatPermissionIndex", new { page = page, sortOrder = ViewBag.CurrentSortOrder, sortName = ViewBag.CurrentSortName, sortGroup = ViewBag.CurrentSortGroup, sortDate = ViewBag.CurrentSortDate, sortSPTon = ViewBag.CurrentSortSPTon }), (PagedListRenderOptions)ViewBag.Pro)
+
+                        </div>
+                        <div>
+                            <table class="table table-striped table-bordered dataTable table-hover" cellspacing="0" id="cph_Main_ctl00_ctl00_grvProducts" style="border-collapse: collapse;">
+                                <tr>
+                                    <th style="width: 20px;" scope="col" class="CheckBoxsmall">
+                                        @*<input id="cph_Main_ctl00_ctl00_grvProducts_chkAll" type="checkbox" name="ctl00$cph_Main$ctl00$ctl00$grvProducts$ctl01$chkAll" onclick="javascript: SelectAllCheckboxes(this);" />*@
+                                        <input type="checkbox" onclick="Javascript: chkSelectAll_OnClick(this)" id="chkSelectAll" name="checkAll" />
+                                        <input name="mPage" id="mPage" value="@ViewBag.mPage" hidden="hidden" />
+                                        @*                                        <input name="LastPage" id="LastPage" value="@ViewBag.LastPage" hidden="hidden" />*@
+                                        <input name="PageSize" id="PageSize" value="@ViewBag.PageSize" hidden="hidden" />
+                                    </th>
+                                    <th scope="col" class="number">Thứ tự</th>
+                                    <th scope="col" class="text">Nhóm sản phẩm</th>
+                                    <th scope="col" class="number">View</th>
+                                    <th scope="col" class="number">Full</th>
+
+                                </tr>
+                                @for (int i = 0; i < Model.Count; i++)
+                                {
+                                    <tr style="background-color: #fff">
+                                        <td align="center">
+                                            @Html.CheckBox("chk" + Model[i].ID, new { id = "chkSelect", onclick = "Javascript:chkSelect_OnClick(this,0)", @class = "chk" })
+                                            @*<input type="hidden" name="ctl00$cph_Main$ctl00$ctl00$grvProducts$ctl03$hdEdit" id="cph_Main_ctl00_ctl00_grvProducts_hdEdit_1" value="2946698" />*@
+                                        </td>
+                                        <td class="number" style="width: 50px;">
+                                            <label>@(i + 1)</label>
+                                        </td>
+
+                                        <td style="text-align: left">
+                                            @Model[i].Name
+                                        </td>
+
+                                        <td class="number" style="width: 50px;">
+                                            @Html.CheckBox("View", @Model[i].View == true ? true : false, new { @class = "View", @id = @Model[i].ID })
+                                        </td>
+
+                                        <td class="number" style="width: 50px;">
+                                            @Html.CheckBox("Full", @Model[i].Full == true ? true : false, new { @class = "Full", @id = @Model[i].ID })
+                                        </td>
+
+                                    </tr>
+                                }
+                            </table>
+                        </div>
+
+                        <!--Paging-->
+                        @Html.PagedListPager(Model, page => Url.Action("CatPermissionIndex", new { page = page, sortOrder = ViewBag.CurrentSortOrder, sortName = ViewBag.CurrentSortName, sortGroup = ViewBag.CurrentSortGroup, sortDate = ViewBag.CurrentSortDate, sortSPTon = ViewBag.CurrentSortSPTon }), (PagedListRenderOptions)ViewBag.Pro)
+                        <div style="clear: both;"></div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
+

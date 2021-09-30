@@ -1,0 +1,154 @@
+﻿@model PagedList.IPagedList<onsoft.Models.GroupProduct>
+
+@{
+    Layout = null;
+}
+
+<!--Sử dụng cho Confirm delete-->
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".yesno").easyconfirm({
+            locale: { title: 'Xóa nhóm sản phẩm', button: ['Không', 'Có'] }
+        });
+    })
+</script>
+
+<!--Ajax sử dụng sửa dữ liệu trực tiếp trên form-->
+<script type="text/javascript">
+    $(function () {
+        $('#msg').hide();
+
+        // Ajax sử dụng cho change active
+        $(".Active").click(function () {
+            var Id = $(this).attr("id");
+            clearUpdateMessage();
+            $.post("/GroupProduct/ChangeActive", { "id": Id },
+                function (data) {
+                    $('#msg').show();
+                    $('#update-message').removeClass().addClass("alert alert-info").text(htmlDecode(data));
+                    $('#msg').fadeOut(5000);
+                });
+        });
+
+        // Ajax sử dụng cho change ord
+        $(".Ord").change(function () {
+            var id = $(this).attr("id");
+            var ord = $(this).val();
+            if (ord == "") {
+                // Báo lỗi nhập dữ liệu
+                $('#msg').show();
+                $('#update-message').removeClass().addClass("alert alert-error").text("Phải nhập thứ tự.");
+                $('#msg').fadeOut(5000);
+            } else {
+                clearUpdateMessage();
+                $.post("/GroupProduct/ChangeGroupProduct", { "id": id, "ord": ord },
+                    function (data) {
+                        // Thay đổi thành công
+                        $('#msg').show();
+                        $('#update-message').removeClass().addClass("alert alert-info").text(htmlDecode(data));
+                        $('#msg').fadeOut(5000);
+                    });
+            }
+        });
+        // Ajax sử dụng cho change ord
+        $(".Name").change(function () {
+            var id = $(this).attr("id");
+            var name = $(this).val();
+            if (name == "") {
+                // Báo lỗi nhập dữ liệu
+                $('#msg').show();
+                $('#update-message').removeClass().addClass("alert alert-error").text("Phải nhập tên nhóm sản phẩm.");
+                $('#msg').fadeOut(5000);
+            } else {
+                clearUpdateMessage();
+                $.post("/GroupProduct/ChangeGroupProduct", { "id": id, "name": name },
+                    function (data) {
+                        // Thay đổi thành công
+                        $('#msg').show();
+                        $('#update-message').removeClass().addClass("alert alert-info").text(htmlDecode(data));
+                        $('#msg').fadeOut(5000);
+                    });
+            }
+        });
+    });
+
+    function clearUpdateMessage() {
+        $('#update-message').text("");
+    }
+
+    function htmlDecode(value) {
+        if (value) {
+            return $('<div />').html(value).text();
+        }
+        else {
+            return '';
+        }
+    }
+</script>
+
+<div id="ajaxGroupProduct">
+
+    <div class="row-fluid">
+
+        <!--Partial View phân trang-->
+        @Html.Partial("_PartialGroupProductPaging")
+
+    </div>
+
+    <!--Danh sách nhóm sản phẩm-->
+    <div>
+        <table class="table table-striped table-bordered dataTable table-hover" cellspacing="0" id="cph_Main_ctl00_ctl00_grvProducts" style="border-collapse: collapse;">
+            <tr>
+                <th style="width: 20px;" scope="col" class="CheckBoxsmall">
+                    <input type="checkbox" onclick="Javascript: chkSelectAll_OnClick(this)" id="chkSelectAll" name="checkAll" />
+                    <input name="mPage" id="mPage" value="@ViewBag.mPage" hidden="hidden" />
+                    <input name="PageSize" id="PageSize" value="@ViewBag.PageSize" hidden="hidden" />
+                </th>
+                <th class="text">Tên nhóm sản phẩm</th>
+                <th class="text" style="width: 260px">Chỉnh sửa tên nhóm sản phẩm</th>
+                <th scope="col" class="number" style="width: 100px;">Thứ tự</th>
+                <th scope="col" class="number" style="width: 100px;">Kích hoạt</th>
+                <th scope="col" class="number" style="width: 150px; text-align: center">Chức năng</th>
+            </tr>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <tr style="background-color: #fff">
+                    <td align="center">
+                        @Html.CheckBox("chk" + Model[i].Id, new { id = "chkSelect", onclick = "Javascript:chkSelect_OnClick(this,0)", @class = "chk" })
+                    </td>
+                    <td style="text-align: left">
+                        @onsoft.Models.StringClass.ShowNameLevel(Model[i].Name, Model[i].Level)
+                    </td>
+                    <td style="text-align: center">
+                        @Html.TextBox("Ord" + Model[i].Id, @Model[i].Name, new { @style = "width:250px; text-align: left", @class = "Name", @id = @Model[i].Id})
+                    </td>
+                    <td style="text-align: center">
+                        @Html.TextBox("Ord" + Model[i].Id, @Model[i].Ord, new { @style = "width:50px; text-align: center", @class = "Ord", @id = @Model[i].Id, onblur = "this.value=formatNumber(this.value,'#,###','')", onfocus = "this.value=remote_format(this.value)" })
+                    </td>
+                    <td style="text-align: center">
+                        @Html.CheckBox("Active", @Model[i].Active == true ? true : false, new { @class = "Active", @id = @Model[i].Id })
+                    </td>
+                    <td class="text-center">
+
+                        <a href="../../GroupProduct/GroupProductAddSubot?id=@Model[i].Id" class="action-link-button" 
+                                                title="Thêm cấp con nhóm sản phẩm"><i class="icon-plus"></i></a>
+
+                        <a href="../../GroupProduct/GroupProductEditot?id=@Model[i].Id" class="action-link-button" 
+                                                title="Chỉnh sửa nhóm sản phẩm này"><i class="icon-edit"></i></a>
+
+                        <a href="../../GroupProduct/GroupProductDelete?id=@Model[i].Id&page=@ViewBag.mPage&pagesize=@ViewBag.PageSize" class="yesno action-link-button"
+                                                title="Bạn chắc chắn muốn xóa nhóm sản phẩm này ?"><i class="icon-trash"></i></a>
+
+
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+
+    <!--Partial View phân trang-->
+    @Html.Partial("_PartialGroupProductPaging")
+
+    <div style="clear: both;"></div>
+
+</div>

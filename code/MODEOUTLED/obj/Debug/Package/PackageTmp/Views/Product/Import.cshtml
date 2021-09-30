@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "Thêm mới sản phẩm";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Import</h2>
+ @using (Html.BeginForm("ImportExcel", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <input type="file" id="fileExcel" name="fileExcel"/>
+            <input type="file" id="ImageUrl" name="ImageUrl" multiple="multiple"/>
+            <input type="submit" id="btnImport" name="btnImport" value="Thêm mới" style="width: 100px; cursor: pointer;" />
+        }

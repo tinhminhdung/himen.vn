@@ -1,0 +1,15 @@
+﻿<div class="div"><table class="tableAd">
+<tr>
+    <td colspan="3" class="logo">ADMIN PAGE MANAGER</td>
+</tr>
+<tr>
+    <td class="left">Wellcome: <strong>
+                                                @{if (Request.Cookies["Username"] != null)
+                                                 {
+                                                     Server.UrlDecode(Request.Cookies["Username"]["FullName"]).ToString();
+                                                 }}
+                               </strong></td>
+    <td class="right">[ <a href="/Admins/Default" target="_blank">Trang quản trị </a> ] &nbsp; [ <a href="/Home/Index" target="_blank">Trang chủ</a> ] &nbsp; [<a href="/Admins/admins"> Đăng xuất</a> ]</td>
+</tr>
+</table>
+</div>

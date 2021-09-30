@@ -1,0 +1,96 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+#mainweb{margin:0 auto;padding:0;width:1000px;height:800px;border:1px solid #CCC;margin-bottom:10px;-webkit-border-radius:3px;
+	}
+#menu{width:1000px;height:40px;border-bottom: 1px solid #CCC;padding-top:5px;-webkit-border-radius:3px;background:#F7F7F7;
+	}		
+#be{width:260px;float:left;text-align:center;
+	}	
+#gia{width:100px;float:left;text-align:center;
+	}	
+#soluong{width:60px;float:left;text-align:center;
+	}
+#haumai{width:110px;float:left;text-align:center;
+	}	
+#giaingan{width:120px;float:left;text-align:center;
+	}
+#tinhtrang{width:140px;float:left;text-align:center;
+	}
+#hdkinhdoanh{width:130px;float:left;text-align:center;
+	}
+#hdkhac{width:80px;float:left;text-align:center;
+	}	
+#sp{font-size:12px; font-weight:bolder;font-family:Arial, Helvetica, sans-serif; color: #0628f5;
+}	
+#sp1{font-family:Arial, Helvetica, sans-serif;color:#0066FF;font-size:13px;
+	}
+#action{width:999px; height:25px; border-top:1px solid #CCC;border-bottom:1px solid #CCC; margin-top:8px;background:#F4F4F4; padding-top:5px;}
+#chon{width:70px;float:left;
+}
+#merge{width:80px;float:left; border:1px solid #CCC;text-align:center;width:60px;height:20px;-webkit-border-radius:2px;margin-left:20px;
+}
+#trathay{width:80px;float:left;border:1px solid #CCC;text-align:center;width:60px;height:20px;margin-left:20px;
+}
+	
+#xacnhan{width:100px;float:left;border:1px solid #CCC;text-align:center;width:100px;height:20px;margin-left:20px;
+}
+#quaylai{float:right;width:80px;text-align:right;
+}
+#tieptheo{
+	width:70px;float:right;text-align:right
+	}
+#mn{width: 995px; height: 30px;background: #7daffa;font-family:Arial, Helvetica, sans-serif; font-size:14px;margin-top:5px; padding: 10px 0 3px 0; vertical-align:middle; border-top-left-radius: 5px; border-top-right-radius: 5px; border-top: 3px solid #0066FF;}
+#mnbtom{width: 995px; height: 80px;background: #f5f5f5;font-family:Arial, Helvetica, sans-serif; font-size:12px; padding: 10px 0 3px 0; vertical-align:middle; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-bottom: 3px solid #0066FF; margin-bottom: 35px}
+#mnbtom div.head { width: 135px; height: 20px; font-weight: bold; color: red; font-size: 13px; border-bottom: 1px solid #FF9900; margin-bottom: 5px}
+#mnbtom div.item { width: 160px; height: 20px; font-weight: bold; color: #555555; font-size: 12px; float: left; margin-bottom: 8px}
+#mnbtom div.item span { font-weight: normal;}
+#mnbtom div.item400 { width: 530px; height: 20px; font-weight: bold; color: #555555; font-size: 12px; float: left; margin-bottom: 8px}
+#mnbtom div.item400 span { font-weight: normal;}
+#mnbtom div.item400 b { color: red;}
+#mnbtom div.item500 { width: auto; height: 20px; font-weight: bold; color: #555555; font-size: 12px; margin-left: 135px; }
+#mnbtom div.item500 span { font-weight: normal;}
+#mn1{width: 150px; float:left; margin-top:-1px; margin-left:3px;
+	}
+#mn2{width: 130px;float:left;
+	}
+#mn3{width: 250px;float:left;
+	}
+#mn4{width: 250px;float:left; color:#555555;
+	}
+#mn5{width: 200px;float:left; color:#555555;
+	}
+#mn6{width: 130px;float:left;
+	}
+#mn7{width:220px;float:left; color:#555555;
+	}
+#ctsp{width:540px;height:300px;float:left;
+	}
+#pro{width:1000px; height:300px;}	
+#sp3{height:149px; width:540px;text-align:center;border-right:1px solid #CCC;border-bottom:1px solid #CCC;}	
+#img1{width:60px;float:left;margin:8px;
+	}
+#ctsp1{width:190px;float:left;height:140px;padding-top:10px;
+	}
+#gia1{width:100px;float:left;padding-top:10px;
+	}
+#sl1{width:40px;float:left;padding-top:10px;
+	}
+#hm1{width:130px;float:left;padding-top:10px;
+	}
+#tt{width:460px;float:left;border-bottom:1px solid #CCC;text-align:center;
+	}	
+#gn{width:120px;float:left;border-right:1px solid #CCC;padding-top:10px;
+	}
+#ttgd{width:130px;float:left;border-right:1px solid #CCC;padding-top:10px;
+	}
+#hdkd{width:120px;float:left;border-right:1px solid #CCC;border-bottom::1px solid #CCC;padding-top:10px;
+	}
+#hdk{width:87px;float:right;padding-top:10px;
+	}		
+#sp5{color:#FF0000;font-family:Arial, Helvetica, sans-serif;font-size:13px;}
+#sp4{font-weight:bold;font-family:Verdana, Geneva, sans-serif;font-size:15px;}
+#sp6{color:#999;
+	}
+#ip{color:#FFF;background:#FF9900; border-radius:3px;width:100px;border:1px solid #FF9900;
+	}	

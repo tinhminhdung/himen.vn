@@ -1,0 +1,79 @@
+﻿@model onsoft.Models.GroupMember
+@{
+    ViewBag.Title = "GroupMemberCreate";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!-- Validate Data -->
+
+
+<script src="~/Scripts/jquery.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script type="text/javascript">$j = jQuery.noConflict();</script>
+
+<script type="text/javascript">
+
+    (function ($j, W, D) {
+
+        var JQUERY4U = {};
+
+        JQUERY4U.UTIL =
+        {
+            setupFormValidation: function () {
+                //validation rules
+                $j("#categorycreate-form").validate({
+                    rules: {
+                        Name: "required",
+
+                    },
+                    messages: {
+                        Name: "Nhập tên nhóm",
+
+                    },
+                    submitHandler: function (form) {
+                        form.submit();
+                    }
+                });
+            }
+        }
+
+        //when the dom has loaded setup form validation rules
+        $j(D).ready(function ($) {
+            JQUERY4U.UTIL.setupFormValidation();
+        });
+
+    })(jQuery, window, document);
+</script>
+<!-- End Validate Data -->
+
+<h2>@ViewBag.Title</h2>
+@using (Html.BeginForm("GroupMemberCreate", "GroupMember", FormMethod.Post, new { @id="categorycreate-form", @class="validate-form"}))
+{
+    <table class="TableUpdate" border="1">
+        <tr>
+            <td class="Control" colspan="2">
+                <ul>
+                        <li><input type="submit" value="Ghi lại "class="uupdate" /></li>
+                    <li>@Html.ActionLink("Trở về", "GroupMemberIndex", "", new { @class = "uback" })</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <th>Tên nhóm<span style="color:red">(*)</span></th>
+            <td>@Html.TextBoxFor(m => m.Name)</td>
+        </tr>
+        <tr>
+            <th>Kích hoạt</th>
+            <td>@Html.CheckBoxFor(m => m.Active)</td>
+        </tr>
+        <tr>
+            <td class="Control" colspan="2">
+                <ul>
+                        <li><input type="submit" value="Ghi lại "class="uupdate" /></li>
+                   
+                    <li>@Html.ActionLink("Trở về", "GroupMemberIndex", "", new { @class = "uback" })</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+}

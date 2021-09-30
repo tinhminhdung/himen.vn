@@ -1,0 +1,21 @@
+﻿.news-cat { width: 23.5%; height: 138px; overflow: hidden; margin: 0 6px 30px 10px; float: left; }
+.news-cat h2 { margin: 0; padding: 0; line-height: 20px}
+.news-cat img { float: left; max-width: 100px; border: 0; max-height: 100px; margin: 0 8px 0 0; border: 1px solid #fff;}
+.news-cat img:hover { border: 1px solid #08a7e4}
+.news-cat a h2 { text-decoration: none; color: #08a7e4; font-size: 14px; margin: 0; padding: 0}
+.news-cat a h2:hover { color: #ff0000}
+.news-cat p { margin: 0; padding: 0; text-align: left; font-size: 82%}
+
+
+.news-box { width: 98%; margin: 0 6px 30px 10px; display: table; clear: both;}
+.news-box h2 { margin: 0; padding: 0; line-height: 20px}
+.news-box img { float: left; max-width: 160px; border: 0; max-height: 160px; margin: 0 8px 0 0; border: 1px solid #fff;}
+.news-box img:hover { border: 1px solid #ff6a00}
+.news-box a h2 { text-decoration: none; color: #333; font-size: 14px; margin: 0; padding: 0}
+.news-box a h2:hover { color: #7e0404}
+.news-box p { margin: 0; padding: 0; text-align: left}
+
+.news-detail { display: table; width: 97%; margin: 0 8px; text-align: justify; overflow: hidden}
+.news-detail h2 { font-size: 14px; margin: 0; padding: 0; font-family: Arial; color: #333; line-height: 22px}
+.news-detail p { font-family: Arial; font-size: 13px; color: #333; line-height: 25px}
+

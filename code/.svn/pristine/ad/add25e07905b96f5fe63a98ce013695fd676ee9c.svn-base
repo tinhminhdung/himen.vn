@@ -1,0 +1,217 @@
+﻿@model PagedList.IPagedList<onsoft.Models.sp_Product_GetByAll_NameGroup_Result>
+
+@{
+    ViewBag.Title = "Quản lý sản phẩm";
+    Layout = "~/Views/Shared/_LayoutAdmins.cshtml";
+}
+
+@section Styles
+{
+    <!--Sử dụng cho Confirm delete-->
+    <link href="~/Content/Styles/jquery-ui.css" rel="stylesheet" />
+}
+
+@section Scripts
+{
+    <!-- Ajax sử dụng cho phân trang  -->
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+
+    <!--Sử dụng cho Confirm delete-->
+    <script src="~/Scripts/jquery-1.9.1.js"></script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <script src="~/Scripts/jquery.easy-confirm-dialog.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".deletemultiple").easyconfirm({
+                locale: { title: 'Xóa sản phẩm', button: ['Hủy', 'Xóa'] }
+            });
+        })
+    </script>
+
+    <!--Ajax tùy biến số sản phẩm hiển thị trên trang-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#ddlProductAmount').change(function () {
+                var productAmount = $(this).val();
+                var sortName = '@ViewBag.CurrentSortName';
+                $.post("/Product/LoadProductAmount", { "productAmount": productAmount, "sortName": sortName },
+                    function (data) {
+                        $("#ajaxProduct").html(data);
+                    });
+            });
+        });
+    </script>
+
+    
+
+     <!--Ajax sử dụng tìm kiếm sản phẩm-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            //Ajax sử dụng tìm kiếm sản phẩm theo mã
+            $('#ProductCode').keyup(function () {
+                var productcode = $(this).val();
+                var productname = $("#ProductName").val();
+                var catproduct = $("CatProduct").val();
+                $.post("/Product/ProductIndexot", { "productcode": productcode, "productname": productname, "catproduct": catproduct },
+                    function (data) {
+                        $("#ajaxProduct").html(data);
+                    });
+            });
+
+            //Ajax sử dụng tìm kiếm sản phẩm theo tên 
+            $('#ProductName').keyup(function () {
+                var productname = $(this).val();
+                var productcode = $("#ProductCode").val();
+                var catproduct = $("CatProduct").val();
+                $.post("/Product/ProductIndexot", { "productname": productname, "productcode": productcode, "catproduct": catproduct },
+                    function (data) {
+                        $("#ajaxProduct").html(data);
+                    });
+            });
+
+            //Ajax sử dụng tìm kiếm sản phẩm theo nhóm 
+            $('#CatProduct').change(function () {
+                var catproduct = $(this).val();
+                var productname = $("#ProductName").val();
+                var productcode = $("#ProductCode").val();
+                $.post("/Product/ProductIndexot", { "catproduct": catproduct, "productname": productname, "productcode": productcode },
+                    function (data) {
+                        $("#ajaxProduct").html(data);
+                    });
+            });
+
+        });
+    </script>
+
+    <!--Reset ô tìm kiếm-->
+    <script type="text/javascript">
+        $(function () {
+            $('#ProductCode').focus(function () {
+                $(this).val('');
+            });
+            $('#ProductName').focus(function () {
+                $(this).val('');
+            });
+        });
+    </script>
+}
+
+@using (Html.BeginForm("MultiCommand", "Product", FormMethod.Post))
+{
+    <div class="container-fluid">
+        <div style="width: 100%; margin: 0 auto;">
+            <div id="Breadcrumb" class="Block Breadcrumb ui-widget-content ui-corner-top ui-corner-bottom">
+                <ul>
+                    <li class='SecondLast'><a href='#'><i class="icon-home" style="font-size: 14px;"></i>Trang chủ</a></li>
+                    <li class='Last'><span>Danh sách sản phẩm</span></li>
+                </ul>
+            </div>
+            <div style="clear: both;"></div>
+            <div id="cph_Main_ContentPane">
+                <div class="widget">
+                    <div class="widget-title">
+                        <h4><i class="icon-list-alt"></i>&nbsp;Danh sách sản phẩm</h4>
+
+                        <!-- begin menu -->
+                        <div class="ui-corner-top ui-corner-bottom">
+                            <div id="toolbox">
+
+                                <div style="float: right;" class="toolbox-content">
+                                    <div id="msg" class="msg">
+                                        <div class="alert alert-info" id="update-message">
+                                        </div>
+                                    </div>
+                                    <table class="toolbar">
+                                        <tr>
+
+                                            <td align="center">
+                                                <a href="../../Product/ProductCreateot" title="Thêm mới" class="toolbar btn btn-info" href="#"><i class="icon-plus"></i>&nbsp;Thêm mới</a>
+                                            </td>
+
+                                            <td align="center">
+                                                <a href="../../Product/ProductAddMultipleot" title="Thêm nhiều" class="toolbar btn btn-info" href="#"><i class="icon-plus"></i>&nbsp;Thêm nhiều</a>
+                                            </td>
+
+                                            <td align="center">
+                                                <button type="submit" title="Bạn chắc chắn muốn xóa những sản phẩm này ?" id="btnDelete" name="btnDelete" class="deletemultiple toolbar btn btn-info"><i class="icon-trash"></i>&nbsp;Xóa nhiều</button>
+                                            </td>
+
+                                        </tr>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end menu -->
+
+                        <div id="hiddenToolBarScroll" class="scrollBox hidden">
+                            <h4>
+                                <i class="icon-list-alt"></i>&nbsp;Danh sách sản phẩm</h4>
+                            <div class="FloatMenuBar">
+
+                                <!-- begin menu -->
+                                <div class="ui-corner-top ui-corner-bottom">
+                                    <div id="toolbox">
+
+                                        <div style="float: right;" class="toolbox-content">
+
+                                            <table class="toolbar">
+                                                <tr>
+
+                                                    <td align="center">
+                                                        <a title="Thêm mới" class="toolbar btn btn-info" href="#"><i class="icon-plus"></i>&nbsp;Thêm mới</a>
+                                                    </td>
+
+                                                    <td align="center">
+                                                        <a href="../../Product/ProductAddMultipleot" title="Thêm nhiều" class="toolbar btn btn-info" href="#"><i class="icon-plus"></i>&nbsp;Thêm nhiều</a>
+                                                    </td>
+
+                                                    <td align="center">
+                                                        <button type="submit" title="Bạn chắc chắn muốn xóa những sản phẩm này ?" id="btnDelete" name="btnDelete" class="deletemultiple toolbar btn btn-info"><i class="icon-trash"></i>&nbsp;Xóa nhiều</button>
+                                                    </td>
+
+                                                </tr>
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end menu -->
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="widget-body">
+
+                        <div class="row-fluid">
+
+                            <!--Hiển thị số sản phẩm trên trang-->
+                            <div class="span3">
+                                <div id="sample_1_length" class="dataTables_length">
+                                    @Html.DropDownList("ddlProductAmount", null, new { style = "width:180px;" })
+                                </div>
+                            </div>
+
+                            <!--Tìm kiếm sản phẩm-->
+                            <div class="span9 form-search pull-right text-right">
+                                @Html.TextBox("ProductCode", ViewBag.CurrentProductCodeFilter as string, new {@Value="Mã sản phẩm", @Style="color:#999999;", @id="ProductCode" })
+                                @Html.TextBox("ProductName", ViewBag.CurrentProductNameFilter as string, new {@Value="Tên sản phẩm", @Style="color:#999999;", @id="ProductName" })
+                                @Html.DropDownList("Cat", null,"-- Danh mục sản phẩm --", new { @id="CatProduct"})
+                                <button type="submit" id="btnSearch" name="btnSearch" class="btn"><i class="icon-filter"></i>Tìm kiếm</button>
+                            </div>
+
+                        </div>
+
+                        <!--Partial View hiển thị danh sách sản phẩm-->
+                        @{Html.RenderPartial("_PartialProductIndex", Model);}
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
+

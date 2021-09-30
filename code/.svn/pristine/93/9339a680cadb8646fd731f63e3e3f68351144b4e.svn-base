@@ -1,0 +1,205 @@
+﻿@model MODEOUTLED.Models.Customer
+
+@{
+    ViewBag.Title = ViewBag.Name;
+    Layout = "~/Views/Shared/_LayoutAdmins.cshtml";
+}
+
+@section Scripts
+{
+    <!-- Validate Data -->
+    <script type="text/javascript">
+
+        (function ($, W, D) {
+
+            var JQUERY4U = {};
+
+            JQUERY4U.UTIL =
+            {
+                setupFormValidation: function () {
+                    //validation rules
+                    $("#edit-form").validate({
+                        rules: {
+                            editPassword: {
+                                required: true,
+                                minlength: 6
+                            }
+
+
+                        },
+                        messages: {
+
+                            editPassword: {
+                                required: "Nhập mật khẩu",
+                                minlength: "Nhập tối thiểu {0} kí tự"
+                            }
+
+                        },
+                        submitHandler: function (form) {
+                            form.submit();
+                        }
+                    });
+                }
+            }
+
+            //when the dom has loaded setup form validation rules
+            $(D).ready(function ($) {
+                JQUERY4U.UTIL.setupFormValidation();
+            });
+
+        })(jQuery, window, document);
+    </script>
+    <!-- End Validate Data -->
+}
+
+<div class="container-fluid">
+    <div style="width: 100%; margin: 0 auto;">
+
+        <div id="Breadcrumb" class="Block Breadcrumb ui-widget-content ui-corner-top ui-corner-bottom">
+            <ul>
+                <li><a href='../../Admins/Default'><i class="icon-home" style="font-size: 14px;"></i>Trang chủ</a></li>
+                <li class='SecondLast'><a href='../../Admins/ConfigEditot'>Cập nhật cấu hình</a></li>
+            </ul>
+        </div>
+
+        <div style="clear: both;"></div>
+
+        @using (Html.BeginForm("CustomerEditot", "Customer", FormMethod.Post, new { enctype = "multipart/form-data", @id = "edit-form", @class = "validate-form" }))
+        {
+            <div id="cph_Main_ContentPane">
+                <div class="widget">
+                    <!-- widget-title -->
+                    <div class="widget-title">
+                        <h4><i class="icon-reorder"></i>&nbsp;Thông tin khách hàng</h4>
+
+                        <!-- Button -->
+                        <div class="ui-widget-content ui-corner-top ui-corner-bottom">
+                            <div id="toolbox">
+                                <div style="float: right;" class="toolbox-content">
+
+                                    <table class="toolbar">
+                                        <tr>
+                                            <td align="center">
+                                                <button type="submit" class="toolbar btn btn-info"><i class="icon-save"></i>&nbsp;Ghi lại</button>
+                                            </td>
+                                            <td align="center">
+
+                                                <a title="Quay lại" class="toolbar btn btn-info" href="../../Customer/CustomerIndexot?page=@ViewBag.mPage"><i class="icon-chevron-left"></i>&nbsp;Trở về</a>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Button -->
+
+                        <div id="hiddenToolBarScroll" class="scrollBox hidden">
+                            <h4>
+                                <i class="icon-reorder"></i>&nbsp;Thông tin khách hàng</h4>
+                            <div class="FloatMenuBar">
+
+                                <div class="ui-widget-content ui-corner-top ui-corner-bottom">
+                                    <div id="Div1">
+
+                                        <div style="float: right;" class="toolbox-content">
+
+                                            <table class="toolbar">
+                                                <tr>
+                                                    <td align="center">
+                                                <button type="submit" class="toolbar btn btn-info"><i class="icon-save"></i>&nbsp;Ghi lại</button>
+                                            </td>
+                                            <td align="center">
+
+                                                <a title="Quay lại" class="toolbar btn btn-info" href="../../Customer/CustomerIndexot?page=@ViewBag.mPage"><i class="icon-chevron-left"></i>&nbsp;Trở về</a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- widget-title -->
+
+                    <!-- widget-body -->
+                    <div class="widget-body">
+                        <div id="tabs">
+                            <div id="tabs-1">
+                                <input type="text" value ="@ViewBag.mPage" name="mPage"  hidden="hidden" />
+                                <input type="text" value ="@ViewBag.PageSize" name="PageSize"  hidden="hidden" />
+                                <table class="admintable" style="width: 100%;">
+                                    
+                                    <tr>
+                                        <td class="key"> Họ tên: </td>
+                                        <td>
+                                            @Model.Name
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="key"> E-mail: </td>
+                                        <td>
+                                            @Model.Email
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="key">Mật khẩu: <span class="Required">*</span></td>
+                                        <td>
+                                            @Html.Password("editPassword")
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Title
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    content (Example: xxx)
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="key"> Số điện thoại: </td>
+                                        <td>
+                                            @Model.Tel
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="key"> Địa chỉ: </td>
+                                        <td>
+                                            @Model.Address
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="key"> Ngày đăng ký: </td>
+                                        <td>
+                                            @Model.SDate.Value.ToShortDateString()
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="key">Trạng thái: </td>
+                                        <td>
+                                            xxx
+                                        </td>
+                                    </tr>
+
+                                </table>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- widget-body -->
+
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+

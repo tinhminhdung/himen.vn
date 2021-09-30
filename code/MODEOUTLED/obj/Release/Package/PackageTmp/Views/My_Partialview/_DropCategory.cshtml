@@ -1,0 +1,22 @@
+﻿<div id="big-daddy">
+    <a href="javascript:;" class="viewCat_item">
+        <p class="fs11">Danh mục</p><span>Sản phẩm</span><b>&nbsp;</b>
+    </a>
+    <div class="sub_item_nav clear" id="flyout">
+        <div class="menu-drop">
+        <ul>
+            @Html.Raw(ViewBag.View)
+        </ul>
+    </div>
+    </div>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            jQuery('ul#topdrop li').hover(function () {
+                jQuery(this).find('ul:first').css({ visibility: "visible", display: "none" }).show(400);
+            }, function () {
+                jQuery(this).find('ul:first').css({ visibility: "hidden" });
+            });
+        })
+    </script>
+    
+</div>

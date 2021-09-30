@@ -1,0 +1,278 @@
+﻿@model onsoft.Models.Support
+@{
+    ViewBag.Title = "Chỉnh sửa thông tin hỗ trợ viên";
+    Layout = "~/Views/Shared/_LayoutAdmins.cshtml";
+}
+
+@section Scripts
+{
+    <!-- Validate Data -->
+    <script type="text/javascript">
+
+        (function ($, W, D) {
+
+            var JQUERY4U = {};
+
+            JQUERY4U.UTIL =
+            {
+                setupFormValidation: function () {
+                    //validation rules
+                    $("#support-form").validate({
+                        rules: {
+                            GroupSupport: "required",
+                            Name: "required",
+                            Tel: {
+                                required: true,
+                            },
+                            Type: "required",
+                            Ord: {
+                                required: true,
+                                number: true
+                            }
+                        },
+                        messages: {                            
+                            GroupSupport: "Phải chọn tên nhóm hỗ trợ.",
+                            Name: "Phải nhập tên hỗ trợ viên.",
+                            Tel: {
+                                required: "Phải nhập số điện thoại hỗ trợ viên.",
+                            },
+                            Type: "Chọn 1 kiểu nick chat.",
+                            Ord: {
+                                required: "Phải nhập thứ tự.",
+                                number: "Phải nhập kiểu số."
+                            }
+                        },
+                        submitHandler: function (form) {
+                            form.submit();
+                        }
+                    });
+                }
+            }
+
+            //when the dom has loaded setup form validation rules
+            $(D).ready(function ($) {
+                JQUERY4U.UTIL.setupFormValidation();
+            });
+
+        })(jQuery, window, document);
+    </script>
+    <!-- End Validate Data -->
+}
+
+<div class="container-fluid">
+    <div style="width: 100%; margin: 0 auto;">
+
+        <div id="Breadcrumb" class="Block Breadcrumb ui-widget-content ui-corner-top ui-corner-bottom">
+            <ul>
+                <li><a href='../../Support/SupportIndex'><i class="icon-home" style="font-size: 14px;"></i>Trang chủ</a></li>
+                <li class='SecondLast'><a href='../../Support/SupportIndex'>Danh sách hỗ trợ viên</a></li>
+                <li class='Last'><span>Sửa thông tin hỗ trợ viên</span></li>
+            </ul>
+        </div>
+
+        <div style="clear: both;"></div>
+
+        @using (Html.BeginForm("SupportEdit", "Support", FormMethod.Post, new { enctype = "multipart/form-data", @id = "support-form", @class = "validate-form" }))
+        {
+            @Html.HiddenFor(model => model.Id)
+            <div id="cph_Main_ContentPane">
+                <div class="widget">
+
+                    <!-- widget-title -->
+                    <div class="widget-title">
+                        <h4><i class="icon-reorder"></i>&nbsp;Sửa thông tin hỗ trợ viên</h4>
+
+                        <!-- Button -->
+                        <div class="ui-widget-content ui-corner-top ui-corner-bottom">
+                            <div id="toolbox">
+                                <div style="float: right;" class="toolbox-content">
+
+                                    <table class="toolbar">
+                                        <tr>
+                                            <td align="center">
+                                                <button type="submit" class="toolbar btn btn-info"><i class="icon-save"></i>&nbsp;Ghi lại</button>
+                                            </td>
+                                            <td align="center">
+                                                <a title="Quay lại" class="toolbar btn btn-info" href="../../Support/SupportIndex"><i class="icon-chevron-left"></i>&nbsp;Trở về</a>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Button -->
+
+                        <div id="hiddenToolBarScroll" class="scrollBox hidden">
+                            <h4><i class="icon-reorder"></i>&nbsp;Thêm mới hỗ trợ viên</h4>
+                            <div class="FloatMenuBar">
+
+                                <div class="ui-widget-content ui-corner-top ui-corner-bottom">
+                                    <div id="Div1">
+
+                                        <div style="float: right;" class="toolbox-content">
+
+                                            <table class="toolbar">
+                                                <tr>
+                                                    <td align="center">
+                                                        <button type="submit" class="toolbar btn btn-info"><i class="icon-save"></i>&nbsp;Ghi lại</button>
+                                                    </td>
+                                                    <td align="center">
+                                                        <a title="Quay lại" class="toolbar btn btn-info" href="../../Support/SupportIndex"><i class="icon-chevron-left"></i>&nbsp;Trở về</a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- widget-title -->
+
+                    <!-- widget-body -->
+                    <div class="widget-body">
+                        <div id="tabs">
+                            <div id="tabs-1">
+
+                                <table class="admintable" style="width: 100%;">
+                                    <tr>
+                                        <td class="key">Nhóm hỗ trợ <span class="Required">*</span>
+                                        </td>
+                                        <td>
+                                            @Html.DropDownList("GroupSupport", " --- Chọn nhóm hỗ trợ --- ")
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Tên nhóm hỗ trợ
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    Tên của nhóm hỗ trợ.
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="key">Tên hỗ trợ viên<span class="Required">*</span>
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.Name, "", new { @class = "text" })
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Tên hỗ trợ viên.
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    Tên của hỗ trợ viên.
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>
+
+                                    @*Ảnh*@
+
+                                    <tr>
+                                        <td class="key">Số điện thoại<span class="Required">*</span>
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.Tel, "", new { @class = "text" })
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Số điện thoại hỗ trợ viên.
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    Số điện thoại của hỗ trợ viên. Lưu ý số điện thoại không bao gồm kí tự hoặc chữ cái.
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="key">Kiểu nick <span class="Required">*</span>
+                                        </td>
+                                        <td>
+                                            @Html.DropDownList("Type", " --- Chọn kiểu nick --- ")
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Loại nick
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    Loại nick sử dụng (ví dụ dùng skype, yahoo.)
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="key">Nick <span class="Required">*</span>
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor( m => m.Nick, "", new { @class = "text" })
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Nick của hỗ trợ viên
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    Nick của hỗ trợ viên (Ví dụ: voduytuan@yahoo.com)
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>
+
+                                   @* <tr>
+                                        <td class="key">Kiểu hiển thị <span class="Required"></span>
+                                        </td>
+                                        <td>
+                                            @Html.DropDownListFor(tt => tt.Target, new SelectList(
+                                               new List<Object> { 
+                                               new{value="_blank", Text="_blank"},
+                                               new{value="_parent", Text="_parent"},
+                                               new{value="_self", Text="_self"},
+                                               new{value="_top", Text="_top"},
+                                               }, "Value", "Text", 0
+                                               ))
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Kiểu hiển thị
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    Kiểu hiển thị (Ví dụ: chả hiểu gì nên ko có ví dụ)
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>*@
+                                    
+                                    <tr>
+                                        <td class="key">Thứ tự <span class="Required">*</span>
+                                        </td>
+                                        <td>
+                                            @*@Html.TextBox("Ord", "", new { @onkeypress = "OnlyInputNumber(0)" })*@
+                                            @Html.TextBoxFor(m => m.Ord, "", new { @class = "text" })
+                                            <span class="tooltip-help"><span class="tooltipContent">
+                                                <p class="tooltiptitle">
+                                                    Thứ tự
+                                                </p>
+                                                <p class="tooltipmessage">
+                                                    Thứ tự của hỗ trợ viên
+                                                </p>
+                                            </span></span>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- widget-body -->
+
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+

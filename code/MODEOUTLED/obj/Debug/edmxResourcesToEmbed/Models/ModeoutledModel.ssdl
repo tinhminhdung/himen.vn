@@ -1,0 +1,2711 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Modeoutled_dbModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="Modeoutled_dbModelStoreContainer">
+    <EntitySet Name="AccBank" EntityType="Modeoutled_dbModel.Store.AccBank" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Advertise" EntityType="Modeoutled_dbModel.Store.Advertise" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Bank" EntityType="Modeoutled_dbModel.Store.Bank" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Bill_Customer" EntityType="Modeoutled_dbModel.Store.Bill_Customer" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Category" EntityType="Modeoutled_dbModel.Store.Category" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Color" EntityType="Modeoutled_dbModel.Store.Color" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Config" EntityType="Modeoutled_dbModel.Store.Config" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Contact" EntityType="Modeoutled_dbModel.Store.Contact" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Country" EntityType="Modeoutled_dbModel.Store.Country" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Customer" EntityType="Modeoutled_dbModel.Store.Customer" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Export" EntityType="Modeoutled_dbModel.Store.Export" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ExportDetail" EntityType="Modeoutled_dbModel.Store.ExportDetail" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GroupMember" EntityType="Modeoutled_dbModel.Store.GroupMember" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GroupNews" EntityType="Modeoutled_dbModel.Store.GroupNews" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GroupProduct" EntityType="Modeoutled_dbModel.Store.GroupProduct" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GroupSupport" EntityType="Modeoutled_dbModel.Store.GroupSupport" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Import" EntityType="Modeoutled_dbModel.Store.Import" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ImportDetail" EntityType="Modeoutled_dbModel.Store.ImportDetail" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Member" EntityType="Modeoutled_dbModel.Store.Member" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MemberWareHouse" EntityType="Modeoutled_dbModel.Store.MemberWareHouse" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Menu" EntityType="Modeoutled_dbModel.Store.Menu" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="News" EntityType="Modeoutled_dbModel.Store.News" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Ord" EntityType="Modeoutled_dbModel.Store.Ord" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OrderDetail" EntityType="Modeoutled_dbModel.Store.OrderDetail" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProColor" EntityType="Modeoutled_dbModel.Store.ProColor" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Product" EntityType="Modeoutled_dbModel.Store.Product" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProImage" EntityType="Modeoutled_dbModel.Store.ProImage" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProPrice" EntityType="Modeoutled_dbModel.Store.ProPrice" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProSize" EntityType="Modeoutled_dbModel.Store.ProSize" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Province" EntityType="Modeoutled_dbModel.Store.Province" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Recipient" EntityType="Modeoutled_dbModel.Store.Recipient" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SearchPrice" EntityType="Modeoutled_dbModel.Store.SearchPrice" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Shop" EntityType="Modeoutled_dbModel.Store.Shop" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Size" EntityType="Modeoutled_dbModel.Store.Size" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Supplier" EntityType="Modeoutled_dbModel.Store.Supplier" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Support" EntityType="Modeoutled_dbModel.Store.Support" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WareHouse" EntityType="Modeoutled_dbModel.Store.WareHouse" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="v_Member_GroupMember" EntityType="Modeoutled_dbModel.Store.v_Member_GroupMember" store:Type="Views" store:Schema="dbo" store:Name="v_Member_GroupMember">
+      <DefiningQuery>SELECT 
+      [v_Member_GroupMember].[groupMember] AS [groupMember], 
+      [v_Member_GroupMember].[Id] AS [Id], 
+      [v_Member_GroupMember].[Name] AS [Name], 
+      [v_Member_GroupMember].[Tel] AS [Tel], 
+      [v_Member_GroupMember].[Email] AS [Email], 
+      [v_Member_GroupMember].[Address] AS [Address], 
+      [v_Member_GroupMember].[Birthday] AS [Birthday], 
+      [v_Member_GroupMember].[Sex] AS [Sex], 
+      [v_Member_GroupMember].[Image] AS [Image], 
+      [v_Member_GroupMember].[SDate] AS [SDate], 
+      [v_Member_GroupMember].[MDate] AS [MDate], 
+      [v_Member_GroupMember].[EDate] AS [EDate], 
+      [v_Member_GroupMember].[Username] AS [Username], 
+      [v_Member_GroupMember].[Password] AS [Password], 
+      [v_Member_GroupMember].[IdGroupMb] AS [IdGroupMb], 
+      [v_Member_GroupMember].[Active] AS [Active]
+      FROM [dbo].[v_Member_GroupMember] AS [v_Member_GroupMember]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="v_News_GroupNews" EntityType="Modeoutled_dbModel.Store.v_News_GroupNews" store:Type="Views" store:Schema="dbo" store:Name="v_News_GroupNews">
+      <DefiningQuery>SELECT 
+      [v_News_GroupNews].[groupName] AS [groupName], 
+      [v_News_GroupNews].[Id] AS [Id], 
+      [v_News_GroupNews].[Name] AS [Name], 
+      [v_News_GroupNews].[Tag] AS [Tag], 
+      [v_News_GroupNews].[Title] AS [Title], 
+      [v_News_GroupNews].[Keyword] AS [Keyword], 
+      [v_News_GroupNews].[Description] AS [Description], 
+      [v_News_GroupNews].[Image] AS [Image], 
+      [v_News_GroupNews].[SDate] AS [SDate], 
+      [v_News_GroupNews].[Content] AS [Content], 
+      [v_News_GroupNews].[Detail] AS [Detail], 
+      [v_News_GroupNews].[Index] AS [Index], 
+      [v_News_GroupNews].[View] AS [View], 
+      [v_News_GroupNews].[IdGroup] AS [IdGroup], 
+      [v_News_GroupNews].[IdMember] AS [IdMember], 
+      [v_News_GroupNews].[Target] AS [Target], 
+      [v_News_GroupNews].[Ord] AS [Ord], 
+      [v_News_GroupNews].[Active] AS [Active]
+      FROM [dbo].[v_News_GroupNews] AS [v_News_GroupNews]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="v_Product_NameGroup" EntityType="Modeoutled_dbModel.Store.v_Product_NameGroup" store:Type="Views" store:Schema="dbo" store:Name="v_Product_NameGroup">
+      <DefiningQuery>SELECT 
+      [v_Product_NameGroup].[Expr1] AS [Expr1], 
+      [v_Product_NameGroup].[Id] AS [Id], 
+      [v_Product_NameGroup].[Code] AS [Code], 
+      [v_Product_NameGroup].[Name] AS [Name], 
+      [v_Product_NameGroup].[Tag] AS [Tag], 
+      [v_Product_NameGroup].[Image] AS [Image], 
+      [v_Product_NameGroup].[Description] AS [Description], 
+      [v_Product_NameGroup].[Weight] AS [Weight], 
+      [v_Product_NameGroup].[ChatLieu] AS [ChatLieu], 
+      [v_Product_NameGroup].[Status] AS [Status], 
+      [v_Product_NameGroup].[Detail] AS [Detail], 
+      [v_Product_NameGroup].[SpTon] AS [SpTon], 
+      [v_Product_NameGroup].[Count] AS [Count], 
+      [v_Product_NameGroup].[View] AS [View], 
+      [v_Product_NameGroup].[Like] AS [Like], 
+      [v_Product_NameGroup].[IdCategory] AS [IdCategory], 
+      [v_Product_NameGroup].[IdCategory2] AS [IdCategory2], 
+      [v_Product_NameGroup].[Date] AS [Date], 
+      [v_Product_NameGroup].[Index] AS [Index], 
+      [v_Product_NameGroup].[Priority] AS [Priority], 
+      [v_Product_NameGroup].[Keyword] AS [Keyword], 
+      [v_Product_NameGroup].[Title] AS [Title], 
+      [v_Product_NameGroup].[Content] AS [Content], 
+      [v_Product_NameGroup].[Ord] AS [Ord], 
+      [v_Product_NameGroup].[Active] AS [Active]
+      FROM [dbo].[v_Product_NameGroup] AS [v_Product_NameGroup]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="v_Support_NameGroup" EntityType="Modeoutled_dbModel.Store.v_Support_NameGroup" store:Type="Views" store:Schema="dbo" store:Name="v_Support_NameGroup">
+      <DefiningQuery>SELECT 
+      [v_Support_NameGroup].[groupName] AS [groupName], 
+      [v_Support_NameGroup].[Id] AS [Id], 
+      [v_Support_NameGroup].[Name] AS [Name], 
+      [v_Support_NameGroup].[Link] AS [Link], 
+      [v_Support_NameGroup].[Nick] AS [Nick], 
+      [v_Support_NameGroup].[Type] AS [Type], 
+      [v_Support_NameGroup].[Image] AS [Image], 
+      [v_Support_NameGroup].[Target] AS [Target], 
+      [v_Support_NameGroup].[Ord] AS [Ord], 
+      [v_Support_NameGroup].[Tel] AS [Tel], 
+      [v_Support_NameGroup].[IdGroupSupport] AS [IdGroupSupport], 
+      [v_Support_NameGroup].[Position] AS [Position], 
+      [v_Support_NameGroup].[Active] AS [Active]
+      FROM [dbo].[v_Support_NameGroup] AS [v_Support_NameGroup]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FRK_CTPHIEUNHAP_KICHCO" Association="Modeoutled_dbModel.Store.FRK_CTPHIEUNHAP_KICHCO">
+      <End Role="Size" EntitySet="Size" />
+      <End Role="ImportDetail" EntitySet="ImportDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FRK_CTPHIEUNHAP_PHIEUNHAP" Association="Modeoutled_dbModel.Store.FRK_CTPHIEUNHAP_PHIEUNHAP">
+      <End Role="Import" EntitySet="Import" />
+      <End Role="ImportDetail" EntitySet="ImportDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FRK_CTPHIEUNHAP_SANPHAM" Association="Modeoutled_dbModel.Store.FRK_CTPHIEUNHAP_SANPHAM">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ImportDetail" EntitySet="ImportDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FRK_CTPHIEUXUAT_KICHCO" Association="Modeoutled_dbModel.Store.FRK_CTPHIEUXUAT_KICHCO">
+      <End Role="Size" EntitySet="Size" />
+      <End Role="ExportDetail" EntitySet="ExportDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FRK_CTPHIEUXUAT_PHIEUXUAT" Association="Modeoutled_dbModel.Store.FRK_CTPHIEUXUAT_PHIEUXUAT">
+      <End Role="Export" EntitySet="Export" />
+      <End Role="ExportDetail" EntitySet="ExportDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FRK_CTPHIEUXUAT_SANPHAM" Association="Modeoutled_dbModel.Store.FRK_CTPHIEUXUAT_SANPHAM">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ExportDetail" EntitySet="ExportDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FRK_DONDATHANG_CTDONDATHANG" Association="Modeoutled_dbModel.Store.FRK_DONDATHANG_CTDONDATHANG">
+      <End Role="Ord" EntitySet="Ord" />
+      <End Role="OrderDetail" EntitySet="OrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FRK_DONDATHANG_KHACHHANG" Association="Modeoutled_dbModel.Store.FRK_DONDATHANG_KHACHHANG">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Ord" EntitySet="Ord" />
+    </AssociationSet>
+    <AssociationSet Name="FRK_DONDATHANG_KICHCO" Association="Modeoutled_dbModel.Store.FRK_DONDATHANG_KICHCO">
+      <End Role="Size" EntitySet="Size" />
+      <End Role="OrderDetail" EntitySet="OrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FRK_DONDATHANG_SANPHAM" Association="Modeoutled_dbModel.Store.FRK_DONDATHANG_SANPHAM">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="OrderDetail" EntitySet="OrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FRK_DSACH_KICHCO" Association="Modeoutled_dbModel.Store.FRK_DSACH_KICHCO">
+      <End Role="Size" EntitySet="Size" />
+      <End Role="ProSize" EntitySet="ProSize" />
+    </AssociationSet>
+    <AssociationSet Name="FRK_NCC" Association="Modeoutled_dbModel.Store.FRK_NCC">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="Supplier" EntitySet="Supplier" />
+    </AssociationSet>
+    <AssociationSet Name="FRK_NGUOINHAN_KHACHHANG" Association="Modeoutled_dbModel.Store.FRK_NGUOINHAN_KHACHHANG">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Bill_Customer" EntitySet="Bill_Customer" />
+    </AssociationSet>
+    <AssociationSet Name="FRK_PHIEUNHAP_KHOHANG" Association="Modeoutled_dbModel.Store.FRK_PHIEUNHAP_KHOHANG">
+      <End Role="WareHouse" EntitySet="WareHouse" />
+      <End Role="Import" EntitySet="Import" />
+    </AssociationSet>
+    <AssociationSet Name="FRK_PHIEUNHAP_NHACC" Association="Modeoutled_dbModel.Store.FRK_PHIEUNHAP_NHACC">
+      <End Role="Supplier" EntitySet="Supplier" />
+      <End Role="Import" EntitySet="Import" />
+    </AssociationSet>
+    <AssociationSet Name="FRK_PHIEUNHAP_NHANVIEN" Association="Modeoutled_dbModel.Store.FRK_PHIEUNHAP_NHANVIEN">
+      <End Role="Member" EntitySet="Member" />
+      <End Role="Import" EntitySet="Import" />
+    </AssociationSet>
+    <AssociationSet Name="FRK_PHIEUXUAT_KHOHANG" Association="Modeoutled_dbModel.Store.FRK_PHIEUXUAT_KHOHANG">
+      <End Role="WareHouse" EntitySet="WareHouse" />
+      <End Role="Export" EntitySet="Export" />
+    </AssociationSet>
+    <AssociationSet Name="FRK_PHIEUXUAT_NHANVIEN" Association="Modeoutled_dbModel.Store.FRK_PHIEUXUAT_NHANVIEN">
+      <End Role="Member" EntitySet="Member" />
+      <End Role="Export" EntitySet="Export" />
+    </AssociationSet>
+    <AssociationSet Name="FRK_PROCOLOR_MAUSACH" Association="Modeoutled_dbModel.Store.FRK_PROCOLOR_MAUSACH">
+      <End Role="Color" EntitySet="Color" />
+      <End Role="ProColor" EntitySet="ProColor" />
+    </AssociationSet>
+    <AssociationSet Name="FRK_SANPHAM_BANGGIA" Association="Modeoutled_dbModel.Store.FRK_SANPHAM_BANGGIA">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ProPrice" EntitySet="ProPrice" />
+    </AssociationSet>
+    <AssociationSet Name="FRK_SANPHAM_DSANH" Association="Modeoutled_dbModel.Store.FRK_SANPHAM_DSANH">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ProImage" EntitySet="ProImage" />
+    </AssociationSet>
+    <AssociationSet Name="FRK_SANPHAM_KICHCO" Association="Modeoutled_dbModel.Store.FRK_SANPHAM_KICHCO">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ProSize" EntitySet="ProSize" />
+    </AssociationSet>
+    <AssociationSet Name="FRK_SANPHAM_LOAIHANG" Association="Modeoutled_dbModel.Store.FRK_SANPHAM_LOAIHANG">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FRK_SANPHAM_MAUSACH" Association="Modeoutled_dbModel.Store.FRK_SANPHAM_MAUSACH">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ProColor" EntitySet="ProColor" />
+    </AssociationSet>
+    <AssociationSet Name="FRK_TINTUC_NHANVIEN" Association="Modeoutled_dbModel.Store.FRK_TINTUC_NHANVIEN">
+      <End Role="Member" EntitySet="Member" />
+      <End Role="News" EntitySet="News" />
+    </AssociationSet>
+    <AssociationSet Name="FRK_TINTUC_NHOMTIN" Association="Modeoutled_dbModel.Store.FRK_TINTUC_NHOMTIN">
+      <End Role="GroupNews" EntitySet="GroupNews" />
+      <End Role="News" EntitySet="News" />
+    </AssociationSet>
+    <AssociationSet Name="PRK_ACCBANK_BANK" Association="Modeoutled_dbModel.Store.PRK_ACCBANK_BANK">
+      <End Role="Bank" EntitySet="Bank" />
+      <End Role="AccBank" EntitySet="AccBank" />
+    </AssociationSet>
+    <AssociationSet Name="PRK_LOAIHANG_GROUPPRODUCT" Association="Modeoutled_dbModel.Store.PRK_LOAIHANG_GROUPPRODUCT">
+      <End Role="GroupProduct" EntitySet="GroupProduct" />
+      <End Role="Category" EntitySet="Category" />
+    </AssociationSet>
+    <AssociationSet Name="PRK_MemberWareHouse_Member" Association="Modeoutled_dbModel.Store.PRK_MemberWareHouse_Member">
+      <End Role="Member" EntitySet="Member" />
+      <End Role="MemberWareHouse" EntitySet="MemberWareHouse" />
+    </AssociationSet>
+    <AssociationSet Name="PRK_MemberWareHouse_WareHouse" Association="Modeoutled_dbModel.Store.PRK_MemberWareHouse_WareHouse">
+      <End Role="WareHouse" EntitySet="WareHouse" />
+      <End Role="MemberWareHouse" EntitySet="MemberWareHouse" />
+    </AssociationSet>
+    <AssociationSet Name="PRK_Recipient_Customer" Association="Modeoutled_dbModel.Store.PRK_Recipient_Customer">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Recipient" EntitySet="Recipient" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="AccBank">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="IdBank" Type="int" Nullable="false" />
+    <Property Name="Account" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Number" Type="nchar" Nullable="false" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="Ord" Type="int" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Advertise">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="500" />
+    <Property Name="Image" Type="nvarchar" MaxLength="500" />
+    <Property Name="Width" Type="int" />
+    <Property Name="Height" Type="int" />
+    <Property Name="Link" Type="nvarchar" MaxLength="100" />
+    <Property Name="Click" Type="int" />
+    <Property Name="Target" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="Position" Type="int" Nullable="false" />
+    <Property Name="Orders" Type="int" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Bank">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Image" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="Ord" Type="int" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Bill_Customer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="IdCus" Type="int" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Birthday" Type="nvarchar" MaxLength="100" />
+    <Property Name="Email" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="Mobile" Type="varchar" MaxLength="50" />
+    <Property Name="Tel" Type="nchar" Nullable="false" MaxLength="20" />
+    <Property Name="Address" Type="nvarchar" MaxLength="300" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="Status" Type="int" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="500" />
+    <Property Name="IdGroupPro" Type="int" Nullable="false" />
+    <Property Name="Ord" Type="int" />
+    <Property Name="Title" Type="nvarchar" MaxLength="100" />
+    <Property Name="Description" Type="nvarchar" MaxLength="300" />
+    <Property Name="Keyword" Type="nvarchar" MaxLength="300" />
+    <Property Name="Tag" Type="nvarchar" MaxLength="300" />
+    <Property Name="Level" Type="nvarchar" MaxLength="50" />
+    <Property Name="Index" Type="bit" Nullable="false" />
+    <Property Name="Priority" Type="bit" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Color">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Image" Type="nvarchar" MaxLength="300" />
+    <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Ord" Type="int" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Config">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Mail_Smtp" Type="varchar" MaxLength="64" />
+    <Property Name="Mail_Port" Type="smallint" />
+    <Property Name="Mail_Info" Type="varchar" MaxLength="64" />
+    <Property Name="Mail_Noreply" Type="varchar" MaxLength="64" />
+    <Property Name="Mail_Password" Type="varchar" MaxLength="64" />
+    <Property Name="PlaceHead" Type="nvarchar" MaxLength="500" />
+    <Property Name="PlaceBody" Type="nvarchar" MaxLength="500" />
+    <Property Name="GoogleId" Type="varchar" MaxLength="50" />
+    <Property Name="Contact" Type="ntext" />
+    <Property Name="DeliveryTerms" Type="ntext" />
+    <Property Name="PaymentTerms" Type="ntext" />
+    <Property Name="FreeShipping" Type="ntext" />
+    <Property Name="Copyright" Type="ntext" />
+    <Property Name="Title" Type="nvarchar" MaxLength="100" />
+    <Property Name="Description" Type="nvarchar" MaxLength="256" />
+    <Property Name="Keyword" Type="nvarchar" MaxLength="256" />
+    <Property Name="Lang" Type="varchar" MaxLength="5" />
+    <Property Name="Helpsize" Type="ntext" />
+    <Property Name="Location" Type="int" />
+  </EntityType>
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Email" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="Detail" Type="ntext" Nullable="false" />
+    <Property Name="SDate" Type="date" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Logo" Type="nvarchar" MaxLength="100" />
+    <Property Name="Ord" Type="int" />
+    <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Email" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="Tel" Type="nchar" Nullable="false" MaxLength="20" />
+    <Property Name="Address" Type="nvarchar" MaxLength="300" />
+    <Property Name="SDate" Type="datetime" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Export">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CusName" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="SDate" Type="date" Nullable="false" />
+    <Property Name="Amount" Type="float" Nullable="false" />
+    <Property Name="IdMember" Type="int" Nullable="false" />
+    <Property Name="IdWareHouse" Type="int" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Ord" Type="int" />
+  </EntityType>
+  <EntityType Name="ExportDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="IdExport" />
+      <PropertyRef Name="IdPro" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="IdExport" Type="int" Nullable="false" />
+    <Property Name="IdPro" Type="int" Nullable="false" />
+    <Property Name="IdSize" Type="int" Nullable="false" />
+    <Property Name="Number" Type="int" Nullable="false" />
+    <Property Name="Price" Type="float" Nullable="false" />
+    <Property Name="Total" Type="float" Nullable="false" />
+    <Property Name="Ord" Type="int" />
+  </EntityType>
+  <EntityType Name="GroupMember">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GroupNews">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Ord" Type="int" />
+    <Property Name="Title" Type="nvarchar" MaxLength="100" />
+    <Property Name="Description" Type="nvarchar" MaxLength="300" />
+    <Property Name="Keyword" Type="nvarchar" MaxLength="300" />
+    <Property Name="Tag" Type="nvarchar" MaxLength="300" />
+    <Property Name="Level" Type="nvarchar" MaxLength="50" />
+    <Property Name="Index" Type="bit" Nullable="false" />
+    <Property Name="Priority" Type="bit" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GroupProduct">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="500" />
+    <Property Name="Ord" Type="int" />
+    <Property Name="Title" Type="nvarchar" MaxLength="100" />
+    <Property Name="Description" Type="nvarchar" MaxLength="300" />
+    <Property Name="Keyword" Type="nvarchar" MaxLength="300" />
+    <Property Name="Tag" Type="nvarchar" MaxLength="300" />
+    <Property Name="Level" Type="nvarchar" MaxLength="50" />
+    <Property Name="Index" Type="bit" Nullable="false" />
+    <Property Name="Priority" Type="bit" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GroupSupport">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Ord" Type="int" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Import">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="IdSupplier" Type="int" Nullable="false" />
+    <Property Name="SDate" Type="date" Nullable="false" />
+    <Property Name="Amount" Type="float" Nullable="false" />
+    <Property Name="IdMember" Type="int" Nullable="false" />
+    <Property Name="IdWareHouse" Type="int" Nullable="false" />
+    <Property Name="Ord" Type="int" />
+    <Property Name="Description" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="ImportDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="IdImport" />
+      <PropertyRef Name="IdPro" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="IdImport" Type="int" Nullable="false" />
+    <Property Name="IdPro" Type="int" Nullable="false" />
+    <Property Name="IdSize" Type="int" Nullable="false" />
+    <Property Name="Number" Type="float" Nullable="false" />
+    <Property Name="Price" Type="float" Nullable="false" />
+    <Property Name="Total" Type="float" Nullable="false" />
+    <Property Name="Ord" Type="int" />
+  </EntityType>
+  <EntityType Name="Member">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Tel" Type="nchar" Nullable="false" MaxLength="20" />
+    <Property Name="Email" Type="varchar" MaxLength="100" />
+    <Property Name="Address" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="Birthday" Type="date" Nullable="false" />
+    <Property Name="Sex" Type="int" />
+    <Property Name="Image" Type="nvarchar" MaxLength="100" />
+    <Property Name="SDate" Type="date" />
+    <Property Name="MDate" Type="date" />
+    <Property Name="EDate" Type="date" />
+    <Property Name="Username" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="IdGroupMb" Type="int" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MemberWareHouse">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="IdMember" Type="int" />
+    <Property Name="IdWareHouse" Type="int" />
+    <Property Name="SDate" Type="date" />
+    <Property Name="EDate" Type="date" />
+    <Property Name="Ord" Type="int" />
+  </EntityType>
+  <EntityType Name="Menu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Tag" Type="nvarchar" MaxLength="300" />
+    <Property Name="IdCategory" Type="int" />
+    <Property Name="Content" Type="nvarchar" />
+    <Property Name="Detail" Type="ntext" />
+    <Property Name="Level" Type="nvarchar" MaxLength="50" />
+    <Property Name="Title" Type="nvarchar" MaxLength="100" />
+    <Property Name="Description" Type="nvarchar" MaxLength="300" />
+    <Property Name="Keyword" Type="nvarchar" MaxLength="512" />
+    <Property Name="Target" Type="nvarchar" MaxLength="64" />
+    <Property Name="Link" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Ord" Type="int" />
+    <Property Name="Position" Type="int" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="News">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="300" />
+    <Property Name="Tag" Type="nvarchar" MaxLength="300" />
+    <Property Name="Title" Type="nvarchar" MaxLength="100" />
+    <Property Name="Keyword" Type="nvarchar" MaxLength="300" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="Image" Type="nvarchar" MaxLength="500" />
+    <Property Name="SDate" Type="datetime" Nullable="false" />
+    <Property Name="Content" Type="nvarchar(max)" />
+    <Property Name="Detail" Type="ntext" Nullable="false" />
+    <Property Name="Index" Type="bit" Nullable="false" />
+    <Property Name="View" Type="int" />
+    <Property Name="IdGroup" Type="int" Nullable="false" />
+    <Property Name="IdMember" Type="int" Nullable="false" />
+    <Property Name="Target" Type="nvarchar" MaxLength="50" />
+    <Property Name="Ord" Type="int" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ord">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="IdCus" Type="int" Nullable="false" />
+    <Property Name="SDate" Type="date" />
+    <Property Name="EDate" Type="date" />
+    <Property Name="Description" Type="ntext" />
+    <Property Name="TypePay" Type="nvarchar" MaxLength="200" />
+    <Property Name="Amount" Type="real" />
+    <Property Name="Status" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="IdPro" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="IdOr" Type="int" />
+    <Property Name="IdPro" Type="int" Nullable="false" />
+    <Property Name="IdSize" Type="int" Nullable="false" />
+    <Property Name="Number" Type="int" Nullable="false" />
+    <Property Name="Price" Type="float" Nullable="false" />
+    <Property Name="Total" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProColor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="IdPro" Type="int" Nullable="false" />
+    <Property Name="IdColor" Type="int" Nullable="false" />
+    <Property Name="SpTon" Type="int" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="nvarchar" MaxLength="100" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Tag" Type="nvarchar" MaxLength="100" />
+    <Property Name="Image" Type="nvarchar" MaxLength="300" />
+    <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Weight" Type="varchar" MaxLength="30" />
+    <Property Name="ChatLieu" Type="nvarchar" MaxLength="100" />
+    <Property Name="Status" Type="nvarchar" MaxLength="100" />
+    <Property Name="Detail" Type="nvarchar" MaxLength="2000" />
+    <Property Name="SpTon" Type="int" />
+    <Property Name="Count" Type="int" Nullable="false" />
+    <Property Name="View" Type="int" Nullable="false" />
+    <Property Name="Like" Type="int" />
+    <Property Name="IdCategory" Type="int" Nullable="false" />
+    <Property Name="IdCategory2" Type="int" />
+    <Property Name="Date" Type="date" />
+    <Property Name="Index" Type="bit" Nullable="false" />
+    <Property Name="Priority" Type="bit" Nullable="false" />
+    <Property Name="Keyword" Type="nvarchar" MaxLength="300" />
+    <Property Name="Title" Type="nvarchar" MaxLength="100" />
+    <Property Name="Content" Type="ntext" />
+    <Property Name="Ord" Type="int" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="PriceRetail" Type="numeric" Scale="2" />
+    <Property Name="PricePromotion" Type="numeric" Scale="2" />
+  </EntityType>
+  <EntityType Name="ProImage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="IdPro" Type="int" Nullable="false" />
+    <Property Name="Image" Type="nvarchar" MaxLength="100" />
+    <Property Name="SDate" Type="datetime" />
+    <Property Name="Ord" Type="int" />
+  </EntityType>
+  <EntityType Name="ProPrice">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="IdPro" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="IdPro" Type="int" Nullable="false" />
+    <Property Name="PriceImport" Type="varchar" MaxLength="50" />
+    <Property Name="PriceExport_S" Type="varchar" MaxLength="50" />
+    <Property Name="PriceExport_L" Type="varchar" MaxLength="50" />
+    <Property Name="PricePromotion" Type="varchar" MaxLength="50" />
+    <Property Name="SDate" Type="datetime" />
+    <Property Name="EDate" Type="datetime" />
+    <Property Name="Ord" Type="int" />
+    <Property Name="Date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ProSize">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="IdPro" Type="int" Nullable="false" />
+    <Property Name="IdSize" Type="int" Nullable="false" />
+    <Property Name="SpTon" Type="int" />
+  </EntityType>
+  <EntityType Name="Province">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Level" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Price" Type="int" />
+    <Property Name="Ord" Type="int" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Recipient">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="IdCus" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="Tel" Type="nchar" Nullable="false" MaxLength="20" />
+    <Property Name="Address" Type="nvarchar" MaxLength="300" />
+    <Property Name="SDate" Type="date" />
+    <Property Name="Status" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SearchPrice">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="PriceFrom" Type="int" />
+    <Property Name="PriceTo" Type="int" />
+    <Property Name="Ord" Type="int" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Shop">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Address" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="Tel" Type="nchar" MaxLength="20" />
+    <Property Name="Description" Type="nvarchar" MaxLength="300" />
+    <Property Name="SDate" Type="date" />
+    <Property Name="EDate" Type="date" />
+  </EntityType>
+  <EntityType Name="Size">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Ord" Type="int" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Supplier">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="256" />
+    <Property Name="Email" Type="varchar" MaxLength="200" />
+    <Property Name="Address" Type="nvarchar" Nullable="false" MaxLength="300" />
+    <Property Name="Tel" Type="nchar" Nullable="false" MaxLength="20" />
+    <Property Name="Website" Type="varchar" MaxLength="200" />
+    <Property Name="IdCountry" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Support">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Link" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Nick" Type="nvarchar" MaxLength="100" />
+    <Property Name="Type" Type="int" />
+    <Property Name="Image" Type="nvarchar" MaxLength="100" />
+    <Property Name="Target" Type="nvarchar" MaxLength="50" />
+    <Property Name="Ord" Type="int" />
+    <Property Name="Tel" Type="nchar" MaxLength="20" />
+    <Property Name="IdGroupSupport" Type="int" />
+    <Property Name="Position" Type="int" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WareHouse">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Address" Type="nvarchar" Nullable="false" MaxLength="300" />
+    <Property Name="Tel" Type="nchar" Nullable="false" MaxLength="20" />
+    <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+    <Property Name="SDate" Type="date" />
+    <Property Name="EDate" Type="date" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'Modeoutled_db.dbo.v_Member_GroupMember' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="v_Member_GroupMember">
+    <Key>
+      <PropertyRef Name="groupMember" />
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Tel" />
+      <PropertyRef Name="Address" />
+      <PropertyRef Name="Birthday" />
+      <PropertyRef Name="Username" />
+      <PropertyRef Name="Password" />
+      <PropertyRef Name="IdGroupMb" />
+      <PropertyRef Name="Active" />
+    </Key>
+    <Property Name="groupMember" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Tel" Type="nchar" Nullable="false" MaxLength="20" />
+    <Property Name="Email" Type="varchar" MaxLength="100" />
+    <Property Name="Address" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="Birthday" Type="date" Nullable="false" />
+    <Property Name="Sex" Type="int" />
+    <Property Name="Image" Type="nvarchar" MaxLength="100" />
+    <Property Name="SDate" Type="date" />
+    <Property Name="MDate" Type="date" />
+    <Property Name="EDate" Type="date" />
+    <Property Name="Username" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="IdGroupMb" Type="int" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'Modeoutled_db.dbo.v_News_GroupNews' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="v_News_GroupNews">
+    <Key>
+      <PropertyRef Name="groupName" />
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="SDate" />
+      <PropertyRef Name="Detail" />
+      <PropertyRef Name="Index" />
+      <PropertyRef Name="IdGroup" />
+      <PropertyRef Name="IdMember" />
+      <PropertyRef Name="Active" />
+    </Key>
+    <Property Name="groupName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="300" />
+    <Property Name="Tag" Type="nvarchar" MaxLength="300" />
+    <Property Name="Title" Type="nvarchar" MaxLength="100" />
+    <Property Name="Keyword" Type="nvarchar" MaxLength="300" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="Image" Type="nvarchar" MaxLength="500" />
+    <Property Name="SDate" Type="datetime" Nullable="false" />
+    <Property Name="Content" Type="nvarchar(max)" />
+    <Property Name="Detail" Type="ntext" Nullable="false" />
+    <Property Name="Index" Type="bit" Nullable="false" />
+    <Property Name="View" Type="int" />
+    <Property Name="IdGroup" Type="int" Nullable="false" />
+    <Property Name="IdMember" Type="int" Nullable="false" />
+    <Property Name="Target" Type="nvarchar" MaxLength="50" />
+    <Property Name="Ord" Type="int" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'Modeoutled_db.dbo.v_Product_NameGroup' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="v_Product_NameGroup">
+    <Key>
+      <PropertyRef Name="Expr1" />
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Count" />
+      <PropertyRef Name="View" />
+      <PropertyRef Name="IdCategory" />
+      <PropertyRef Name="Index" />
+      <PropertyRef Name="Priority" />
+      <PropertyRef Name="Active" />
+    </Key>
+    <Property Name="Expr1" Type="nvarchar" Nullable="false" MaxLength="500" />
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" MaxLength="100" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Tag" Type="nvarchar" MaxLength="100" />
+    <Property Name="Image" Type="nvarchar" MaxLength="300" />
+    <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Weight" Type="varchar" MaxLength="30" />
+    <Property Name="ChatLieu" Type="nvarchar" MaxLength="100" />
+    <Property Name="Status" Type="nvarchar" MaxLength="100" />
+    <Property Name="Detail" Type="nvarchar" MaxLength="2000" />
+    <Property Name="SpTon" Type="int" />
+    <Property Name="Count" Type="int" Nullable="false" />
+    <Property Name="View" Type="int" Nullable="false" />
+    <Property Name="Like" Type="int" />
+    <Property Name="IdCategory" Type="int" Nullable="false" />
+    <Property Name="IdCategory2" Type="int" />
+    <Property Name="Date" Type="date" />
+    <Property Name="Index" Type="bit" Nullable="false" />
+    <Property Name="Priority" Type="bit" Nullable="false" />
+    <Property Name="Keyword" Type="nvarchar" MaxLength="300" />
+    <Property Name="Title" Type="nvarchar" MaxLength="100" />
+    <Property Name="Content" Type="ntext" />
+    <Property Name="Ord" Type="int" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'Modeoutled_db.dbo.v_Support_NameGroup' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="v_Support_NameGroup">
+    <Key>
+      <PropertyRef Name="groupName" />
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Link" />
+      <PropertyRef Name="Position" />
+      <PropertyRef Name="Active" />
+    </Key>
+    <Property Name="groupName" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Link" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Nick" Type="nvarchar" MaxLength="100" />
+    <Property Name="Type" Type="int" />
+    <Property Name="Image" Type="nvarchar" MaxLength="100" />
+    <Property Name="Target" Type="nvarchar" MaxLength="50" />
+    <Property Name="Ord" Type="int" />
+    <Property Name="Tel" Type="nchar" MaxLength="20" />
+    <Property Name="IdGroupSupport" Type="int" />
+    <Property Name="Position" Type="int" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FRK_CTPHIEUNHAP_KICHCO">
+    <End Role="Size" Type="Modeoutled_dbModel.Store.Size" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ImportDetail" Type="Modeoutled_dbModel.Store.ImportDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Size">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ImportDetail">
+        <PropertyRef Name="IdSize" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FRK_CTPHIEUNHAP_PHIEUNHAP">
+    <End Role="Import" Type="Modeoutled_dbModel.Store.Import" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ImportDetail" Type="Modeoutled_dbModel.Store.ImportDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Import">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ImportDetail">
+        <PropertyRef Name="IdImport" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FRK_CTPHIEUNHAP_SANPHAM">
+    <End Role="Product" Type="Modeoutled_dbModel.Store.Product" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ImportDetail" Type="Modeoutled_dbModel.Store.ImportDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ImportDetail">
+        <PropertyRef Name="IdPro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FRK_CTPHIEUXUAT_KICHCO">
+    <End Role="Size" Type="Modeoutled_dbModel.Store.Size" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ExportDetail" Type="Modeoutled_dbModel.Store.ExportDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Size">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ExportDetail">
+        <PropertyRef Name="IdSize" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FRK_CTPHIEUXUAT_PHIEUXUAT">
+    <End Role="Export" Type="Modeoutled_dbModel.Store.Export" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ExportDetail" Type="Modeoutled_dbModel.Store.ExportDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Export">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ExportDetail">
+        <PropertyRef Name="IdExport" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FRK_CTPHIEUXUAT_SANPHAM">
+    <End Role="Product" Type="Modeoutled_dbModel.Store.Product" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ExportDetail" Type="Modeoutled_dbModel.Store.ExportDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ExportDetail">
+        <PropertyRef Name="IdPro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FRK_DONDATHANG_CTDONDATHANG">
+    <End Role="Ord" Type="Modeoutled_dbModel.Store.Ord" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="OrderDetail" Type="Modeoutled_dbModel.Store.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ord">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="IdOr" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FRK_DONDATHANG_KHACHHANG">
+    <End Role="Customer" Type="Modeoutled_dbModel.Store.Customer" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Ord" Type="Modeoutled_dbModel.Store.Ord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ord">
+        <PropertyRef Name="IdCus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FRK_DONDATHANG_KICHCO">
+    <End Role="Size" Type="Modeoutled_dbModel.Store.Size" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="OrderDetail" Type="Modeoutled_dbModel.Store.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Size">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="IdSize" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FRK_DONDATHANG_SANPHAM">
+    <End Role="Product" Type="Modeoutled_dbModel.Store.Product" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="OrderDetail" Type="Modeoutled_dbModel.Store.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="IdPro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FRK_DSACH_KICHCO">
+    <End Role="Size" Type="Modeoutled_dbModel.Store.Size" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ProSize" Type="Modeoutled_dbModel.Store.ProSize" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Size">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProSize">
+        <PropertyRef Name="IdSize" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FRK_NCC">
+    <End Role="Country" Type="Modeoutled_dbModel.Store.Country" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Supplier" Type="Modeoutled_dbModel.Store.Supplier" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Supplier">
+        <PropertyRef Name="IdCountry" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FRK_NGUOINHAN_KHACHHANG">
+    <End Role="Customer" Type="Modeoutled_dbModel.Store.Customer" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Bill_Customer" Type="Modeoutled_dbModel.Store.Bill_Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Bill_Customer">
+        <PropertyRef Name="IdCus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FRK_PHIEUNHAP_KHOHANG">
+    <End Role="WareHouse" Type="Modeoutled_dbModel.Store.WareHouse" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Import" Type="Modeoutled_dbModel.Store.Import" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WareHouse">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Import">
+        <PropertyRef Name="IdWareHouse" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FRK_PHIEUNHAP_NHACC">
+    <End Role="Supplier" Type="Modeoutled_dbModel.Store.Supplier" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Import" Type="Modeoutled_dbModel.Store.Import" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Supplier">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Import">
+        <PropertyRef Name="IdSupplier" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FRK_PHIEUNHAP_NHANVIEN">
+    <End Role="Member" Type="Modeoutled_dbModel.Store.Member" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Import" Type="Modeoutled_dbModel.Store.Import" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Import">
+        <PropertyRef Name="IdMember" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FRK_PHIEUXUAT_KHOHANG">
+    <End Role="WareHouse" Type="Modeoutled_dbModel.Store.WareHouse" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Export" Type="Modeoutled_dbModel.Store.Export" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WareHouse">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Export">
+        <PropertyRef Name="IdWareHouse" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FRK_PHIEUXUAT_NHANVIEN">
+    <End Role="Member" Type="Modeoutled_dbModel.Store.Member" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Export" Type="Modeoutled_dbModel.Store.Export" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Export">
+        <PropertyRef Name="IdMember" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FRK_PROCOLOR_MAUSACH">
+    <End Role="Color" Type="Modeoutled_dbModel.Store.Color" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ProColor" Type="Modeoutled_dbModel.Store.ProColor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Color">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProColor">
+        <PropertyRef Name="IdColor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FRK_SANPHAM_BANGGIA">
+    <End Role="Product" Type="Modeoutled_dbModel.Store.Product" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ProPrice" Type="Modeoutled_dbModel.Store.ProPrice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProPrice">
+        <PropertyRef Name="IdPro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FRK_SANPHAM_DSANH">
+    <End Role="Product" Type="Modeoutled_dbModel.Store.Product" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ProImage" Type="Modeoutled_dbModel.Store.ProImage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProImage">
+        <PropertyRef Name="IdPro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FRK_SANPHAM_KICHCO">
+    <End Role="Product" Type="Modeoutled_dbModel.Store.Product" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ProSize" Type="Modeoutled_dbModel.Store.ProSize" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProSize">
+        <PropertyRef Name="IdPro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FRK_SANPHAM_LOAIHANG">
+    <End Role="Category" Type="Modeoutled_dbModel.Store.Category" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Product" Type="Modeoutled_dbModel.Store.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="IdCategory" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FRK_SANPHAM_MAUSACH">
+    <End Role="Product" Type="Modeoutled_dbModel.Store.Product" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ProColor" Type="Modeoutled_dbModel.Store.ProColor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProColor">
+        <PropertyRef Name="IdPro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FRK_TINTUC_NHANVIEN">
+    <End Role="Member" Type="Modeoutled_dbModel.Store.Member" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="News" Type="Modeoutled_dbModel.Store.News" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="News">
+        <PropertyRef Name="IdMember" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FRK_TINTUC_NHOMTIN">
+    <End Role="GroupNews" Type="Modeoutled_dbModel.Store.GroupNews" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="News" Type="Modeoutled_dbModel.Store.News" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GroupNews">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="News">
+        <PropertyRef Name="IdGroup" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PRK_ACCBANK_BANK">
+    <End Role="Bank" Type="Modeoutled_dbModel.Store.Bank" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AccBank" Type="Modeoutled_dbModel.Store.AccBank" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bank">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AccBank">
+        <PropertyRef Name="IdBank" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PRK_LOAIHANG_GROUPPRODUCT">
+    <End Role="GroupProduct" Type="Modeoutled_dbModel.Store.GroupProduct" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Category" Type="Modeoutled_dbModel.Store.Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GroupProduct">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Category">
+        <PropertyRef Name="IdGroupPro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PRK_MemberWareHouse_Member">
+    <End Role="Member" Type="Modeoutled_dbModel.Store.Member" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="MemberWareHouse" Type="Modeoutled_dbModel.Store.MemberWareHouse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MemberWareHouse">
+        <PropertyRef Name="IdMember" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PRK_MemberWareHouse_WareHouse">
+    <End Role="WareHouse" Type="Modeoutled_dbModel.Store.WareHouse" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="MemberWareHouse" Type="Modeoutled_dbModel.Store.MemberWareHouse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WareHouse">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MemberWareHouse">
+        <PropertyRef Name="IdWareHouse" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PRK_Recipient_Customer">
+    <End Role="Customer" Type="Modeoutled_dbModel.Store.Customer" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Recipient" Type="Modeoutled_dbModel.Store.Recipient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Recipient">
+        <PropertyRef Name="IdCus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="sp_AccBank_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_AccBank_GetByAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_AccBank_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_AccBank_GetByTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Top" Type="nvarchar" Mode="In" />
+    <Parameter Name="Where" Type="nvarchar" Mode="In" />
+    <Parameter Name="Order" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_AccBank_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdBank" Type="int" Mode="In" />
+    <Parameter Name="Account" Type="nvarchar" Mode="In" />
+    <Parameter Name="Number" Type="nchar" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="Ord" Type="int" Mode="In" />
+    <Parameter Name="Active" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_AccBank_Paging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_AccBank_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="IdBank" Type="int" Mode="In" />
+    <Parameter Name="Account" Type="nvarchar" Mode="In" />
+    <Parameter Name="Number" Type="nchar" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="Ord" Type="int" Mode="In" />
+    <Parameter Name="Active" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_Advertise_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Advertise_GetByAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Advertise_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Advertise_GetByTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Top" Type="nvarchar" Mode="In" />
+    <Parameter Name="Where" Type="nvarchar" Mode="In" />
+    <Parameter Name="Order" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Advertise_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Image" Type="nvarchar" Mode="In" />
+    <Parameter Name="Width" Type="int" Mode="In" />
+    <Parameter Name="Height" Type="int" Mode="In" />
+    <Parameter Name="Link" Type="nvarchar" Mode="In" />
+    <Parameter Name="Click" Type="int" Mode="In" />
+    <Parameter Name="Target" Type="varchar" Mode="In" />
+    <Parameter Name="Position" Type="int" Mode="In" />
+    <Parameter Name="Orders" Type="int" Mode="In" />
+    <Parameter Name="Active" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_Advertise_Paging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Advertise_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Image" Type="nvarchar" Mode="In" />
+    <Parameter Name="Width" Type="int" Mode="In" />
+    <Parameter Name="Height" Type="int" Mode="In" />
+    <Parameter Name="Link" Type="nvarchar" Mode="In" />
+    <Parameter Name="Click" Type="int" Mode="In" />
+    <Parameter Name="Target" Type="varchar" Mode="In" />
+    <Parameter Name="Position" Type="int" Mode="In" />
+    <Parameter Name="Orders" Type="int" Mode="In" />
+    <Parameter Name="Active" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_Bank_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Bank_GetByAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Bank_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Bank_GetByTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Top" Type="nvarchar" Mode="In" />
+    <Parameter Name="Where" Type="nvarchar" Mode="In" />
+    <Parameter Name="Order" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Bank_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Image" Type="nvarchar" Mode="In" />
+    <Parameter Name="Ord" Type="int" Mode="In" />
+    <Parameter Name="Active" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_Bank_Paging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Bank_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Image" Type="nvarchar" Mode="In" />
+    <Parameter Name="Ord" Type="int" Mode="In" />
+    <Parameter Name="Active" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_Bill_Customer_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Bill_Customer_GetByAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Bill_Customer_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Bill_Customer_GetByTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Top" Type="nvarchar" Mode="In" />
+    <Parameter Name="Where" Type="nvarchar" Mode="In" />
+    <Parameter Name="Order" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Bill_Customer_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdCus" Type="int" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Birthday" Type="nvarchar" Mode="In" />
+    <Parameter Name="Email" Type="varchar" Mode="In" />
+    <Parameter Name="Mobile" Type="varchar" Mode="In" />
+    <Parameter Name="Tel" Type="nchar" Mode="In" />
+    <Parameter Name="Address" Type="nvarchar" Mode="In" />
+    <Parameter Name="CreateDate" Type="datetime" Mode="In" />
+    <Parameter Name="Status" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Bill_Customer_Paging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Bill_Customer_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="IdCus" Type="int" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Birthday" Type="nvarchar" Mode="In" />
+    <Parameter Name="Email" Type="varchar" Mode="In" />
+    <Parameter Name="Mobile" Type="varchar" Mode="In" />
+    <Parameter Name="Tel" Type="nchar" Mode="In" />
+    <Parameter Name="Address" Type="nvarchar" Mode="In" />
+    <Parameter Name="CreateDate" Type="datetime" Mode="In" />
+    <Parameter Name="Status" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Category_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Category_GetByAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Category_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Category_GetByTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Top" Type="nvarchar" Mode="In" />
+    <Parameter Name="Where" Type="nvarchar" Mode="In" />
+    <Parameter Name="Order" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Category_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="IdGroupPro" Type="int" Mode="In" />
+    <Parameter Name="Ord" Type="int" Mode="In" />
+    <Parameter Name="Title" Type="nvarchar" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="Keyword" Type="nvarchar" Mode="In" />
+    <Parameter Name="Tag" Type="nvarchar" Mode="In" />
+    <Parameter Name="Level" Type="nvarchar" Mode="In" />
+    <Parameter Name="Index" Type="bit" Mode="In" />
+    <Parameter Name="Priority" Type="bit" Mode="In" />
+    <Parameter Name="Active" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_Category_Paging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Category_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="IdGroupPro" Type="int" Mode="In" />
+    <Parameter Name="Ord" Type="int" Mode="In" />
+    <Parameter Name="Title" Type="nvarchar" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="Keyword" Type="nvarchar" Mode="In" />
+    <Parameter Name="Tag" Type="nvarchar" Mode="In" />
+    <Parameter Name="Level" Type="nvarchar" Mode="In" />
+    <Parameter Name="Index" Type="bit" Mode="In" />
+    <Parameter Name="Priority" Type="bit" Mode="In" />
+    <Parameter Name="Active" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_Color_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Color_GetByAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Color_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Color_GetByTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Top" Type="nvarchar" Mode="In" />
+    <Parameter Name="Where" Type="nvarchar" Mode="In" />
+    <Parameter Name="Order" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Color_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Image" Type="nvarchar" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="Ord" Type="int" Mode="In" />
+    <Parameter Name="Active" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_Color_Paging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Color_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Image" Type="nvarchar" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="Ord" Type="int" Mode="In" />
+    <Parameter Name="Active" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_Config_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Config_GetByAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Lang" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Config_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Config_GetByTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Top" Type="nvarchar" Mode="In" />
+    <Parameter Name="Where" Type="nvarchar" Mode="In" />
+    <Parameter Name="Order" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Config_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Mail_Smtp" Type="varchar" Mode="In" />
+    <Parameter Name="Mail_Port" Type="smallint" Mode="In" />
+    <Parameter Name="Mail_Info" Type="varchar" Mode="In" />
+    <Parameter Name="Mail_Noreply" Type="varchar" Mode="In" />
+    <Parameter Name="Mail_Password" Type="varchar" Mode="In" />
+    <Parameter Name="PlaceHead" Type="nvarchar" Mode="In" />
+    <Parameter Name="PlaceBody" Type="nvarchar" Mode="In" />
+    <Parameter Name="GoogleId" Type="varchar" Mode="In" />
+    <Parameter Name="Contact" Type="ntext" Mode="In" />
+    <Parameter Name="DeliveryTerms" Type="ntext" Mode="In" />
+    <Parameter Name="PaymentTerms" Type="ntext" Mode="In" />
+    <Parameter Name="FreeShipping" Type="ntext" Mode="In" />
+    <Parameter Name="Copyright" Type="ntext" Mode="In" />
+    <Parameter Name="Title" Type="nvarchar" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="Keyword" Type="nvarchar" Mode="In" />
+    <Parameter Name="Lang" Type="varchar" Mode="In" />
+    <Parameter Name="Helpsize" Type="ntext" Mode="In" />
+    <Parameter Name="Location" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Config_Paging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+    <Parameter Name="Lang" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Config_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="Mail_Smtp" Type="varchar" Mode="In" />
+    <Parameter Name="Mail_Port" Type="smallint" Mode="In" />
+    <Parameter Name="Mail_Info" Type="varchar" Mode="In" />
+    <Parameter Name="Mail_Noreply" Type="varchar" Mode="In" />
+    <Parameter Name="Mail_Password" Type="varchar" Mode="In" />
+    <Parameter Name="PlaceHead" Type="nvarchar" Mode="In" />
+    <Parameter Name="PlaceBody" Type="nvarchar" Mode="In" />
+    <Parameter Name="GoogleId" Type="varchar" Mode="In" />
+    <Parameter Name="Contact" Type="ntext" Mode="In" />
+    <Parameter Name="DeliveryTerms" Type="ntext" Mode="In" />
+    <Parameter Name="PaymentTerms" Type="ntext" Mode="In" />
+    <Parameter Name="FreeShipping" Type="ntext" Mode="In" />
+    <Parameter Name="Copyright" Type="ntext" Mode="In" />
+    <Parameter Name="Title" Type="nvarchar" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="Keyword" Type="nvarchar" Mode="In" />
+    <Parameter Name="Lang" Type="varchar" Mode="In" />
+    <Parameter Name="Helpsize" Type="ntext" Mode="In" />
+    <Parameter Name="Location" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Contact_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Contact_GetByAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Contact_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Contact_GetByTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Top" Type="nvarchar" Mode="In" />
+    <Parameter Name="Where" Type="nvarchar" Mode="In" />
+    <Parameter Name="Order" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Contact_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Title" Type="nvarchar" Mode="In" />
+    <Parameter Name="Email" Type="varchar" Mode="In" />
+    <Parameter Name="Detail" Type="ntext" Mode="In" />
+    <Parameter Name="SDate" Type="date" Mode="In" />
+  </Function>
+  <Function Name="sp_Contact_Paging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Contact_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Title" Type="nvarchar" Mode="In" />
+    <Parameter Name="Email" Type="varchar" Mode="In" />
+    <Parameter Name="Detail" Type="ntext" Mode="In" />
+    <Parameter Name="SDate" Type="date" Mode="In" />
+  </Function>
+  <Function Name="sp_Country_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Country_GetByAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Country_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Country_GetByTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Top" Type="nvarchar" Mode="In" />
+    <Parameter Name="Where" Type="nvarchar" Mode="In" />
+    <Parameter Name="Order" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Country_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Logo" Type="nvarchar" Mode="In" />
+    <Parameter Name="Ord" Type="int" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="Active" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_Country_Paging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Country_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Logo" Type="nvarchar" Mode="In" />
+    <Parameter Name="Ord" Type="int" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="Active" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_Customer_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Customer_GetByAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Customer_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Customer_GetByTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Top" Type="nvarchar" Mode="In" />
+    <Parameter Name="Where" Type="nvarchar" Mode="In" />
+    <Parameter Name="Order" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Customer_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Email" Type="varchar" Mode="In" />
+    <Parameter Name="Password" Type="nvarchar" Mode="In" />
+    <Parameter Name="Tel" Type="nchar" Mode="In" />
+    <Parameter Name="Address" Type="nvarchar" Mode="In" />
+    <Parameter Name="SDate" Type="datetime" Mode="In" />
+    <Parameter Name="Status" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_Customer_Paging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Customer_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Email" Type="varchar" Mode="In" />
+    <Parameter Name="Password" Type="nvarchar" Mode="In" />
+    <Parameter Name="Tel" Type="nchar" Mode="In" />
+    <Parameter Name="Address" Type="nvarchar" Mode="In" />
+    <Parameter Name="SDate" Type="datetime" Mode="In" />
+    <Parameter Name="Status" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_Export_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Export_GetByAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Export_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Export_GetByTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Top" Type="nvarchar" Mode="In" />
+    <Parameter Name="Where" Type="nvarchar" Mode="In" />
+    <Parameter Name="Order" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Export_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CusName" Type="nvarchar" Mode="In" />
+    <Parameter Name="SDate" Type="date" Mode="In" />
+    <Parameter Name="Amount" Type="float" Mode="In" />
+    <Parameter Name="IdMember" Type="int" Mode="In" />
+    <Parameter Name="IdWareHouse" Type="int" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="Ord" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Export_Paging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Export_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="CusName" Type="nvarchar" Mode="In" />
+    <Parameter Name="SDate" Type="date" Mode="In" />
+    <Parameter Name="Amount" Type="float" Mode="In" />
+    <Parameter Name="IdMember" Type="int" Mode="In" />
+    <Parameter Name="IdWareHouse" Type="int" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="Ord" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_ExportDetail_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="IdExport" Type="int" Mode="In" />
+    <Parameter Name="IdPro" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_ExportDetail_GetByAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_ExportDetail_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="IdExport" Type="int" Mode="In" />
+    <Parameter Name="IdPro" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_ExportDetail_GetByTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Top" Type="nvarchar" Mode="In" />
+    <Parameter Name="Where" Type="nvarchar" Mode="In" />
+    <Parameter Name="Order" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_ExportDetail_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdExport" Type="int" Mode="In" />
+    <Parameter Name="IdPro" Type="int" Mode="In" />
+    <Parameter Name="IdSize" Type="int" Mode="In" />
+    <Parameter Name="Number" Type="int" Mode="In" />
+    <Parameter Name="Price" Type="float" Mode="In" />
+    <Parameter Name="Total" Type="float" Mode="In" />
+    <Parameter Name="Ord" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_ExportDetail_Paging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_ExportDetail_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="IdExport" Type="int" Mode="In" />
+    <Parameter Name="IdPro" Type="int" Mode="In" />
+    <Parameter Name="IdSize" Type="int" Mode="In" />
+    <Parameter Name="Number" Type="int" Mode="In" />
+    <Parameter Name="Price" Type="float" Mode="In" />
+    <Parameter Name="Total" Type="float" Mode="In" />
+    <Parameter Name="Ord" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GroupMember_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GroupMember_GetByAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_GroupMember_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GroupMember_GetByTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Top" Type="nvarchar" Mode="In" />
+    <Parameter Name="Where" Type="nvarchar" Mode="In" />
+    <Parameter Name="Order" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_GroupMember_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Active" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_GroupMember_Paging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GroupMember_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Active" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_GroupNews_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GroupNews_GetByAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_GroupNews_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GroupNews_GetByTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Top" Type="nvarchar" Mode="In" />
+    <Parameter Name="Where" Type="nvarchar" Mode="In" />
+    <Parameter Name="Order" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_GroupNews_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Ord" Type="int" Mode="In" />
+    <Parameter Name="Title" Type="nvarchar" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="Keyword" Type="nvarchar" Mode="In" />
+    <Parameter Name="Tag" Type="nvarchar" Mode="In" />
+    <Parameter Name="Level" Type="nvarchar" Mode="In" />
+    <Parameter Name="Index" Type="bit" Mode="In" />
+    <Parameter Name="Priority" Type="bit" Mode="In" />
+    <Parameter Name="Active" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_GroupNews_Paging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GroupNews_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Ord" Type="int" Mode="In" />
+    <Parameter Name="Title" Type="nvarchar" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="Keyword" Type="nvarchar" Mode="In" />
+    <Parameter Name="Tag" Type="nvarchar" Mode="In" />
+    <Parameter Name="Level" Type="nvarchar" Mode="In" />
+    <Parameter Name="Index" Type="bit" Mode="In" />
+    <Parameter Name="Priority" Type="bit" Mode="In" />
+    <Parameter Name="Active" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_GroupProduct_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GroupProduct_GetByAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_GroupProduct_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GroupProduct_GetByTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Top" Type="nvarchar" Mode="In" />
+    <Parameter Name="Where" Type="nvarchar" Mode="In" />
+    <Parameter Name="Order" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_GroupProduct_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Ord" Type="int" Mode="In" />
+    <Parameter Name="Title" Type="nvarchar" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="Keyword" Type="nvarchar" Mode="In" />
+    <Parameter Name="Tag" Type="nvarchar" Mode="In" />
+    <Parameter Name="Level" Type="nvarchar" Mode="In" />
+    <Parameter Name="Index" Type="bit" Mode="In" />
+    <Parameter Name="Priority" Type="bit" Mode="In" />
+    <Parameter Name="Active" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_GroupProduct_Paging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GroupProduct_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Ord" Type="int" Mode="In" />
+    <Parameter Name="Title" Type="nvarchar" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="Keyword" Type="nvarchar" Mode="In" />
+    <Parameter Name="Tag" Type="nvarchar" Mode="In" />
+    <Parameter Name="Level" Type="nvarchar" Mode="In" />
+    <Parameter Name="Index" Type="bit" Mode="In" />
+    <Parameter Name="Priority" Type="bit" Mode="In" />
+    <Parameter Name="Active" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_GroupSupport_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GroupSupport_GetByAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_GroupSupport_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GroupSupport_GetByTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Top" Type="nvarchar" Mode="In" />
+    <Parameter Name="Where" Type="nvarchar" Mode="In" />
+    <Parameter Name="Order" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_GroupSupport_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Ord" Type="int" Mode="In" />
+    <Parameter Name="Active" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_GroupSupport_Paging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GroupSupport_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Ord" Type="int" Mode="In" />
+    <Parameter Name="Active" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_Import_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Import_GetByAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Import_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Import_GetByTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Top" Type="nvarchar" Mode="In" />
+    <Parameter Name="Where" Type="nvarchar" Mode="In" />
+    <Parameter Name="Order" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Import_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdSupplier" Type="int" Mode="In" />
+    <Parameter Name="SDate" Type="date" Mode="In" />
+    <Parameter Name="Amount" Type="float" Mode="In" />
+    <Parameter Name="IdMember" Type="int" Mode="In" />
+    <Parameter Name="IdWareHouse" Type="int" Mode="In" />
+    <Parameter Name="Ord" Type="int" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Import_Paging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Import_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="IdSupplier" Type="int" Mode="In" />
+    <Parameter Name="SDate" Type="date" Mode="In" />
+    <Parameter Name="Amount" Type="float" Mode="In" />
+    <Parameter Name="IdMember" Type="int" Mode="In" />
+    <Parameter Name="IdWareHouse" Type="int" Mode="In" />
+    <Parameter Name="Ord" Type="int" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_ImportDetail_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="IdImport" Type="int" Mode="In" />
+    <Parameter Name="IdPro" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_ImportDetail_GetByAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_ImportDetail_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="IdImport" Type="int" Mode="In" />
+    <Parameter Name="IdPro" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_ImportDetail_GetByTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Top" Type="nvarchar" Mode="In" />
+    <Parameter Name="Where" Type="nvarchar" Mode="In" />
+    <Parameter Name="Order" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_ImportDetail_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdImport" Type="int" Mode="In" />
+    <Parameter Name="IdPro" Type="int" Mode="In" />
+    <Parameter Name="IdSize" Type="int" Mode="In" />
+    <Parameter Name="Number" Type="float" Mode="In" />
+    <Parameter Name="Price" Type="float" Mode="In" />
+    <Parameter Name="Total" Type="float" Mode="In" />
+    <Parameter Name="Ord" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_ImportDetail_Paging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_ImportDetail_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="IdImport" Type="int" Mode="In" />
+    <Parameter Name="IdPro" Type="int" Mode="In" />
+    <Parameter Name="IdSize" Type="int" Mode="In" />
+    <Parameter Name="Number" Type="float" Mode="In" />
+    <Parameter Name="Price" Type="float" Mode="In" />
+    <Parameter Name="Total" Type="float" Mode="In" />
+    <Parameter Name="Ord" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Member_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Member_GetByAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Member_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Member_GetByTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Top" Type="nvarchar" Mode="In" />
+    <Parameter Name="Where" Type="nvarchar" Mode="In" />
+    <Parameter Name="Order" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Member_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Tel" Type="nchar" Mode="In" />
+    <Parameter Name="Email" Type="varchar" Mode="In" />
+    <Parameter Name="Address" Type="nvarchar" Mode="In" />
+    <Parameter Name="Birthday" Type="date" Mode="In" />
+    <Parameter Name="Sex" Type="int" Mode="In" />
+    <Parameter Name="Image" Type="nvarchar" Mode="In" />
+    <Parameter Name="SDate" Type="date" Mode="In" />
+    <Parameter Name="MDate" Type="date" Mode="In" />
+    <Parameter Name="EDate" Type="date" Mode="In" />
+    <Parameter Name="Username" Type="nvarchar" Mode="In" />
+    <Parameter Name="Password" Type="nvarchar" Mode="In" />
+    <Parameter Name="IdGroupMb" Type="int" Mode="In" />
+    <Parameter Name="Active" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_Member_Paging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Member_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Tel" Type="nchar" Mode="In" />
+    <Parameter Name="Email" Type="varchar" Mode="In" />
+    <Parameter Name="Address" Type="nvarchar" Mode="In" />
+    <Parameter Name="Birthday" Type="date" Mode="In" />
+    <Parameter Name="Sex" Type="int" Mode="In" />
+    <Parameter Name="Image" Type="nvarchar" Mode="In" />
+    <Parameter Name="SDate" Type="date" Mode="In" />
+    <Parameter Name="MDate" Type="date" Mode="In" />
+    <Parameter Name="EDate" Type="date" Mode="In" />
+    <Parameter Name="Username" Type="nvarchar" Mode="In" />
+    <Parameter Name="Password" Type="nvarchar" Mode="In" />
+    <Parameter Name="IdGroupMb" Type="int" Mode="In" />
+    <Parameter Name="Active" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_MemberWareHouse_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_MemberWareHouse_GetByAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_MemberWareHouse_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_MemberWareHouse_GetByTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Top" Type="nvarchar" Mode="In" />
+    <Parameter Name="Where" Type="nvarchar" Mode="In" />
+    <Parameter Name="Order" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_MemberWareHouse_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdMember" Type="int" Mode="In" />
+    <Parameter Name="IdWareHouse" Type="int" Mode="In" />
+    <Parameter Name="SDate" Type="date" Mode="In" />
+    <Parameter Name="EDate" Type="date" Mode="In" />
+    <Parameter Name="Ord" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_MemberWareHouse_Paging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_MemberWareHouse_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="IdMember" Type="int" Mode="In" />
+    <Parameter Name="IdWareHouse" Type="int" Mode="In" />
+    <Parameter Name="SDate" Type="date" Mode="In" />
+    <Parameter Name="EDate" Type="date" Mode="In" />
+    <Parameter Name="Ord" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Menu_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Menu_GetByAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Menu_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Menu_GetByTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Top" Type="nvarchar" Mode="In" />
+    <Parameter Name="Where" Type="nvarchar" Mode="In" />
+    <Parameter Name="Order" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Menu_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Tag" Type="nvarchar" Mode="In" />
+    <Parameter Name="IdCategory" Type="int" Mode="In" />
+    <Parameter Name="Content" Type="nvarchar" Mode="In" />
+    <Parameter Name="Detail" Type="ntext" Mode="In" />
+    <Parameter Name="Level" Type="nvarchar" Mode="In" />
+    <Parameter Name="Title" Type="nvarchar" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="Keyword" Type="nvarchar" Mode="In" />
+    <Parameter Name="Target" Type="nvarchar" Mode="In" />
+    <Parameter Name="Link" Type="nvarchar" Mode="In" />
+    <Parameter Name="Ord" Type="int" Mode="In" />
+    <Parameter Name="Position" Type="int" Mode="In" />
+    <Parameter Name="Active" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_Menu_Paging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Menu_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Tag" Type="nvarchar" Mode="In" />
+    <Parameter Name="IdCategory" Type="int" Mode="In" />
+    <Parameter Name="Content" Type="nvarchar" Mode="In" />
+    <Parameter Name="Detail" Type="ntext" Mode="In" />
+    <Parameter Name="Level" Type="nvarchar" Mode="In" />
+    <Parameter Name="Title" Type="nvarchar" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="Keyword" Type="nvarchar" Mode="In" />
+    <Parameter Name="Target" Type="nvarchar" Mode="In" />
+    <Parameter Name="Link" Type="nvarchar" Mode="In" />
+    <Parameter Name="Ord" Type="int" Mode="In" />
+    <Parameter Name="Position" Type="int" Mode="In" />
+    <Parameter Name="Active" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_News_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_News_GetByAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_News_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_News_GetByTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Top" Type="nvarchar" Mode="In" />
+    <Parameter Name="Where" Type="nvarchar" Mode="In" />
+    <Parameter Name="Order" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_News_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Tag" Type="nvarchar" Mode="In" />
+    <Parameter Name="Title" Type="nvarchar" Mode="In" />
+    <Parameter Name="Keyword" Type="nvarchar" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="Image" Type="nvarchar" Mode="In" />
+    <Parameter Name="SDate" Type="datetime" Mode="In" />
+    <Parameter Name="Content" Type="nvarchar" Mode="In" />
+    <Parameter Name="Detail" Type="ntext" Mode="In" />
+    <Parameter Name="Index" Type="bit" Mode="In" />
+    <Parameter Name="View" Type="int" Mode="In" />
+    <Parameter Name="IdGroup" Type="int" Mode="In" />
+    <Parameter Name="IdMember" Type="int" Mode="In" />
+    <Parameter Name="Target" Type="nvarchar" Mode="In" />
+    <Parameter Name="Ord" Type="int" Mode="In" />
+    <Parameter Name="Active" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_News_Paging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_News_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Tag" Type="nvarchar" Mode="In" />
+    <Parameter Name="Title" Type="nvarchar" Mode="In" />
+    <Parameter Name="Keyword" Type="nvarchar" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="Image" Type="nvarchar" Mode="In" />
+    <Parameter Name="SDate" Type="datetime" Mode="In" />
+    <Parameter Name="Content" Type="nvarchar" Mode="In" />
+    <Parameter Name="Detail" Type="ntext" Mode="In" />
+    <Parameter Name="Index" Type="bit" Mode="In" />
+    <Parameter Name="View" Type="int" Mode="In" />
+    <Parameter Name="IdGroup" Type="int" Mode="In" />
+    <Parameter Name="IdMember" Type="int" Mode="In" />
+    <Parameter Name="Target" Type="nvarchar" Mode="In" />
+    <Parameter Name="Ord" Type="int" Mode="In" />
+    <Parameter Name="Active" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_Ord_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Ord_GetByAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Ord_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Ord_GetByTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Top" Type="nvarchar" Mode="In" />
+    <Parameter Name="Where" Type="nvarchar" Mode="In" />
+    <Parameter Name="Order" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Ord_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdCus" Type="int" Mode="In" />
+    <Parameter Name="SDate" Type="date" Mode="In" />
+    <Parameter Name="EDate" Type="date" Mode="In" />
+    <Parameter Name="Description" Type="ntext" Mode="In" />
+    <Parameter Name="TypePay" Type="nvarchar" Mode="In" />
+    <Parameter Name="Amount" Type="real" Mode="In" />
+    <Parameter Name="Status" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Ord_Paging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Ord_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="IdCus" Type="int" Mode="In" />
+    <Parameter Name="SDate" Type="date" Mode="In" />
+    <Parameter Name="EDate" Type="date" Mode="In" />
+    <Parameter Name="Description" Type="ntext" Mode="In" />
+    <Parameter Name="TypePay" Type="nvarchar" Mode="In" />
+    <Parameter Name="Amount" Type="real" Mode="In" />
+    <Parameter Name="Status" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_OrderDetail_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="IdPro" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_OrderDetail_GetByAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_OrderDetail_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="IdPro" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_OrderDetail_GetByTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Top" Type="nvarchar" Mode="In" />
+    <Parameter Name="Where" Type="nvarchar" Mode="In" />
+    <Parameter Name="Order" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_OrderDetail_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="IdOr" Type="int" Mode="In" />
+    <Parameter Name="IdPro" Type="int" Mode="In" />
+    <Parameter Name="IdSize" Type="int" Mode="In" />
+    <Parameter Name="Number" Type="int" Mode="In" />
+    <Parameter Name="Price" Type="float" Mode="In" />
+    <Parameter Name="Total" Type="float" Mode="In" />
+  </Function>
+  <Function Name="sp_OrderDetail_Paging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_OrderDetail_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="IdOr" Type="int" Mode="In" />
+    <Parameter Name="IdPro" Type="int" Mode="In" />
+    <Parameter Name="IdSize" Type="int" Mode="In" />
+    <Parameter Name="Number" Type="int" Mode="In" />
+    <Parameter Name="Price" Type="float" Mode="In" />
+    <Parameter Name="Total" Type="float" Mode="In" />
+  </Function>
+  <Function Name="sp_ProColor_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_ProColor_GetByAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_ProColor_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_ProColor_GetByTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Top" Type="nvarchar" Mode="In" />
+    <Parameter Name="Where" Type="nvarchar" Mode="In" />
+    <Parameter Name="Order" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_ProColor_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdPro" Type="int" Mode="In" />
+    <Parameter Name="IdColor" Type="int" Mode="In" />
+    <Parameter Name="SpTon" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_ProColor_Paging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_ProColor_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="IdPro" Type="int" Mode="In" />
+    <Parameter Name="IdColor" Type="int" Mode="In" />
+    <Parameter Name="SpTon" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Product_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Product_GetByAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Product_GetByAll_NameGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Product_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Product_GetByTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Top" Type="nvarchar" Mode="In" />
+    <Parameter Name="Where" Type="nvarchar" Mode="In" />
+    <Parameter Name="Order" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Product_GetByTop_GroupName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Top" Type="nvarchar" Mode="In" />
+    <Parameter Name="Where" Type="nvarchar" Mode="In" />
+    <Parameter Name="Order" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Product_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Tag" Type="nvarchar" Mode="In" />
+    <Parameter Name="Image" Type="nvarchar" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="Weight" Type="varchar" Mode="In" />
+    <Parameter Name="ChatLieu" Type="nvarchar" Mode="In" />
+    <Parameter Name="Status" Type="nvarchar" Mode="In" />
+    <Parameter Name="Detail" Type="nvarchar" Mode="In" />
+    <Parameter Name="SpTon" Type="int" Mode="In" />
+    <Parameter Name="Count" Type="int" Mode="In" />
+    <Parameter Name="View" Type="int" Mode="In" />
+    <Parameter Name="Like" Type="int" Mode="In" />
+    <Parameter Name="IdCategory" Type="int" Mode="In" />
+    <Parameter Name="Date" Type="date" Mode="In" />
+    <Parameter Name="Index" Type="bit" Mode="In" />
+    <Parameter Name="Priority" Type="bit" Mode="In" />
+    <Parameter Name="Keyword" Type="nvarchar" Mode="In" />
+    <Parameter Name="Title" Type="nvarchar" Mode="In" />
+    <Parameter Name="Content" Type="ntext" Mode="In" />
+    <Parameter Name="Ord" Type="int" Mode="In" />
+    <Parameter Name="Active" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_Product_Paging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Product_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Tag" Type="nvarchar" Mode="In" />
+    <Parameter Name="Image" Type="nvarchar" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="Weight" Type="varchar" Mode="In" />
+    <Parameter Name="ChatLieu" Type="nvarchar" Mode="In" />
+    <Parameter Name="Status" Type="nvarchar" Mode="In" />
+    <Parameter Name="Detail" Type="nvarchar" Mode="In" />
+    <Parameter Name="SpTon" Type="int" Mode="In" />
+    <Parameter Name="Count" Type="int" Mode="In" />
+    <Parameter Name="View" Type="int" Mode="In" />
+    <Parameter Name="Like" Type="int" Mode="In" />
+    <Parameter Name="IdCategory" Type="int" Mode="In" />
+    <Parameter Name="Date" Type="date" Mode="In" />
+    <Parameter Name="Index" Type="bit" Mode="In" />
+    <Parameter Name="Priority" Type="bit" Mode="In" />
+    <Parameter Name="Keyword" Type="nvarchar" Mode="In" />
+    <Parameter Name="Title" Type="nvarchar" Mode="In" />
+    <Parameter Name="Content" Type="ntext" Mode="In" />
+    <Parameter Name="Ord" Type="int" Mode="In" />
+    <Parameter Name="Active" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_ProImage_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_ProImage_GetByAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_ProImage_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_ProImage_GetByTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Top" Type="nvarchar" Mode="In" />
+    <Parameter Name="Where" Type="nvarchar" Mode="In" />
+    <Parameter Name="Order" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_ProImage_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdPro" Type="int" Mode="In" />
+    <Parameter Name="Image" Type="nvarchar" Mode="In" />
+    <Parameter Name="SDate" Type="datetime" Mode="In" />
+    <Parameter Name="Ord" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_ProImage_Paging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_ProImage_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="IdPro" Type="int" Mode="In" />
+    <Parameter Name="Image" Type="nvarchar" Mode="In" />
+    <Parameter Name="SDate" Type="datetime" Mode="In" />
+    <Parameter Name="Ord" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_ProPrice_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="IdPro" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_ProPrice_GetByAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_ProPrice_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="IdPro" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_ProPrice_GetByTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Top" Type="nvarchar" Mode="In" />
+    <Parameter Name="Where" Type="nvarchar" Mode="In" />
+    <Parameter Name="Order" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_ProPrice_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdPro" Type="int" Mode="In" />
+    <Parameter Name="PriceImport" Type="varchar" Mode="In" />
+    <Parameter Name="PriceExport_S" Type="varchar" Mode="In" />
+    <Parameter Name="PriceExport_L" Type="varchar" Mode="In" />
+    <Parameter Name="PricePromotion" Type="varchar" Mode="In" />
+    <Parameter Name="SDate" Type="datetime" Mode="In" />
+    <Parameter Name="EDate" Type="datetime" Mode="In" />
+    <Parameter Name="Ord" Type="int" Mode="In" />
+    <Parameter Name="Date" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="sp_ProPrice_Paging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_ProPrice_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="IdPro" Type="int" Mode="In" />
+    <Parameter Name="PriceImport" Type="varchar" Mode="In" />
+    <Parameter Name="PriceExport_S" Type="varchar" Mode="In" />
+    <Parameter Name="PriceExport_L" Type="varchar" Mode="In" />
+    <Parameter Name="PricePromotion" Type="varchar" Mode="In" />
+    <Parameter Name="SDate" Type="datetime" Mode="In" />
+    <Parameter Name="EDate" Type="datetime" Mode="In" />
+    <Parameter Name="Ord" Type="int" Mode="In" />
+    <Parameter Name="Date" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="sp_ProSize_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_ProSize_GetByAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_ProSize_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_ProSize_GetByTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Top" Type="nvarchar" Mode="In" />
+    <Parameter Name="Where" Type="nvarchar" Mode="In" />
+    <Parameter Name="Order" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_ProSize_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdPro" Type="int" Mode="In" />
+    <Parameter Name="IdSize" Type="int" Mode="In" />
+    <Parameter Name="SpTon" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_ProSize_Paging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_ProSize_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="IdPro" Type="int" Mode="In" />
+    <Parameter Name="IdSize" Type="int" Mode="In" />
+    <Parameter Name="SpTon" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Province_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Province_GetByAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Province_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Province_GetByTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Top" Type="nvarchar" Mode="In" />
+    <Parameter Name="Where" Type="nvarchar" Mode="In" />
+    <Parameter Name="Order" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Province_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Level" Type="nvarchar" Mode="In" />
+    <Parameter Name="Price" Type="int" Mode="In" />
+    <Parameter Name="Ord" Type="int" Mode="In" />
+    <Parameter Name="Active" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_Province_Paging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Province_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Level" Type="nvarchar" Mode="In" />
+    <Parameter Name="Price" Type="int" Mode="In" />
+    <Parameter Name="Ord" Type="int" Mode="In" />
+    <Parameter Name="Active" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_Recipient_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Recipient_GetByAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Recipient_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Recipient_GetByTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Top" Type="nvarchar" Mode="In" />
+    <Parameter Name="Where" Type="nvarchar" Mode="In" />
+    <Parameter Name="Order" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Recipient_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdCus" Type="int" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+    <Parameter Name="Tel" Type="nchar" Mode="In" />
+    <Parameter Name="Address" Type="nvarchar" Mode="In" />
+    <Parameter Name="SDate" Type="date" Mode="In" />
+    <Parameter Name="Status" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Recipient_Paging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Recipient_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="IdCus" Type="int" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+    <Parameter Name="Tel" Type="nchar" Mode="In" />
+    <Parameter Name="Address" Type="nvarchar" Mode="In" />
+    <Parameter Name="SDate" Type="date" Mode="In" />
+    <Parameter Name="Status" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_SearchPrice_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_SearchPrice_GetByAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_SearchPrice_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_SearchPrice_GetByTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Top" Type="nvarchar" Mode="In" />
+    <Parameter Name="Where" Type="nvarchar" Mode="In" />
+    <Parameter Name="Order" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_SearchPrice_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="PriceFrom" Type="int" Mode="In" />
+    <Parameter Name="PriceTo" Type="int" Mode="In" />
+    <Parameter Name="Ord" Type="int" Mode="In" />
+    <Parameter Name="Active" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_SearchPrice_Paging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_SearchPrice_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="PriceFrom" Type="int" Mode="In" />
+    <Parameter Name="PriceTo" Type="int" Mode="In" />
+    <Parameter Name="Ord" Type="int" Mode="In" />
+    <Parameter Name="Active" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_Shop_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Shop_GetByAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Shop_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Shop_GetByTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Top" Type="nvarchar" Mode="In" />
+    <Parameter Name="Where" Type="nvarchar" Mode="In" />
+    <Parameter Name="Order" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Shop_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Address" Type="nvarchar" Mode="In" />
+    <Parameter Name="Tel" Type="nchar" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="SDate" Type="date" Mode="In" />
+    <Parameter Name="EDate" Type="date" Mode="In" />
+  </Function>
+  <Function Name="sp_Shop_Paging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Shop_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Address" Type="nvarchar" Mode="In" />
+    <Parameter Name="Tel" Type="nchar" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="SDate" Type="date" Mode="In" />
+    <Parameter Name="EDate" Type="date" Mode="In" />
+  </Function>
+  <Function Name="sp_Size_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Size_GetByAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Size_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Size_GetByTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Top" Type="nvarchar" Mode="In" />
+    <Parameter Name="Where" Type="nvarchar" Mode="In" />
+    <Parameter Name="Order" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Size_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="Ord" Type="int" Mode="In" />
+    <Parameter Name="Active" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_Size_Paging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Size_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="Ord" Type="int" Mode="In" />
+    <Parameter Name="Active" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_Supplier_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Supplier_GetByAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Supplier_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Supplier_GetByTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Top" Type="nvarchar" Mode="In" />
+    <Parameter Name="Where" Type="nvarchar" Mode="In" />
+    <Parameter Name="Order" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Supplier_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Email" Type="varchar" Mode="In" />
+    <Parameter Name="Address" Type="nvarchar" Mode="In" />
+    <Parameter Name="Tel" Type="nchar" Mode="In" />
+    <Parameter Name="Website" Type="varchar" Mode="In" />
+    <Parameter Name="IdCountry" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Supplier_Paging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Supplier_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Email" Type="varchar" Mode="In" />
+    <Parameter Name="Address" Type="nvarchar" Mode="In" />
+    <Parameter Name="Tel" Type="nchar" Mode="In" />
+    <Parameter Name="Website" Type="varchar" Mode="In" />
+    <Parameter Name="IdCountry" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Support_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Support_GetByAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Support_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Support_GetByTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Top" Type="nvarchar" Mode="In" />
+    <Parameter Name="Where" Type="nvarchar" Mode="In" />
+    <Parameter Name="Order" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Support_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Link" Type="nvarchar" Mode="In" />
+    <Parameter Name="Nick" Type="nvarchar" Mode="In" />
+    <Parameter Name="Type" Type="int" Mode="In" />
+    <Parameter Name="Image" Type="nvarchar" Mode="In" />
+    <Parameter Name="Target" Type="nvarchar" Mode="In" />
+    <Parameter Name="Ord" Type="int" Mode="In" />
+    <Parameter Name="Tel" Type="nchar" Mode="In" />
+    <Parameter Name="IdGroupSupport" Type="int" Mode="In" />
+    <Parameter Name="Position" Type="int" Mode="In" />
+    <Parameter Name="Active" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_Support_Paging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Support_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Link" Type="nvarchar" Mode="In" />
+    <Parameter Name="Nick" Type="nvarchar" Mode="In" />
+    <Parameter Name="Type" Type="int" Mode="In" />
+    <Parameter Name="Image" Type="nvarchar" Mode="In" />
+    <Parameter Name="Target" Type="nvarchar" Mode="In" />
+    <Parameter Name="Ord" Type="int" Mode="In" />
+    <Parameter Name="Tel" Type="nchar" Mode="In" />
+    <Parameter Name="IdGroupSupport" Type="int" Mode="In" />
+    <Parameter Name="Position" Type="int" Mode="In" />
+    <Parameter Name="Active" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_WareHouse_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_WareHouse_GetByAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_WareHouse_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_WareHouse_GetByTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Top" Type="nvarchar" Mode="In" />
+    <Parameter Name="Where" Type="nvarchar" Mode="In" />
+    <Parameter Name="Order" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_WareHouse_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Address" Type="nvarchar" Mode="In" />
+    <Parameter Name="Tel" Type="nchar" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="SDate" Type="date" Mode="In" />
+    <Parameter Name="EDate" Type="date" Mode="In" />
+  </Function>
+  <Function Name="sp_WareHouse_Paging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_WareHouse_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Address" Type="nvarchar" Mode="In" />
+    <Parameter Name="Tel" Type="nchar" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="SDate" Type="date" Mode="In" />
+    <Parameter Name="EDate" Type="date" Mode="In" />
+  </Function>
+</Schema>

@@ -1,0 +1,105 @@
+﻿@model onsoft.Models.Supplier
+@{
+    ViewBag.Title = "Thêm mới nhà cung cấp";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!-- Validate Data -->
+<script src="~/Scripts/jquery.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+
+<script type="text/javascript">
+
+    (function ($, W, D) {
+
+        var JQUERY4U = {};
+
+        JQUERY4U.UTIL =
+        {
+            setupFormValidation: function () {
+                //validation rules
+                $("#suppliercreate-form").validate({
+                    rules: {
+                        IdCountry: "required",
+                        Name: "required",
+                        Tel: "required",
+                        Email: {
+                            required: true,
+                            email: true
+                        },
+                        Address: "required"
+                    },
+                    messages: {
+                        IdCountry: "Phải chọn quốc gia",
+                        Name: "Phải nhập tên nhà cung cấp",
+                        Tel: "Phải nhập số điện thoại",
+                        Email: {
+                            required: "Phải nhập email",
+                            email: "Email phải hợp lệ"
+                        },
+                        Address: "Phải nhập địa chỉ"
+                    },
+                    submitHandler: function (form) {
+                        form.submit();
+                    }
+                });
+            }
+        }
+
+        //when the dom has loaded setup form validation rules
+        $(D).ready(function ($) {
+            JQUERY4U.UTIL.setupFormValidation();
+        });
+
+    })(jQuery, window, document);
+</script>
+<!-- End Validate Data -->
+
+<h2>@ViewBag.Title</h2>
+@using (Html.BeginForm("SupplierCreate", "Supplier", FormMethod.Post, new { @id = "suppliercreate-form", @class = "validate-form" }))
+{
+    <table class="TableUpdate" border="1">
+        <tr>
+            <td class="Control" colspan="2">
+                <ul>
+                    <li>
+                        <input type="submit" value="Ghi lại " class="uupdate" /></li>
+                    <li>@Html.ActionLink("Trở về", "SupplierIndex", "", new { @class = "uback" })</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <th>Quốc gia<span class="validlabel"> (*)</span></th>
+            <td>@Html.DropDownList("IdCountry", "==== Chọn quốc gia ====")</td>
+        </tr>
+        <tr>
+            <th>Tên nhà cung cấp<span class="validlabel"> (*)</span></th>
+            <td>@Html.TextBoxFor(m => m.Name, "", new { @class = "text" })</td>
+        </tr>
+        <tr>
+            <th>Số điện thoại<span class="validlabel"> (*)</span></th>
+            <td>@Html.TextBoxFor(m => m.Tel, "", new { @class = "text" })</td>
+        </tr>
+        <tr>
+            <th>Email<span class="validlabel"> (*)</span></th>
+            <td>@Html.TextBoxFor(m => m.Email, "", new { @class = "text" })</td>
+        </tr>
+        <tr>
+            <th>Website</th>
+            <td>@Html.TextBoxFor(m => m.Website, "", new { @class = "text" })</td>
+        </tr>
+        <tr>
+            <th>Địa chỉ<span class="validlabel"> (*)</span></th>
+            <td>@Html.TextBoxFor(m => m.Address, "", new { @class = "text" })</td>
+        </tr>
+        <tr>
+            <td class="Control" colspan="2">
+                <ul>
+                    <li>
+                        <input type="submit" value="Ghi lại " class="uupdate" /></li>
+                    <li>@Html.ActionLink("Trở về", "SupplierIndex", "", new { @class = "uback" })</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+}

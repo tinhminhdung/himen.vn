@@ -1,0 +1,72 @@
+﻿@{
+    ViewBag.Title = "Cập nhật tình trạng đơn hàng";
+    Layout = "~/Views/Shared/_LayoutAdmins.cshtml";
+}
+
+<div class="container-fluid">
+    <div style="width: 100%; margin: 0 auto;">
+        <div id="Breadcrumb" class="Block Breadcrumb ui-widget-content ui-corner-top ui-corner-bottom">
+            <ul>
+                <li><a href='../../Order/OrderIndexot'><i class="icon-home" style="font-size: 14px;"></i>Trang chủ</a></li>
+                <li class='SecondLast'><a href='../../Order/OrderIndexot'>Danh mục đơn hàng</a></li>
+                <li class='Last'><span>Chi tiết đơn hàng</span></li>
+            </ul>
+        </div>
+
+        <div style="clear: both;"></div>
+
+        <div id="cph_Main_ContentPane">
+            <div class="widget">
+                <!-- widget-title -->
+                <div class="widget-title">
+                    <h4><i class="icon-reorder"></i>&nbsp;Chi tiết đơn hàng</h4>
+
+                    <!-- Button -->
+                    @Html.Raw(ViewBag.li)
+                    <!-- End Button -->
+
+                    <div id="hiddenToolBarScroll" class="scrollBox hidden">
+                        <h4>
+                            <i class="icon-reorder"></i>&nbsp;Chi tiết đơn hàng</h4>
+                        <div class="FloatMenuBar">
+
+                            <!-- Hide -->
+                            @Html.Raw(ViewBag.li)
+                            <!-- End Hide -->
+
+                        </div>
+                    </div>
+                </div>
+                <!-- widget-title -->
+                <!-- widget-body -->
+                <div class="widget-body">
+                    <div id="tabs">
+                        <div id="tabs-1">
+
+                            @Html.Raw(ViewBag.cus)
+
+                            @Html.Raw(ViewBag.rec)
+
+                        </div>
+                    </div>
+
+                    <div>
+
+                        @Html.Raw(ViewBag.billdetail)
+
+                    </div>
+
+                </div>
+                <!-- widget-body -->
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+

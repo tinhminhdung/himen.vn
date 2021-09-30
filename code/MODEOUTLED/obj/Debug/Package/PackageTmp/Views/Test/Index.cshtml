@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layouttest.cshtml";
+}
+<script src="~/Scripts/jquery-1.7.1.min.js"></script>
+<script src="~/Scripts/jquery-ui.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#cat").change(function () {
+            var id = $(this).val();
+            $.post("/Test/Index", { "gid": id },
+                    function (data) {
+                        $("#view").html(data);
+                    });
+        });
+    });
+    </script>
+@using(Html.BeginForm()){
+<div id="view">
+    <h2>Index</h2>
+    @Html.DropDownList("cat", null, "Chọn nhóm sản phẩm", new { @id="cat"})
+<table>
+    <tr>
+        <td>Tên</td>
+        <td>Giá</td>
+        <td>Hình ảnh</td>
+    </tr>
+    @Html.Raw(ViewBag.name)
+</table>
+    </div>
+}

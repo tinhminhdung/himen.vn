@@ -1,0 +1,195 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@using System.Web.Mvc;
+@using System.Web.Mvc.Ajax;
+@using Webdiyer.WebControls.Mvc;
+
+
+@model PagedList.IPagedList<onsoft.Models.Menu>
+
+<!-- Edit Dicrected Form -->
+<script type="text/javascript">
+    <!-- check active bang Ajax gửi lên action active -->
+    $(function () {
+        $(".alert").hide();
+        ///
+        $(document).on("change", ".link", function () {
+            //your code
+            var getID = $(this).attr('id');
+            var link = $(this).val();
+            if (link != "") {
+                $.post("/Menu/UpdateDirect", { "id": getID, "link": link },
+                    function (data) {
+                        $(".alert").replaceWith("<div class='alert alert-info'>" + data + "</div>");
+                        $(".alert").fadeOut(4000);
+                    });
+            }
+            else {
+                $(".alert").replaceWith("<div class='alert alert-error'>" + "Phải nhập đầy đủ dữ liệu." + "</div>");
+                $(".alert").fadeOut(5000);
+            }
+            //
+        });
+        ///
+        ///
+        $(document).on("change", ".orderAdvertise", function () {
+            //your code
+            var getID = $(this).attr('id');
+            var order = $(this).val();
+            if (order != "") {
+                $.post("/Menu/UpdateDirect", { "id": getID, "order": order },
+                    function (data) {
+                        $(".alert").replaceWith("<div class='alert alert-info'>" + data + "</div>");
+                        $(".alert").fadeOut(4000);
+                    });
+            }
+            else {
+                $(".alert").replaceWith("<div class='alert alert-error'>" + "Phải nhập đầy đủ dữ liệu." + "</div>");
+                $(".alert").fadeOut(5000);
+            }
+            //
+        });
+        ///
+        ///
+        $(document).on("click", ".chkActive", function () {
+            //your code
+                var getID = $(this).attr('id');
+                //alert(getID);
+                $.post("/Menu/UpdateDirect", { "id": getID },
+                    function (data) {
+                        $(".alert").replaceWith("<div class='alert alert-info'>" + data + "</div>");
+                        $(".alert").fadeOut(2000);
+                    });
+            //
+        });
+        ///
+
+    });
+</script>
+
+<!--Sử dụng cho sắp xếp-->
+<script type="text/javascript">
+    $(function () {
+        ///
+        $(document).on("click", "#aSortName", function () {
+            ///your code            
+            //alert("Handler for .click() called.");
+            var getSortName = $("#aSortName").attr('sortName');
+            var posstionSearch = $('#sllPossition').val();
+            ///
+            jQuery.ajax({
+                url: '@Url.Action("AdvertiseIndex", "Advertise")',
+                type: 'Post',
+                contentType: 'application/json',
+                data: JSON.stringify({ sortName: getSortName, posstionSearch: posstionSearch }),
+                success: function (result) {
+                    $('#ajaxAdvertise').html(result);
+                }
+            });
+            ///
+        });
+        ///
+        ///
+        $(document).on("click", "#aSortOrder", function () {
+            ///your code
+            //alert("Handler for .click() called.");
+            var getSortOrder = $("#aSortOrder").attr('sortOrder');
+            ///
+            jQuery.ajax({
+                url: '@Url.Action("AdvertiseIndex", "Advertise")',
+                type: 'Post',
+                contentType: 'application/json',
+                data: JSON.stringify({ sortOrder: getSortOrder }),
+                success: function (result) {
+                    $('#ajaxAdvertise').html(result);
+                }
+            });
+            ///
+        });
+        ///
+    });
+
+
+
+</script>
+
+
+
+
+
+<!-- Table -->
+<div id="tableData">
+
+    <div class="row-fluid">
+        <div class="span3">
+            <div style="margin-top: 18px;">
+                Tổng số quảng cáo: <span style='color: #A52A2A;'>@Model.Count</span> / <span style='color: #333;'>@Model.TotalItemCount</span>
+            </div>
+        </div>
+        <div class="span9">
+            @Html.Partial("_MenuPageList")
+        </div>
+    </div>
+
+
+    <!-- Table -->
+    <table class="table table-striped table-bordered dataTable table-hover" cellspacing="0" id="tblAdvertiseIndex" style="border-collapse: collapse;">
+        <tr>
+            <th scope="col" class="text-center" style="width: 30px;">
+                <input type="checkbox" onclick="Javascript: chkSelectAll_OnClick(this)" id="chkSelectAll" name="checkAll" />
+                <input name="mPage" id="mPage" value="@ViewBag.mPage" hidden="hidden" />
+                <input name="PageSize" id="PageSize" value="@ViewBag.PageSize" hidden="hidden" />
+            </th>
+            <th scope="col" id="name">
+                @*@Html.ActionLink("Tên quảng cáo", "AdvertiseIndex", new { sortName = ViewBag.SortNameParm }, new { style = "color:#646464; text-decoration:none;", @id = "aSortName" })*@
+                @Html.Label("Tên Menu", new {@class="NumberOrdDown", @id = "aSortName", sortName = ViewBag.SortNameParm })                 
+            </th>
+            <th scope="col" id="width" class="text-left " style="width: 40px;">Liên kết</th>
+            <th scope="col" id="heigth" class="text-left " style="width: 40px;">Target</th>
+            <th scope="col" id="ord" class="text-left NumberOrdDown" style="width: 55px;">
+                @Html.Label("Thứ tự", new { @id = "aSortOrder", sortOrder = ViewBag.SortOrderParm, style = "color: #646464;width:80%;font-weight:900;" })
+            </th>
+            <th scope="col" id="status" class="text-center " style="width: 70px;">Trạng thái</th>
+            <th scope="col" class="function" style="width: 120px; text-align: center">Chức năng</th>
+        </tr>
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            <tr style="background-color: #fff">
+                <td class="text-center">
+                    @Html.CheckBox("chk" + Model[i].Id, new { id = "chkSelect", onclick = "Javascript:chkSelect_OnClick(this,0)", @class = "chk" })
+                </td>                
+                <td class="text-center">
+                    @if(Model[i].Images.Length>0)
+                    {
+                        <img src="@Model[i].Images" style="float: left; width: 25px; height: 25px" />
+                    }
+                    @Html.Label("name" + Model[i].Id, @onsoft.Models.StringClass.ShowNameLevel(Model[i].Name, Model[i].Level), new { @style = "width:95%; float:left", @class = "name text-left", @id = Model[i].Id })
+                </td>
+                <td class="number text-center " style="width: 250px;">
+                    @Html.TextBox("link" + Model[i].Id, @Model[i].Link, new { @style = "width:95%; float:left", @class = "link text-left", @id = Model[i].Id })
+                </td>
+                <td class="number text-center " style="width: 60px;">
+                    @Html.Label( @Model[i].Target, new { @style = "width:80%; float:left", @class = "Target text-center", @id = Model[i].Id })
+                </td>
+                <td class="number text-center " style="width: 55px;">
+                    @Html.TextBox("Ord" + Model[i].Id, @Model[i].Ord, new { @style = "width:80%; float:left", @class = "orderAdvertise text-center", @id = Model[i].Id })
+                </td>                
+                <td class="text-center">
+                    @Html.CheckBox("chActive" + Model[i].Id, @Model[i].Active == true ? true : false, new { @class = "chkActive", @id = Model[i].Id })
+                </td>
+
+                <td class="text-center">
+                    <a href="../../Menu/CreateSub?id=@Model[i].Level" class="action-link-button" id="lbtUpdateSupport" title="Thêm cấp con"><i class="icon-plus"></i></a>
+                    <a href="../../Menu/MenuEdit?id=@Model[i].Id" class="action-link-button" id="lbtUpdateSupport" title="Chỉnh sửa module"><i class="icon-edit"></i></a>
+                    <a href="../../Menu/MenuDelete?id=@Model[i].Id&page=@ViewBag.mPage&pagesize=@ViewBag.PageSize" class="yesno action-link-button" id="mDeleteItem"   title="Bạn chắc chắn muốn xóa module này ?"><i class="icon-trash"></i></a>
+                </td>
+            </tr>
+        }
+    </table>
+    <!-- Table -->
+
+    @Html.Partial("_MenuPageList")
+
+
+    <div style="clear: both"></div>
+</div>

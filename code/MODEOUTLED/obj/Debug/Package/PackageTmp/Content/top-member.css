@@ -1,0 +1,61 @@
+﻿/*#########################*/
+/*style cho quang cao trai*/
+.text-center{text-align: center;}
+
+
+.e-fl{ float:left;}
+.e-fr{ float:right;}
+.w44 {width: 44%;}
+.w50 {width: 52%;}
+div#top-member-img { width: 40px;height: 50px; float: right; overflow: hidden}
+div#top-member-img img{width: 40px;}
+
+.box-member {border-bottom: 1px solid #c9c9d0; width: 171px; margin-left: 5px; padding-bottom: 0px; height:60px;}
+
+.box-member-fl{ float: left; margin-left: 5px; width: 70%}
+
+.box-member-fl span#v0{ background: url(../Images/v0.png) no-repeat 5px 7px; color: #a4a4a4; font-weight: bold; font-size: 12px; line-height: 18px; padding: 5px 7px; display:block; padding-left: 5px}
+
+.box-member-fl span#v1{ background: url(../Images/v1.png) no-repeat 5px 7px; color: #a4a4a4; font-weight: bold; font-size: 12px; line-height: 18px; padding: 5px 7px; display:block; padding-left: 5px}
+
+.box-member-fl span#v2{ background: url(../Images/v2.png) no-repeat 5px 7px; color: #a4a4a4; font-weight: bold; font-size: 12px; line-height: 18px; padding: 5px 7px; display:block; padding-left: 5px}
+
+.box-member-fl span#v3{ background: url(../Images/v3.png) no-repeat 5px 7px; color: #a4a4a4; font-weight: bold; font-size: 12px; line-height: 18px; padding: 5px 7px; display:block; padding-left: 5px}
+
+.box-member-fl span#v4{ background: url(../Images/v4.png) no-repeat 5px 7px; color: #a4a4a4; font-weight: bold; font-size: 12px; line-height: 18px; padding: 5px 7px; display:block; padding-left: 5px}
+
+.box-member-fl span#v5{ background: url(../Images/v5.png) no-repeat 5px 7px; color: #a4a4a4; font-weight: bold; font-size: 12px; line-height: 18px; padding: 5px 7px; display:block; padding-left: 5px}
+
+.box-member-fl span b{ color: #395db9;font-size:0.875em;margin-left:-10px;font-weight:bold;}
+
+.avatar-member{margin-top:10px;margin-right: 0;float:right;}
+
+/*#########################*/
+
+
+
+.Viewmem  { width: 150px; height: 28px; line-height: 28px; padding: 0 5px;  font-weight: normal; margin: 0 5px 0 5px; float: right; z-index: 1000}
+.Viewmem li { text-align: left; z-index: 1000}
+.v0 { color: #a4a4a4; font-weight: bold; font-size: 12px; line-height: 18px; padding: 5px 7px; display:block; padding-left: 5px}
+.Viewmem a.v0 span { font-weight: normal; color: red}
+.Viewmem a.v1 { color: #d1aa67; font-weight: bold; font-size: 12px; line-height: 18px; padding: 5px 7px; display:block; padding-left: 5px}
+.Viewmem a.v1 span { font-weight: normal; color: red}
+.Viewmem a.v2 { color: #f6a200; font-weight: bold; font-size: 12px; line-height: 18px; padding: 5px 7px; display:block; padding-left: 5px}
+.Viewmem a.v2 span { font-weight: normal; color: red}
+.Viewmem a.v3 { color: #da6502; font-weight: bold; font-size: 12px;line-height: 18px; padding: 5px 7px; display:block; padding-left: 5px}
+.Viewmem a.v3 span { font-weight: normal; color: red}
+.Viewmem a.v4 { color: #b01b00; font-weight: bold; font-size: 12px; line-height: 18px; padding: 5px 7px; display:block; padding-left: 5px}
+.Viewmem a.v4 span { font-weight: normal; color: red}
+.Viewmem a.v5 { color: #6f2d9d; font-weight: bold; font-size: 12px;line-height: 18px; padding: 5px 7px; display:block; padding-left: 5px}
+.Viewmem a.v5 span { font-weight: normal; color: red}
+.Viewmem ul ul {display:none;width:200px; top: 28px; left: 10px; background: #2e64e2;opacity:0.9; border-radius: 5px}
+.Viewmem ul ul li {display:block;border-bottom: 1px dashed rgb(215, 215, 215);padding: 0 0 0 5px; margin: 0}
+.Viewmem ul ul li a { padding: 2px 10px 2px 10px; color: #fff; line-height: 28px; font-weight: normal; font-size: 12px; border: none; background: url(images/icon-mem-left-hover.png) no-repeat left}
+.Viewmem ul ul li:hover {background: #b3b3b3}
+.Viewmem ul ul li a:hover {background: #b3b3b3 ;}
+.Viewmem ul ul ul {display:none;top:0px;left:200px;}
+.Viewmem ul li:hover ul {display:block;}
+.Viewmem ul li:hover ul ul {display:none;}
+.Viewmem ul ul li:hover ul {display:block;}
+/* End Icon Cart */
+

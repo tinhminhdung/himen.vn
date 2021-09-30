@@ -1,0 +1,22 @@
+﻿<script type="text/javascript">
+    jQuery(document).ready(function () {
+        jQuery('ul#cartnav li').hover(function () {
+            jQuery(this).find('ul:first').css({ visibility: "visible", display: "none" }).show(400);
+        }, function () {
+            jQuery(this).find('ul:first').css({ visibility: "hidden" });
+        });
+    })
+</script>
+<div class="Viewmem">
+    <ul id="cartnav">
+        <li> @Html.Raw(ViewBag.name)
+        <ul class="navSub">
+            <li class="current"><a href="/Pages/quan_ly_don_hang">Quản lý đơn hàng</a></li>
+            <li><a href="/Pages/member">Thông tin tài khoản chung</a></li>
+            <li><a href="/Pages/edit_info">Chỉnh sửa thông tin</a></li>
+            <li><a href="/Pages/doi_mat_khau">Đổi mật khẩu</a></li>
+            <li><a href="/Pages/logout">Thoát khỏi tài khoản</a></li>
+            </ul>
+            </li>
+    </ul>
+</div>
